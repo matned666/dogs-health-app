@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="90dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="220dp"
+                    android:layout_height="109dp"
+                    android:layout_marginTop="50dp"
+                    android:contentDescription="@string/logo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/allergiesButton"
+                    app:srcCompat="@drawable/anigif"
+                    tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/chipBtnEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="41dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="68dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:text="Szczepienia - wścieklizna"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/otherInjectionsButton"
+                    android:layout_width="0dp"
+                    android:layout_height="41dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:text="Szczepienia - choroby zakaźne"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chipBtnEdit" />
+
+                <Button
+                    android:id="@+id/dewormingButton"
+                    android:layout_width="0dp"
+                    android:layout_height="41dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:text="Odrobaczanie"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/otherInjectionsButton" />
+
+                <Button
+                    android:id="@+id/illnessButton"
+                    android:layout_width="0dp"
+                    android:layout_height="41dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:text="Zabiegi, choroby"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dewormingButton" />
+
+                <Button
+                    android:id="@+id/parentingButton"
+                    android:layout_width="0dp"
+                    android:layout_height="41dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:text="Kontrola płodności - potomstwo"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/illnessButton" />
+
+                <Button
+                    android:id="@+id/teethControllButton"
+                    android:layout_width="0dp"
+                    android:layout_height="41dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:text="Kontrola zębów"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/parentingButton" />
+
+                <Button
+                    android:id="@+id/allergiesButton"
+                    android:layout_width="0dp"
+                    android:layout_height="41dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:text="Uczulenia, reakcje alergiczne"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/teethControllButton" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

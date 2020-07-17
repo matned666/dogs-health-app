@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="-54dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="220dp"
+                    android:layout_height="109dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/logo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/saveDogEdit"
+                    app:srcCompat="@drawable/anigif"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:id="@+id/photoEdit"
+                    android:layout_width="140dp"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/roundcornerimageframe"
+                    android:contentDescription="@string/dog_photo"
+                    app:layout_constraintBottom_toBottomOf="@+id/notesBtnEdit"
+                    app:layout_constraintStart_toEndOf="@id/ownerBtnEdit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/chipBtnEdit"
+                    app:srcCompat="@drawable/ic_stat_name"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <EditText
+                    android:id="@+id/dogNameEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:autofillHints=""
+                    android:background="@drawable/roundcornerstext"
+                    android:hint="@string/imi_psa"
+                    android:inputType="textCapSentences"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorHint="#AFAFAF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/chipBtnEdit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/dogRaceEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:autofillHints=""
+                    android:background="@drawable/roundcornerstext"
+                    android:hint="@string/rasa_psa"
+                    android:inputType="textCapSentences"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorHint="#AFAFAF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/tattooBtnEdit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dogNameEdit" />
+
+                <EditText
+                    android:id="@+id/dogColorEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:autofillHints=""
+                    android:background="@drawable/roundcornerstext"
+                    android:hint="@string/kolor_psa"
+                    android:inputType="textCapSentences"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorHint="#AFAFAF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/breedingBtnEdit"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dogDateOfBirthEdit" />
+
+                <Button
+                    android:id="@+id/tattooBtnEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:text="@string/tatua"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/photoEdit"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/dogRaceEdit"
+                    app:layout_constraintTop_toTopOf="@+id/dogRaceEdit" />
+
+                <Button
+                    android:id="@+id/ownerBtnEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:text="@string/w_a_ciciel"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/photoEdit"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/dogDateOfBirthEdit"
+                    app:layout_constraintTop_toTopOf="@+id/dogDateOfBirthEdit" />
+
+                <Button
+                    android:id="@+id/signsBtnEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:text="@string/znaki_szczeg_lne"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/notesBtnEdit"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/dogSexEdit"
+                    app:layout_constraintTop_toTopOf="@+id/dogSexEdit" />
+
+                <Button
+                    android:id="@+id/notesBtnEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:text="@string/notatki"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/photoEdit"
+                    app:layout_constraintHorizontal_bias="0.992"
+                    app:layout_constraintStart_toEndOf="@+id/signsBtnEdit"
+                    app:layout_constraintTop_toTopOf="@+id/dogSexEdit" />
+
+                <Button
+                    android:id="@+id/breedingBtnEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:text="@string/hodowla"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/photoEdit"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/dogColorEdit"
+                    app:layout_constraintTop_toTopOf="@+id/dogColorEdit" />
+
+                <Button
+                    android:id="@+id/saveDogEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/roundcornersrecyclerviewblack"
+                    android:text="@string/zapisz"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/deleteDogEdit"
+                    app:layout_constraintTop_toBottomOf="@+id/photoEdit" />
+
+                <Button
+                    android:id="@+id/deleteDogEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/roundcornersrecyclerviewred"
+                    android:text="Usuń"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/photoEdit" />
+
+                <Button
+                    android:id="@+id/chipBtnEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:text="@string/chip"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/photoEdit"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/dogNameEdit"
+                    app:layout_constraintTop_toTopOf="@+id/dogNameEdit" />
+
+                <EditText
+                    android:id="@+id/dogDateOfBirthEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:autofillHints=""
+                    android:background="@drawable/roundcornerstext"
+                    android:hint="@string/data_urodzenia"
+                    android:inputType="date"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorHint="#AFAFAF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/ownerBtnEdit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dogRaceEdit" />
+
+                <Spinner
+                    android:id="@+id/dogSexEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/roundcornerstext"
+                    android:entries="@array/sexTypes"
+                    android:soundEffectsEnabled="true"
+                    app:layout_constraintEnd_toStartOf="@+id/signsBtnEdit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dogColorEdit" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
