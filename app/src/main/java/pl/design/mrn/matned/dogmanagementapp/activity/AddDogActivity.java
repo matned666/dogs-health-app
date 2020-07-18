@@ -99,7 +99,6 @@ public class AddDogActivity extends AppCompatActivity implements DatePickerDialo
         bitmap = null;
         dogPhoto = findViewById(R.id.photoAdd);
         if (savedInstanceState != null){
-            photoUri = (Uri) savedInstanceState.get("URI");
             dogName = (String) savedInstanceState.get("NAME");
             if (dogName != null) dogNameET.setText(dogName);
             dogRace = (String) savedInstanceState.get("RACE");
@@ -115,7 +114,9 @@ public class AddDogActivity extends AppCompatActivity implements DatePickerDialo
             notes = (Note) savedInstanceState.get("NOTE");
             breeding = (Breeding) savedInstanceState.get("BREEDING");
             owner = (Owner) savedInstanceState.get("OWNER");
-            if (photoUri != null) {
+            photoPath = (String) savedInstanceState.get("PHOTO_PATH");
+            if (photoPath != null) {
+                photoUri = FileProvider.getUriForFile(AddDogActivity.this, "pl.design.mrn.matned.dogmanagementapp.fileprovider", new File(photoPath));
                 showImage();
             }
         }
@@ -136,7 +137,7 @@ public class AddDogActivity extends AppCompatActivity implements DatePickerDialo
         outState.putSerializable("NOTE", notes);
         outState.putSerializable("BREEDING", breeding);
         outState.putSerializable("OWNER", owner);
-        outState.putParcelable("URI", photoUri);
+        outState.putString("PHOTO_PATH", photoPath);
         super.onSaveInstanceState(outState);
     }
 
@@ -228,7 +229,9 @@ public class AddDogActivity extends AppCompatActivity implements DatePickerDialo
                 String dogColor = dogColorET.getText().toString();
                 Sex dogSex = Sex.valueOf(dogSexET.getSelectedItem().toString());
                 DogDao dao = new DogDao(this);
-                dao.add(new DogModel(-1, dogName, dogRace, dogBirthDate, dogColor, dogSex));
+                DogModel dogToSave = new DogModel(-1, dogName, dogRace, dogBirthDate, dogColor, dogSex);
+                dogToSave.setDogImage(photoPath);
+                dao.add(dogToSave);
                 Intent intent = new Intent(AddDogActivity.this, StartActivity.class);
                 startActivityForResult(intent, 200);
             }

@@ -32,6 +32,7 @@ public class DogDao extends SQLiteOpenHelper implements DaoInterface<DogModel> {
     private static final String DOG_BIRTH_DATE = "DOG_BIRTH_DATE";
     private static final String DOG_COLOR = "DOG_COLOR";
     private static final String DOG_SEX = "DOG_SEX";
+    private static final String DOG_PHOTO = "DOG_PHOTO";
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
@@ -49,6 +50,7 @@ public class DogDao extends SQLiteOpenHelper implements DaoInterface<DogModel> {
                 DOG_RACE + " TEXT, " +
                 DOG_BIRTH_DATE + " TEXT, " +
                 DOG_COLOR + " TEXT, " +
+                DOG_PHOTO + " TEXT, " +
                 DOG_SEX + " TEXT )";
 
         db.execSQL(createTableIfNotExists);
@@ -66,6 +68,7 @@ public class DogDao extends SQLiteOpenHelper implements DaoInterface<DogModel> {
         cv.put(DOG_RACE, dog.getRace());
         cv.put(DOG_BIRTH_DATE, dog.getBirthDate().toString());
         cv.put(DOG_COLOR, dog.getColor());
+        cv.put(DOG_PHOTO, dog.getDogImage());
         cv.put(DOG_SEX, Sex.value(dog.getSex()));
         long insert = db.insert(DOGS_TABLE, null, cv);
         return insert != -1;
@@ -90,8 +93,10 @@ public class DogDao extends SQLiteOpenHelper implements DaoInterface<DogModel> {
                     dogBirthDate = new Date();
                 }
                 String dogColor = cursor.getString(4);
-                Sex dogSex = Sex.valueOf(cursor.getString(5));
+                String dogPhoto = cursor.getString(5);
+                Sex dogSex = Sex.valueOf(cursor.getString(6));
                 DogModel dogModel = new DogModel(dogId, dogName, dogRace, dogBirthDate, dogColor, dogSex);
+                dogModel.setDogImage(dogPhoto);
                 dogs.add(dogModel);
             } while (cursor.moveToNext());
         }
@@ -123,6 +128,7 @@ public class DogDao extends SQLiteOpenHelper implements DaoInterface<DogModel> {
                 DOG_RACE + " = " + updatedDogData.getRace() + ", " +
                 DOG_BIRTH_DATE + " = " + dateFormat.format(updatedDogData.getBirthDate()) + ", " +
                 DOG_COLOR + " = " + updatedDogData.getColor() + ", " +
+                DOG_PHOTO + " = " + updatedDogData.getDogImage() + ", " +
                 DOG_SEX + " = " + updatedDogData.getSex() + " " +
                 "WHERE " +
                 DOG_ID + " = " + id_dogToUpdate;
@@ -146,8 +152,10 @@ public class DogDao extends SQLiteOpenHelper implements DaoInterface<DogModel> {
             } catch (ParseException e) {
                 dogBirthDate = new Date();
             }            String dogColor = cursor.getString(4);
-            Sex dogSex = Sex.valueOf(cursor.getString(5));
+            String dogPhoto = cursor.getString(5);
+            Sex dogSex = Sex.valueOf(cursor.getString(6));
             dog = new DogModel(dogId, dogName, dogRace, dogBirthDate, dogColor, dogSex);
+            dog.setDogImage(dogPhoto);
         } else {
             dog = null;
         }

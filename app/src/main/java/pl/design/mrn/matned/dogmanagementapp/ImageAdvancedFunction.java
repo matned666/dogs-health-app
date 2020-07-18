@@ -1,12 +1,14 @@
 package pl.design.mrn.matned.dogmanagementapp;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
@@ -16,16 +18,56 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.FileProvider;
 
 import com.koushikdutta.ion.Ion;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.NoSuchElementException;
 
 public class ImageAdvancedFunction {
 
-    public static final String DATE_FORMAT = "dd MMM yyyy";
+
+
+    public static void setImage(ImageView view, String photoPath, Context context, Uri uri, Resources resources) {
+        try {
+            uri = FileProvider.getUriForFile(context, "pl.design.mrn.matned.dogmanagementapp.fileprovider", new File(photoPath));
+            Bitmap bitmap = ImageAdvancedFunction.handleSamplingAndRotationBitmap(context, uri);
+            Drawable d = new BitmapDrawable(resources, bitmap);
+            view.setBackgroundResource(R.drawable.roundcornerimageframeblack);
+            view.setImageDrawable(d);
+        } catch (IOException e) {
+            Log.d("myLog", "Except : " + e.toString());
+        }
+
+    }
+
+    public static void setImage(ImageView view, String photoPath, Context context, Resources resources) {
+        try {
+
+            Uri uri = FileProvider.getUriForFile(context, "pl.design.mrn.matned.dogmanagementapp.fileprovider", new File(photoPath));
+            Bitmap bitmap = ImageAdvancedFunction.handleSamplingAndRotationBitmap(context,uri );
+            Drawable d = new BitmapDrawable(resources, bitmap);
+            view.setBackgroundResource(R.drawable.roundcornerimageframeblack);
+            view.setImageDrawable(d);
+        } catch (IOException e) {
+            Log.d("myLog", "Except : " + e.toString());
+        }
+
+    }
+
+    public static void setThumbImage(ImageView view, String photoPath, Resources resources) {
+        final int THUMBSIZE = 64;
+
+        Bitmap bitmap = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(photoPath),
+                THUMBSIZE, THUMBSIZE);
+        Drawable d = new BitmapDrawable(resources, bitmap);
+        view.setBackgroundResource(R.drawable.roundcornerimageframeblack);
+        view.setImageDrawable(d);
+
+    }
 
     public static Bitmap handleSamplingAndRotationBitmap(Context context, Uri selectedImage)
             throws IOException {
