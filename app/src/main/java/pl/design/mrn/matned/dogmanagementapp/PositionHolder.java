@@ -1,4 +1,4 @@
-package pl.design.mrn.matned.dogmanagementapp.activity;
+package pl.design.mrn.matned.dogmanagementapp;
 
 import java.io.Serializable;
 

@@ -1,13 +1,10 @@
-package pl.design.mrn.matned.dogmanagementapp.activity;
+package pl.design.mrn.matned.dogmanagementapp.activity.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,19 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
-import pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction;
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.PositionHolder;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 
 import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
-import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setThumbImage;
 
 public class DogItemAdapter extends RecyclerView.Adapter<DogItemAdapter.ViewHolder>  {
 
@@ -38,7 +31,7 @@ public class DogItemAdapter extends RecyclerView.Adapter<DogItemAdapter.ViewHold
     private Resources resources;
     private Uri photoUri;
 
-    DogItemAdapter(Context context, List<DogModel> dogs, PositionHolder positionHolder, Resources resources) {
+    public DogItemAdapter(Context context, List<DogModel> dogs, PositionHolder positionHolder, Resources resources) {
         this.context = context;
         this.dogs = dogs;
         this.positionHolder = positionHolder;
@@ -86,7 +79,7 @@ public class DogItemAdapter extends RecyclerView.Adapter<DogItemAdapter.ViewHold
 
 
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private ConstraintLayout holderButton;
         private ImageView dogImage;

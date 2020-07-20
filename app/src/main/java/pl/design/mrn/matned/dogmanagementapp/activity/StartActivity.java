@@ -17,7 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.PositionHolder;
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.activity.fragments.DogItemAdapter;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 

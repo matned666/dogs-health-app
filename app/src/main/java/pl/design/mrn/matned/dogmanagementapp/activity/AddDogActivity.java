@@ -28,6 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.DialogFragment;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,6 +41,7 @@ import java.util.GregorianCalendar;
 
 import pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction;
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.activity.fragments.BreedingDialogFragment;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.Sex;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
@@ -53,6 +55,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.owner.Owner;
 
 import static android.os.Environment.getExternalStoragePublicDirectory;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
 
 public class AddDogActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -165,6 +168,7 @@ public class AddDogActivity extends AppCompatActivity implements DatePickerDialo
         saveDog = findViewById(R.id.saveDogAdd);
         initSpinner();
         initDatePicker();
+        breedingBtn.setOnClickListener(c->showBreedingDialog());
         if(this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY))
         {
             requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, 2);
@@ -181,6 +185,12 @@ public class AddDogActivity extends AppCompatActivity implements DatePickerDialo
                 showImage();
             }
         }
+    }
+
+    public void showBreedingDialog() {
+        breeding = new Breeding();
+        DialogFragment dialog = new BreedingDialogFragment(USAGE_ADD, breeding);
+        dialog.show(getSupportFragmentManager(), "BreedingDialogFragment");
     }
 
     private void showImage() {

@@ -1,5 +1,8 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData;
 
+
+import android.location.Address;
+
 import java.io.Serializable;
 
 public class Breeding  implements Serializable {
@@ -7,16 +10,27 @@ public class Breeding  implements Serializable {
     private int breedingId;
     private String name;
     private String address;
+    private String phone;
+    private String email;
     private String description;
 
     public Breeding() {
     }
 
-    public Breeding(int breedingId, String name, String address, String description) {
-        this.breedingId = breedingId;
-        this.name = name;
-        this.address = address;
-        this.description = description;
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getBreedingId() {
