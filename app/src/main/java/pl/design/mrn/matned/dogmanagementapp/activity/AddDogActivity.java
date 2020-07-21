@@ -28,7 +28,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
-import androidx.fragment.app.DialogFragment;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,8 +39,14 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction;
+import pl.design.mrn.matned.dogmanagementapp.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.fragments.BreedingDialogFragment;
+import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.BreedingActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.ChipActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.NoteActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.OwnerActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.TattooActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.UniqueSignActivity;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.Sex;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
@@ -51,11 +56,10 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Chip;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Note;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.SpecialSign;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Tattoo;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.owner.Owner;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Owner;
 
 import static android.os.Environment.getExternalStoragePublicDirectory;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
 
 public class AddDogActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -72,7 +76,10 @@ public class AddDogActivity extends AppCompatActivity implements DatePickerDialo
     private Button breedingBtn;
     private Button ownerBtn;
     private Button saveDog;
+    private Button cancel;
     private ImageView dogPhoto;
+
+    private PositionListener positionListener;
 
     private Bitmap bitmap;
 
@@ -124,7 +131,6 @@ public class AddDogActivity extends AppCompatActivity implements DatePickerDialo
             }
         }
         initializeFields();
-
     }
 
     @Override
@@ -166,9 +172,17 @@ public class AddDogActivity extends AppCompatActivity implements DatePickerDialo
         breedingBtn = findViewById(R.id.breedingBtnAdd);
         ownerBtn = findViewById(R.id.ownerBtnAdd);
         saveDog = findViewById(R.id.saveDogAdd);
+        saveDog = findViewById(R.id.cancelAdd);
         initSpinner();
         initDatePicker();
-        breedingBtn.setOnClickListener(c->showBreedingDialog());
+        positionListener = PositionListener.getInstance();
+        breedingBtn.setOnClickListener(c->showDial(BreedingActivity.class));
+        chipBtn.setOnClickListener(c->showDial(ChipActivity.class));
+        notesBtn.setOnClickListener(c->showDial(NoteActivity.class));
+        tattooBtn.setOnClickListener(c->showDial(TattooActivity.class));
+        ownerBtn.setOnClickListener(c->showDial(OwnerActivity.class));
+        signsBtn.setOnClickListener(c->showDial(UniqueSignActivity.class));
+        cancel.setOnClickListener(c->showDial(StartActivity.class));
         if(this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY))
         {
             requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, 2);
@@ -187,11 +201,11 @@ public class AddDogActivity extends AppCompatActivity implements DatePickerDialo
         }
     }
 
-    public void showBreedingDialog() {
-        breeding = new Breeding();
-        DialogFragment dialog = new BreedingDialogFragment(USAGE_ADD, breeding);
-        dialog.show(getSupportFragmentManager(), "BreedingDialogFragment");
+    public void showDial(Class clazz) {
+        Intent intent = new Intent(AddDogActivity.this, clazz);
+        startActivity(intent);
     }
+
 
     private void showImage() {
         try {

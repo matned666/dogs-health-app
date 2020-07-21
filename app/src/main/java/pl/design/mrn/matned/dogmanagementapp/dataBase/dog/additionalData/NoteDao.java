@@ -10,9 +10,9 @@ import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoInterface;
 
-public class BreedingDao  extends SQLiteOpenHelper implements DaoInterface<Breeding> {
+public class NoteDao extends SQLiteOpenHelper implements DaoInterface<Breeding> {
 
-    public BreedingDao(@Nullable Context context) {
+    public NoteDao(@Nullable Context context) {
         super(context, "dogs_db", null, 1);
     }
 
@@ -39,6 +39,11 @@ public class BreedingDao  extends SQLiteOpenHelper implements DaoInterface<Breed
     @Override
     public boolean remove(Breeding breeding) {
         return false;
+    }
+
+    @Override
+    public void removeAll() {
+
     }
 
     @Override

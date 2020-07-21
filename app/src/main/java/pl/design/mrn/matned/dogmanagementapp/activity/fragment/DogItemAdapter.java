@@ -1,4 +1,4 @@
-package pl.design.mrn.matned.dogmanagementapp.activity.fragments;
+package pl.design.mrn.matned.dogmanagementapp.activity.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.PositionHolder;
+import pl.design.mrn.matned.dogmanagementapp.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 
 import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
@@ -26,16 +26,16 @@ public class DogItemAdapter extends RecyclerView.Adapter<DogItemAdapter.ViewHold
 
     private Context context;
     private List<DogModel> dogs;
-    private PositionHolder positionHolder;
+    private PositionListener positionListener;
     private int selectedPosition;
     private Resources resources;
     private Uri photoUri;
 
-    public DogItemAdapter(Context context, List<DogModel> dogs, PositionHolder positionHolder, Resources resources) {
+    public DogItemAdapter(Context context, List<DogModel> dogs, Resources resources) {
         this.context = context;
         this.dogs = dogs;
-        this.positionHolder = positionHolder;
-        this.selectedPosition = positionHolder.getPosition();
+        this.positionListener = PositionListener.getInstance();
+        this.selectedPosition = positionListener.getPosition();
         this.resources = resources;
     }
 
@@ -65,7 +65,7 @@ public class DogItemAdapter extends RecyclerView.Adapter<DogItemAdapter.ViewHold
 
         holder.holderButton.setOnClickListener(v -> {
             selectedPosition = position;
-            positionHolder.setPosition(position);
+            positionListener.setPosition(position);
             notifyDataSetChanged();
         });
     }

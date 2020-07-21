@@ -20,59 +20,26 @@
         <TextView
             android:id="@+id/textView12"
             style="@style/dogDataDialog_title"
-            android:text="Dane hodowli:"
+            android:text="Chip:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/breedingName"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
-            android:autofillHints=""
-            android:hint="Nazwa hodowli"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/breedingDataSpinner" />
-
-        <EditText
-            android:id="@+id/breedingDescription"
+            android:id="@+id/chipDescription"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
-            android:hint="Opis hodowli"
+            android:hint="Opis"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/breedingEmail" />
-
-        <TextView
-            android:id="@+id/textView13"
-            style="@style/label_noFrame_black12Text"
-            android:text="Nazwa hodowli:"
-            app:layout_constraintBottom_toTopOf="@+id/breedingName"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView19"
-            style="@style/label_noFrame_black12Text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Zapisane hodowle:"
-            app:layout_constraintBottom_toTopOf="@+id/breedingDataSpinner"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView14"
-            style="@style/label_noFrame_black12Text"
-            android:text="Adres:"
-            app:layout_constraintBottom_toTopOf="@+id/breedingAddress"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/chipExpiryDate" />
 
         <TextView
             android:id="@+id/textView16"
             style="@style/label_noFrame_black12Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Numer telefonu:"
-            app:layout_constraintBottom_toTopOf="@+id/breedingPhone"
+            android:text="Numer chipu:"
+            app:layout_constraintBottom_toTopOf="@+id/chipNumber"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -80,9 +47,18 @@
             style="@style/label_noFrame_black12Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Adres email:"
-            app:layout_constraintBottom_toTopOf="@+id/breedingEmail"
+            android:text="Data zachipowania:"
+            app:layout_constraintBottom_toTopOf="@+id/chipExpiryDate"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView15"
+            style="@style/label_noFrame_black12Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data utraty ważności chipu:"
+            app:layout_constraintBottom_toTopOf="@+id/chipExpiryDate"
+            app:layout_constraintStart_toStartOf="@+id/chipExpiryDate" />
 
         <TextView
             android:id="@+id/textView18"
@@ -90,36 +66,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Opis:"
-            app:layout_constraintBottom_toTopOf="@+id/breedingDescription"
+            app:layout_constraintBottom_toTopOf="@+id/chipDescription"
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/breedingAddress"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
-            android:hint="Adres"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/breedingName" />
-
-        <EditText
-            android:id="@+id/breedingPhone"
+            android:id="@+id/chipNumber"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:ems="10"
-            android:hint="Telefon"
+            android:hint="Numer chipu"
             android:inputType="phone"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/breedingAddress" />
-
-        <EditText
-            android:id="@+id/breedingEmail"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
-            android:hint="e-mail"
-            android:inputType="textEmailAddress"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/breedingPhone" />
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <Button
-            android:id="@+id/okBreedingDialog"
+            android:id="@+id/okChipDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -129,24 +90,40 @@
             android:text="OK"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/breedingDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/chipDescription" />
 
         <Button
-            android:id="@+id/cancelBreedingDialog"
+            android:id="@+id/cancelChipDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
             android:text="Anuluj"
-            app:layout_constraintEnd_toStartOf="@+id/okBreedingDialog"
-            app:layout_constraintTop_toTopOf="@+id/okBreedingDialog" />
+            app:layout_constraintEnd_toStartOf="@+id/okChipDialog"
+            app:layout_constraintTop_toTopOf="@+id/okChipDialog" />
 
-        <Spinner
-            android:id="@+id/breedingDataSpinner"
+        <EditText
+            android:id="@+id/chipPutDate"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            android:hint="Data zachipowania"
+            app:layout_constraintEnd_toStartOf="@id/chipExpiryDate"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+            app:layout_constraintTop_toBottomOf="@+id/chipNumber" />
+
+        <EditText
+            android:id="@+id/chipExpiryDate"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            android:hint="Data utraty ważności"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/chipPutDate"
+            app:layout_constraintTop_toBottomOf="@+id/chipNumber" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

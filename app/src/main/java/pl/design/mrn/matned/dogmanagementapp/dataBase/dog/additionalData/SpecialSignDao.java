@@ -10,9 +10,9 @@ import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoInterface;
 
-public class BreedingDao  extends SQLiteOpenHelper implements DaoInterface<Breeding> {
+public class SpecialSignDao extends SQLiteOpenHelper implements DaoInterface<Breeding> {
 
-    public BreedingDao(@Nullable Context context) {
+    public SpecialSignDao(@Nullable Context context) {
         super(context, "dogs_db", null, 1);
     }
 

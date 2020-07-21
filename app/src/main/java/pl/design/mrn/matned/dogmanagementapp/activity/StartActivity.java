@@ -17,9 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import pl.design.mrn.matned.dogmanagementapp.PositionHolder;
+import pl.design.mrn.matned.dogmanagementapp.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.fragments.DogItemAdapter;
+import pl.design.mrn.matned.dogmanagementapp.activity.fragment.DogItemAdapter;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 
@@ -36,7 +36,7 @@ public class StartActivity extends AppCompatActivity {
     private int selectedPosition;
 
     private RecyclerView dogRecyclerView;
-    private PositionHolder positionHolder;
+    private PositionListener positionListener;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -46,11 +46,11 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        selectedPosition = 0;
-        positionHolder = new PositionHolder(selectedPosition);
+        positionListener = PositionListener.getInstance();
+        selectedPosition = positionListener.getPosition();
         if (savedInstanceState != null) {
             selectedPosition = (int) savedInstanceState.get("SELECTED_POSITION");
-            positionHolder = (PositionHolder) savedInstanceState.get("POSITION_HOLDER");
+            positionListener = (PositionListener) savedInstanceState.get("POSITION_HOLDER");
         }
         initView();
 
@@ -59,7 +59,7 @@ public class StartActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putInt("SELECTED_POSITION",  selectedPosition);
-        outState.putSerializable("POSITION_HOLDER", positionHolder);
+        outState.putSerializable("POSITION_HOLDER", positionListener);
         super.onSaveInstanceState(outState);
     }
 
@@ -92,7 +92,7 @@ public class StartActivity extends AppCompatActivity {
         goToSettingsCard.setOnClickListener(clickListener(StartActivity.this, SettingsActivity.class));
         goToInfoCard.setOnClickListener(clickListener(StartActivity.this, InfoActivity.class));
         addDogButton.setOnClickListener(clickListener(StartActivity.this, AddDogActivity.class));
-        gotToEmergencyCard.setOnClickListener(v -> Toast.makeText(StartActivity.this, "Position: "+positionHolder.getPosition(), Toast.LENGTH_SHORT).show());
+        gotToEmergencyCard.setOnClickListener(v -> Toast.makeText(StartActivity.this, "Position: "+ positionListener.getPosition(), Toast.LENGTH_SHORT).show());
     }
 
 
@@ -100,7 +100,7 @@ public class StartActivity extends AppCompatActivity {
     private View.OnClickListener clickListener(Context context, Class aClass) {
         return v -> {
             Intent intent = new Intent(context, aClass);
-            selectedPosition = positionHolder.getPosition();
+            selectedPosition = positionListener.getPosition();
             intent.putExtra("SELECTED_POSITION", selectedPosition);
             startActivity(intent);
         };
@@ -118,7 +118,7 @@ public class StartActivity extends AppCompatActivity {
     private void addNewDogList() {
         DogDao dao = new DogDao(StartActivity.this);
         List<DogModel> dogs = dao.findAll();
-        RecyclerView.Adapter<DogItemAdapter.ViewHolder> dogAdapter = new DogItemAdapter(this, dogs, positionHolder, getResources());
+        RecyclerView.Adapter<DogItemAdapter.ViewHolder> dogAdapter = new DogItemAdapter(this, dogs, getResources());
         dogRecyclerView.setAdapter(dogAdapter);
     }
 

@@ -30,7 +30,14 @@
         <activity android:name=".activity.EmergencyActivity"/>
         <activity android:name=".activity.AddDogActivity"/>
         <activity android:name=".activity.EditActivity"/>
-        
+        <activity android:name=".activity.addActivity.BreedingActivity"/>
+        <activity android:name=".activity.addActivity.ChipActivity"/>
+        <activity android:name=".activity.addActivity.NoteActivity"/>
+        <activity android:name=".activity.addActivity.OwnerActivity"/>
+        <activity android:name=".activity.addActivity.TattooActivity"/>
+        <activity android:name=".activity.addActivity.UniqueSignActivity"/>
+
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="pl.design.mrn.matned.dogmanagementapp.fileprovider"

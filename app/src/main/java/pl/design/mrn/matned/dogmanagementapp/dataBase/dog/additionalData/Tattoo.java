@@ -1,18 +1,32 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Tattoo  implements Serializable {
 
     private int tattooId;
+    private Date tattooDate;
     private String description;
+    private int dogId;
 
     public Tattoo() {
     }
 
-    public Tattoo(int tattooId, String description) {
-        this.tattooId = tattooId;
-        this.description = description;
+    public int getDogId() {
+        return dogId;
+    }
+
+    public void setDogId(int dogId) {
+        this.dogId = dogId;
+    }
+
+    public Date getTattooDate() {
+        return tattooDate;
+    }
+
+    public void setTattooDate(Date tattooDate) {
+        this.tattooDate = tattooDate;
     }
 
     public int getTattooId() {

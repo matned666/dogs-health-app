@@ -5,7 +5,8 @@ import java.util.List;
 public interface DaoInterface<T> {
     boolean add(T t);
     List<T> findAll();
-    boolean remove(T t);
     T findById(int id);
+    boolean remove(T t);
+    void removeAll();
     boolean update(int id_toUpdate, T updated_T_Data);
 }

@@ -14,11 +14,20 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import pl.design.mrn.matned.dogmanagementapp.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.BreedingActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.ChipActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.NoteActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.OwnerActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.TattooActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.UniqueSignActivity;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 
 import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_INFO;
 
 public class DogDataActivity extends AppCompatActivity {
 
@@ -45,8 +54,7 @@ public class DogDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dog_informations);
         initView();
-        Intent mIntent = getIntent();
-        dogId = mIntent.getIntExtra("SELECTED_POSITION", 0) + 1;
+        dogId = PositionListener.getInstance().getPosition() + 1;
         putData(dogId);
 
     }
@@ -66,7 +74,7 @@ public class DogDataActivity extends AppCompatActivity {
         editDog = findViewById(R.id.editSelectedDog);
         backBtn = findViewById(R.id.backInfo);
         dogPhoto = findViewById(R.id.photoInfo);
-        backBtn.setOnClickListener(clickListener(this));
+        initButtonOnClickListeners();
     }
 
 
@@ -86,13 +94,24 @@ public class DogDataActivity extends AppCompatActivity {
             drawable = getResources().getDrawable(R.drawable.ic_stat_name);
             dogPhoto.setImageDrawable(drawable);
         }
-
     }
 
-    private View.OnClickListener clickListener(Context context) {
+    private void initButtonOnClickListeners() {
+        backBtn.setOnClickListener(clickListener(this, StartActivity.class));
+        chipBtn.setOnClickListener(clickListener(this, ChipActivity.class));
+        tattooBtn.setOnClickListener(clickListener(this, TattooActivity.class));
+        signsBtn.setOnClickListener(clickListener(this, UniqueSignActivity.class));
+        notesBtn.setOnClickListener(clickListener(this, NoteActivity.class));
+        breedingBtn.setOnClickListener(clickListener(this, BreedingActivity.class));
+        ownerBtn.setOnClickListener(clickListener(this, OwnerActivity.class));
+        editDog.setOnClickListener(clickListener(this, EditActivity.class));
+    }
+
+
+    private View.OnClickListener clickListener(Context context, Class clazz) {
         return v -> {
-            Intent intent = new Intent(context, StartActivity.class);
-            intent.putExtra("SELECTED_POSITION2", dogId-1);
+            Intent intent = new Intent(context, clazz);
+            intent.putExtra(USAGE, USAGE_INFO);
             startActivity(intent);
         };
     }

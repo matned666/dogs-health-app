@@ -10,7 +10,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Chip;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Note;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.SpecialSign;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Tattoo;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.owner.Owner;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Owner;
 
 public class DogModel {
 

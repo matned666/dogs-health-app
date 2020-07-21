@@ -43,7 +43,6 @@ public class DogDao extends SQLiteOpenHelper implements DaoInterface<DogModel> {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         String createTableIfNotExists = "CREATE TABLE " + DOGS_TABLE + "(" +
                 DOG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DOG_NAME + " TEXT, " +
@@ -83,26 +82,30 @@ public class DogDao extends SQLiteOpenHelper implements DaoInterface<DogModel> {
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
-                int dogId = cursor.getInt(0);
-                String dogName = cursor.getString(1);
-                String dogRace = cursor.getString(2);
-                Date dogBirthDate;
-                try {
-                    dogBirthDate = dateFormat.parse(cursor.getString(3));
-                } catch (ParseException e) {
-                    dogBirthDate = new Date();
-                }
-                String dogColor = cursor.getString(4);
-                String dogPhoto = cursor.getString(5);
-                Sex dogSex = Sex.valueOf(cursor.getString(6));
-                DogModel dogModel = new DogModel(dogId, dogName, dogRace, dogBirthDate, dogColor, dogSex);
-                dogModel.setDogImage(dogPhoto);
+                DogModel dogModel = getDogModel(cursor);
                 dogs.add(dogModel);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
         return dogs;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public DogModel findById(int id_dogToFind) {
+        DogModel dog;
+        String query = "SELECT * FROM " + DOGS_TABLE + " WHERE " + DOG_ID + " = " + id_dogToFind;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            dog = getDogModel(cursor);
+        } else {
+            dog = null;
+        }
+        cursor.close();
+        db.close();
+        return dog;
     }
 
     public boolean remove(DogModel dog) {
@@ -112,6 +115,7 @@ public class DogDao extends SQLiteOpenHelper implements DaoInterface<DogModel> {
         return cursor.moveToFirst();
     }
 
+    @Override
     public void removeAll() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + DOGS_TABLE;
@@ -119,6 +123,7 @@ public class DogDao extends SQLiteOpenHelper implements DaoInterface<DogModel> {
         cursor.moveToFirst();
     }
 
+    @Override
     public boolean update(int id_dogToUpdate, DogModel updatedDogData) {
         SQLiteDatabase db = this.getWritableDatabase();
         String findDogQuery = "" +
@@ -136,33 +141,23 @@ public class DogDao extends SQLiteOpenHelper implements DaoInterface<DogModel> {
         return cursor.moveToFirst();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public DogModel findById(int id_dogToFind) {
-        DogModel dog;
-        String query = "SELECT * FROM " + DOGS_TABLE + " WHERE " + DOG_ID + " = " + id_dogToFind;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        if (cursor.moveToFirst()) {
-            int dogId = cursor.getInt(0);
-            String dogName = cursor.getString(1);
-            String dogRace = cursor.getString(2);
-            Date dogBirthDate;
-            try {
-                dogBirthDate = dateFormat.parse(cursor.getString(3));
-            } catch (ParseException e) {
-                dogBirthDate = new Date();
-            }            String dogColor = cursor.getString(4);
-            String dogPhoto = cursor.getString(5);
-            Sex dogSex = Sex.valueOf(cursor.getString(6));
-            dog = new DogModel(dogId, dogName, dogRace, dogBirthDate, dogColor, dogSex);
-            dog.setDogImage(dogPhoto);
-        } else {
-            dog = null;
-        }
-        cursor.close();
-        db.close();
-        return dog;
-    }
 
+    private DogModel getDogModel(Cursor cursor) {
+        int dogId = cursor.getInt(0);
+        String dogName = cursor.getString(1);
+        String dogRace = cursor.getString(2);
+        Date dogBirthDate;
+        try {
+            dogBirthDate = dateFormat.parse(cursor.getString(3));
+        } catch (ParseException e) {
+            dogBirthDate = new Date();
+        }
+        String dogColor = cursor.getString(4);
+        String dogPhoto = cursor.getString(5);
+        Sex dogSex = Sex.valueOf(cursor.getString(6));
+        DogModel dogModel = new DogModel(dogId, dogName, dogRace, dogBirthDate, dogColor, dogSex);
+        dogModel.setDogImage(dogPhoto);
+        return dogModel;
+    }
 }
 
