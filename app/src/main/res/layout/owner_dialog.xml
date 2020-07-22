@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/roundcornerstext"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundcornerstext"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView12"
+            style="@style/dogDataDialog_title"
+            android:text="Dane właściciela:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/ownerName"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            android:autofillHints=""
+            android:hint="Imię"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ownerDataSpinner" />
+
+        <EditText
+            android:id="@+id/ownerSurname"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="Nazwisko"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ownerName" />
+
+        <EditText
+            android:id="@+id/ownerDescription"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            android:hint="Opis "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ownerExpiryDate" />
+
+        <TextView
+            android:id="@+id/textView13"
+            style="@style/label_noFrame_black12Text"
+            android:text="Imię:"
+            app:layout_constraintBottom_toTopOf="@+id/ownerName"
+            app:layout_constraintStart_toStartOf="@+id/ownerName" />
+
+        <TextView
+            android:id="@+id/textView20"
+            style="@style/label_noFrame_black12Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nazwisko:"
+            app:layout_constraintBottom_toTopOf="@+id/ownerSurname"
+            app:layout_constraintStart_toStartOf="@+id/ownerSurname" />
+
+        <TextView
+            android:id="@+id/textView19"
+            style="@style/label_noFrame_black12Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Zapisani właściciele:"
+            app:layout_constraintBottom_toTopOf="@+id/ownerDataSpinner"
+            app:layout_constraintStart_toStartOf="@+id/ownerDataSpinner" />
+
+        <TextView
+            android:id="@+id/textView14"
+            style="@style/label_noFrame_black12Text"
+            android:text="Adres:"
+            app:layout_constraintBottom_toTopOf="@+id/ownerAddress"
+            app:layout_constraintStart_toStartOf="@+id/ownerAddress" />
+
+        <EditText
+            android:id="@+id/ownerPutDate"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="Data do"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ownerExpiryDate"
+            app:layout_constraintTop_toBottomOf="@+id/ownerEmail" />
+
+        <EditText
+            android:id="@+id/ownerExpiryDate"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:ems="10"
+            android:hint="Data od"
+            android:inputType="date"
+
+            app:layout_constraintEnd_toStartOf="@+id/ownerPutDate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ownerEmail" />
+
+        <TextView
+            android:id="@+id/textView21"
+            style="@style/label_noFrame_black12Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data do:"
+            app:layout_constraintBottom_toTopOf="@+id/ownerPutDate"
+            app:layout_constraintStart_toStartOf="@+id/ownerPutDate" />
+
+        <TextView
+            android:id="@+id/textView22"
+            style="@style/label_noFrame_black12Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data od:"
+            app:layout_constraintBottom_toTopOf="@+id/ownerExpiryDate"
+            app:layout_constraintStart_toStartOf="@+id/ownerExpiryDate" />
+
+        <TextView
+            android:id="@+id/textView16"
+            style="@style/label_noFrame_black12Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numer telefonu:"
+            app:layout_constraintBottom_toTopOf="@+id/ownerPhone"
+            app:layout_constraintStart_toStartOf="@+id/ownerPhone" />
+
+        <TextView
+            android:id="@+id/textView17"
+            style="@style/label_noFrame_black12Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adres email:"
+            app:layout_constraintBottom_toTopOf="@+id/ownerEmail"
+            app:layout_constraintStart_toStartOf="@+id/ownerEmail" />
+
+        <TextView
+            android:id="@+id/textView18"
+            style="@style/label_noFrame_black12Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opis:"
+            app:layout_constraintBottom_toTopOf="@+id/ownerDescription"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/ownerAddress"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
+            android:hint="Adres"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ownerSurname" />
+
+        <EditText
+            android:id="@+id/ownerPhone"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            android:ems="10"
+            android:hint="Telefon"
+            android:inputType="phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ownerAddress" />
+
+        <EditText
+            android:id="@+id/ownerEmail"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            android:hint="e-mail"
+            android:inputType="textEmailAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ownerPhone" />
+
+        <Button
+            android:id="@+id/okOwnerDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/roundcornersrecyclerviewblack"
+            android:text="OK"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ownerDescription" />
+
+        <Button
+            android:id="@+id/cancelOwnerDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/roundcornersrecyclerviewred"
+            android:text="Anuluj"
+            app:layout_constraintEnd_toStartOf="@+id/okOwnerDialog"
+            app:layout_constraintTop_toTopOf="@+id/okOwnerDialog" />
+
+        <Spinner
+            android:id="@+id/ownerDataSpinner"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
