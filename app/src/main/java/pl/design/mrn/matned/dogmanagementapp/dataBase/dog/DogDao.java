@@ -116,11 +116,11 @@ public class DogDao extends SQLiteOpenHelper implements DaoInterface<DogModel> {
     }
 
     @Override
-    public void removeAll() {
+    public boolean removeAll() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + DOGS_TABLE;
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query, null);
-        cursor.moveToFirst();
+        return cursor.moveToFirst();
     }
 
     @Override

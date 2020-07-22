@@ -8,21 +8,24 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 public class Chip  implements Serializable {
 
     private int chipId;
-    private long chipNumber;
+    private String chipNumber;
     private Date putDate;
     private Date extDate;
     private String chipDescription;
-    private DogModel dog;
+    private int dogId;
 
     public Chip() {
     }
 
+    public Chip(int chipId) {
+        this.chipId = chipId;
+    }
 
-    public long getChipNumber() {
+    public String getChipNumber() {
         return chipNumber;
     }
 
-    public void setChipNumber(long chipNumber) {
+    public void setChipNumber(String chipNumber) {
         this.chipNumber = chipNumber;
     }
 
@@ -58,20 +61,23 @@ public class Chip  implements Serializable {
         this.chipDescription = chipDescription;
     }
 
-    public DogModel getDog() {
-        return dog;
+    public int getDogId() {
+        return dogId;
     }
 
-    public void setDog(DogModel dog) {
-        this.dog = dog;
+    public void setDogId(int dogId) {
+        this.dogId = dogId;
     }
 
     @Override
     public String toString() {
         return "Chip{" +
                 "chipId=" + chipId +
+                ", chipNumber=" + chipNumber +
+                ", putDate=" + putDate +
+                ", extDate=" + extDate +
                 ", chipDescription='" + chipDescription + '\'' +
-                ", dog=" + dog +
+                ", dogId=" + dogId +
                 '}';
     }
 }

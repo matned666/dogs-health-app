@@ -6,13 +6,21 @@ public class SpecialSign  implements Serializable {
 
     private int signId;
     private String description;
+    private int dogId;
 
     public SpecialSign() {
     }
 
-    public SpecialSign(int signId, String description) {
+    public SpecialSign(int signId) {
         this.signId = signId;
-        this.description = description;
+    }
+
+    public int getDogId() {
+        return dogId;
+    }
+
+    public void setDogId(int dogId) {
+        this.dogId = dogId;
     }
 
     public int getSignId() {
@@ -31,11 +39,5 @@ public class SpecialSign  implements Serializable {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "SpecialSign{" +
-                "signId=" + signId +
-                ", description='" + description + '\'' +
-                '}';
-    }
+
 }

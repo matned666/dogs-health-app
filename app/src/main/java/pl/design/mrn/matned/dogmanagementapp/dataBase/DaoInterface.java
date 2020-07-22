@@ -7,6 +7,6 @@ public interface DaoInterface<T> {
     List<T> findAll();
     T findById(int id);
     boolean remove(T t);
-    void removeAll();
+    boolean removeAll();
     boolean update(int id_toUpdate, T updated_T_Data);
 }

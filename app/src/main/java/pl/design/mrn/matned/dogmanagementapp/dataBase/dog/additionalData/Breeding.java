@@ -13,8 +13,21 @@ public class Breeding  implements Serializable {
     private String phone;
     private String email;
     private String description;
+    private int dogId;
+
+    public Breeding(int breedingId) {
+        this.breedingId = breedingId;
+    }
 
     public Breeding() {
+    }
+
+    public int getDogId() {
+        return dogId;
+    }
+
+    public void setDogId(int dogId) {
+        this.dogId = dogId;
     }
 
     public String getPhone() {

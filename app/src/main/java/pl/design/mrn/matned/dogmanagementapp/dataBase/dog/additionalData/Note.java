@@ -6,13 +6,21 @@ public class Note  implements Serializable {
 
     private int noteId;
     private String note;
+    private int dogId;
 
     public Note() {
     }
 
-    public Note(int noteId, String note) {
+    public Note(int noteId) {
         this.noteId = noteId;
-        this.note = note;
+    }
+
+    public int getDogId() {
+        return dogId;
+    }
+
+    public void setDogId(int dogId) {
+        this.dogId = dogId;
     }
 
     public int getNoteId() {
@@ -36,6 +44,7 @@ public class Note  implements Serializable {
         return "Note{" +
                 "noteId=" + noteId +
                 ", note='" + note + '\'' +
+                ", dogId=" + dogId +
                 '}';
     }
 }

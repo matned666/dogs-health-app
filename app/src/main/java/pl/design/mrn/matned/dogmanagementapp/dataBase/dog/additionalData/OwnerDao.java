@@ -121,11 +121,11 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoInterface<Owner> {
     }
 
     @Override
-    public void removeAll() {
+    public boolean removeAll() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + DOGS_OWNER_TABLE;
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query, null);
-        cursor.moveToFirst();
+        return cursor.moveToFirst();
     }
 
     @Override
