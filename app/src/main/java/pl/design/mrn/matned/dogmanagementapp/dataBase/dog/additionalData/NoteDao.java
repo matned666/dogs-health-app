@@ -9,15 +9,25 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
+import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
 public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<Note> {
 
     private static final String NOTES_TABLE = "NOTES_TABLE" ;
     private static final String NOTE_ID = "NOTE_ID" ;
     private static final String NOTE = "NOTE" ;
+    private static final String NOTE_DATE = "NOTE_DATE";
     private static final String DOG_ID = "DOG_ID" ;
+
+    @SuppressLint("SimpleDateFormat")
+    private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
     public NoteDao(@Nullable Context context) {
         super(context, "dogs_db", null, 1);
@@ -28,6 +38,7 @@ public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<No
         String createTableWhenNotExist = "CREATE TABLE " + NOTES_TABLE + "(" +
                 NOTE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 NOTE + " TEXT, " +
+                NOTE_DATE + " TEXT, " +
                 DOG_ID + " INTEGER )";
         db.execSQL(createTableWhenNotExist);
 
@@ -43,6 +54,7 @@ public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<No
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(NOTE, note.getNote());
+        cv.put(NOTE_DATE, dateFormat.format(note.getDate()));
         cv.put(DOG_ID, note.getDogId());
         long insert = db.insert(NOTES_TABLE, null, cv);
         return insert != -1;
@@ -85,6 +97,7 @@ public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<No
         String query = "" +
                 "UPDATE " + NOTES_TABLE + " SET " +
                 NOTE + " = " + updated_T_Data.getNote() + ", " +
+                NOTE_DATE + " = " + dateFormat.format(updated_T_Data.getDate()) + ", " +
                 DOG_ID + " = " + updated_T_Data.getDogId() + " " +
                 "WHERE " +
                 NOTE_ID + " = " + updated_T_Data.getNoteId();
@@ -104,7 +117,12 @@ public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<No
     private Note getNote(Cursor cursor) {
         Note note = new Note(cursor.getInt(0));
         note.setNote(cursor.getString(1));
-        note.setDogId(cursor.getInt(2));
+        try {
+            note.setDate(dateFormat.parse(cursor.getString(2)));
+        } catch (ParseException e) {
+            note.setDate(new Date());
+        }
+        note.setDogId(cursor.getInt(3));
         return note;
     }
 

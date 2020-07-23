@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/roundcornerstext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,12 +30,10 @@
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
             android:layout_width="323dp"
             android:layout_height="159dp"
-            android:layout_marginBottom="16dp"
             android:hint="Opis"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/chipExpiryDate"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+            app:layout_constraintTop_toTopOf="@+id/chipNumber" />
 
         <TextView
             android:id="@+id/textView16"
@@ -71,7 +69,7 @@
             android:layout_height="wrap_content"
             android:text="Opis:"
             app:layout_constraintBottom_toTopOf="@+id/chipDescription"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/chipDescription" />
 
         <EditText
             android:id="@+id/chipNumber"
@@ -99,11 +97,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/roundcornersrecyclerviewred"
             android:text="Anuluj"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chipPutDate" />
 
         <EditText
             android:id="@+id/chipPutDate"
@@ -111,8 +109,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="date"
             android:hint="Data zachipowania"
+            android:inputType="date"
             app:layout_constraintEnd_toStartOf="@id/chipExpiryDate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chipNumber" />

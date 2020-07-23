@@ -16,6 +16,7 @@ public class PositionListener implements Serializable {
 
 
     private int position;
+    private int selectedDogId;
 
     private PositionListener() {
         if (instance != null) {
@@ -27,7 +28,15 @@ public class PositionListener implements Serializable {
         return position;
     }
 
+    public int getSelectedDogId() {
+        return selectedDogId;
+    }
+
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public void setSelectedDogId(int id) {
+        this.selectedDogId = id;
     }
 }

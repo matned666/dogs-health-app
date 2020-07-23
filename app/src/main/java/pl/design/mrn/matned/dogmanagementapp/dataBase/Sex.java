@@ -1,11 +1,15 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase;
 
 public enum Sex {
-    MALE,
-    FEMALE;
+    PIES,
+    SUKA;
 
-    public static String value(Sex sex){
-        if(sex == MALE) return "MALE";
-        else return "FEMALE";
+    public static int getPosition(Sex sex) {
+        if(sex == PIES) return 1;
+        else return 2;
+    }
+
+    public static String[] sexValues() {
+        return new String[] {PIES.name(), SUKA.name()};
     }
 }

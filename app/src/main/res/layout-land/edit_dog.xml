@@ -51,7 +51,6 @@
                     android:layout_height="40dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:autofillHints=""
                     android:background="@drawable/roundcornerstext"
                     android:hint="@string/imi_psa"
                     android:inputType="textCapSentences"
@@ -62,7 +61,8 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@id/chipBtnEdit"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:autofillHints="" />
 
                 <EditText
                     android:id="@+id/dogRaceEdit"
@@ -182,30 +182,42 @@
                     android:id="@+id/saveDogEdit"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
-                    android:layout_marginStart="32dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="32dp"
                     android:background="@drawable/roundcornersrecyclerviewblack"
                     android:text="@string/zapisz"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/deleteDogEdit"
+                    app:layout_constraintEnd_toEndOf="@+id/photoEdit"
+                    app:layout_constraintStart_toEndOf="@id/cancelButtonEdit"
+                    app:layout_constraintTop_toBottomOf="@+id/photoEdit" />
+
+                <Button
+                    android:id="@+id/cancelButtonEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/roundcornersrecyclerviewblack"
+                    android:text="@string/anuluj"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@id/saveDogEdit"
+                    app:layout_constraintStart_toStartOf="@+id/dogSexEdit"
                     app:layout_constraintTop_toBottomOf="@+id/photoEdit" />
 
                 <Button
                     android:id="@+id/deleteDogEdit"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
-                    android:layout_marginStart="32dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
                     android:background="@drawable/roundcornersrecyclerviewred"
-                    android:text="Usuń"
+                    android:text="@string/usu_z_listy"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/photoEdit" />
+                    app:layout_constraintEnd_toStartOf="@+id/imageView4"
+                    app:layout_constraintStart_toStartOf="@+id/cancelButtonEdit"
+                    app:layout_constraintTop_toBottomOf="@+id/cancelButtonEdit" />
 
                 <Button
                     android:id="@+id/chipBtnEdit"

@@ -19,7 +19,7 @@ public class Validate {
     }
 
     public static boolean selectedSexIn(Spinner spinner){
-        return spinner.getSelectedItem().toString().equals(Sex.FEMALE.name()) || spinner.getSelectedItem().toString().equals(Sex.MALE.name());
+        return spinner.getSelectedItemPosition() == 1 || spinner.getSelectedItemPosition() == 2;
     }
 
     public static boolean isNumeric(String data){

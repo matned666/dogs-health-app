@@ -1,7 +1,6 @@
 package pl.design.mrn.matned.dogmanagementapp.activity;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -27,6 +26,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 
 import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_INFO;
 
 public class DogDataActivity extends AppCompatActivity {
@@ -48,14 +48,20 @@ public class DogDataActivity extends AppCompatActivity {
 
     private Integer dogId;
 
+    DogDao dao;
+    DogModel dog;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dao = new DogDao(DogDataActivity.this);
+        dogId = dao.findFirstRecordId();
+        dogId = PositionListener.getInstance().getSelectedDogId();
+        dog = dao.findById(dogId);
         setContentView(R.layout.dog_informations);
         initView();
-        dogId = PositionListener.getInstance().getPosition() + 1;
-        putData(dogId);
+        putData();
 
     }
 
@@ -71,7 +77,7 @@ public class DogDataActivity extends AppCompatActivity {
         notesBtn = findViewById(R.id.notesBtnInfo);
         breedingBtn = findViewById(R.id.breedingBtnInfo);
         ownerBtn = findViewById(R.id.ownerBtnInfo);
-        editDog = findViewById(R.id.editSelectedDog);
+        editDog = findViewById(R.id.editDogBtnFromInfo);
         backBtn = findViewById(R.id.backInfo);
         dogPhoto = findViewById(R.id.photoInfo);
         initButtonOnClickListeners();
@@ -79,9 +85,7 @@ public class DogDataActivity extends AppCompatActivity {
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private void putData(int dogId) {
-        DogDao dao = new DogDao(DogDataActivity.this);
-        DogModel dog = dao.findById(dogId);
+    private void putData() {
         dogNameET.setText(dog.getName());
         dogRaceET.setText(dog.getRace());
         dogBirthDatePickerET.setText(dog.getBirthDate().toString());
@@ -97,20 +101,28 @@ public class DogDataActivity extends AppCompatActivity {
     }
 
     private void initButtonOnClickListeners() {
-        backBtn.setOnClickListener(clickListener(this, StartActivity.class));
-        chipBtn.setOnClickListener(clickListener(this, ChipActivity.class));
-        tattooBtn.setOnClickListener(clickListener(this, TattooActivity.class));
-        signsBtn.setOnClickListener(clickListener(this, UniqueSignActivity.class));
-        notesBtn.setOnClickListener(clickListener(this, NoteActivity.class));
-        breedingBtn.setOnClickListener(clickListener(this, BreedingActivity.class));
-        ownerBtn.setOnClickListener(clickListener(this, OwnerActivity.class));
-        editDog.setOnClickListener(clickListener(this, EditActivity.class));
+        backBtn.setOnClickListener(clickListener(StartActivity.class));
+        chipBtn.setOnClickListener(clickListener(ChipActivity.class));
+        tattooBtn.setOnClickListener(clickListener(TattooActivity.class));
+        signsBtn.setOnClickListener(clickListener(UniqueSignActivity.class));
+        notesBtn.setOnClickListener(clickListener(NoteActivity.class));
+        breedingBtn.setOnClickListener(clickListener(BreedingActivity.class));
+        ownerBtn.setOnClickListener(clickListener(OwnerActivity.class));
+        editDog.setOnClickListener(clickListenerEdit());
+    }
+
+    private View.OnClickListener clickListenerEdit() {
+        return v -> {
+            Intent intent = new Intent(this, AddEdit_DogActivity.class);
+            intent.putExtra(USAGE, USAGE_EDIT);
+            startActivity(intent);
+        };
     }
 
 
-    private View.OnClickListener clickListener(Context context, Class clazz) {
+    private View.OnClickListener clickListener(Class clazz) {
         return v -> {
-            Intent intent = new Intent(context, clazz);
+            Intent intent = new Intent(this, clazz);
             intent.putExtra(USAGE, USAGE_INFO);
             startActivity(intent);
         };

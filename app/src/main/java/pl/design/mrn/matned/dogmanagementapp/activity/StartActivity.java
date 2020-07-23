@@ -1,7 +1,6 @@
 package pl.design.mrn.matned.dogmanagementapp.activity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +21,9 @@ import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.fragment.DogItemAdapter;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
+
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -87,21 +89,31 @@ public class StartActivity extends AppCompatActivity {
 
     @SuppressLint("ShowToast")
     private void initializeActionHoldersForButtons() {
-        goToDogDataCard.setOnClickListener(clickListener(StartActivity.this, DogDataActivity.class));
-        goToDogHealthCard.setOnClickListener(clickListener(StartActivity.this, HealthActivity.class));
-        goToSettingsCard.setOnClickListener(clickListener(StartActivity.this, SettingsActivity.class));
-        goToInfoCard.setOnClickListener(clickListener(StartActivity.this, InfoActivity.class));
-        addDogButton.setOnClickListener(clickListener(StartActivity.this, AddDogActivity.class));
+        goToDogDataCard.setOnClickListener(clickListener(DogDataActivity.class));
+        goToDogHealthCard.setOnClickListener(clickListener(HealthActivity.class));
+        goToSettingsCard.setOnClickListener(clickListener(SettingsActivity.class));
+        goToInfoCard.setOnClickListener(clickListener(InfoActivity.class));
+        addDogButton.setOnClickListener(clickListenerAdd());
         gotToEmergencyCard.setOnClickListener(v -> Toast.makeText(StartActivity.this, "Position: "+ positionListener.getPosition(), Toast.LENGTH_SHORT).show());
     }
 
 
 
-    private View.OnClickListener clickListener(Context context, Class aClass) {
+    private View.OnClickListener clickListener(Class aClass) {
         return v -> {
-            Intent intent = new Intent(context, aClass);
+            Intent intent = new Intent(StartActivity.this, aClass);
             selectedPosition = positionListener.getPosition();
             intent.putExtra("SELECTED_POSITION", selectedPosition);
+            startActivity(intent);
+        };
+    }
+
+    private View.OnClickListener clickListenerAdd() {
+        return v -> {
+            Intent intent = new Intent(StartActivity.this, AddEdit_DogActivity.class);
+            selectedPosition = positionListener.getPosition();
+            intent.putExtra("SELECTED_POSITION", selectedPosition);
+            intent.putExtra(USAGE, USAGE_ADD);
             startActivity(intent);
         };
     }
@@ -117,6 +129,7 @@ public class StartActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void addNewDogList() {
         DogDao dao = new DogDao(StartActivity.this);
+        PositionListener.getInstance().setSelectedDogId(dao.findFirstRecordId());
         List<DogModel> dogs = dao.findAll();
         RecyclerView.Adapter<DogItemAdapter.ViewHolder> dogAdapter = new DogItemAdapter(this, dogs, getResources());
         dogRecyclerView.setAdapter(dogAdapter);

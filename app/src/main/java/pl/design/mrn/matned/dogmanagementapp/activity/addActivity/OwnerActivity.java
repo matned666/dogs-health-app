@@ -9,9 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import pl.design.mrn.matned.dogmanagementapp.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.AddDogActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.AddEdit_DogActivity;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_INFO;
 
@@ -52,11 +53,15 @@ public class OwnerActivity extends AppCompatActivity {
 
     private void initEndingListeners() {
         ok.setOnClickListener(v -> {
-            Intent intent = new Intent(OwnerActivity.this, AddDogActivity.class);
+            Intent intent = new Intent(OwnerActivity.this, AddEdit_DogActivity.class);
+            if (usage.equals(USAGE_ADD)) intent.putExtra(USAGE, USAGE_ADD);
+            else if (usage.equals(USAGE_EDIT)) intent.putExtra(USAGE, USAGE_EDIT);
             startActivity(intent);
         });
         cancel.setOnClickListener(v -> {
-            Intent intent = new Intent(OwnerActivity.this, AddDogActivity.class);
+            Intent intent = new Intent(OwnerActivity.this, AddEdit_DogActivity.class);
+            if (usage.equals(USAGE_ADD)) intent.putExtra(USAGE, USAGE_ADD);
+            else if (usage.equals(USAGE_EDIT)) intent.putExtra(USAGE, USAGE_EDIT);
             startActivity(intent);
         });
     }

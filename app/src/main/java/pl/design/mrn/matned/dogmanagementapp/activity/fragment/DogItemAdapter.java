@@ -56,7 +56,9 @@ public class DogItemAdapter extends RecyclerView.Adapter<DogItemAdapter.ViewHold
         Drawable drawable;
         drawable = context.getResources().getDrawable(R.drawable.ic_stat_name);
         if (dog.getDogImage() != null)
+        {
             setImage(holder.dogImage, dog.getDogImage(),context, photoUri, resources);
+        }
         else
             holder.dogImage.setImageDrawable(drawable);
 
@@ -67,6 +69,7 @@ public class DogItemAdapter extends RecyclerView.Adapter<DogItemAdapter.ViewHold
         holder.holderButton.setOnClickListener(v -> {
             selectedPosition = position;
             positionListener.setPosition(position);
+            positionListener.setSelectedDogId(dog.getId());
             notifyDataSetChanged();
         });
     }
@@ -91,7 +94,7 @@ public class DogItemAdapter extends RecyclerView.Adapter<DogItemAdapter.ViewHold
             super(itemView);
             this.holderButton = itemView.findViewById(R.id.holderButton);
             this.dogImage = itemView.findViewById(R.id.dog_item_image);
-            this.dogName = itemView.findViewById(R.id.dog_item_name);
+            this.dogName = itemView.findViewById(R.id.data_item_owner_name);
         }
 
 

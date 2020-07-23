@@ -12,9 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import pl.design.mrn.matned.dogmanagementapp.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.AddDogActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.AddEdit_DogActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.DogDataActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.EditActivity;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
@@ -96,23 +95,15 @@ public class BreedingActivity extends AppCompatActivity {
         if (usage.equals(USAGE_ADD)) {
             getCancelButton();
             ok.setOnClickListener(v -> {
-                Intent intent = new Intent(BreedingActivity.this, AddDogActivity.class);
-                intent.putExtra(BREEDING_DESCRIPTION, description.getText().toString());
-                intent.putExtra(BREEDING_EMAIL, email.getText().toString());
-                intent.putExtra(BREEDING_PHONE, phone.getText().toString());
-                intent.putExtra(BREEDING_ADDRESS, address.getText().toString());
-                intent.putExtra(BREEDING_NAME, breedingName.getText().toString());
+                Intent intent = new Intent(BreedingActivity.this, AddEdit_DogActivity.class);
+                intent.putExtra(USAGE, USAGE_ADD);
                 startActivity(intent);
             });
         }else if(usage.equals(USAGE_EDIT)){
             getCancelButton();
             ok.setOnClickListener(v -> {
-                Intent intent = new Intent(BreedingActivity.this, EditActivity.class);
-                intent.putExtra(BREEDING_DESCRIPTION, description.getText().toString());
-                intent.putExtra(BREEDING_EMAIL, email.getText().toString());
-                intent.putExtra(BREEDING_PHONE, phone.getText().toString());
-                intent.putExtra(BREEDING_ADDRESS, address.getText().toString());
-                intent.putExtra(BREEDING_NAME, breedingName.getText().toString());
+                Intent intent = new Intent(BreedingActivity.this, AddEdit_DogActivity.class);
+                intent.putExtra(USAGE, USAGE_EDIT);
                 startActivity(intent);
             });
         }else{
@@ -127,7 +118,7 @@ public class BreedingActivity extends AppCompatActivity {
     private void getCancelButton() {
         cancel = findViewById(R.id.cancelBreedingDialog);
         cancel.setOnClickListener(b-> {
-            Intent intent = new Intent(BreedingActivity.this, AddDogActivity.class);
+            Intent intent = new Intent(BreedingActivity.this, AddEdit_DogActivity.class);
             startActivity(intent);
         });
     }

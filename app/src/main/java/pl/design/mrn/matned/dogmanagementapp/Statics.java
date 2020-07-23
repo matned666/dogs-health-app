@@ -10,4 +10,6 @@ public class Statics {
     public static final String USAGE_INFO = "INFO";
     public static final String USAGE_ADD = "ADD";
 
+    public static final String APP_NAME = "Dogzapp";
+
 }
