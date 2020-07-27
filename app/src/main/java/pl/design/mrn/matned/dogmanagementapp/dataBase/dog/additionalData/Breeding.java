@@ -3,7 +3,7 @@ package pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData;
 
 import java.io.Serializable;
 
-public class Breeding  implements Serializable {
+public class Breeding  implements Serializable  {
 
     private int breedingId;
     private String name;
@@ -76,6 +76,8 @@ public class Breeding  implements Serializable {
         this.description = description;
     }
 
+
+
     @Override
     public String toString() {
         return "Breeding{" +
@@ -85,4 +87,5 @@ public class Breeding  implements Serializable {
                 ", description='" + description + '\'' +
                 '}';
     }
+
 }

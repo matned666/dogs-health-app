@@ -11,9 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import pl.design.mrn.matned.dogmanagementapp.PositionListener;
+import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.AddEdit_DogActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.Add_DogActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.Edit_DogActivity;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
@@ -67,17 +68,19 @@ public class NoteActivity extends AppCompatActivity {
 
     private void initEndingListeners() {
         ok.setOnClickListener(v -> {
-            Intent intent = new Intent(NoteActivity.this, AddEdit_DogActivity.class);
-            if (usage.equals(USAGE_ADD)) intent.putExtra(USAGE, USAGE_ADD);
-            else if (usage.equals(USAGE_EDIT)) intent.putExtra(USAGE, USAGE_EDIT);
+            Intent intent;
+            if (usage.equals(USAGE_ADD)) {
+                intent = new Intent(this, Add_DogActivity.class);
+                intent.putExtra(USAGE, USAGE_ADD);
+
+            }
+            else{
+                intent = new Intent(this, Edit_DogActivity.class);
+                intent.putExtra(USAGE, USAGE_EDIT);
+            }
             startActivity(intent);
         });
-        cancel.setOnClickListener(v -> {
-            Intent intent = new Intent(NoteActivity.this, AddEdit_DogActivity.class);
-            if (usage.equals(USAGE_ADD)) intent.putExtra(USAGE, USAGE_ADD);
-            else if (usage.equals(USAGE_EDIT)) intent.putExtra(USAGE, USAGE_EDIT);
-            startActivity(intent);
-        });
+        cancel.setOnClickListener(v -> finish());
     }
 
 

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import pl.design.mrn.matned.dogmanagementapp.PositionListener;
+import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 

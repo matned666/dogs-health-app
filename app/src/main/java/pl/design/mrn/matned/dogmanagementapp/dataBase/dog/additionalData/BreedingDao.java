@@ -6,13 +6,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class BreedingDao  extends SQLiteOpenHelper implements DaoFragmentInterface<Breeding> {
+public class BreedingDao  extends SQLiteOpenHelper implements DaoFragmentInterface_FunctionalBreeding<Breeding> {
 
     private static final String BREEDING_TABLE = "BREEDING_TABLE";
     private static final String BREEDING_ID = "BREEDING_ID";
@@ -112,6 +114,15 @@ public class BreedingDao  extends SQLiteOpenHelper implements DaoFragmentInterfa
     public List<Breeding> getListByMasterId(int id) {
         String query = "SELECT * FROM " + BREEDING_TABLE + " WHERE " + DOG_ID + " = " + id;
         return getBreedingsListByQuery(query);    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    public Breeding findByDogId(int id) {
+        return getListByMasterId(id).stream()
+                .filter(v -> v.getDogId() == id)
+                .findFirst()
+                .orElse(null);
+    }
 
     private Breeding getBreeding(Cursor cursor) {
         Breeding breeding = new Breeding(cursor.getInt(0));

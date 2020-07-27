@@ -13,21 +13,23 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import pl.design.mrn.matned.dogmanagementapp.PositionListener;
-import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.BreedingActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.ChipActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.NoteActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.OwnerActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.TattooActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.UniqueSignActivity;
+import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
+import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.DataChoiceListActivity;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 
 import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.BREEDING;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.CHIP;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.LIST_ELEMENT_ACTIVITY;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.OWNER;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.SIGN;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.START;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.TATTOO;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_INFO;
 
 public class DogDataActivity extends AppCompatActivity {
 
@@ -46,23 +48,24 @@ public class DogDataActivity extends AppCompatActivity {
     private Button backBtn;
     private ImageView dogPhoto;
 
-    private Integer dogId;
-
-    DogDao dao;
-    DogModel dog;
+    private DogModel dog;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dao = new DogDao(DogDataActivity.this);
-        dogId = dao.findFirstRecordId();
-        dogId = PositionListener.getInstance().getSelectedDogId();
+        init();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void init() {
+
+        DogDao dao = new DogDao(DogDataActivity.this);
+        int dogId = PositionListener.getInstance().getSelectedDogId();
         dog = dao.findById(dogId);
         setContentView(R.layout.dog_informations);
         initView();
         putData();
-
     }
 
     private void initView() {
@@ -101,29 +104,21 @@ public class DogDataActivity extends AppCompatActivity {
     }
 
     private void initButtonOnClickListeners() {
-        backBtn.setOnClickListener(clickListener(StartActivity.class));
-        chipBtn.setOnClickListener(clickListener(ChipActivity.class));
-        tattooBtn.setOnClickListener(clickListener(TattooActivity.class));
-        signsBtn.setOnClickListener(clickListener(UniqueSignActivity.class));
-        notesBtn.setOnClickListener(clickListener(NoteActivity.class));
-        breedingBtn.setOnClickListener(clickListener(BreedingActivity.class));
-        ownerBtn.setOnClickListener(clickListener(OwnerActivity.class));
-        editDog.setOnClickListener(clickListenerEdit());
-    }
-
-    private View.OnClickListener clickListenerEdit() {
-        return v -> {
-            Intent intent = new Intent(this, AddEdit_DogActivity.class);
-            intent.putExtra(USAGE, USAGE_EDIT);
-            startActivity(intent);
-        };
+        backBtn.setOnClickListener(clickListener(StartActivity.class, START));
+        chipBtn.setOnClickListener(clickListener(DataChoiceListActivity.class, CHIP));
+        tattooBtn.setOnClickListener(clickListener(DataChoiceListActivity.class, TATTOO));
+        signsBtn.setOnClickListener(clickListener(DataChoiceListActivity.class, SIGN));
+        notesBtn.setOnClickListener(clickListener(DataChoiceListActivity.class, NOTE));
+        breedingBtn.setOnClickListener(clickListener(BreedingActivity.class, BREEDING));
+        ownerBtn.setOnClickListener(clickListener(DataChoiceListActivity.class, OWNER));
+        editDog.setOnClickListener(clickListener(Edit_DogActivity.class, USAGE_EDIT));
     }
 
 
-    private View.OnClickListener clickListener(Class clazz) {
+    private View.OnClickListener clickListener(Class clazz, String usage) {
         return v -> {
             Intent intent = new Intent(this, clazz);
-            intent.putExtra(USAGE, USAGE_INFO);
+            intent.putExtra(LIST_ELEMENT_ACTIVITY, usage);
             startActivity(intent);
         };
     }

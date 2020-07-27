@@ -79,7 +79,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <Button
-            android:id="@+id/okChipDialogInfoTextView"
+            android:id="@+id/okChipDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -90,13 +90,14 @@
             app:layout_constraintTop_toBottomOf="@+id/chipDescriptionInfoTextView" />
 
         <Button
-            android:id="@+id/cancelChipDialogInfoTextView"
+            android:id="@+id/cancelChipDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
             android:text="Anuluj"
-            app:layout_constraintEnd_toStartOf="@+id/okChipDialogInfoTextView"
-            app:layout_constraintTop_toTopOf="@+id/okChipDialogInfoTextView" />
+            app:layout_constraintEnd_toStartOf="@+id/okChipDialog"
+            app:layout_constraintTop_toTopOf="@+id/okChipDialog" />
 
         <TextView
             android:id="@+id/chipPutDateInfoTextView"

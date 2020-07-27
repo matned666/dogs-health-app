@@ -59,7 +59,7 @@ public class ChipDao extends SQLiteOpenHelper  implements DaoFragmentInterface<C
         ContentValues cv = new ContentValues();
         cv.put(CHIP_NUMBER, chip.getChipNumber());
         cv.put(CHIP_PUT_DATE, chip.getPutDate().toString());
-        cv.put(CHIP_EXP_DATE, chip.getExtDate().toString());
+        cv.put(CHIP_EXP_DATE, chip.getExpDate().toString());
         cv.put(CHIP_DESCRIPTION, chip.getChipDescription());
         cv.put(DOG_ID, chip.getDogId());
         long insert = db.insert(CHIP_TABLE, null, cv);
@@ -104,7 +104,7 @@ public class ChipDao extends SQLiteOpenHelper  implements DaoFragmentInterface<C
                 "UPDATE " + CHIP_TABLE + " SET " +
                 CHIP_NUMBER + " = " + updated_T_Data.getChipNumber() + ", " +
                 CHIP_PUT_DATE + " = " + dateFormat.format(updated_T_Data.getPutDate()) + ", " +
-                CHIP_EXP_DATE + " = " + dateFormat.format(updated_T_Data.getExtDate()) + ", " +
+                CHIP_EXP_DATE + " = " + dateFormat.format(updated_T_Data.getExpDate()) + ", " +
                 CHIP_DESCRIPTION + " = " + updated_T_Data.getChipDescription() + ", " +
                 DOG_ID + " = " + updated_T_Data.getDogId() + " " +
                 "WHERE " +
@@ -132,9 +132,9 @@ public class ChipDao extends SQLiteOpenHelper  implements DaoFragmentInterface<C
             chip.setPutDate(new Date());
         }
         try {
-            chip.setExtDate(dateFormat.parse(cursor.getString(3)));
+            chip.setExpDate(dateFormat.parse(cursor.getString(3)));
         } catch (ParseException e) {
-            chip.setExtDate(new Date());
+            chip.setExpDate(new Date());
         }
         chip.setChipDescription(cursor.getString(4));
         chip.setDogId(cursor.getInt(5));

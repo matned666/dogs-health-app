@@ -28,14 +28,15 @@
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.SettingsActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.InfoActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.EmergencyActivity"/>
-        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.AddEdit_DogActivity"/>
-        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.EditActivity"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.Add_DogActivity"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.Edit_DogActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.BreedingActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.ChipActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.NoteActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.OwnerActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.TattooActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.UniqueSignActivity"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.DataChoiceListActivity"/>
 
 
         <provider

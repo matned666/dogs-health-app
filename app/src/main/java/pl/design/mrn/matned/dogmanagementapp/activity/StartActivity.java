@@ -16,14 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import pl.design.mrn.matned.dogmanagementapp.PositionListener;
+import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.fragment.DogItemAdapter;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_INFO;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -83,37 +83,38 @@ public class StartActivity extends AppCompatActivity {
         gotToEmergencyCard = findViewById(R.id.emergencyButton);
         dogRecyclerView = findViewById(R.id.recyclerViewMain);
         addDogButton = findViewById(R.id.addDogButton);
-
-
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("ShowToast")
     private void initializeActionHoldersForButtons() {
-        goToDogDataCard.setOnClickListener(clickListener(DogDataActivity.class));
-        goToDogHealthCard.setOnClickListener(clickListener(HealthActivity.class));
-        goToSettingsCard.setOnClickListener(clickListener(SettingsActivity.class));
-        goToInfoCard.setOnClickListener(clickListener(InfoActivity.class));
+        DogDao dao = new DogDao(this);
+        if(dao.findAll().size() > 0) goToDogDataCard.setOnClickListener(clickListener(DogDataActivity.class, USAGE_INFO));
+        else goToDogDataCard.setOnClickListener(v -> Toast.makeText(StartActivity.this, "The list is empty, add any.", Toast.LENGTH_SHORT).show());
+        goToDogHealthCard.setOnClickListener(clickListener(HealthActivity.class, null));
+        goToSettingsCard.setOnClickListener(clickListener(SettingsActivity.class, null));
+        goToInfoCard.setOnClickListener(clickListener(InfoActivity.class, null));
         addDogButton.setOnClickListener(clickListenerAdd());
         gotToEmergencyCard.setOnClickListener(v -> Toast.makeText(StartActivity.this, "Position: "+ positionListener.getPosition(), Toast.LENGTH_SHORT).show());
     }
 
 
 
-    private View.OnClickListener clickListener(Class aClass) {
+    private View.OnClickListener clickListener(Class aClass, String usage) {
         return v -> {
             Intent intent = new Intent(StartActivity.this, aClass);
             selectedPosition = positionListener.getPosition();
             intent.putExtra("SELECTED_POSITION", selectedPosition);
+            intent.putExtra(USAGE, usage);
             startActivity(intent);
         };
     }
 
     private View.OnClickListener clickListenerAdd() {
         return v -> {
-            Intent intent = new Intent(StartActivity.this, AddEdit_DogActivity.class);
+            Intent intent = new Intent(StartActivity.this, Add_DogActivity.class);
             selectedPosition = positionListener.getPosition();
             intent.putExtra("SELECTED_POSITION", selectedPosition);
-            intent.putExtra(USAGE, USAGE_ADD);
             startActivity(intent);
         };
     }

@@ -27,6 +27,7 @@
         <EditText
             android:id="@+id/breedingName"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            android:layout_marginTop="32dp"
             android:autofillHints=""
             android:hint="Nazwa hodowli"
             app:layout_constraintEnd_toEndOf="parent"
@@ -95,8 +96,10 @@
         <EditText
             android:id="@+id/breedingAddress"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
+            android:layout_marginTop="32dp"
             android:hint="Adres"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breedingName" />
 
@@ -118,7 +121,7 @@
             app:layout_constraintTop_toBottomOf="@+id/breedingPhone" />
 
         <Button
-            android:id="@+id/okBreedingDialog"
+            android:id="@+id/okBreedingDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -132,11 +135,23 @@
             android:id="@+id/cancelBreedingDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
             android:text="Anuluj"
-            app:layout_constraintEnd_toStartOf="@+id/okBreedingDialog"
-            app:layout_constraintTop_toTopOf="@+id/okBreedingDialog" />
+            app:layout_constraintEnd_toStartOf="@+id/cancelBreedingDialog2"
+            app:layout_constraintTop_toBottomOf="@+id/breedingDescription" />
+
+        <Button
+            android:id="@+id/cancelBreedingDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/roundcornersrecyclerviewred"
+            android:text="Usuń wpis"
+            app:layout_constraintEnd_toStartOf="@+id/okBreedingDialogInfo"
+            app:layout_constraintTop_toBottomOf="@+id/breedingDescription" />
 
         <Spinner
             android:id="@+id/breedingDataSpinner"

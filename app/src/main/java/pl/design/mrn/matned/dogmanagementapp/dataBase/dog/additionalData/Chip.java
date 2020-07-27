@@ -9,11 +9,22 @@ public class Chip  implements Serializable {
     private int chipId;
     private String chipNumber;
     private Date putDate;
-    private Date extDate;
+    private Date expDate;
     private String chipDescription;
     private int dogId;
 
+    private boolean isActive;
+
     public Chip() {
+        isActive = expDate.after(new Date());
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public Chip(int chipId) {
@@ -36,12 +47,12 @@ public class Chip  implements Serializable {
         this.putDate = putDate;
     }
 
-    public Date getExtDate() {
-        return extDate;
+    public Date getExpDate() {
+        return expDate;
     }
 
-    public void setExtDate(Date extDate) {
-        this.extDate = extDate;
+    public void setExpDate(Date expDate) {
+        this.expDate = expDate;
     }
 
     public int getChipId() {
@@ -74,7 +85,7 @@ public class Chip  implements Serializable {
                 "chipId=" + chipId +
                 ", chipNumber=" + chipNumber +
                 ", putDate=" + putDate +
-                ", extDate=" + extDate +
+                ", extDate=" + expDate +
                 ", chipDescription='" + chipDescription + '\'' +
                 ", dogId=" + dogId +
                 '}';

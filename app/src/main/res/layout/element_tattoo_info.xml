@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:id="@+id/itemButton"
+        android:id="@+id/tattooItemButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -18,7 +18,7 @@
         android:background="@drawable/roundcornersrecyclerviewelement">
 
         <TextView
-            android:id="@+id/data_item_owner_name"
+            android:id="@+id/tattooItem_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -33,7 +33,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/dateFromOwner"
+            android:id="@+id/tattooItem_injectionStatic"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -45,11 +45,11 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/data_item_owner_name"
+            app:layout_constraintTop_toBottomOf="@+id/tattooItem_description"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/dateToOwner"
+            android:id="@+id/tattooItem_date_of_injection"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -61,8 +61,8 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/dateFromOwner"
-            app:layout_constraintTop_toTopOf="@+id/dateFromOwner"
+            app:layout_constraintStart_toEndOf="@+id/tattooItem_injectionStatic"
+            app:layout_constraintTop_toTopOf="@+id/tattooItem_injectionStatic"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

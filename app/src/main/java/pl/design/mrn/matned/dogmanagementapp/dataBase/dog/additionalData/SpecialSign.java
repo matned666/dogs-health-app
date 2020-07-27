@@ -1,14 +1,24 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class SpecialSign  implements Serializable {
 
     private int signId;
     private String description;
     private int dogId;
+    private Date date;
 
     public SpecialSign() {
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public SpecialSign(int signId) {
