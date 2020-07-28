@@ -11,6 +11,9 @@ import android.os.Build;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,8 +48,18 @@ public class BreedingDao  extends SQLiteOpenHelper implements DaoFragmentInterfa
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        switch(oldVersion) {
+            case 1:
+                db.execSQL();
+                // we want both updates, so no break statement here...
+            case 2:
+                db.execSQL(DATABASE_CREATE_someothertable);
+        }
     }
+
+
+
+
 
     @Override
     public boolean add(Breeding breeding) {

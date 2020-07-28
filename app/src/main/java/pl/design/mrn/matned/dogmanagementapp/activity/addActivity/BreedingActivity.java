@@ -49,7 +49,7 @@ public class BreedingActivity extends AppCompatActivity {
         usage = intent.getStringExtra(USAGE);
         dao = new BreedingDao(this);
         listener = PositionListener.getInstance();
-        assert usage != null;
+
         if (!usage.equals(USAGE_INFO)) {
             setContentView(R.layout.breeding_dialog);
             init();

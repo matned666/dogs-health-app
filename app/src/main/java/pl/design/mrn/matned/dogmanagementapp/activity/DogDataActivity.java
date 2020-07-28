@@ -29,7 +29,9 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.OWNER;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.SIGN;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.START;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.TATTOO;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_INFO;
 
 public class DogDataActivity extends AppCompatActivity {
 
@@ -119,6 +121,7 @@ public class DogDataActivity extends AppCompatActivity {
         return v -> {
             Intent intent = new Intent(this, clazz);
             intent.putExtra(LIST_ELEMENT_ACTIVITY, usage);
+            intent.putExtra(USAGE, USAGE_INFO);
             startActivity(intent);
         };
     }
