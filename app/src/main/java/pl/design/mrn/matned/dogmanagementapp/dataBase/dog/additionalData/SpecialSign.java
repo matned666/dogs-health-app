@@ -11,6 +11,7 @@ public class SpecialSign  implements Serializable {
     private Date date;
 
     public SpecialSign() {
+        date = new Date();
     }
 
     public Date getDate() {

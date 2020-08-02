@@ -53,7 +53,7 @@
             android:hint="Opis "
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ownerExpiryDate" />
+            app:layout_constraintTop_toBottomOf="@+id/ownerFromDate" />
 
         <TextView
             android:id="@+id/textView13"
@@ -88,7 +88,7 @@
             app:layout_constraintStart_toStartOf="@+id/ownerAddress" />
 
         <EditText
-            android:id="@+id/ownerPutDate"
+            android:id="@+id/ownerToDate"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -97,11 +97,11 @@
             android:hint="Data do"
             android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ownerExpiryDate"
+            app:layout_constraintStart_toEndOf="@+id/ownerFromDate"
             app:layout_constraintTop_toBottomOf="@+id/ownerEmail" />
 
         <EditText
-            android:id="@+id/ownerExpiryDate"
+            android:id="@+id/ownerFromDate"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:layout_width="0dp"
             android:layout_height="25dp"
@@ -119,8 +119,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data do:"
-            app:layout_constraintBottom_toTopOf="@+id/ownerPutDate"
-            app:layout_constraintStart_toStartOf="@+id/ownerPutDate" />
+            app:layout_constraintBottom_toTopOf="@+id/ownerToDate"
+            app:layout_constraintStart_toStartOf="@+id/ownerToDate" />
 
         <TextView
             android:id="@+id/textView22"
@@ -128,8 +128,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data od:"
-            app:layout_constraintBottom_toTopOf="@+id/ownerExpiryDate"
-            app:layout_constraintStart_toStartOf="@+id/ownerExpiryDate" />
+            app:layout_constraintBottom_toTopOf="@+id/ownerFromDate"
+            app:layout_constraintStart_toStartOf="@+id/ownerFromDate" />
 
         <TextView
             android:id="@+id/textView16"
@@ -195,13 +195,23 @@
             app:layout_constraintTop_toBottomOf="@+id/ownerDescription" />
 
         <Button
-            android:id="@+id/cancelOwnerDialog"
+            android:id="@+id/deleteOwnerDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
-            android:text="Anuluj"
+            android:text="Usuń wpis"
             app:layout_constraintEnd_toStartOf="@+id/okOwnerDialog"
+            app:layout_constraintTop_toTopOf="@+id/okOwnerDialog" />
+
+        <Button
+            android:id="@+id/cancelOwnerDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/roundcornersrecyclerviewred"
+            android:text="Anuluj"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/okOwnerDialog" />
 
         <Spinner

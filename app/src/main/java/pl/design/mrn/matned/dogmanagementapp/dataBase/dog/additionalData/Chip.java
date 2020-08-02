@@ -14,9 +14,9 @@ public class Chip  implements Serializable {
     private int dogId;
 
     private boolean isActive;
+//   TODO
 
     public Chip() {
-        isActive = expDate.after(new Date());
     }
 
     public boolean isActive() {

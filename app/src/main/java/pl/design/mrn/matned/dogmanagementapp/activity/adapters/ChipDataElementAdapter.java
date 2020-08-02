@@ -1,7 +1,8 @@
-package pl.design.mrn.matned.dogmanagementapp.activity.fragment;
+package pl.design.mrn.matned.dogmanagementapp.activity.adapters;
 
 import android.annotation.SuppressLint;
-import android.content.res.ColorStateList;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +18,15 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.ChipActivityAdd;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.ChipActivityEdit;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.ChipActivityInfo;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Chip;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
 
 
 public class ChipDataElementAdapter extends RecyclerView.Adapter<ChipDataElementAdapter.ViewHolder>  {
@@ -28,11 +34,15 @@ public class ChipDataElementAdapter extends RecyclerView.Adapter<ChipDataElement
     private List<Chip> ownersList;
     private DataPositionListener dataPositionListener;
     private int selectedPosition;
+    private String usage;
+    private Context context;
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-    public ChipDataElementAdapter(List<Chip> owners) {
+    public ChipDataElementAdapter(List<Chip> owners, String usage, Context context) {
+        this.context = context;
+        this.usage = usage;
         ownersList = owners;
         this.dataPositionListener = DataPositionListener.getInstance();
         this.selectedPosition = dataPositionListener.getPosition();
@@ -66,9 +76,15 @@ public class ChipDataElementAdapter extends RecyclerView.Adapter<ChipDataElement
             dataPositionListener.setPosition(position);
             dataPositionListener.setSelectedItemId(chip.getChipId());
             notifyDataSetChanged();
+            if (usage.equals(USAGE_EDIT) || usage.equals(USAGE_ADD)){
+                Intent intent = new Intent(context, ChipActivityEdit.class);
+                context.startActivity(intent);
+            } else {
+                Intent intent = new Intent(context, ChipActivityInfo.class);
+                context.startActivity(intent);
+            }
         });
     }
-
 
     @Override
     public int getItemCount() {
@@ -76,10 +92,7 @@ public class ChipDataElementAdapter extends RecyclerView.Adapter<ChipDataElement
         else return ownersList.size();
     }
 
-
-
-
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private ConstraintLayout holderButton;
         private TextView chipNumber;

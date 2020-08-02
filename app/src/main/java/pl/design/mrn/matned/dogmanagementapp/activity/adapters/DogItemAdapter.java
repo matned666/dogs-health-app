@@ -1,4 +1,4 @@
-package pl.design.mrn.matned.dogmanagementapp.activity.fragment;
+package pl.design.mrn.matned.dogmanagementapp.activity.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

@@ -20,38 +20,21 @@ import java.util.Date;
 
 import pl.design.mrn.matned.dogmanagementapp.dataBase.Sex;
 
-import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
 public class DogDao extends SQLiteOpenHelper implements DogDaoInterface<DogModel> {
-
-    private static final String DOGS_TABLE = "DOGS";
-    private static final String DOG_ID = "DOG_ID";
-    private static final String DOG_NAME = "DOG_NAME";
-    private static final String DOG_RACE = "DOG_RACE";
-    private static final String DOG_BIRTH_DATE = "DOG_BIRTH_DATE";
-    private static final String DOG_COLOR = "DOG_COLOR";
-    private static final String DOG_SEX = "DOG_SEX";
-    private static final String DOG_PHOTO = "DOG_PHOTO";
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
     public DogDao(@Nullable Context context) {
-        super(context, "dogs_db", null, 1);
+        super(context, DATABASE_NAME, null, 1);
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableIfNotExists = "CREATE TABLE " + DOGS_TABLE + "(" +
-                DOG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                DOG_NAME + " TEXT, " +
-                DOG_RACE + " TEXT, " +
-                DOG_BIRTH_DATE + " TEXT, " +
-                DOG_COLOR + " TEXT, " +
-                DOG_PHOTO + " TEXT, " +
-                DOG_SEX + " TEXT )";
-
-        db.execSQL(createTableIfNotExists);
+        DataBaseCreation.create(db);
     }
 
     @Override
@@ -70,6 +53,7 @@ public class DogDao extends SQLiteOpenHelper implements DogDaoInterface<DogModel
         cv.put(DOG_PHOTO, dog.getDogImage());
         cv.put(DOG_SEX, dog.getSex().name());
         long insert = db.insert(DOGS_TABLE, null, cv);
+        db.close();
         return insert != -1;
     }
 
@@ -142,7 +126,7 @@ public class DogDao extends SQLiteOpenHelper implements DogDaoInterface<DogModel
     }
 
     @Override
-    public boolean update(int id_dogToUpdate, DogModel updatedDogData) {
+    public boolean update(DogModel updatedDogData) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(DOG_NAME, updatedDogData.getName());
@@ -151,7 +135,8 @@ public class DogDao extends SQLiteOpenHelper implements DogDaoInterface<DogModel
         cv.put(DOG_COLOR, updatedDogData.getColor());
         cv.put(DOG_PHOTO, updatedDogData.getDogImage());
         cv.put(DOG_SEX, updatedDogData.getSex().name());
-        long insert = db.update(DOGS_TABLE, cv, (DOG_ID + " = " + id_dogToUpdate), null);
+        long insert = db.update(DOGS_TABLE, cv, (DOG_ID + " = " + updatedDogData.getId()), null);
+        db.close();
         return insert != -1;
     }
 

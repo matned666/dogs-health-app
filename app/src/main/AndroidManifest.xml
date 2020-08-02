@@ -30,13 +30,33 @@
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.EmergencyActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.Add_DogActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.Edit_DogActivity"/>
-        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.BreedingActivity"/>
-        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.ChipActivity"/>
-        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.NoteActivity"/>
-        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.OwnerActivity"/>
-        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.TattooActivity"/>
-        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.UniqueSignActivity"/>
-        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.addActivity.DataChoiceListActivity"/>
+
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.BreedingActivityAdd"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.ChipActivityAdd"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.NoteActivityAdd"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.OwnerActivityAdd"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.TattooActivityAdd"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.UniqueSignActivityAdd"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.DataChoiceListActivityAdd"/>
+
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.BreedingActivityEdit"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.ChipActivityEdit"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.NoteActivityEdit"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.OwnerActivityEdit"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.TattooActivityEdit"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.UniqueSignActivityEdit"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.DataChoiceListActivityEdit"/>
+
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.BreedingActivityInfo"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.ChipActivityInfo"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.NoteActivityInfo"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.OwnerActivityInfo"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.TattooActivityInfo"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.UniqueSignActivityInfo"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.DataChoiceListActivityInfo"/>
+
+
+
 
 
         <provider

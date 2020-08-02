@@ -1,6 +1,8 @@
-package pl.design.mrn.matned.dogmanagementapp.activity.fragment;
+package pl.design.mrn.matned.dogmanagementapp.activity.adapters;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +17,18 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.ChipActivityAdd;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.TattooActivityAdd;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.ChipActivityEdit;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.TattooActivityEdit;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.ChipActivityInfo;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.TattooActivityInfo;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Tattoo;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
 
 
 public class TattooDataElementAdapter extends RecyclerView.Adapter<TattooDataElementAdapter.ViewHolder>  {
@@ -26,12 +36,16 @@ public class TattooDataElementAdapter extends RecyclerView.Adapter<TattooDataEle
     private List<Tattoo> tattooList;
     private DataPositionListener dataPositionListener;
     private int selectedPosition;
+    private String usage;
+    private Context context;
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-    public TattooDataElementAdapter(List<Tattoo> tattoos) {
-        tattooList = tattoos;
+    public TattooDataElementAdapter(List<Tattoo> tattoos, String usage, Context context) {
+        this.context = context;
+        this.usage = usage;
+        this.tattooList = tattoos;
         this.dataPositionListener = DataPositionListener.getInstance();
         this.selectedPosition = dataPositionListener.getPosition();
     }
@@ -42,6 +56,7 @@ public class TattooDataElementAdapter extends RecyclerView.Adapter<TattooDataEle
             @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_tattoo_info, null);
         return new ViewHolder(view);
     }
+
 
 
     @SuppressLint("SetTextI18n")
@@ -58,11 +73,19 @@ public class TattooDataElementAdapter extends RecyclerView.Adapter<TattooDataEle
             dataPositionListener.setPosition(position);
             dataPositionListener.setSelectedItemId(tattoo.getTattooId());
             notifyDataSetChanged();
+            if (usage.equals(USAGE_EDIT) || usage.equals(USAGE_ADD)){
+                Intent intent = new Intent(context, TattooActivityEdit.class);
+                context.startActivity(intent);
+            } else {
+                Intent intent = new Intent(context, TattooActivityInfo.class);
+                context.startActivity(intent);
+            }
         });
     }
 
     private String generateHeader(String description) {
-        return description.substring(0, 25).trim() + "...";
+        if(description.length() > 25) return description.substring(0, 24).trim() + "...";
+        else return description;
     }
 
 
@@ -75,7 +98,7 @@ public class TattooDataElementAdapter extends RecyclerView.Adapter<TattooDataEle
 
 
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private ConstraintLayout holderButton;
         private TextView tattooDescription;

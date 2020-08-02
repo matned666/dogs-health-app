@@ -53,7 +53,7 @@
             android:hint="Opis "
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ownerExpiryDateInfoTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/ownerFromDateInfoTextView" />
 
         <TextView
             android:id="@+id/textView13"
@@ -79,28 +79,26 @@
             app:layout_constraintStart_toStartOf="@+id/ownerAddressInfoTextView" />
 
         <TextView
-            android:id="@+id/ownerPutDateInfoTextView"
+            android:id="@+id/ownerToDateInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="Data do"
-            android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ownerExpiryDateInfoTextView"
+            app:layout_constraintStart_toEndOf="@+id/ownerFromDateInfoTextView"
             app:layout_constraintTop_toBottomOf="@+id/ownerEmailInfoTextView" />
 
         <TextView
-            android:id="@+id/ownerExpiryDateInfoTextView"
+            android:id="@+id/ownerFromDateInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:layout_width="0dp"
             android:layout_height="25dp"
             android:ems="10"
             android:hint="Data od"
-            android:inputType="date"
 
-            app:layout_constraintEnd_toStartOf="@+id/ownerPutDateInfoTextView"
+            app:layout_constraintEnd_toStartOf="@+id/ownerToDateInfoTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerEmailInfoTextView" />
 
@@ -110,8 +108,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data do:"
-            app:layout_constraintBottom_toTopOf="@+id/ownerPutDateInfoTextView"
-            app:layout_constraintStart_toStartOf="@+id/ownerPutDateInfoTextView" />
+            app:layout_constraintBottom_toTopOf="@+id/ownerToDateInfoTextView"
+            app:layout_constraintStart_toStartOf="@+id/ownerToDateInfoTextView" />
 
         <TextView
             android:id="@+id/textView22"
@@ -119,8 +117,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data od:"
-            app:layout_constraintBottom_toTopOf="@+id/ownerExpiryDateInfoTextView"
-            app:layout_constraintStart_toStartOf="@+id/ownerExpiryDateInfoTextView" />
+            app:layout_constraintBottom_toTopOf="@+id/ownerFromDateInfoTextView"
+            app:layout_constraintStart_toStartOf="@+id/ownerFromDateInfoTextView" />
 
         <TextView
             android:id="@+id/textView16"
@@ -162,7 +160,6 @@
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:ems="10"
             android:hint="Telefon"
-            android:inputType="phone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerAddressInfoTextView" />
 
@@ -170,12 +167,11 @@
             android:id="@+id/ownerEmailInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:hint="e-mail"
-            android:inputType="textEmailAddress"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerPhoneInfoTextView" />
 
         <Button
-            android:id="@+id/okOwnerDialog"
+            android:id="@+id/okOwnerDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -186,14 +182,14 @@
             app:layout_constraintTop_toBottomOf="@+id/ownerDescriptionInfoTextView" />
 
         <Button
-            android:id="@+id/cancelOwnerDialog"
+            android:id="@+id/editOwnerDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
-            android:text="Anuluj"
-            app:layout_constraintEnd_toStartOf="@+id/okOwnerDialog"
-            app:layout_constraintTop_toTopOf="@+id/okOwnerDialog" />
+            android:text="Edytuj"
+            app:layout_constraintEnd_toStartOf="@+id/okOwnerDialogInfo"
+            app:layout_constraintTop_toTopOf="@+id/okOwnerDialogInfo" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

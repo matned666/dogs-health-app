@@ -66,8 +66,18 @@
             android:id="@+id/cancelTattooDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
             android:text="Anuluj"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/okTattooDialog" />
+
+        <Button
+            android:id="@+id/deleteTattooDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundcornersrecyclerviewred"
+            android:text="Usuń wpis"
             app:layout_constraintEnd_toStartOf="@+id/okTattooDialog"
             app:layout_constraintTop_toTopOf="@+id/okTattooDialog" />
 

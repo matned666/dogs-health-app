@@ -16,43 +16,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
 public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<Owner> {
 
-    private static final String DOGS_OWNER_TABLE = "DOGS_OWNER_TABLE";
-    private static final String OWNER_ID = "OWNER_ID";
-    private static final String OWNER_NAME = "OWNER_NAME";
-    private static final String OWNER_SURNAME = "OWNER_SURNAME";
-    private static final String OWNER_ADDRESS = "OWNER_ADDRESS";
-    private static final String OWNER_PHONE = "OWNER_PHONE";
-    private static final String OWNER_EMAIL = "OWNER_EMAIL";
-    private static final String OWNER_DATE_FROM = "OWNER_DATE_FROM";
-    private static final String OWNER_DATE_TO = "OWNER_DATE_TO";
-    private static final String OWNER_DESCRIPTION = "OWNER_DESCRIPTION";
-    private static final String DOG_ID = "DOG_ID";
+
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
     public OwnerDao(@Nullable Context context) {
-        super(context, "dogs_db", null, 1);
+        super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableIfNotExists = "CREATE TABLE " + DOGS_OWNER_TABLE + "(" +
-                OWNER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                OWNER_NAME + " TEXT, " +
-                OWNER_SURNAME + " TEXT, " +
-                OWNER_ADDRESS + " TEXT, " +
-                OWNER_PHONE + " TEXT, " +
-                OWNER_EMAIL + " TEXT, " +
-                OWNER_DATE_FROM + " TEXT, " +
-                OWNER_DATE_TO + " TEXT, " +
-                OWNER_DESCRIPTION + " TEXT, " +
-                DOG_ID + " INTEGER )";
-        db.execSQL(createTableIfNotExists);
+
     }
 
     @Override
@@ -66,12 +45,12 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
         ContentValues cv = new ContentValues();
         cv.put(OWNER_NAME, owner.getName());
         cv.put(OWNER_SURNAME, owner.getSurname());
-        cv.put(OWNER_ADDRESS, owner.getAddress());
-        cv.put(OWNER_PHONE, owner.getPhoneNumber());
-        cv.put(OWNER_EMAIL, owner.getEmail());
-        cv.put(OWNER_DATE_FROM, owner.getDateFrom().toString());
-        cv.put(OWNER_DATE_TO, owner.getDateTo().toString());
-        cv.put(OWNER_DESCRIPTION, owner.getDescription());
+        if(owner.getAddress() != null) cv.put(OWNER_ADDRESS, owner.getAddress());
+        if(owner.getPhoneNumber() != null) cv.put(OWNER_PHONE, owner.getPhoneNumber());
+        if(owner.getEmail() != null) cv.put(OWNER_EMAIL, owner.getEmail());
+        if(owner.getDateFrom() != null) cv.put(OWNER_DATE_FROM, owner.getDateFrom().toString());
+        if(owner.getDateTo() != null) cv.put(OWNER_DATE_TO, owner.getDateTo().toString());
+        if(owner.getDescription() != null) cv.put(OWNER_DESCRIPTION, owner.getDescription());
         cv.put(DOG_ID, owner.getDog_id());
         long insert = db.insert(DOGS_OWNER_TABLE, null, cv);
         return insert != -1;
@@ -102,17 +81,32 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
     @Override
     public boolean remove(Owner owner) {
         String query = "DELETE FROM " + DOGS_OWNER_TABLE + " WHERE " + OWNER_ID + " = " + owner.getId();
-        return getCursor(query, this.getWritableDatabase());
+        Cursor cursor = this.getWritableDatabase().rawQuery(query, null);
+        boolean end = cursor.moveToFirst();
+        cursor.close();
+        return end;
+    }
+
+    @Override
+    public boolean remove(int id) {
+        String query = "DELETE FROM " + DOGS_OWNER_TABLE + " WHERE " + OWNER_ID + " = " + id;
+        Cursor cursor = this.getWritableDatabase().rawQuery(query, null);
+        boolean end = cursor.moveToFirst();
+        cursor.close();
+        return end;
     }
 
     @Override
     public boolean removeAll() {
         String query = "DELETE FROM " + DOGS_OWNER_TABLE;
-        return getCursor(query, this.getWritableDatabase());
+        Cursor cursor = this.getWritableDatabase().rawQuery(query, null);
+        boolean end = cursor.moveToFirst();
+        cursor.close();
+        return end;
     }
 
     @Override
-    public boolean update(int id_toUpdate, Owner updated_T_Data) {
+    public boolean update(Owner updated_T_Data) {
         String updateTattooQuery = "" +
                 "UPDATE " + DOGS_OWNER_TABLE +" " +
                 "SET " +
@@ -126,9 +120,12 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
                 OWNER_DESCRIPTION + " = " + updated_T_Data.getDescription() + ", " +
                 DOG_ID + " = " + updated_T_Data.getDog_id() + ", " +
                 "WHERE " +
-                OWNER_ID + " = " + id_toUpdate;
-        return getCursor(updateTattooQuery, this.getReadableDatabase());
+                OWNER_ID + " = " + updated_T_Data.getId();
 
+        Cursor cursor = this.getReadableDatabase().rawQuery(updateTattooQuery, null);
+        boolean end = cursor.moveToFirst();
+        cursor.close();
+        return end;
     }
 
     @Override
@@ -174,8 +171,4 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
         return owner;
     }
 
-    private boolean getCursor(String query, SQLiteDatabase db) {
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query, null);
-        return cursor.moveToFirst();
-    }
 }

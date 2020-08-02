@@ -16,31 +16,21 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
 public class SpecialSignDao extends SQLiteOpenHelper implements DaoFragmentInterface<SpecialSign> {
 
-    private static final String SIGNS_TABLE = "SIGNS_TABLE";
-    private static final String SIGN_ID = "SIGN_ID";
-    private static final String SIGN_DESCRIPTION = "SIGN_DESCRIPTION";
-    private static final String SIGN_DATE = "SIGN_DATE";
-    private static final String DOG_ID = "DOG_ID";
+
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
     public SpecialSignDao(@Nullable Context context) {
-        super(context, "dogs_db", null, 1);
+        super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableWhenNotExist = "CREATE TABLE " + SIGNS_TABLE + "(" +
-                SIGN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                SIGN_DESCRIPTION + " TEXT, " +
-                SIGN_DATE + " TEXT, " +
-                DOG_ID + " INTEGER )";
-        db.execSQL(createTableWhenNotExist);
 
     }
 
@@ -69,16 +59,25 @@ public class SpecialSignDao extends SQLiteOpenHelper implements DaoFragmentInter
     @Override
     public boolean remove(SpecialSign specialSign) {
         String query = "DELETE FROM " + SIGNS_TABLE + " WHERE " + SIGN_ID + " = " + specialSign.getSignId();
-        @SuppressLint("Recycle") Cursor cursor = getCursor(query);
+        Cursor cursor = getCursor(query);
         return cursor.moveToFirst();
     }
 
     @Override
+    public boolean remove(int id) {
+        String query = "DELETE FROM " + SIGNS_TABLE + " WHERE " + SIGN_ID + " = " + id;
+        Cursor cursor = getCursor(query);
+        boolean end = cursor.moveToFirst();
+        cursor.close();
+        return end;    }
+
+    @Override
     public boolean removeAll() {
         String query = "DELETE FROM " + SIGNS_TABLE;
-        @SuppressLint("Recycle") Cursor cursor = getCursor(query);
-        return cursor.moveToFirst();
-    }
+        Cursor cursor = getCursor(query);
+        boolean end = cursor.moveToFirst();
+        cursor.close();
+        return end;    }
 
     @Override
     public SpecialSign findById(int id) {
@@ -95,16 +94,17 @@ public class SpecialSignDao extends SQLiteOpenHelper implements DaoFragmentInter
     }
 
     @Override
-    public boolean update(int id_toUpdate, SpecialSign updated_T_Data) {
+    public boolean update(SpecialSign updated_T_Data) {
         String query = "" +
                 "UPDATE " + SIGNS_TABLE + " SET " +
                 SIGN_DESCRIPTION + " = " + updated_T_Data.getDescription() + ", " +
                 DOG_ID + " = " + updated_T_Data.getDogId() + " " +
                 "WHERE " +
                 SIGN_ID + " = " + updated_T_Data.getSignId();
-        @SuppressLint("Recycle") Cursor cursor = getCursor(query);
-        return cursor.moveToFirst();
-    }
+        Cursor cursor = getCursor(query);
+        boolean end = cursor.moveToFirst();
+        cursor.close();
+        return end;    }
 
     @Override
     public List<SpecialSign> getListByMasterId(int id) {

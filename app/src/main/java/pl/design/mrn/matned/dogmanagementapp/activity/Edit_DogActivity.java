@@ -38,14 +38,10 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.BreedingActivityEdit;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.DataChoiceListActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.BreedingActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.ChipActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.NoteActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.OwnerActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.TattooActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.UniqueSignActivity;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.Sex;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
@@ -54,9 +50,14 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
 import static android.os.Environment.DIRECTORY_PICTURES;
 import static android.os.Environment.getExternalStoragePublicDirectory;
 import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.BREEDING;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.CHIP;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.LIST_ELEMENT_ACTIVITY;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.OWNER;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.SIGN;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.TATTOO;
 
 public class Edit_DogActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -151,15 +152,21 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
     }
 
     private void initOnClickListeners_edit() {
-            chipBtn.setOnClickListener(v -> showDial(ChipActivity.class));
-            tattooBtn.setOnClickListener(v -> showDial(TattooActivity.class));
-            signsBtn.setOnClickListener(v -> showDial(UniqueSignActivity.class));
-            ownerBtn.setOnClickListener(v -> showDial(OwnerActivity.class));
-            notesBtn.setOnClickListener(v -> showDial(NoteActivity.class));
-            breedingBtn.setOnClickListener(v -> showDial(BreedingActivity.class));
+            chipBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class,CHIP));
+            tattooBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class, TATTOO));
+            signsBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class, SIGN));
+            ownerBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class, OWNER));
+            notesBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class, NOTE));
+            breedingBtn.setOnClickListener(v -> showDial(BreedingActivityEdit.class, BREEDING));
             saveDog.setOnClickListener(changeActivityOnClick_saveEdit());
             deleteDogBtn.setOnClickListener(changeActivityOnClick_deleteEdit());
-            cancel.setOnClickListener(v -> showDial(DogDataActivity.class));
+            cancel.setOnClickListener(v -> finish());
+    }
+
+    public void    showDial(Class clazz, String el) {
+        Intent intent = new Intent(Edit_DogActivity.this, clazz);
+        intent.putExtra(LIST_ELEMENT_ACTIVITY, el);
+        startActivity(intent);
     }
 
 
@@ -175,7 +182,7 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
         return v -> {
             if (validation()) {
                 dog.setTo(getDogModelFromFields());
-                dogDao.update(PositionListener.getInstance().getSelectedDogId(), dog);
+                dogDao.update(dog);
                 Intent intent = new Intent(Edit_DogActivity.this, DogDataActivity.class);
                 startActivity(intent);
             }
@@ -232,12 +239,6 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
                 showImage();
             }
         }
-    }
-
-    public void showDial(Class clazz) {
-        Intent intent = new Intent(Edit_DogActivity.this, clazz);
-        intent.putExtra(USAGE, USAGE_EDIT);
-        startActivity(intent);
     }
 
 

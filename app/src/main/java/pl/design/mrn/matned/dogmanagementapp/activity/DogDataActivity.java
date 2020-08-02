@@ -13,10 +13,10 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.BreedingActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.BreedingActivityInfo;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.DataChoiceListActivityInfo;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.DataChoiceListActivity;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 
@@ -107,20 +107,26 @@ public class DogDataActivity extends AppCompatActivity {
 
     private void initButtonOnClickListeners() {
         backBtn.setOnClickListener(clickListener(StartActivity.class, START));
-        chipBtn.setOnClickListener(clickListener(DataChoiceListActivity.class, CHIP));
-        tattooBtn.setOnClickListener(clickListener(DataChoiceListActivity.class, TATTOO));
-        signsBtn.setOnClickListener(clickListener(DataChoiceListActivity.class, SIGN));
-        notesBtn.setOnClickListener(clickListener(DataChoiceListActivity.class, NOTE));
-        breedingBtn.setOnClickListener(clickListener(BreedingActivity.class, BREEDING));
-        ownerBtn.setOnClickListener(clickListener(DataChoiceListActivity.class, OWNER));
+        chipBtn.setOnClickListener(v -> showDial(DataChoiceListActivityInfo.class,CHIP));
+        tattooBtn.setOnClickListener(v -> showDial(DataChoiceListActivityInfo.class, TATTOO));
+        signsBtn.setOnClickListener(v -> showDial(DataChoiceListActivityInfo.class, SIGN));
+        ownerBtn.setOnClickListener(v -> showDial(DataChoiceListActivityInfo.class, OWNER));
+        notesBtn.setOnClickListener(v -> showDial(DataChoiceListActivityInfo.class, NOTE));
+        breedingBtn.setOnClickListener(v -> showDial(BreedingActivityInfo.class, BREEDING));
         editDog.setOnClickListener(clickListener(Edit_DogActivity.class, USAGE_EDIT));
     }
 
+    public void showDial(Class clazz, String el) {
+        Intent intent = new Intent(this, clazz);
+        intent.putExtra(LIST_ELEMENT_ACTIVITY, el);
+        startActivity(intent);
+    }
 
-    private View.OnClickListener clickListener(Class clazz, String usage) {
+
+    private View.OnClickListener clickListener(Class clazz, String use) {
         return v -> {
             Intent intent = new Intent(this, clazz);
-            intent.putExtra(LIST_ELEMENT_ACTIVITY, usage);
+            intent.putExtra(LIST_ELEMENT_ACTIVITY, use);
             intent.putExtra(USAGE, USAGE_INFO);
             startActivity(intent);
         };

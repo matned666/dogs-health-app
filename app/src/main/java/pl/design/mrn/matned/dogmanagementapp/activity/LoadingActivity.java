@@ -18,18 +18,16 @@ public class LoadingActivity  extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading_app);
-
-        ImageView imageView = (ImageView) findViewById(R.id.running_dog);
+        ImageView imageView = findViewById(R.id.running_dog);
         imageView.setBackgroundResource(R.drawable.dog_anim);
         runningDog = (AnimationDrawable) imageView.getBackground();
-
         Thread welcomeThread = new Thread() {
             @Override
             public void run() {
                 try {
                     super.run();
                     sleep(3000);
-                } catch (Exception e) {
+                } catch (Exception ignored) {
                 } finally {
                     Intent i = new Intent(LoadingActivity.this,
                             StartActivity.class);
@@ -41,6 +39,7 @@ public class LoadingActivity  extends AppCompatActivity {
         welcomeThread.start();
 
     }
+
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

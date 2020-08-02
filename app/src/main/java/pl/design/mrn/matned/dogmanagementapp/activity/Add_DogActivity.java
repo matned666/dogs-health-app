@@ -39,12 +39,8 @@ import java.util.GregorianCalendar;
 
 import pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction;
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.BreedingActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.ChipActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.NoteActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.OwnerActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.TattooActivity;
-import pl.design.mrn.matned.dogmanagementapp.activity.addActivity.UniqueSignActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.BreedingActivityAdd;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.DataChoiceListActivityAdd;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.Sex;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
@@ -52,9 +48,14 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
 
 import static android.os.Environment.DIRECTORY_PICTURES;
 import static android.os.Environment.getExternalStoragePublicDirectory;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.BREEDING;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.CHIP;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.LIST_ELEMENT_ACTIVITY;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.OWNER;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.SIGN;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.TATTOO;
 
 public class Add_DogActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -120,18 +121,25 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void initClickListeners_add() {
-        breedingBtn.setOnClickListener(c -> showDial(BreedingActivity.class));
-        chipBtn.setOnClickListener(c -> showDial(ChipActivity.class));
-        notesBtn.setOnClickListener(c -> showDial(NoteActivity.class));
-        tattooBtn.setOnClickListener(c -> showDial(TattooActivity.class));
-        ownerBtn.setOnClickListener(c -> showDial(OwnerActivity.class));
-        signsBtn.setOnClickListener(c -> showDial(UniqueSignActivity.class));
-        cancel.setOnClickListener(c -> showDial(StartActivity.class));
+        chipBtn.setOnClickListener(v -> showDial(DataChoiceListActivityAdd.class,CHIP));
+        tattooBtn.setOnClickListener(v -> showDial(DataChoiceListActivityAdd.class, TATTOO));
+        signsBtn.setOnClickListener(v -> showDial(DataChoiceListActivityAdd.class, SIGN));
+        ownerBtn.setOnClickListener(v -> showDial(DataChoiceListActivityAdd.class, OWNER));
+        notesBtn.setOnClickListener(v -> showDial(DataChoiceListActivityAdd.class, NOTE));
+        breedingBtn.setOnClickListener(v -> showDial(BreedingActivityAdd.class, BREEDING));
+
+        cancel.setOnClickListener(c -> showDial(StartActivity.class, null));
         if (this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
             requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
             dogPhoto.setOnClickListener(addPhoto());
         }
         saveDog.setOnClickListener(saveDog());
+    }
+
+    public void showDial(Class clazz, String el) {
+        Intent intent = new Intent(Add_DogActivity.this, clazz);
+        intent.putExtra(LIST_ELEMENT_ACTIVITY, el);
+        startActivity(intent);
     }
 
     private void onSavedReload(Bundle savedInstanceState) {
@@ -168,14 +176,6 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
         super.onSaveInstanceState(outState);
     }
 
-    @SuppressLint("SimpleDateFormat")
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        Calendar cal = new GregorianCalendar(year, month, dayOfMonth);
-        dateFormat.setTimeZone(cal.getTimeZone());
-        dogBirthDatePickerET.setText(dateFormat.format(cal.getTime()));
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -184,12 +184,6 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
                 showImage();
             }
         }
-    }
-
-    public void showDial(Class clazz) {
-        Intent intent = new Intent(Add_DogActivity.this, clazz);
-        intent.putExtra(USAGE, USAGE_ADD);
-        startActivity(intent);
     }
 
 
@@ -292,22 +286,20 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
         }
     }
 
+    @SuppressLint("SimpleDateFormat")
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar cal = new GregorianCalendar(year, month, dayOfMonth);
+        dateFormat.setTimeZone(cal.getTimeZone());
+        dogBirthDatePickerET.setText(dateFormat.format(cal.getTime()));
+    }
+
     private void initDatePicker() {
         dogBirthDatePickerET.setOnClickListener(v -> datePickDialog());
         dogBirthDatePickerET.setRawInputType(InputType.TYPE_NULL);
         dogBirthDatePickerET.setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus) datePickDialog();
         });
-    }
-
-    private void initSpinner() {
-        System.out.println(">>>>>>>>>>>>>>>>>>   SETTING UP SPINNER");
-        String[] sexes = new String[3];
-        sexes[0] = "";
-        sexes[1] = Sex.PIES.name();
-        sexes[2] = Sex.SUKA.name();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drpdn, sexes);
-        dogSexET.setAdapter(adapter);
     }
 
     private void datePickDialog() {
@@ -317,6 +309,15 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog datePicker = new DatePickerDialog(Add_DogActivity.this, Add_DogActivity.this, year, month, day);
         datePicker.show();
+    }
+
+    private void initSpinner() {
+        String[] sexes = new String[3];
+        sexes[0] = "";
+        sexes[1] = Sex.PIES.name();
+        sexes[2] = Sex.SUKA.name();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drpdn, sexes);
+        dogSexET.setAdapter(adapter);
     }
 
 

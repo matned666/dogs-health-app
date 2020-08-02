@@ -119,14 +119,29 @@
             app:layout_constraintTop_toBottomOf="@+id/breedingDescriptionInfoTextView" />
 
         <Button
-            android:id="@+id/cancelBreedingDialog"
+            android:id="@+id/editBreedingInfoDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
-            android:text="Anuluj"
+            android:text="Edytuj"
             app:layout_constraintEnd_toStartOf="@+id/okBreedingDialogInfo"
             app:layout_constraintTop_toTopOf="@+id/okBreedingDialogInfo" />
+
+        <TextView
+            android:id="@+id/breedingInfoDialog_informationTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center_vertical"
+            android:text="Brak zapisanej hodowli, dodać?"
+            android:textColor="#FF0000"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editBreedingInfoDialog"
+            app:layout_constraintEnd_toStartOf="@+id/editBreedingInfoDialog"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editBreedingInfoDialog" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

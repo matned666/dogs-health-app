@@ -18,7 +18,7 @@ import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.fragment.DogItemAdapter;
+import pl.design.mrn.matned.dogmanagementapp.activity.adapters.DogItemAdapter;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 

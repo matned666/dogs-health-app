@@ -11,6 +11,7 @@ public class Note  implements Serializable {
     private int dogId;
 
     public Note() {
+        date = new Date();
     }
 
     public Date getDate() {

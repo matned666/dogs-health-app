@@ -1,6 +1,8 @@
-package pl.design.mrn.matned.dogmanagementapp.activity.fragment;
+package pl.design.mrn.matned.dogmanagementapp.activity.adapters;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +17,18 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.ChipActivityAdd;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.NoteActivityAdd;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.ChipActivityEdit;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.NoteActivityEdit;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.ChipActivityInfo;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.NoteActivityInfo;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Note;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Owner;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
 
 
 public class NoteDataElementAdapter extends RecyclerView.Adapter<NoteDataElementAdapter.ViewHolder>  {
@@ -27,11 +36,15 @@ public class NoteDataElementAdapter extends RecyclerView.Adapter<NoteDataElement
     private List<Note> notes;
     private DataPositionListener dataPositionListener;
     private int selectedPosition;
+    private String usage;
+    private Context context;
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-    public NoteDataElementAdapter(List<Note> notes) {
+    public NoteDataElementAdapter(List<Note> notes, String usage, Context context) {
+        this.context = context;
+        this.usage = usage;
         this.notes = notes;
         this.dataPositionListener = DataPositionListener.getInstance();
         this.selectedPosition = dataPositionListener.getPosition();
@@ -59,6 +72,13 @@ public class NoteDataElementAdapter extends RecyclerView.Adapter<NoteDataElement
             dataPositionListener.setPosition(position);
             dataPositionListener.setSelectedItemId(note.getNoteId());
             notifyDataSetChanged();
+            if (usage.equals(USAGE_EDIT) || usage.equals(USAGE_ADD)){
+                Intent intent = new Intent(context, NoteActivityEdit.class);
+                context.startActivity(intent);
+            } else {
+                Intent intent = new Intent(context, NoteActivityInfo.class);
+                context.startActivity(intent);
+            }
         });
     }
 
@@ -76,7 +96,7 @@ public class NoteDataElementAdapter extends RecyclerView.Adapter<NoteDataElement
 
 
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private ConstraintLayout holderButton;
         private TextView note;

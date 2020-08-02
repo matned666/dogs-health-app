@@ -16,31 +16,21 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
 public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<Note> {
 
-    private static final String NOTES_TABLE = "NOTES_TABLE" ;
-    private static final String NOTE_ID = "NOTE_ID" ;
-    private static final String NOTE = "NOTE" ;
-    private static final String NOTE_DATE = "NOTE_DATE";
-    private static final String DOG_ID = "DOG_ID" ;
+
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
     public NoteDao(@Nullable Context context) {
-        super(context, "dogs_db", null, 1);
+        super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableWhenNotExist = "CREATE TABLE " + NOTES_TABLE + "(" +
-                NOTE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                NOTE + " TEXT, " +
-                NOTE_DATE + " TEXT, " +
-                DOG_ID + " INTEGER )";
-        db.execSQL(createTableWhenNotExist);
 
     }
 
@@ -73,6 +63,11 @@ public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<No
     }
 
     @Override
+    public boolean remove(int id) {
+        String query = "DELETE FROM " + NOTES_TABLE + " WHERE " + NOTE_ID + " = " + id;
+        return getCursorByQuery(query, this.getWritableDatabase());    }
+
+    @Override
     public boolean removeAll() {
         String query = "DELETE FROM " + NOTES_TABLE;
         return getCursorByQuery(query, this.getWritableDatabase());
@@ -93,11 +88,11 @@ public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<No
     }
 
     @Override
-    public boolean update(int id_toUpdate, Note updated_T_Data) {
+    public boolean update(Note updated_T_Data) {
         String query = "" +
                 "UPDATE " + NOTES_TABLE + " SET " +
-                NOTE + " = " + updated_T_Data.getNote() + ", " +
-                NOTE_DATE + " = " + dateFormat.format(updated_T_Data.getDate()) + ", " +
+                NOTE + " = '" + updated_T_Data.getNote() + "', " +
+                NOTE_DATE + " = '" + dateFormat.format(updated_T_Data.getDate()) + "', " +
                 DOG_ID + " = " + updated_T_Data.getDogId() + " " +
                 "WHERE " +
                 NOTE_ID + " = " + updated_T_Data.getNoteId();
@@ -110,8 +105,10 @@ public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<No
         return getNotesListByQuery(query);    }
 
     private boolean getCursorByQuery(String query , SQLiteDatabase db) {
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query, null);
-        return cursor.moveToFirst();
+        Cursor cursor = db.rawQuery(query, null);
+        boolean end = cursor.moveToFirst();
+        cursor.close();
+        return end;
     }
 
     private Note getNote(Cursor cursor) {

@@ -1,6 +1,5 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -11,65 +10,37 @@ import android.os.Build;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.LinkedList;
 import java.util.List;
 
+import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
+
 public class BreedingDao  extends SQLiteOpenHelper implements DaoFragmentInterface_FunctionalBreeding<Breeding> {
 
-    private static final String BREEDING_TABLE = "BREEDING_TABLE";
-    private static final String BREEDING_ID = "BREEDING_ID";
-    private static final String BREEDING_NAME = "BREEDING_NAME";
-    private static final String BREEDING_ADDRESS = "BREEDING_ADDRESS";
-    private static final String BREEDING_PHONE = "BREEDING_PHONE";
-    private static final String BREEDING_EMAIL = "BREEDING_EMAIL";
-    private static final String BREEDING_DESCRIPTION = "BREEDING_DESCRIPTION";
-    private static final String DOG_ID = "DOG_ID";
 
     public BreedingDao(@Nullable Context context) {
-        super(context, "dogs_db", null, 1);
+        super(context, DATABASE_NAME, null, 1);
     }
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableIfNotExist = "CREATE TABLE " + BREEDING_TABLE + "(" +
-                BREEDING_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                BREEDING_NAME + " TEXT, " +
-                BREEDING_ADDRESS + " TEXT, " +
-                BREEDING_PHONE + " TEXT, " +
-                BREEDING_EMAIL + " TEXT, " +
-                BREEDING_DESCRIPTION + " TEXT, " +
-                DOG_ID + " INTEGER )";
-        db.execSQL(createTableIfNotExist);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        switch(oldVersion) {
-            case 1:
-                db.execSQL();
-                // we want both updates, so no break statement here...
-            case 2:
-                db.execSQL(DATABASE_CREATE_someothertable);
-        }
+
     }
-
-
-
-
 
     @Override
     public boolean add(Breeding breeding) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(BREEDING_NAME, breeding.getName());
-        cv.put(BREEDING_ADDRESS, breeding.getAddress());
-        cv.put(BREEDING_PHONE, breeding.getPhone());
-        cv.put(BREEDING_EMAIL, breeding.getEmail());
-        cv.put(BREEDING_DESCRIPTION, breeding.getDescription());
+        if(breeding.getAddress() != null) cv.put(BREEDING_ADDRESS, breeding.getAddress());
+        if(breeding.getPhone() != null) cv.put(BREEDING_PHONE, breeding.getPhone());
+        if(breeding.getEmail() != null) cv.put(BREEDING_EMAIL, breeding.getEmail());
+        if(breeding.getDescription() != null) cv.put(BREEDING_DESCRIPTION, breeding.getDescription());
         cv.put(DOG_ID, breeding.getDogId());
         long insert = db.insert(BREEDING_TABLE, null, cv);
         return insert != -1;
@@ -102,25 +73,31 @@ public class BreedingDao  extends SQLiteOpenHelper implements DaoFragmentInterfa
     }
 
     @Override
+    public boolean remove(int id) {
+        String query = "DELETE FROM " + BREEDING_TABLE + " WHERE " + BREEDING_ID + " = " + id;
+        return getCursor(query);    }
+
+    @Override
     public boolean removeAll() {
         String query = "DELETE FROM " + BREEDING_TABLE;
         return getCursor(query);
     }
 
     @Override
-    public boolean update(int id_toUpdate, Breeding updated_T_Data) {
+    public boolean update(Breeding updated_T_Data) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "UPDATE " + BREEDING_TABLE + " SET " +
-                BREEDING_NAME + " = " + updated_T_Data.getName() + ", " +
-                BREEDING_ADDRESS + " = " + updated_T_Data.getAddress() + ", " +
-                BREEDING_PHONE + " = " + updated_T_Data.getPhone() + ", " +
-                BREEDING_EMAIL + " = " + updated_T_Data.getEmail() + ", " +
-                BREEDING_DESCRIPTION + " = " + updated_T_Data.getDescription() + ", " +
+                BREEDING_NAME + " = '" + updated_T_Data.getName() + "', " +
+                BREEDING_ADDRESS + " = '" + updated_T_Data.getAddress() + "', " +
+                BREEDING_PHONE + " = '" + updated_T_Data.getPhone() + "', " +
+                BREEDING_EMAIL + " = '" + updated_T_Data.getEmail() + "', " +
+                BREEDING_DESCRIPTION + " = '" + updated_T_Data.getDescription() + "', " +
                 DOG_ID + " = " + updated_T_Data.getDogId() + " " +
-                "WHERE " + BREEDING_ID + " = " + id_toUpdate;
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query, null);
-        return cursor.moveToFirst();
-
+                "WHERE " + BREEDING_ID + " = " + updated_T_Data.getBreedingId();
+        Cursor cursor = db.rawQuery(query, null);
+        boolean end = cursor.moveToFirst();
+        cursor.close();
+        return end;
     }
 
     @Override
@@ -150,9 +127,10 @@ public class BreedingDao  extends SQLiteOpenHelper implements DaoFragmentInterfa
 
     private boolean getCursor(String query) {
         SQLiteDatabase db = this.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query, null);
-        return cursor.moveToFirst();
-    }
+        Cursor cursor = db.rawQuery(query, null);
+        boolean end = cursor.moveToFirst();
+        cursor.close();
+        return end;    }
 
     private List<Breeding> getBreedingsListByQuery(String query) {
         SQLiteDatabase db = this.getReadableDatabase();

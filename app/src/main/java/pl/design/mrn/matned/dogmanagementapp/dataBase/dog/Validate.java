@@ -2,10 +2,12 @@ package pl.design.mrn.matned.dogmanagementapp.dataBase.dog;
 
 import android.annotation.SuppressLint;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.Sex;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
@@ -47,6 +49,16 @@ public class Validate {
 
     public static boolean checkText(String txt){
         return notEmpty(txt) && noSignsInText(txt);
+    }
+
+    public static boolean checkET(TextView et) {
+        if (!Validate.notEmpty(et.getText().toString())) {
+            et.setBackgroundResource(R.drawable.roundcornerstextred);
+            return false;
+        } else {
+            et.setBackgroundResource(R.drawable.roundcornerstext);
+            return true;
+        }
     }
 
 }

@@ -121,7 +121,7 @@
             app:layout_constraintTop_toBottomOf="@+id/breedingPhone" />
 
         <Button
-            android:id="@+id/okBreedingDialogInfo"
+            android:id="@+id/okBreedingDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -135,22 +135,22 @@
             android:id="@+id/cancelBreedingDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
             android:text="Anuluj"
-            app:layout_constraintEnd_toStartOf="@+id/cancelBreedingDialog2"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breedingDescription" />
 
         <Button
-            android:id="@+id/cancelBreedingDialog"
+            android:id="@+id/deleteBreedingDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
             android:text="Usuń wpis"
-            app:layout_constraintEnd_toStartOf="@+id/okBreedingDialogInfo"
+            app:layout_constraintEnd_toStartOf="@+id/okBreedingDialog"
             app:layout_constraintTop_toBottomOf="@+id/breedingDescription" />
 
         <Spinner
