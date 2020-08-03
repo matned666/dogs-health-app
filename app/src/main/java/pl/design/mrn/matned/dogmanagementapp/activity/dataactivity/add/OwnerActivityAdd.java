@@ -52,6 +52,8 @@ public class OwnerActivityAdd extends AppCompatActivity implements DatePickerDia
     private Spinner ownersSpinner;
     private boolean isDateFromOrTo;
 
+    private List<Owner> owners;
+
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
@@ -142,21 +144,28 @@ public class OwnerActivityAdd extends AppCompatActivity implements DatePickerDia
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void initSpinner() {
-        List<Owner> owners = dao.findAll();
+        owners = dao.findAll();
         String[] array = getOwnersDesc(owners);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drpdn, array);
         ownersSpinner.setAdapter(adapter);
-        ownersSpinner.setOnItemClickListener(clickItem());
+        ownersSpinner.setOnItemSelectedListener (clickItem());
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private AdapterView.OnItemClickListener clickItem() {
-        return (parent, view, position, id) -> {
-            int ownerId = owner.getId();
-            owner = dao.findById(getTheSelectedOwnerId((String) parent.getSelectedItem()));
-            owner.setId(ownerId);
-            owner.setDog_id(PositionListener.getInstance().getSelectedDogId());
-            fillAllFields();
+    private AdapterView.OnItemSelectedListener clickItem() {
+        return new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int ownerId = owner.getId();
+                owner = owners.get(position);
+                owner.setId(ownerId);
+                owner.setDog_id(PositionListener.getInstance().getSelectedDogId());
+                fillAllFields();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         };
     }
 
@@ -168,12 +177,6 @@ public class OwnerActivityAdd extends AppCompatActivity implements DatePickerDia
         }
         return array;
     }
-
-    private int getTheSelectedOwnerId(String str) {
-        String[] temp = str.split(DATA_SPLITMENT_REGEX);
-        return Integer.parseInt(temp[0].trim());
-    }
-
 
 
     @Override
@@ -191,8 +194,10 @@ public class OwnerActivityAdd extends AppCompatActivity implements DatePickerDia
         });
         ownerFromDateTV.setRawInputType(InputType.TYPE_NULL);
         ownerFromDateTV.setOnFocusChangeListener((v, hasFocus) -> {
-            isDateFromOrTo = true;
-            datePickDialog();
+            if (hasFocus) {
+                isDateFromOrTo = true;
+                datePickDialog();
+            }
         });
         ownerToDateTV.setOnClickListener(v -> {
             isDateFromOrTo = false;
@@ -200,8 +205,10 @@ public class OwnerActivityAdd extends AppCompatActivity implements DatePickerDia
         });
         ownerToDateTV.setRawInputType(InputType.TYPE_NULL);
         ownerToDateTV.setOnFocusChangeListener((v, hasFocus) -> {
-            isDateFromOrTo = false;
-            datePickDialog();
+            if (hasFocus) {
+                isDateFromOrTo = false;
+                datePickDialog();
+            }
         });
     }
 

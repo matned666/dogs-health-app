@@ -16,8 +16,7 @@ import java.util.List;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
-public class ChipDao extends SQLiteOpenHelper  implements DaoFragmentInterface<Chip> {
-
+public class ChipDao extends SQLiteOpenHelper implements DaoFragmentInterface<Chip> {
 
 
     @SuppressLint("SimpleDateFormat")
@@ -43,9 +42,9 @@ public class ChipDao extends SQLiteOpenHelper  implements DaoFragmentInterface<C
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(CHIP_NUMBER, chip.getChipNumber());
-        if(chip.getPutDate() != null) cv.put(CHIP_PUT_DATE, chip.getPutDate().toString());
-        if(chip.getExpDate() != null) cv.put(CHIP_EXP_DATE, chip.getExpDate().toString());
-        if(chip.getChipDescription() != null) cv.put(CHIP_DESCRIPTION, chip.getChipDescription());
+        if (chip.getPutDate() != null) cv.put(CHIP_PUT_DATE, chip.getPutDate().toString());
+        if (chip.getExpDate() != null) cv.put(CHIP_EXP_DATE, chip.getExpDate().toString());
+        if (chip.getChipDescription() != null) cv.put(CHIP_DESCRIPTION, chip.getChipDescription());
         cv.put(DOG_ID, chip.getDogId());
         long insert = db.insert(CHIP_TABLE, null, cv);
         return insert != -1;
@@ -93,11 +92,11 @@ public class ChipDao extends SQLiteOpenHelper  implements DaoFragmentInterface<C
     public boolean update(Chip updated_T_Data) {
         String query = "" +
                 "UPDATE " + CHIP_TABLE + " SET " +
-                CHIP_NUMBER + " = '" + updated_T_Data.getChipNumber() + "', " +
-                CHIP_PUT_DATE + " = '" + dateFormat.format(updated_T_Data.getPutDate()) + "', " +
-                CHIP_EXP_DATE + " = '" + dateFormat.format(updated_T_Data.getExpDate()) + "', " +
-                CHIP_DESCRIPTION + " = '" + updated_T_Data.getChipDescription() + "', " +
-                DOG_ID + " = " + updated_T_Data.getDogId() + " " +
+                CHIP_NUMBER + " = '" + updated_T_Data.getChipNumber() + "'";
+        if (updated_T_Data.getPutDate() != null) query += ", " + CHIP_PUT_DATE + " = '" + dateFormat.format(updated_T_Data.getPutDate()) + "'";
+        if (updated_T_Data.getExpDate() != null) query += ", " + CHIP_EXP_DATE + " = '" + dateFormat.format(updated_T_Data.getExpDate()) + "'";
+        if (updated_T_Data.getChipDescription() != null) query += ", " + CHIP_DESCRIPTION + " = '" + updated_T_Data.getChipDescription() + "'";
+        query += ", " + DOG_ID + " = " + updated_T_Data.getDogId() + " " +
                 "WHERE " +
                 CHIP_ID + " = " + updated_T_Data.getChipId();
         return getCursor(query);
@@ -106,14 +105,16 @@ public class ChipDao extends SQLiteOpenHelper  implements DaoFragmentInterface<C
     @Override
     public List<Chip> getListByMasterId(int id) {
         String query = "SELECT * FROM " + CHIP_TABLE + " WHERE " + DOG_ID + " = " + id;
-        return getChipListByQuery(query);    }
+        return getChipListByQuery(query);
+    }
 
     private boolean getCursor(String query) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         boolean end = cursor.moveToFirst();
         cursor.close();
-        return end;    }
+        return end;
+    }
 
     private Chip getChip(Cursor cursor) {
         Chip chip = new Chip(cursor.getInt(0));

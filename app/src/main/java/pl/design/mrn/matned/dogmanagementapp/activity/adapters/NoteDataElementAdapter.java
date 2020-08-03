@@ -83,8 +83,8 @@ public class NoteDataElementAdapter extends RecyclerView.Adapter<NoteDataElement
     }
 
     private String generateNoteHeader(String note) {
-        return note.substring(0,25).trim() + "...";
-    }
+        if(note.length() > 25) return note.substring(0, 24).trim() + "...";
+        else return note;    }
 
 
     @Override

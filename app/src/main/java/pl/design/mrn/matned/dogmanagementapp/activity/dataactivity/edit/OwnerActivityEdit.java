@@ -1,7 +1,9 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
@@ -85,14 +87,14 @@ public class OwnerActivityEdit extends AppCompatActivity implements DatePickerDi
     }
 
     private void fillAllFields() {
-        ownerNameTV.setText(owner.getName());
-        ownerSurnameTV.setText(owner.getSurname());
-        ownerAddressTV.setText(owner.getAddress());
-        ownerPhoneTV.setText(owner.getPhoneNumber());
-        ownerEmailTV.setText(owner.getEmail());
-        ownerFromDateTV.setText(dateFormat.format(owner.getDateFrom()));
-        ownerToDateTV.setText(dateFormat.format(owner.getDateTo()));
-        ownerDescriptionTV.setText(owner.getDescription());
+        if (owner.getName() != null) ownerNameTV.setText(owner.getName());
+        if (owner.getSurname() != null) ownerSurnameTV.setText(owner.getSurname());
+        if (owner.getAddress() != null) ownerAddressTV.setText(owner.getAddress());
+        if (owner.getPhoneNumber() != null) ownerPhoneTV.setText(owner.getPhoneNumber());
+        if (owner.getEmail() != null) ownerEmailTV.setText(owner.getEmail());
+        if (owner.getDateFrom() != null) ownerFromDateTV.setText(dateFormat.format(owner.getDateFrom()));
+        if (owner.getDateTo() != null) ownerToDateTV.setText(dateFormat.format(owner.getDateTo()));
+        if (owner.getDescription() != null) ownerDescriptionTV.setText(owner.getDescription());
     }
 
 
@@ -114,12 +116,20 @@ public class OwnerActivityEdit extends AppCompatActivity implements DatePickerDi
                 }
                 owner.setDescription(ownerDescriptionTV.getText().toString());
                 dao.update(owner);
+                Intent returnIntent = new Intent();
+                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
         });
-        cancel.setOnClickListener(v -> finish());
+        cancel.setOnClickListener(v -> {
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_CANCELED,returnIntent);
+            finish();
+        });
         delete.setOnClickListener(v -> {
             dao.remove(owner);
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_OK,returnIntent);
             finish();
         });
         initializeDatePicker();
@@ -193,8 +203,10 @@ public class OwnerActivityEdit extends AppCompatActivity implements DatePickerDi
         });
         ownerFromDateTV.setRawInputType(InputType.TYPE_NULL);
         ownerFromDateTV.setOnFocusChangeListener((v, hasFocus) -> {
-            isDateFromOrTo = true;
-            datePickDialog();
+            if (hasFocus) {
+                isDateFromOrTo = true;
+                datePickDialog();
+            }
         });
         ownerToDateTV.setOnClickListener(v -> {
             isDateFromOrTo = false;
@@ -202,8 +214,10 @@ public class OwnerActivityEdit extends AppCompatActivity implements DatePickerDi
         });
         ownerToDateTV.setRawInputType(InputType.TYPE_NULL);
         ownerToDateTV.setOnFocusChangeListener((v, hasFocus) -> {
-            isDateFromOrTo = false;
-            datePickDialog();
+            if (hasFocus) {
+                isDateFromOrTo = false;
+                datePickDialog();
+            }
         });
     }
 

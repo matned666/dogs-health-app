@@ -83,8 +83,8 @@ public class SignDataElementAdapter extends RecyclerView.Adapter<SignDataElement
     }
 
     private String generateHeader(String description) {
-        return description.substring(0, 25).trim() + "...";
-    }
+        if(description.length() > 25) return description.substring(0, 24).trim() + "...";
+        else return description;    }
 
 
     @Override

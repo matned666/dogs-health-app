@@ -1,5 +1,7 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -51,14 +53,22 @@ public class NoteActivityEdit extends AppCompatActivity {
                 note.setNote(noteTV.getText().toString());
                 dao.update(note);
                 noteTV.setBackgroundResource(R.drawable.roundcornerstext);
+                Intent returnIntent = new Intent();
+                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }else{
                 noteTV.setBackgroundResource(R.drawable.roundcornerstextred);
             }
         });
-        cancel.setOnClickListener(v -> finish());
+        cancel.setOnClickListener(v -> {
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_CANCELED,returnIntent);
+            finish();
+        });
         delete.setOnClickListener(v -> {
             dao.remove(note);
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_OK,returnIntent);
             finish();
         });
     }

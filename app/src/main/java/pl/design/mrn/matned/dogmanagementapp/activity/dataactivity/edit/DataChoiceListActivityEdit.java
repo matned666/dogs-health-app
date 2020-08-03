@@ -1,6 +1,7 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -44,7 +45,6 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE_ACTIVITY;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.OWNER;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.SIGN;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.TATTOO;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.CHIP_LIST_TITLE;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NOTE_LIST_TITLE;
@@ -64,10 +64,27 @@ public class DataChoiceListActivityEdit extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DataPositionListener.getInstance().setPosition(0);
-        setContentView(R.layout.data_list_activity);
         Intent intent = getIntent();
         listActivity = intent.getStringExtra(LIST_ELEMENT_ACTIVITY);
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setContentView(R.layout.data_list_activity);
         init();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100) {
+            if(resultCode == Activity.RESULT_OK){
+                recyclerView.notifyAll();
+            }
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -119,7 +136,7 @@ public class DataChoiceListActivityEdit extends AppCompatActivity {
         recyclerView.setAdapter(chipAdapter);
         addNew.setOnClickListener(v -> {
             Intent intent = new Intent(this, ChipActivityAdd.class);
-            startActivity(intent);
+            startActivityForResult(intent, 100);
         });
     }
 
@@ -135,7 +152,7 @@ public class DataChoiceListActivityEdit extends AppCompatActivity {
         recyclerView.setAdapter(ownerAdapter);
         addNew.setOnClickListener(v -> {
             Intent intent = new Intent(this, OwnerActivityAdd.class);
-            startActivity(intent);
+            startActivityForResult(intent, 100);
         });
     }
 
@@ -151,7 +168,7 @@ public class DataChoiceListActivityEdit extends AppCompatActivity {
         recyclerView.setAdapter(signDataElementAdapter);
         addNew.setOnClickListener(v -> {
             Intent intent = new Intent(this, UniqueSignActivityAdd.class);
-            startActivity(intent);
+            startActivityForResult(intent, 100);
         });
     }
 
@@ -167,7 +184,7 @@ public class DataChoiceListActivityEdit extends AppCompatActivity {
         recyclerView.setAdapter(noteDataElementAdapter);
         addNew.setOnClickListener(v -> {
             Intent intent = new Intent(this, NoteActivityAdd.class);
-            startActivity(intent);
+            startActivityForResult(intent, 100);
         });
     }
 
@@ -183,7 +200,7 @@ public class DataChoiceListActivityEdit extends AppCompatActivity {
         recyclerView.setAdapter(tattooDataElementAdapter);
         addNew.setOnClickListener(v -> {
             Intent intent = new Intent(this, TattooActivityAdd.class);
-            startActivity(intent);
+            startActivityForResult(intent, 100);
         });
     }
 

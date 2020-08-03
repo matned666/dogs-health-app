@@ -123,8 +123,10 @@ public class ChipActivityAdd extends AppCompatActivity implements DatePickerDial
         });
         chipingDate.setRawInputType(InputType.TYPE_NULL);
         chipingDate.setOnFocusChangeListener((v, hasFocus) -> {
-            isDatePutOrExp = true;
-            datePickDialog();
+            if (hasFocus) {
+                isDatePutOrExp = true;
+                datePickDialog();
+            }
         });
         chipExpDate.setOnClickListener(v -> {
             isDatePutOrExp = false;
@@ -132,8 +134,10 @@ public class ChipActivityAdd extends AppCompatActivity implements DatePickerDial
         });
         chipExpDate.setRawInputType(InputType.TYPE_NULL);
         chipExpDate.setOnFocusChangeListener((v, hasFocus) -> {
-            isDatePutOrExp = false;
-            datePickDialog();
+            if (hasFocus) {
+                isDatePutOrExp = false;
+                datePickDialog();
+            }
         });
     }
 

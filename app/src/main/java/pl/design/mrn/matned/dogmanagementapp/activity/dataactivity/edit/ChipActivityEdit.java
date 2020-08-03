@@ -1,7 +1,9 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.widget.Button;
@@ -50,6 +52,16 @@ public class ChipActivityEdit extends AppCompatActivity implements DatePickerDia
         fillAllFields();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 101) {
+            if (resultCode == Activity.RESULT_OK) {
+                finish();
+            }
+        }
+    }
+
     private void init() {
         initViews();
         initEndingListeners();
@@ -84,14 +96,22 @@ public class ChipActivityEdit extends AppCompatActivity implements DatePickerDia
                 } catch (ParseException ignored) {
                 }
                 dao.update(chip);
+                Intent returnIntent = new Intent();
+                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
         });
         delete.setOnClickListener(v -> {
             dao.remove(chip);
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_OK,returnIntent);
             finish();
         });
-        cancel.setOnClickListener(v -> finish());
+        cancel.setOnClickListener(v -> {
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_CANCELED,returnIntent);
+            finish();
+        });
     }
 
     private void fillAllFields() {
@@ -135,8 +155,10 @@ public class ChipActivityEdit extends AppCompatActivity implements DatePickerDia
         });
         chipingDate.setRawInputType(InputType.TYPE_NULL);
         chipingDate.setOnFocusChangeListener((v, hasFocus) -> {
-            isDatePutOrExp = true;
-            datePickDialog();
+            if (hasFocus) {
+                isDatePutOrExp = true;
+                datePickDialog();
+            }
         });
         chipExpDate.setOnClickListener(v -> {
             isDatePutOrExp = false;
@@ -144,8 +166,10 @@ public class ChipActivityEdit extends AppCompatActivity implements DatePickerDia
         });
         chipExpDate.setRawInputType(InputType.TYPE_NULL);
         chipExpDate.setOnFocusChangeListener((v, hasFocus) -> {
-            isDatePutOrExp = false;
-            datePickDialog();
+            if (hasFocus) {
+                isDatePutOrExp = false;
+                datePickDialog();
+            }
         });
     }
 

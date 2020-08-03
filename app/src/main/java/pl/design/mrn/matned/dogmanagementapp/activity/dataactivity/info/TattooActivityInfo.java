@@ -1,6 +1,7 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -34,8 +35,6 @@ public class TattooActivityInfo extends AppCompatActivity {
     private TextView tattooDateTV;
     private TextView tattooDescriptionTV;
 
-    private Tattoo tattoo;
-
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
@@ -46,6 +45,18 @@ public class TattooActivityInfo extends AppCompatActivity {
             initViews();
             fillAllFields();
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 101) {
+            if (resultCode == Activity.RESULT_OK) {
+                finish();
+            }
+        }
+    }
+
     private void initViews() {
         ok = findViewById(R.id.okTattooDialogInfo);
         cancel = findViewById(R.id.editTattooDialogInfo);
@@ -54,9 +65,10 @@ public class TattooActivityInfo extends AppCompatActivity {
         initEndingListeners();
     }
 
+
     private void fillAllFields() {
         TattooDao dao = new TattooDao(this);
-        tattoo = dao.findById(DataPositionListener.getInstance().getSelectedItemId());
+        Tattoo tattoo = dao.findById(DataPositionListener.getInstance().getSelectedItemId());
         tattooDateTV.setText(dateFormat.format(tattoo.getTattooDate()));
         tattooDescriptionTV.setText(tattoo.getDescription());
     }
@@ -66,7 +78,7 @@ public class TattooActivityInfo extends AppCompatActivity {
         ok.setOnClickListener(v -> finish());
         cancel.setOnClickListener(v -> {
             Intent intent = new Intent(this, TattooActivityEdit.class);
-            startActivity(intent);
+            startActivityForResult(intent, 101);
         });
     }
 

@@ -1,6 +1,7 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -48,6 +49,16 @@ public class OwnerActivityInfo extends AppCompatActivity {
             fillAllFields();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 101) {
+            if (resultCode == Activity.RESULT_OK) {
+                finish();
+            }
+        }
+    }
+
     private void initViews() {
         ok = findViewById(R.id.okOwnerDialogInfo);
         edit = findViewById(R.id.editOwnerDialogInfo);
@@ -63,22 +74,23 @@ public class OwnerActivityInfo extends AppCompatActivity {
         owner = dao.findById(DataPositionListener.getInstance().getSelectedItemId());
         initEndingListeners();
     }
+
     private void fillAllFields(){
-        ownerNameTV.setText(owner.getName());
-        ownerSurnameTV.setText(owner.getSurname());
-        ownerAddressTV.setText(owner.getAddress());
-        ownerPhoneTV.setText(owner.getPhoneNumber());
-        ownerEmailTV.setText(owner.getEmail());
-        ownerFromDateTV.setText(dateFormat.format(owner.getDateFrom()));
-        ownerToDateTV.setText(dateFormat.format(owner.getDateTo()));
-        ownerDescriptionTV.setText(owner.getDescription());
+        if (owner.getName() != null) ownerNameTV.setText(owner.getName());
+        if (owner.getSurname() != null) ownerSurnameTV.setText(owner.getSurname());
+        if (owner.getAddress() != null) ownerAddressTV.setText(owner.getAddress());
+        if (owner.getPhoneNumber() != null) ownerPhoneTV.setText(owner.getPhoneNumber());
+        if (owner.getEmail() != null) ownerEmailTV.setText(owner.getEmail());
+        if (owner.getDateFrom() != null) ownerFromDateTV.setText(dateFormat.format(owner.getDateFrom()));
+        if (owner.getDateTo() != null) ownerToDateTV.setText(dateFormat.format(owner.getDateTo()));
+        if (owner.getDescription() != null) ownerDescriptionTV.setText(owner.getDescription());
     }
 
     private void initEndingListeners() {
         ok.setOnClickListener(v -> finish());
         edit.setOnClickListener(v -> {
             Intent intent = new Intent(this, OwnerActivityEdit.class);
-            startActivity(intent);
+            startActivityForResult(intent, 101);
         });
     }
 

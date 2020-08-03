@@ -57,7 +57,14 @@ public class TattooDataElementAdapter extends RecyclerView.Adapter<TattooDataEle
         return new ViewHolder(view);
     }
 
+    @Override
+    public void setHasStableIds(boolean hasStableIds) {
+        notifyDataSetChanged();
+    }
 
+    public void refresh(){
+        notifyDataSetChanged();
+    }
 
     @SuppressLint("SetTextI18n")
     @Override

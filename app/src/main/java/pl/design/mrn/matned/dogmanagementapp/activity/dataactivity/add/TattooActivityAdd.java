@@ -3,6 +3,7 @@ package pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -23,7 +24,6 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Tattoo;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.TattooDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
-import static pl.design.mrn.matned.dogmanagementapp.DatePicker.initializeDatePicker;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
 public class TattooActivityAdd extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
@@ -53,7 +53,7 @@ public class TattooActivityAdd extends AppCompatActivity implements DatePickerDi
         delete.setVisibility(View.GONE);
         putDateTV = findViewById(R.id.tattooPutDate);
         descriptionTV = findViewById(R.id.tattooDescription);
-        initializeDatePicker(putDateTV, this, this);
+        initializeDatePicker();
         dao = new TattooDao(this);
         initEndingListeners();
     }
@@ -109,6 +109,24 @@ public class TattooActivityAdd extends AppCompatActivity implements DatePickerDi
         dateFormat.setTimeZone(cal.getTimeZone());
         putDateTV.setText(dateFormat.format(cal.getTime()));
     }
+
+    public void initializeDatePicker() {
+        putDateTV.setOnClickListener(v -> datePickDialog());
+        putDateTV.setRawInputType(InputType.TYPE_NULL);
+        putDateTV.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) datePickDialog();
+        });
+    }
+
+    private void datePickDialog() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePicker = new DatePickerDialog(this, this, year, month, day);
+        datePicker.show();
+    }
+
 
 
 }

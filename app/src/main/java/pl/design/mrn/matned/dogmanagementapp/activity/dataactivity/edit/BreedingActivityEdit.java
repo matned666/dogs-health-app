@@ -1,6 +1,7 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -115,25 +116,38 @@ public class BreedingActivityEdit extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void fillAllFields() {
-        breedingName.setText(breeding.getName());
-        address.setText(breeding.getAddress());
-        phone.setText(breeding.getPhone());
-        email.setText(breeding.getEmail());
-        description.setText(breeding.getDescription());
+        if (breeding.getName() != null)
+            breedingName.setText(breeding.getName());
+        if (breeding.getAddress() != null)
+            address.setText(breeding.getAddress());
+        if (breeding.getPhone() != null)
+            phone.setText(breeding.getPhone());
+        if (breeding.getEmail() != null)
+            email.setText(breeding.getEmail());
+        if (breeding.getDescription() != null)
+            description.setText(breeding.getDescription());
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void setOnUsageView() {
-        cancelOrEdit.setOnClickListener(b -> finish());
+        cancelOrEdit.setOnClickListener(b -> {
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_CANCELED,returnIntent);
+            finish();
+        });
         ok.setOnClickListener(v -> {
             if (validation()) {
                 generateBreeding();
                 dao.update(breeding);
+                Intent returnIntent = new Intent();
+                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
         });
         deleteBreedingBtn.setOnClickListener(c -> {
             dao.remove(breeding);
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_OK,returnIntent);
             finish();
         });
     }

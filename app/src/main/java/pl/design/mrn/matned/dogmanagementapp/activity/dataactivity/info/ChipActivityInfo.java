@@ -1,6 +1,7 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -44,6 +45,16 @@ public class ChipActivityInfo extends AppCompatActivity {
             fillAllFields();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 101) {
+            if (resultCode == Activity.RESULT_OK) {
+                finish();
+            }
+        }
+    }
+
     private void init() {
         setContentView(R.layout.chip_info_dialog);
         dataPositionListener = DataPositionListener.getInstance();
@@ -65,9 +76,9 @@ public class ChipActivityInfo extends AppCompatActivity {
         dao = new ChipDao(this);
         chip = dao.findById(dataPositionListener.getSelectedItemId());
         chipNumberTV.setText(chip.getChipNumber());
-        chipPutDateTV.setText(dateFormat.format(chip.getPutDate()));
-        chipExpDateTV.setText(dateFormat.format(chip.getExpDate()));
-        chipDescriptionTV.setText(chip.getChipDescription());
+        if(chip.getPutDate() != null) chipPutDateTV.setText(dateFormat.format(chip.getPutDate()));
+        if(chip.getExpDate() != null) chipExpDateTV.setText(dateFormat.format(chip.getExpDate()));
+        if(chip.getChipDescription() != null) chipDescriptionTV.setText(chip.getChipDescription());
     }
 
 
@@ -75,7 +86,7 @@ public class ChipActivityInfo extends AppCompatActivity {
         ok.setOnClickListener(v -> finish());
         edit.setOnClickListener(v -> {
             Intent intent = new Intent(this, ChipActivityEdit.class);
-            startActivity(intent);
+            startActivityForResult(intent, 101);
         });
     }
 

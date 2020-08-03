@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Objects;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.adapters.ChipDataElementAdapter;
@@ -65,9 +66,16 @@ public class DataChoiceListActivityInfo extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DataPositionListener.getInstance().setPosition(0);
-        setContentView(R.layout.data_list_activity);
         Intent intent = getIntent();
         listActivity = intent.getStringExtra(LIST_ELEMENT_ACTIVITY);
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setContentView(R.layout.data_list_activity);
         init();
     }
 
@@ -120,7 +128,7 @@ public class DataChoiceListActivityInfo extends AppCompatActivity {
         recyclerView.setAdapter(chipAdapter);
         addNew.setOnClickListener(v -> {
             Intent intent = new Intent(this, ChipActivityAdd.class);
-            startActivity(intent);
+            startActivityForResult(intent, 100);
         });
     }
 
@@ -136,7 +144,7 @@ public class DataChoiceListActivityInfo extends AppCompatActivity {
         recyclerView.setAdapter(ownerAdapter);
         addNew.setOnClickListener(v -> {
             Intent intent = new Intent(this, OwnerActivityAdd.class);
-            startActivity(intent);
+            startActivityForResult(intent, 100);
         });
     }
 
@@ -152,7 +160,7 @@ public class DataChoiceListActivityInfo extends AppCompatActivity {
         recyclerView.setAdapter(signDataElementAdapter);
         addNew.setOnClickListener(v -> {
             Intent intent = new Intent(this, UniqueSignActivityAdd.class);
-            startActivity(intent);
+            startActivityForResult(intent, 100);
         });
     }
 
@@ -168,7 +176,7 @@ public class DataChoiceListActivityInfo extends AppCompatActivity {
         recyclerView.setAdapter(noteDataElementAdapter);
         addNew.setOnClickListener(v -> {
             Intent intent = new Intent(this, NoteActivityAdd.class);
-            startActivity(intent);
+            startActivityForResult(intent, 100);
         });
     }
 
@@ -184,7 +192,7 @@ public class DataChoiceListActivityInfo extends AppCompatActivity {
         recyclerView.setAdapter(tattooDataElementAdapter);
         addNew.setOnClickListener(v -> {
             Intent intent = new Intent(this, TattooActivityAdd.class);
-            startActivity(intent);
+            startActivityForResult(intent, 100);
         });
     }
 

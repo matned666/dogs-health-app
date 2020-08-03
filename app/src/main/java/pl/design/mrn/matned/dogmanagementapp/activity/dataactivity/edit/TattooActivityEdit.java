@@ -1,8 +1,9 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.widget.Button;
@@ -18,16 +19,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import pl.design.mrn.matned.dogmanagementapp.DatePicker.*;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.Add_DogActivity;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Tattoo;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.TattooDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
-import static pl.design.mrn.matned.dogmanagementapp.DatePicker.initializeDatePicker;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
 public class TattooActivityEdit extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
@@ -52,15 +50,26 @@ public class TattooActivityEdit extends AppCompatActivity implements DatePickerD
         fillAllFields();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 101) {
+            if(resultCode == Activity.RESULT_OK){
+                finish();
+            }
+        }
+    }
+
     private void initViews() {
         ok = findViewById(R.id.okTattooDialog);
         cancel = findViewById(R.id.cancelTattooDialog);
         delete = findViewById(R.id.deleteTattooDialog);
         putDateTV = findViewById(R.id.tattooPutDate);
         descriptionTV = findViewById(R.id.tattooDescription);
-        initializeDatePicker(putDateTV, this, this);
         dao = new TattooDao(this);
         tattoo = dao.findById(DataPositionListener.getInstance().getSelectedItemId());
+        initializeDatePicker();
         initEndingListeners();
     }
 
@@ -78,12 +87,21 @@ public class TattooActivityEdit extends AppCompatActivity implements DatePickerD
                 } catch (ParseException ignored) {
                 }
                 tattoo.setDescription(descriptionTV.getText().toString());
+                dao.update(tattoo);
+                Intent returnIntent = new Intent();
+                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
         });
-        cancel.setOnClickListener(v -> finish());
+        cancel.setOnClickListener(v -> {
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_CANCELED,returnIntent);
+            finish();
+        });
         delete.setOnClickListener(v -> {
             dao.remove(tattoo);
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_OK,returnIntent);
             finish();
         });
     }
@@ -121,6 +139,23 @@ public class TattooActivityEdit extends AppCompatActivity implements DatePickerD
         Calendar cal = new GregorianCalendar(year, month, dayOfMonth);
         dateFormat.setTimeZone(cal.getTimeZone());
         putDateTV.setText(dateFormat.format(cal.getTime()));
+    }
+
+    public void initializeDatePicker() {
+        putDateTV.setOnClickListener(v -> datePickDialog());
+        putDateTV.setRawInputType(InputType.TYPE_NULL);
+        putDateTV.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) datePickDialog();
+        });
+    }
+
+    private void datePickDialog() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePicker = new DatePickerDialog(this, this, year, month, day);
+        datePicker.show();
     }
 
 

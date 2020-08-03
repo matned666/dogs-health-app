@@ -1,10 +1,14 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
-public class Chip  implements Serializable {
+
+public class Chip implements Serializable {
 
     private int chipId;
     private String chipNumber;
@@ -12,15 +16,17 @@ public class Chip  implements Serializable {
     private Date expDate;
     private String chipDescription;
     private int dogId;
-
     private boolean isActive;
-//   TODO
 
     public Chip() {
+
     }
 
     public boolean isActive() {
-        return isActive;
+        Date today = new Date();
+        if(putDate != null && expDate != null) return expDate.after(today) && putDate.before(today);
+        else if(expDate != null ) return expDate.after(today);
+        else return false;
     }
 
     public void setActive(boolean active) {

@@ -57,8 +57,9 @@
             android:id="@+id/deleteSignDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
-            android:text="Anuluj"
+            android:text="Usuń wpis"
             app:layout_constraintEnd_toStartOf="@+id/okSignDialog"
             app:layout_constraintTop_toTopOf="@+id/okSignDialog" />
 
