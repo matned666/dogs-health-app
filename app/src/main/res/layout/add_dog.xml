@@ -38,7 +38,7 @@
                     android:id="@+id/imageView4"
                     android:layout_width="220dp"
                     android:layout_height="109dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="32dp"
                     android:contentDescription="@string/logo"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -121,99 +121,25 @@
                     android:autofillHints="" />
 
                 <Button
-                    android:id="@+id/tattooBtnAdd"
-                    android:layout_width="176dp"
-                    android:layout_height="42dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/roundcornersrecyclerview"
-                    android:text="@string/tatua"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/photoAdd"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chipBtnAdd" />
-
-                <Button
-                    android:id="@+id/ownerBtnAdd"
-                    android:layout_width="176dp"
-                    android:layout_height="42dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/roundcornersrecyclerview"
-                    android:text="@string/w_a_ciciel"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/photoAdd"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/signsBtnAdd" />
-
-                <Button
-                    android:id="@+id/signsBtnAdd"
-                    android:layout_width="175dp"
-                    android:layout_height="58dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/roundcornersrecyclerview"
-                    android:text="@string/znaki_szczeg_lne"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/photoAdd"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tattooBtnAdd" />
-
-                <Button
-                    android:id="@+id/notesBtnAdd"
-                    android:layout_width="176dp"
-                    android:layout_height="42dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/roundcornersrecyclerview"
-                    android:text="@string/notatki"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.936"
-                    app:layout_constraintStart_toStartOf="@+id/photoAdd"
-                    app:layout_constraintTop_toTopOf="@+id/signsBtnAdd" />
-
-                <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/addDogDialogPictureFromGallery"
                     android:layout_width="wrap_content"
                     android:layout_height="42dp"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/roundcornersrecyclerview"
-                    android:text="@string/zdj_cie_z_galerii"
                     android:paddingStart="15dp"
                     android:paddingEnd="15dp"
+                    android:text="@string/zdj_cie_z_galerii"
                     android:textColor="#000000"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toTopOf="@+id/notesBtnAdd"
-                    app:layout_constraintEnd_toEndOf="@+id/notesBtnAdd"
-                    app:layout_constraintTop_toBottomOf="@+id/photoAdd"
-                    app:layout_constraintVertical_bias="0.53" />
-
-                <Button
-                    android:id="@+id/breedingBtnAdd"
-                    android:layout_width="176dp"
-                    android:layout_height="42dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/roundcornersrecyclerview"
-                    android:text="@string/hodowla"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.936"
-                    app:layout_constraintStart_toStartOf="@+id/photoAdd"
-                    app:layout_constraintTop_toTopOf="@+id/ownerBtnAdd" />
+                    app:layout_constraintEnd_toEndOf="@+id/photoAdd"
+                    app:layout_constraintTop_toBottomOf="@+id/photoAdd" />
 
                 <Button
                     android:id="@+id/saveDogAdd"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="32dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/roundcornersrecyclerviewblack"
                     android:text="@string/zapisz"
@@ -222,22 +148,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/breedingBtnAdd" />
-
-                <Button
-                    android:id="@+id/chipBtnAdd"
-                    android:layout_width="176dp"
-                    android:layout_height="42dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/roundcornersrecyclerview"
-                    android:text="@string/chip"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/photoAdd"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/dogSexAdd" />
+                    app:layout_constraintTop_toBottomOf="@+id/addDogDialogPictureFromGallery" />
 
                 <EditText
                     android:id="@+id/dogDateOfBirthAdd"

@@ -17,6 +17,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <Button
+            android:id="@+id/deleteChipDialogBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/roundcornersrecyclerviewred"
+            android:text="Usuń wpis"
+            app:layout_constraintBottom_toBottomOf="@+id/chipDescription"
+            app:layout_constraintEnd_toStartOf="@+id/chipDescription" />
+
+        <Button
+            android:id="@+id/cancelChipDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/roundcornersrecyclerviewred"
+            android:text="Anuluj"
+            app:layout_constraintBottom_toBottomOf="@+id/chipDescription"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <TextView
             android:id="@+id/textView12"
             style="@style/dogDataDialog_title"
@@ -82,27 +102,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-        <Button
-            android:id="@+id/okChipDialog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/roundcornersrecyclerviewblack"
-            android:text="OK"
-            app:layout_constraintStart_toEndOf="@+id/cancelChipDialog"
-            app:layout_constraintTop_toTopOf="@+id/cancelChipDialog" />
-
-        <Button
-            android:id="@+id/cancelChipDialog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/roundcornersrecyclerviewred"
-            android:text="Anuluj"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chipPutDate" />
-
         <EditText
             android:id="@+id/chipPutDate"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
@@ -126,6 +125,16 @@
             app:layout_constraintEnd_toStartOf="@+id/chipDescription"
             app:layout_constraintStart_toEndOf="@+id/chipPutDate"
             app:layout_constraintTop_toBottomOf="@+id/chipNumber" />
+
+        <Button
+            android:id="@+id/okChipDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/roundcornersrecyclerviewblack"
+            android:text="OK"
+            app:layout_constraintBottom_toBottomOf="@+id/cancelChipDialog"
+            app:layout_constraintStart_toEndOf="@+id/cancelChipDialog" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -66,10 +66,11 @@
             android:id="@+id/editSignDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
             android:text="Anuluj"
-            app:layout_constraintEnd_toStartOf="@+id/okSignDialog"
-            app:layout_constraintTop_toTopOf="@+id/okSignDialog" />
+            app:layout_constraintEnd_toStartOf="@+id/okSignDialogInfo"
+            app:layout_constraintTop_toTopOf="@+id/okSignDialogInfo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

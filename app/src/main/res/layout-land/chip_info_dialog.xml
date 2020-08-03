@@ -26,14 +26,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/chipDescription"
+            android:id="@+id/chipDescriptionInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
             android:layout_width="323dp"
             android:layout_height="159dp"
             android:hint="Opis"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/chipExpiryDate"
-            app:layout_constraintTop_toTopOf="@+id/chipNumber" />
+            app:layout_constraintStart_toEndOf="@id/chipExpiryDateInfoTextView"
+            app:layout_constraintTop_toTopOf="@+id/chipNumberInfoTextView" />
 
         <TextView
             android:id="@+id/textView16"
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Numer chipu:"
-            app:layout_constraintBottom_toTopOf="@+id/chipNumber"
+            app:layout_constraintBottom_toTopOf="@+id/chipNumberInfoTextView"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data zachipowania:"
-            app:layout_constraintBottom_toTopOf="@+id/chipExpiryDate"
+            app:layout_constraintBottom_toTopOf="@+id/chipExpiryDateInfoTextView"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -59,8 +59,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data utraty ważności chipu:"
-            app:layout_constraintBottom_toTopOf="@+id/chipExpiryDate"
-            app:layout_constraintStart_toStartOf="@+id/chipExpiryDate" />
+            app:layout_constraintBottom_toTopOf="@+id/chipExpiryDateInfoTextView"
+            app:layout_constraintStart_toStartOf="@+id/chipExpiryDateInfoTextView" />
 
         <TextView
             android:id="@+id/textView18"
@@ -68,64 +68,63 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Opis:"
-            app:layout_constraintBottom_toTopOf="@+id/chipDescription"
-            app:layout_constraintStart_toStartOf="@+id/chipDescription" />
+            app:layout_constraintBottom_toTopOf="@+id/chipDescriptionInfoTextView"
+            app:layout_constraintStart_toStartOf="@+id/chipDescriptionInfoTextView" />
 
         <EditText
-            android:id="@+id/chipNumber"
+            android:id="@+id/chipNumberInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="Numer chipu"
             android:inputType="phone"
-            app:layout_constraintEnd_toStartOf="@+id/chipDescription"
+            app:layout_constraintEnd_toStartOf="@+id/chipDescriptionInfoTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <Button
-            android:id="@+id/okChipDialog"
+            android:id="@+id/okChipInfoDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:background="@drawable/roundcornersrecyclerviewblack"
             android:text="OK"
-            app:layout_constraintStart_toEndOf="@+id/cancelChipDialog"
-            app:layout_constraintTop_toTopOf="@+id/cancelChipDialog" />
+            app:layout_constraintStart_toEndOf="@+id/editChipDialogInfo"
+            app:layout_constraintTop_toTopOf="@+id/editChipDialogInfo" />
 
         <Button
-            android:id="@+id/cancelChipDialog"
+            android:id="@+id/editChipDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
             android:background="@drawable/roundcornersrecyclerviewred"
             android:text="Anuluj"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chipPutDate" />
+            app:layout_constraintBottom_toBottomOf="@+id/chipDescriptionInfoTextView"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/chipPutDate"
+            android:id="@+id/chipPutDateInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Data zachipowania"
             android:inputType="date"
-            app:layout_constraintEnd_toStartOf="@id/chipExpiryDate"
+            app:layout_constraintEnd_toStartOf="@id/chipExpiryDateInfoTextView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chipNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/chipNumberInfoTextView" />
 
         <EditText
-            android:id="@+id/chipExpiryDate"
+            android:id="@+id/chipExpiryDateInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Data utraty ważności"
             android:inputType="date"
-            app:layout_constraintEnd_toStartOf="@+id/chipDescription"
-            app:layout_constraintStart_toEndOf="@+id/chipPutDate"
-            app:layout_constraintTop_toBottomOf="@+id/chipNumber" />
+            app:layout_constraintEnd_toStartOf="@+id/chipDescriptionInfoTextView"
+            app:layout_constraintStart_toEndOf="@+id/chipPutDateInfoTextView"
+            app:layout_constraintTop_toBottomOf="@+id/chipNumberInfoTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

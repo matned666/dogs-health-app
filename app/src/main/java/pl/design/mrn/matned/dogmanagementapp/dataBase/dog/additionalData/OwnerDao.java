@@ -21,7 +21,6 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<Owner> {
 
 
-
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
@@ -45,14 +44,15 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
         ContentValues cv = new ContentValues();
         cv.put(OWNER_NAME, owner.getName());
         cv.put(OWNER_SURNAME, owner.getSurname());
-        if(owner.getAddress() != null) cv.put(OWNER_ADDRESS, owner.getAddress());
-        if(owner.getPhoneNumber() != null) cv.put(OWNER_PHONE, owner.getPhoneNumber());
-        if(owner.getEmail() != null) cv.put(OWNER_EMAIL, owner.getEmail());
-        if(owner.getDateFrom() != null) cv.put(OWNER_DATE_FROM, owner.getDateFrom().toString());
-        if(owner.getDateTo() != null) cv.put(OWNER_DATE_TO, owner.getDateTo().toString());
-        if(owner.getDescription() != null) cv.put(OWNER_DESCRIPTION, owner.getDescription());
+        if (owner.getAddress() != null) cv.put(OWNER_ADDRESS, owner.getAddress());
+        if (owner.getPhoneNumber() != null) cv.put(OWNER_PHONE, owner.getPhoneNumber());
+        if (owner.getEmail() != null) cv.put(OWNER_EMAIL, owner.getEmail());
+        if (owner.getDateFrom() != null) cv.put(OWNER_DATE_FROM, owner.getDateFrom().toString());
+        if (owner.getDateTo() != null) cv.put(OWNER_DATE_TO, owner.getDateTo().toString());
+        if (owner.getDescription() != null) cv.put(OWNER_DESCRIPTION, owner.getDescription());
         cv.put(DOG_ID, owner.getDog_id());
         long insert = db.insert(DOGS_OWNER_TABLE, null, cv);
+        db.close();
         return insert != -1;
     }
 
@@ -68,9 +68,9 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         Owner owner;
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             owner = getOwnerFromDB(cursor);
-        }else{
+        } else {
             owner = null;
         }
         cursor.close();
@@ -108,17 +108,22 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
     @Override
     public boolean update(Owner updated_T_Data) {
         String updateTattooQuery = "" +
-                "UPDATE " + DOGS_OWNER_TABLE +" " +
+                "UPDATE " + DOGS_OWNER_TABLE + " " +
                 "SET " +
-                OWNER_NAME + " = " + updated_T_Data.getName() + ", " +
-                OWNER_SURNAME + " = " + updated_T_Data.getSurname() + ", " +
-                OWNER_ADDRESS + " = " + updated_T_Data.getAddress() + ", " +
-                OWNER_PHONE + " = " + updated_T_Data.getPhoneNumber() + ", " +
-                OWNER_EMAIL + " = " + updated_T_Data.getEmail() + ", " +
-                OWNER_DATE_FROM + " = " + dateFormat.format(updated_T_Data.getDateFrom()) + ", " +
-                OWNER_DATE_TO + " = " + dateFormat.format(updated_T_Data.getDateTo()) + ", " +
-                OWNER_DESCRIPTION + " = " + updated_T_Data.getDescription() + ", " +
-                DOG_ID + " = " + updated_T_Data.getDog_id() + ", " +
+                OWNER_NAME + " = " + updated_T_Data.getName() +
+                ", " + OWNER_SURNAME + " = " + updated_T_Data.getSurname() +
+                ", " + OWNER_ADDRESS + " = " + updated_T_Data.getAddress();
+        if (updated_T_Data.getPhoneNumber() != null)
+            updateTattooQuery += ", " + OWNER_PHONE + " = " + updated_T_Data.getPhoneNumber();
+        if (updated_T_Data.getEmail() != null)
+            updateTattooQuery += ", " + OWNER_EMAIL + " = " + updated_T_Data.getEmail();
+        if (updated_T_Data.getDateFrom() != null)
+            updateTattooQuery += ", " + OWNER_DATE_FROM + " = " + dateFormat.format(updated_T_Data.getDateFrom());
+        if (updated_T_Data.getDateTo() != null)
+            updateTattooQuery += ", " + OWNER_DATE_TO + " = " + dateFormat.format(updated_T_Data.getDateTo());
+        if (updated_T_Data.getDescription() != null)
+            updateTattooQuery += ", " + OWNER_DESCRIPTION + " = " + updated_T_Data.getDescription();
+        updateTattooQuery += ", " + DOG_ID + " = " + updated_T_Data.getDog_id() + ", " +
                 "WHERE " +
                 OWNER_ID + " = " + updated_T_Data.getId();
 
@@ -138,11 +143,11 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
         SQLiteDatabase db = this.getReadableDatabase();
         List<Owner> owners = new ArrayList<>();
         Cursor cursor = db.rawQuery(query, null);
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
                 Owner owner = getOwnerFromDB(cursor);
                 owners.add(owner);
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
@@ -150,21 +155,20 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
     }
 
     private Owner getOwnerFromDB(Cursor cursor) {
-        Owner owner = new Owner(cursor.getInt(0));
+        Owner owner = new Owner();
+        owner.setId(cursor.getInt(0));
         owner.setName(cursor.getString(1));
         owner.setSurname(cursor.getString(2));
         owner.setAddress(cursor.getString(3));
         owner.setPhoneNumber(cursor.getString(4));
         owner.setEmail(cursor.getString(5));
-        try{
+        try {
             owner.setDateFrom(dateFormat.parse(cursor.getString(6)));
-        }catch (ParseException e){
-            owner.setDateFrom(new Date());
+        } catch (Exception ignored) {
         }
-        try{
+        try {
             owner.setDateTo(dateFormat.parse(cursor.getString(7)));
-        }catch (ParseException e){
-            owner.setDateTo(new Date());
+        } catch (Exception ignored) {
         }
         owner.setDescription(cursor.getString(8));
         owner.setDog_id(cursor.getInt(9));

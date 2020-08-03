@@ -58,6 +58,9 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.OWNER;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.SIGN;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.TATTOO;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.ADD_DOG_SEX;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NOT_WORKING_YET;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
 
 public class Edit_DogActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -78,7 +81,7 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
     private ImageView dogPhoto;
 
     private Button deleteDogBtn;
-
+    private Button galleryPicture;
     private Bitmap bitmap;
 
     private String photoPath;
@@ -100,12 +103,12 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
         super.onCreate(savedInstanceState);
         dogDao = new DogDao(this);
         dog = dogDao.findById(PositionListener.getInstance().getSelectedDogId());
-            setContentView(R.layout.edit_dog);
-            initializeFields_edit();
-
+        setContentView(R.layout.edit_dog);
+        initializeFields_edit();
         onSavedReload(savedInstanceState);
         bitmap = null;
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void initializeFields_edit() {
@@ -123,6 +126,7 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
         saveDog = findViewById(R.id.saveDogEdit);
         deleteDogBtn = findViewById(R.id.deleteDogEdit);
         cancel = findViewById(R.id.cancelButtonEdit);
+        galleryPicture = findViewById(R.id.editDogDialogPictureFromGallery);
         dogPhoto = findViewById(R.id.photoEdit);
         initSpinner();
         initDatePicker();
@@ -144,26 +148,27 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
             dogPhoto.setImageDrawable(drawable);
         }
         dogSexET.setSelection(Sex.getPosition(dog.getSex()));
-        if(this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY))
-        {
-            requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, 2);
+        if (this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
+            requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
             dogPhoto.setOnClickListener(addPhoto());
         }
     }
 
     private void initOnClickListeners_edit() {
-            chipBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class,CHIP));
-            tattooBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class, TATTOO));
-            signsBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class, SIGN));
-            ownerBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class, OWNER));
-            notesBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class, NOTE));
-            breedingBtn.setOnClickListener(v -> showDial(BreedingActivityEdit.class, BREEDING));
-            saveDog.setOnClickListener(changeActivityOnClick_saveEdit());
-            deleteDogBtn.setOnClickListener(changeActivityOnClick_deleteEdit());
-            cancel.setOnClickListener(v -> finish());
+        galleryPicture.setOnClickListener(v ->
+                Toast.makeText(this, NOT_WORKING_YET, Toast.LENGTH_SHORT).show());
+        chipBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class, CHIP));
+        tattooBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class, TATTOO));
+        signsBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class, SIGN));
+        ownerBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class, OWNER));
+        notesBtn.setOnClickListener(v -> showDial(DataChoiceListActivityEdit.class, NOTE));
+        breedingBtn.setOnClickListener(v -> showDial(BreedingActivityEdit.class, BREEDING));
+        saveDog.setOnClickListener(changeActivityOnClick_saveEdit());
+        deleteDogBtn.setOnClickListener(changeActivityOnClick_deleteEdit());
+        cancel.setOnClickListener(v -> finish());
     }
 
-    public void    showDial(Class clazz, String el) {
+    public void showDial(Class clazz, String el) {
         Intent intent = new Intent(Edit_DogActivity.this, clazz);
         intent.putExtra(LIST_ELEMENT_ACTIVITY, el);
         startActivity(intent);
@@ -181,7 +186,7 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
     private View.OnClickListener changeActivityOnClick_saveEdit() {
         return v -> {
             if (validation()) {
-                dog.setTo(getDogModelFromFields());
+                getDogModelFromFields();
                 dogDao.update(dog);
                 Intent intent = new Intent(Edit_DogActivity.this, DogDataActivity.class);
                 startActivity(intent);
@@ -189,8 +194,22 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
         };
     }
 
+    private void getDogModelFromFields() {
+        dog.setName(dogNameET.getText().toString());
+        dog.setRace(dogRaceET.getText().toString());
+        try {
+            dog.setBirthDate(dateFormat.parse(dogBirthDatePickerET.getText().toString()));
+        } catch (ParseException e) {
+            Toast.makeText(this, WRONG_DATE, Toast.LENGTH_SHORT).show();
+        }
+        dog.setColor(dogColorET.getText().toString());
+        dog.setSex(Sex.valueOf(dogSexET.getSelectedItem().toString()));
+        dog.setDogImage(photoPath);
+    }
+
+
     private void onSavedReload(Bundle savedInstanceState) {
-        if (savedInstanceState != null){
+        if (savedInstanceState != null) {
             dogName = savedInstanceState.getString("NAME");
             if (dogName != null) dogNameET.setText(dogName);
             dogRace = savedInstanceState.getString("RACE");
@@ -205,7 +224,7 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
             } catch (NullPointerException ignored) {
             }
             dogSexET.setSelection(dogSex);
-         if (photoPath != null) {
+            if (photoPath != null) {
                 photoUri = FileProvider.getUriForFile(Edit_DogActivity.this, "pl.design.mrn.matned.dogmanagementapp.fileprovider", new File(photoPath));
                 showImage();
             }
@@ -214,11 +233,11 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putString("NAME",  dogName);
-        outState.putString("RACE",  dogRace);
-        outState.putString("BIRTH_DATE",  dogBirthDatePicker);
-        outState.putString("COLOR",  dogColor);
-        outState.putInt("SEX",  dogSexET.getSelectedItemPosition());
+        outState.putString("NAME", dogName);
+        outState.putString("RACE", dogRace);
+        outState.putString("BIRTH_DATE", dogBirthDatePicker);
+        outState.putString("COLOR", dogColor);
+        outState.putInt("SEX", dogSexET.getSelectedItemPosition());
         outState.putString("PHOTO_PATH", photoPath);
         super.onSaveInstanceState(outState);
     }
@@ -235,7 +254,7 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if(requestCode == REQUEST_IMAGE_CAPTURE ) {
+            if (requestCode == REQUEST_IMAGE_CAPTURE) {
                 showImage();
             }
         }
@@ -270,23 +289,6 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
         };
     }
 
-    private DogModel getDogModelFromFields() {
-        String dogName = dogNameET.getText().toString();
-        String dogRace = dogRaceET.getText().toString();
-        Date dogBirthDate = null;
-        try {
-            dogBirthDate = dateFormat.parse(dogBirthDatePickerET.getText().toString());
-        } catch (ParseException e) {
-            dogBirthDate = new Date();
-            Toast.makeText(Edit_DogActivity.this, "Wrong date", Toast.LENGTH_SHORT).show();
-        }
-        String dogColor = dogColorET.getText().toString();
-
-        Sex dogSex = Sex.valueOf(dogSexET.getSelectedItem().toString());
-        DogModel dogToSave = new DogModel(dogName, dogRace, dogBirthDate, dogColor, dogSex);
-        dogToSave.setDogImage(photoPath);
-        return dogToSave;
-    }
 
     private boolean validation() {
         checkET(dogNameET);
@@ -298,30 +300,30 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
     }
 
     private boolean checkDate(EditText et) {
-        if(!Validate.dateFormat(et.getText().toString())) {
+        if (!Validate.dateFormat(et.getText().toString())) {
             et.setBackgroundResource(R.drawable.roundcornerstextred);
             return false;
-        }else{
+        } else {
             et.setBackgroundResource(R.drawable.roundcornerstext);
             return true;
         }
     }
 
     private boolean checkSpinner(Spinner et) {
-        if(!Validate.selectedSexIn(et)) {
+        if (!Validate.selectedSexIn(et)) {
             et.setBackgroundResource(R.drawable.roundcornerstextred);
             return false;
-        }else{
+        } else {
             et.setBackgroundResource(R.drawable.roundcornerstext);
             return true;
         }
     }
 
-    private boolean checkET(EditText et){
-        if(!Validate.checkText(et.getText().toString())) {
+    private boolean checkET(EditText et) {
+        if (!Validate.checkText(et.getText().toString())) {
             et.setBackgroundResource(R.drawable.roundcornerstextred);
             return false;
-        }else{
+        } else {
             et.setBackgroundResource(R.drawable.roundcornerstext);
             return true;
         }
@@ -336,9 +338,8 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
     }
 
     private void initSpinner() {
-        System.out.println(">>>>>>>>>>>>>>>>>>   SETTING UP SPINNER");
         String[] sexes = new String[3];
-        sexes[0] = "";
+        sexes[0] = ADD_DOG_SEX;
         sexes[1] = Sex.PIES.name();
         sexes[2] = Sex.SUKA.name();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drpdn, sexes);
@@ -350,18 +351,18 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        DatePickerDialog datePicker = new DatePickerDialog(Edit_DogActivity.this, Edit_DogActivity.this, year,month,day);
+        DatePickerDialog datePicker = new DatePickerDialog(Edit_DogActivity.this, Edit_DogActivity.this, year, month, day);
         datePicker.show();
     }
 
 
-    private File createImageFile()  {
+    private File createImageFile() {
         @SuppressLint("SimpleDateFormat")
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "dogPhoto_" + timeStamp + "_";
         File storageDir = getExternalStoragePublicDirectory(DIRECTORY_PICTURES);
         File image = null;
-        image = new File(storageDir.getParent()+imageFileName+".jpg");
+        image = new File(storageDir.getParent() + imageFileName + ".jpg");
         return image;
     }
 

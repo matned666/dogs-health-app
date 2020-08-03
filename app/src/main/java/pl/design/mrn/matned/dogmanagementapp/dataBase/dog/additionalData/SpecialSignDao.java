@@ -97,7 +97,7 @@ public class SpecialSignDao extends SQLiteOpenHelper implements DaoFragmentInter
     public boolean update(SpecialSign updated_T_Data) {
         String query = "" +
                 "UPDATE " + SIGNS_TABLE + " SET " +
-                SIGN_DESCRIPTION + " = " + updated_T_Data.getDescription() + ", " +
+                SIGN_DESCRIPTION + " = '" + updated_T_Data.getDescription() + "', " +
                 DOG_ID + " = " + updated_T_Data.getDogId() + " " +
                 "WHERE " +
                 SIGN_ID + " = " + updated_T_Data.getSignId();

@@ -20,6 +20,7 @@
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:layout_marginEnd">8dp</item>
         <item name="android:background">@drawable/roundcornerstext</item>
+        <item name="android:inputType">textCapSentences</item>
         <item name="android:ems">10</item>
         <item name="android:textColorHint">#AFAFAF</item>
         <item name="android:paddingStart">8dp</item>

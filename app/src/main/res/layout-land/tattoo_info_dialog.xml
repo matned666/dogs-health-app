@@ -62,7 +62,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/okTattooDialog"
+            android:id="@+id/okTattooDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -73,13 +73,14 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
-            android:id="@+id/cancelTattooDialog"
+            android:id="@+id/editTattooDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
             android:text="Anuluj"
-            app:layout_constraintEnd_toStartOf="@+id/okTattooDialog"
-            app:layout_constraintTop_toTopOf="@+id/okTattooDialog" />
+            app:layout_constraintEnd_toStartOf="@+id/okTattooDialogInfo"
+            app:layout_constraintTop_toTopOf="@+id/okTattooDialogInfo" />
 
         <TextView
             android:id="@+id/tattooPutDateInfoTextView"

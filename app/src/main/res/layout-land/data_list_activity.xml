@@ -7,6 +7,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#FFFFFF"
@@ -14,6 +15,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/cancelDataList"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/roundcornersrecyclerviewblack"
+            android:text="powrót"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout2" />
 
         <TextView
             android:id="@+id/titleDataList"
@@ -23,50 +40,70 @@
             android:text="Właściciele:"
             android:textColor="#000000"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/logo"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/logo"
             android:layout_width="220dp"
             android:layout_height="109dp"
-            android:layout_marginBottom="44dp"
             android:contentDescription="@string/logo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/cancelDataList"
-            app:layout_constraintStart_toStartOf="@+id/cancelDataList"
-            app:layout_constraintTop_toBottomOf="@+id/cancelDataList"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout2"
             app:srcCompat="@drawable/anigif"
             tools:ignore="MissingConstraints" />
 
-        <Button
-            android:id="@+id/cancelDataList"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
-            android:layout_height="42dp"
+            android:layout_height="0dp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/roundcornersrecyclerviewblack"
-            android:text="powrót"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/recyclerViewDataList"
-            app:layout_constraintTop_toTopOf="@+id/recyclerViewDataList" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewDataList"
-            android:layout_width="0dp"
-            android:layout_height="339dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/roundcornersrecyclerview"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/titleDataList"
+            app:layout_constraintBottom_toTopOf="@+id/cancelDataList"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleDataList" />
+            app:layout_constraintTop_toBottomOf="@+id/titleDataList">
+
+            <Button
+                android:id="@+id/addNewDataList"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/roundcornersrecyclerviewblack"
+                android:text="+ Dodaj  nowy wpis"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewDataList"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="501dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

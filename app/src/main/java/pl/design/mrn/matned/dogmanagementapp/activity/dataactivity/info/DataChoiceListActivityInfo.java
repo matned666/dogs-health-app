@@ -38,9 +38,11 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Special
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Tattoo;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.TattooDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
+import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.CHIP;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.LIST_ELEMENT_ACTIVITY;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE_ACTIVITY;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.OWNER;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.SIGN;
@@ -105,7 +107,7 @@ public class DataChoiceListActivityInfo extends AppCompatActivity {
                 initSignsList();
                 break;
             }
-            case NOTE_ACTIVITY: {
+            case NOTE: {
                 initNoteList();
                 break;
             }
@@ -121,7 +123,7 @@ public class DataChoiceListActivityInfo extends AppCompatActivity {
         title.setText(CHIP_LIST_TITLE);
         initRecycleView();
         ChipDao dao = new ChipDao(this);
-        List<Chip> list = dao.findAll();
+        List<Chip> list = dao.getListByMasterId(PositionListener.getInstance().getSelectedDogId());
         if (list.size() > 0)
             DataPositionListener.getInstance().setSelectedItemId(list.get(0).getChipId());
         RecyclerView.Adapter<ChipDataElementAdapter.ViewHolder> chipAdapter = new ChipDataElementAdapter(list, USAGE_INFO, this);
@@ -137,7 +139,7 @@ public class DataChoiceListActivityInfo extends AppCompatActivity {
         title.setText(OWNER_LIST_TITLE);
         initRecycleView();
         OwnerDao dao = new OwnerDao(this);
-        List<Owner> list = dao.findAll();
+        List<Owner> list = dao.getListByMasterId(PositionListener.getInstance().getSelectedDogId());
         if (list.size() > 0)
             DataPositionListener.getInstance().setSelectedItemId(list.get(0).getId());
         RecyclerView.Adapter<OwnerDataElementAdapter.ViewHolder> ownerAdapter = new OwnerDataElementAdapter(list, USAGE_INFO, this);
@@ -153,7 +155,7 @@ public class DataChoiceListActivityInfo extends AppCompatActivity {
         title.setText(SPECIAL_SIGN_LIST_TITLE);
         initRecycleView();
         SpecialSignDao dao = new SpecialSignDao(this);
-        List<SpecialSign> list = dao.findAll();
+        List<SpecialSign> list = dao.getListByMasterId(PositionListener.getInstance().getSelectedDogId());
         if (list.size() > 0)
             DataPositionListener.getInstance().setSelectedItemId(list.get(0).getSignId());
         RecyclerView.Adapter<SignDataElementAdapter.ViewHolder> signDataElementAdapter = new SignDataElementAdapter(list, USAGE_INFO, this);
@@ -169,7 +171,7 @@ public class DataChoiceListActivityInfo extends AppCompatActivity {
         title.setText(NOTE_LIST_TITLE);
         initRecycleView();
         NoteDao dao = new NoteDao(this);
-        List<Note> list = dao.findAll();
+        List<Note> list = dao.getListByMasterId(PositionListener.getInstance().getSelectedDogId());
         if (list.size() > 0)
             DataPositionListener.getInstance().setSelectedItemId(list.get(0).getNoteId());
         RecyclerView.Adapter<NoteDataElementAdapter.ViewHolder> noteDataElementAdapter = new NoteDataElementAdapter(list, USAGE_INFO, this);
@@ -185,7 +187,7 @@ public class DataChoiceListActivityInfo extends AppCompatActivity {
         title.setText(TATTOO_LIST_TITLE);
         initRecycleView();
         TattooDao dao = new TattooDao(this);
-        List<Tattoo> list = dao.findAll();
+        List<Tattoo> list = dao.getListByMasterId(PositionListener.getInstance().getSelectedDogId());
         if (list.size() > 0)
             DataPositionListener.getInstance().setSelectedItemId(list.get(0).getTattooId());
         RecyclerView.Adapter<TattooDataElementAdapter.ViewHolder> tattooDataElementAdapter = new TattooDataElementAdapter(list, USAGE_INFO, this);

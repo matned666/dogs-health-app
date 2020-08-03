@@ -76,7 +76,7 @@ public class NoteActivityInfo extends AppCompatActivity {
         ok.setOnClickListener(v -> finish());
         edit.setOnClickListener(v -> {
             Intent intent = new Intent(this, NoteActivityEdit.class);
-            startActivity(intent);
+            startActivityForResult(intent, 101);
         });
     }
 

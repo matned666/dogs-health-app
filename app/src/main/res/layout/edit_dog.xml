@@ -19,6 +19,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <Button
+                    android:id="@+id/editDogDialogPictureFromGallery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/roundcornersrecyclerview"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:text="@string/zdj_cie_z_galerii"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/photoEdit"
+                    app:layout_constraintTop_toBottomOf="@+id/photoEdit" />
+
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="220dp"

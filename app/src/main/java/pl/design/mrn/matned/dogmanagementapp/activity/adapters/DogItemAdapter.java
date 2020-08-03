@@ -62,7 +62,8 @@ public class DogItemAdapter extends RecyclerView.Adapter<DogItemAdapter.ViewHold
         else
             holder.dogImage.setImageDrawable(drawable);
 
-        holder.dogName.setText(dog.getName());
+        String dogTitle = getDogNameTitle(dog.getName());
+        holder.dogName.setText(dogTitle);
         if(selectedPosition == position) holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
         else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);
 
@@ -72,6 +73,11 @@ public class DogItemAdapter extends RecyclerView.Adapter<DogItemAdapter.ViewHold
             positionListener.setSelectedDogId(dog.getId());
             notifyDataSetChanged();
         });
+    }
+
+    private String getDogNameTitle(String name) {
+        if (name.length() > 18) return name.substring(0, 15) + "...";
+        else return name;
     }
 
     @Override

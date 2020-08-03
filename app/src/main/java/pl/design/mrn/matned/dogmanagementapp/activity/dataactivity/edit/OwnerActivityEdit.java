@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -55,6 +56,7 @@ public class OwnerActivityEdit extends AppCompatActivity implements DatePickerDi
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+    private List<Owner> owners;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -154,21 +156,28 @@ public class OwnerActivityEdit extends AppCompatActivity implements DatePickerDi
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void initSpinner() {
-        List<Owner> owners = dao.findAll();
+        owners = dao.findAll();
         String[] array = getOwnersDesc(owners);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drpdn, array);
         ownersSpinner.setAdapter(adapter);
-        ownersSpinner.setOnItemClickListener(clickItem());
+        ownersSpinner.setOnItemSelectedListener (clickItem());
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private AdapterView.OnItemClickListener clickItem() {
-        return (parent, view, position, id) -> {
-            int ownerId = owner.getId();
-            owner = dao.findById(getTheSelectedOwnerId((String) parent.getSelectedItem()));
-            owner.setId(ownerId);
-            owner.setDog_id(PositionListener.getInstance().getSelectedDogId());
-            fillAllFields();
+    private AdapterView.OnItemSelectedListener clickItem() {
+        return new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int ownerId = owner.getId();
+                owner = owners.get(position);
+                owner.setId(ownerId);
+                owner.setDog_id(PositionListener.getInstance().getSelectedDogId());
+                fillAllFields();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         };
     }
 

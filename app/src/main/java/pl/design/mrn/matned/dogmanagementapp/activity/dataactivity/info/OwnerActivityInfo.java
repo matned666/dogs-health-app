@@ -71,7 +71,8 @@ public class OwnerActivityInfo extends AppCompatActivity {
         ownerToDateTV = findViewById(R.id.ownerToDateInfoTextView);
         ownerDescriptionTV = findViewById(R.id.ownerDescriptionInfoTextView);
         OwnerDao dao = new OwnerDao(this);
-        owner = dao.findById(DataPositionListener.getInstance().getSelectedItemId());
+        int dogId = DataPositionListener.getInstance().getSelectedItemId();
+        owner = dao.findById(dogId);
         initEndingListeners();
     }
 

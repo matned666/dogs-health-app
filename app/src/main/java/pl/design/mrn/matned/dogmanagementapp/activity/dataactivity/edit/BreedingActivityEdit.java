@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -25,6 +26,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Breedin
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATA_SPLITMENT_REGEX;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.CANCEL;
 
 public class BreedingActivityEdit extends AppCompatActivity {
 
@@ -50,6 +52,7 @@ public class BreedingActivityEdit extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.breeding_dialog);
         init();
         if (breeding != null) {
             fillAllFields();
@@ -74,7 +77,7 @@ public class BreedingActivityEdit extends AppCompatActivity {
         ok = findViewById(R.id.okBreedingDialog);
         deleteBreedingBtn = findViewById(R.id.deleteBreedingDialog);
         cancelOrEdit = findViewById(R.id.cancelBreedingDialog);
-        cancelOrEdit.setText("Anuluj");
+        cancelOrEdit.setText(CANCEL);
         dao = new BreedingDao(this);
         breeding = dao.findByDogId(PositionListener.getInstance().getSelectedDogId());
         initSpinner();
@@ -86,17 +89,25 @@ public class BreedingActivityEdit extends AppCompatActivity {
         String[] array = getBredingsNamesList(breedings);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drpdn, array);
         breedingSpinner.setAdapter(adapter);
-        breedingSpinner.setOnItemClickListener(clickItem());
+        breedingSpinner.setOnItemSelectedListener(clickItem());
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private AdapterView.OnItemClickListener clickItem() {
-        return (parent, view, position, id) -> {
+    private AdapterView.OnItemSelectedListener clickItem() {
+        return new AdapterView.OnItemSelectedListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             int breedingId = breeding.getBreedingId();
             breeding = dao.findById(getTheSelectedBreedingId((String) parent.getSelectedItem()));
             breeding.setBreedingId(breedingId);
             breeding.setDogId(PositionListener.getInstance().getSelectedDogId());
             fillAllFields();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         };
     }
 

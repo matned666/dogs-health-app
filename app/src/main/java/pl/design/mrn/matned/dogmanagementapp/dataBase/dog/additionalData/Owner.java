@@ -19,9 +19,6 @@ public class Owner implements Serializable {
     public Owner() {
     }
 
-    public Owner(int id) {
-    }
-
     public int getId() {
         return id;
     }

@@ -22,6 +22,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.LinkedList;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
@@ -33,6 +34,7 @@ import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATA_SPLITMENT_REGEX;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_OWNER_TEXT;
 
 public class OwnerActivityAdd extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -87,20 +89,29 @@ public class OwnerActivityAdd extends AppCompatActivity implements DatePickerDia
     }
 
     private void fillAllFields() {
-        ownerNameTV.setText(owner.getName());
-        ownerSurnameTV.setText(owner.getSurname());
-        ownerAddressTV.setText(owner.getAddress());
-        ownerPhoneTV.setText(owner.getPhoneNumber());
-        ownerEmailTV.setText(owner.getEmail());
-        ownerFromDateTV.setText(dateFormat.format(owner.getDateFrom()));
-        ownerToDateTV.setText(dateFormat.format(owner.getDateTo()));
-        ownerDescriptionTV.setText(owner.getDescription());
+        if (owner.getName() != null) ownerNameTV.setText(owner.getName());
+        else ownerNameTV.setText("");
+        if (owner.getSurname() != null) ownerSurnameTV.setText(owner.getSurname());
+        else ownerSurnameTV.setText("");
+        if (owner.getAddress() != null) ownerAddressTV.setText(owner.getAddress());
+        else ownerAddressTV.setText("");
+        if (owner.getPhoneNumber() != null) ownerPhoneTV.setText(owner.getPhoneNumber());
+        else ownerPhoneTV.setText("");
+        if (owner.getEmail() != null) ownerEmailTV.setText(owner.getEmail());
+        else ownerEmailTV.setText("");
+        if (owner.getDateFrom() != null)
+            ownerFromDateTV.setText(dateFormat.format(owner.getDateFrom()));
+        else ownerFromDateTV.setText("");
+        if (owner.getDateTo() != null) ownerToDateTV.setText(dateFormat.format(owner.getDateTo()));
+        else ownerToDateTV.setText("");
+        if (owner.getDescription() != null) ownerDescriptionTV.setText(owner.getDescription());
+        else ownerDescriptionTV.setText("");
     }
 
 
     private void initEndingListeners() {
         ok.setOnClickListener(v -> {
-            if (validation()){
+            if (validation()) {
                 owner = new Owner();
                 owner.setName(ownerNameTV.getText().toString());
                 owner.setSurname(ownerSurnameTV.getText().toString());
@@ -109,11 +120,11 @@ public class OwnerActivityAdd extends AppCompatActivity implements DatePickerDia
                 owner.setEmail(ownerEmailTV.getText().toString());
                 try {
                     owner.setDateFrom(dateFormat.parse(ownerFromDateTV.getText().toString()));
-                } catch (ParseException ignored) {
+                } catch (Exception ignored) {
                 }
                 try {
                     owner.setDateTo(dateFormat.parse(ownerToDateTV.getText().toString()));
-                } catch (ParseException ignored) {
+                } catch (Exception ignored) {
                 }
                 owner.setDescription(ownerDescriptionTV.getText().toString());
                 owner.setDog_id(PositionListener.getInstance().getSelectedDogId());
@@ -144,19 +155,21 @@ public class OwnerActivityAdd extends AppCompatActivity implements DatePickerDia
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void initSpinner() {
-        owners = dao.findAll();
+        owners = new LinkedList<>();
+        owners.add(new Owner());
+        owners.addAll(dao.findAll());
         String[] array = getOwnersDesc(owners);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drpdn, array);
         ownersSpinner.setAdapter(adapter);
-        ownersSpinner.setOnItemSelectedListener (clickItem());
+        ownersSpinner.setOnItemSelectedListener(clickItem());
     }
 
     private AdapterView.OnItemSelectedListener clickItem() {
         return new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int ownerId = owner.getId();
                 owner = owners.get(position);
+                int ownerId = owner.getId();
                 owner.setId(ownerId);
                 owner.setDog_id(PositionListener.getInstance().getSelectedDogId());
                 fillAllFields();
@@ -172,7 +185,11 @@ public class OwnerActivityAdd extends AppCompatActivity implements DatePickerDia
     private String[] getOwnersDesc(List<Owner> owners) {
         String[] array = new String[owners.size()];
         for (int i = 0; i < array.length; i++) {
-            String data = owners.get(i).getId() + " " + DATA_SPLITMENT_REGEX + " " + owners.get(i).getName() + " " + owners.get(i).getSurname();
+            String data;
+            if (owners.get(i).getName() != null && owners.get(i).getSurname() != null)
+                data = owners.get(i).getId() + " " + DATA_SPLITMENT_REGEX + " " +
+                        owners.get(i).getName() + " " + owners.get(i).getSurname();
+            else data = NEW_OWNER_TEXT;
             array[i] = data;
         }
         return array;

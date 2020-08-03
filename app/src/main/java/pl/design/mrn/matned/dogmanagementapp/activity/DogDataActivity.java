@@ -1,6 +1,7 @@
 package pl.design.mrn.matned.dogmanagementapp.activity;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -13,6 +14,9 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.BreedingActivityInfo;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.DataChoiceListActivityInfo;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
@@ -23,6 +27,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.BREEDING;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.CHIP;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.LIST_ELEMENT_ACTIVITY;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.OWNER;
@@ -51,6 +56,10 @@ public class DogDataActivity extends AppCompatActivity {
     private ImageView dogPhoto;
 
     private DogModel dog;
+
+    @SuppressLint("SimpleDateFormat")
+    private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -93,7 +102,7 @@ public class DogDataActivity extends AppCompatActivity {
     private void putData() {
         dogNameET.setText(dog.getName());
         dogRaceET.setText(dog.getRace());
-        dogBirthDatePickerET.setText(dog.getBirthDate().toString());
+        dogBirthDatePickerET.setText(dateFormat.format(dog.getBirthDate()));
         dogColorET.setText(dog.getColor());
         dogSexET.setText(dog.getSex().name());
         if (dog.getDogImage() != null)

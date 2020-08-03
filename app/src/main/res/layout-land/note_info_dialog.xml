@@ -13,9 +13,49 @@
         android:background="@drawable/roundcornerstext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView11"
+            style="@style/label_noFrame_black12Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data notatki:"
+            app:layout_constraintBottom_toTopOf="@+id/noteDate_noteInfo"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/editNoteDialogInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundcornersrecyclerviewred"
+            android:text="Edytuj"
+            app:layout_constraintEnd_toStartOf="@+id/okNoteDialogInfo"
+            app:layout_constraintTop_toTopOf="@+id/okNoteDialogInfo" />
+
+        <TextView
+            android:id="@+id/noteDate_noteInfo"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:hint="Data publikacji"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editNoteDialogInfo" />
+
+        <Button
+            android:id="@+id/okNoteDialogInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/roundcornersrecyclerviewblack"
+            android:text="OK"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/noteDescriptionInfoTextView" />
 
         <TextView
             android:id="@+id/textView12"
@@ -41,26 +81,6 @@
             android:text="Notatka:"
             app:layout_constraintBottom_toTopOf="@+id/noteDescriptionInfoTextView"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/okNoteDialog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/roundcornersrecyclerviewblack"
-            android:text="OK"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/noteDescriptionInfoTextView" />
-
-        <Button
-            android:id="@+id/removeNote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/roundcornersrecyclerviewred"
-            android:text="Anuluj"
-            app:layout_constraintEnd_toStartOf="@+id/okNoteDialog"
-            app:layout_constraintTop_toTopOf="@+id/okNoteDialog" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

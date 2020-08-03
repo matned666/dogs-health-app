@@ -56,6 +56,8 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.OWNER;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.SIGN;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.TATTOO;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NOT_WORKING_YET;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
 
 public class Add_DogActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -65,14 +67,9 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
     private EditText dogBirthDatePickerET;
     private EditText dogColorET;
     private Spinner dogSexET;
-    private Button chipBtn;
-    private Button tattooBtn;
-    private Button signsBtn;
-    private Button notesBtn;
-    private Button breedingBtn;
-    private Button ownerBtn;
     private Button saveDog;
     private Button cancel;
+    private Button galleryPicture;
     private ImageView dogPhoto;
 
     private Bitmap bitmap;
@@ -106,14 +103,9 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
         dogBirthDatePickerET = findViewById(R.id.dogDateOfBirthAdd);
         dogColorET = findViewById(R.id.dogColorAdd);
         dogSexET = findViewById(R.id.dogSexAdd);
-        chipBtn = findViewById(R.id.chipBtnAdd);
-        tattooBtn = findViewById(R.id.tattooBtnAdd);
-        signsBtn = findViewById(R.id.signsBtnAdd);
-        notesBtn = findViewById(R.id.notesBtnAdd);
-        breedingBtn = findViewById(R.id.breedingBtnAdd);
-        ownerBtn = findViewById(R.id.ownerBtnAdd);
         saveDog = findViewById(R.id.saveDogAdd);
         cancel = findViewById(R.id.cancelAdd);
+        galleryPicture = findViewById(R.id.addDogDialogPictureFromGallery);
         initSpinner();
         initDatePicker();
         initClickListeners_add();
@@ -121,13 +113,8 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void initClickListeners_add() {
-        chipBtn.setOnClickListener(v -> showDial(DataChoiceListActivityAdd.class,CHIP));
-        tattooBtn.setOnClickListener(v -> showDial(DataChoiceListActivityAdd.class, TATTOO));
-        signsBtn.setOnClickListener(v -> showDial(DataChoiceListActivityAdd.class, SIGN));
-        ownerBtn.setOnClickListener(v -> showDial(DataChoiceListActivityAdd.class, OWNER));
-        notesBtn.setOnClickListener(v -> showDial(DataChoiceListActivityAdd.class, NOTE));
-        breedingBtn.setOnClickListener(v -> showDial(BreedingActivityAdd.class, BREEDING));
-
+        galleryPicture.setOnClickListener(v ->
+                Toast.makeText(this, NOT_WORKING_YET, Toast.LENGTH_SHORT).show());
         cancel.setOnClickListener(c -> showDial(StartActivity.class, null));
         if (this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
             requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
@@ -237,7 +224,7 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
             dogBirthDate = dateFormat.parse(dogBirthDatePickerET.getText().toString());
         } catch (ParseException e) {
             dogBirthDate = new Date();
-            Toast.makeText(Add_DogActivity.this, "Wrong date", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Add_DogActivity.this, WRONG_DATE, Toast.LENGTH_SHORT).show();
         }
         String dogColor = dogColorET.getText().toString();
 

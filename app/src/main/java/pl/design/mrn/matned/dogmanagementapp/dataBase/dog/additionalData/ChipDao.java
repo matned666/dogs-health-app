@@ -42,8 +42,8 @@ public class ChipDao extends SQLiteOpenHelper implements DaoFragmentInterface<Ch
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(CHIP_NUMBER, chip.getChipNumber());
-        if (chip.getPutDate() != null) cv.put(CHIP_PUT_DATE, chip.getPutDate().toString());
-        if (chip.getExpDate() != null) cv.put(CHIP_EXP_DATE, chip.getExpDate().toString());
+        if (chip.getPutDate() != null) cv.put(CHIP_PUT_DATE, dateFormat.format(chip.getPutDate()));
+        if (chip.getExpDate() != null) cv.put(CHIP_EXP_DATE, dateFormat.format(chip.getExpDate()));
         if (chip.getChipDescription() != null) cv.put(CHIP_DESCRIPTION, chip.getChipDescription());
         cv.put(DOG_ID, chip.getDogId());
         long insert = db.insert(CHIP_TABLE, null, cv);

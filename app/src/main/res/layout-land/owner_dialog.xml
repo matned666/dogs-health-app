@@ -17,6 +17,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <Button
+            android:id="@+id/deleteOwnerDialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/roundcornersrecyclerviewred"
+            android:text="Usuń wpis"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ownerDescription"
+            app:layout_constraintTop_toTopOf="@+id/ownerDescription" />
+
         <TextView
             android:id="@+id/textView12"
             style="@style/dogDataDialog_title"
@@ -65,8 +77,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data do:"
-            app:layout_constraintBottom_toTopOf="@+id/ownerPutDate"
-            app:layout_constraintStart_toStartOf="@+id/ownerPutDate" />
+            app:layout_constraintBottom_toTopOf="@+id/ownerToDate"
+            app:layout_constraintStart_toStartOf="@+id/ownerToDate" />
 
         <TextView
             android:id="@+id/textView22"
@@ -74,8 +86,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data od:"
-            app:layout_constraintBottom_toTopOf="@+id/ownerExpiryDate"
-            app:layout_constraintStart_toStartOf="@+id/ownerExpiryDate" />
+            app:layout_constraintBottom_toTopOf="@+id/ownerFromDate"
+            app:layout_constraintStart_toStartOf="@+id/ownerFromDate" />
 
         <TextView
             android:id="@+id/textView16"
@@ -134,10 +146,10 @@
             android:hint="Opis "
             app:layout_constraintEnd_toStartOf="@+id/cancelOwnerDialog"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ownerExpiryDate" />
+            app:layout_constraintTop_toBottomOf="@+id/ownerFromDate" />
 
         <EditText
-            android:id="@+id/ownerPutDate"
+            android:id="@+id/ownerToDate"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -146,11 +158,11 @@
             android:hint="Data do"
             android:inputType="date"
             app:layout_constraintEnd_toStartOf="@+id/ownerAddress"
-            app:layout_constraintStart_toEndOf="@+id/ownerExpiryDate"
+            app:layout_constraintStart_toEndOf="@+id/ownerFromDate"
             app:layout_constraintTop_toBottomOf="@+id/ownerEmail" />
 
         <EditText
-            android:id="@+id/ownerExpiryDate"
+            android:id="@+id/ownerFromDate"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:layout_width="0dp"
             android:layout_height="25dp"
@@ -158,7 +170,7 @@
             android:hint="Data od"
             android:inputType="date"
 
-            app:layout_constraintEnd_toStartOf="@+id/ownerPutDate"
+            app:layout_constraintEnd_toStartOf="@+id/ownerToDate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerEmail" />
 
@@ -172,7 +184,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:hint="Adres"
-            app:layout_constraintBottom_toBottomOf="@+id/ownerPutDate"
+            app:layout_constraintBottom_toBottomOf="@+id/ownerToDate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ownerName"
             app:layout_constraintTop_toTopOf="@+id/ownerName" />

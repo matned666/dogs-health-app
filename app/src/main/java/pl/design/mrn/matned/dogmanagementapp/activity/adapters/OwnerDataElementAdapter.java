@@ -53,7 +53,7 @@ public class OwnerDataElementAdapter extends RecyclerView.Adapter<OwnerDataEleme
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_owner_info, null);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_owner_info, null);
         return new ViewHolder(view);
     }
 
@@ -63,8 +63,10 @@ public class OwnerDataElementAdapter extends RecyclerView.Adapter<OwnerDataEleme
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Owner owner = ownersList.get(position);
         holder.ownerNameAndSurname.setText(owner.getName() + " " + owner.getSurname());
-        holder.dateTo.setText(dateFormat.format(owner.getDateTo()));
-        holder.dateFrom.setText(dateFormat.format(owner.getDateFrom()));
+        if (owner.getDateTo() != null) holder.dateTo.setText(dateFormat.format(owner.getDateTo()));
+        else holder.dateTo.setText("");
+        if (owner.getDateTo() != null) holder.dateFrom.setText(dateFormat.format(owner.getDateFrom()));
+        else holder.dateTo.setText("");
         if(selectedPosition == position) holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
         else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);
 

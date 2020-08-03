@@ -17,6 +17,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <Button
+            android:id="@+id/cancelNoteDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/roundcornersrecyclerviewred"
+            android:text="Anuluj"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/okNoteDialog" />
+
         <TextView
             android:id="@+id/textView12"
             style="@style/dogDataDialog_title"
@@ -58,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/roundcornersrecyclerviewred"
-            android:text="Anuluj"
+            android:text="Usuń wpis"
             app:layout_constraintEnd_toStartOf="@+id/okNoteDialog"
             app:layout_constraintTop_toTopOf="@+id/okNoteDialog" />
 
