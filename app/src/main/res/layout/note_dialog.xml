@@ -29,7 +29,7 @@
             android:id="@+id/noteDescription"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
             android:hint="Notatka"
-            android:inputType="textMultiLine"
+            android:inputType="textCapSentences|textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />

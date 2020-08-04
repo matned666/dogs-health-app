@@ -64,9 +64,7 @@ public class OwnerDataElementAdapter extends RecyclerView.Adapter<OwnerDataEleme
         Owner owner = ownersList.get(position);
         holder.ownerNameAndSurname.setText(owner.getName() + " " + owner.getSurname());
         if (owner.getDateTo() != null) holder.dateTo.setText(dateFormat.format(owner.getDateTo()));
-        else holder.dateTo.setText("");
         if (owner.getDateTo() != null) holder.dateFrom.setText(dateFormat.format(owner.getDateFrom()));
-        else holder.dateTo.setText("");
         if(selectedPosition == position) holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
         else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);
 

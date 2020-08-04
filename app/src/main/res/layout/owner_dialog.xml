@@ -51,7 +51,7 @@
             android:id="@+id/ownerDescription"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
             android:hint="Opis "
-            android:inputType="textMultiLine"
+            android:inputType="textCapSentences|textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerFromDate" />
@@ -163,7 +163,7 @@
             android:id="@+id/ownerAddress"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
             android:hint="Adres"
-            android:inputType="textMultiLine"
+            android:inputType="textCapSentences|textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerSurname" />
