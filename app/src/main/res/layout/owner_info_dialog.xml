@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/textView12"
             style="@style/dogDataDialog_title"
-            android:text="Dane właściciela:"
+            android:text="Brak"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,8 @@
             android:id="@+id/ownerNameInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:autofillHints=""
-            android:hint="Imię"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +42,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:autofillHints=""
-            android:hint="Nazwisko"
+            android:background="@drawable/whitetext"
+            android:hint="Brak"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +52,8 @@
         <TextView
             android:id="@+id/ownerDescriptionInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
-            android:hint="Opis "
+            android:hint="Brak "
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerFromDateInfoTextView" />
@@ -83,9 +86,10 @@
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/whitetext"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="Data do"
+            android:hint="Brak"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ownerFromDateInfoTextView"
             app:layout_constraintTop_toBottomOf="@+id/ownerEmailInfoTextView" />
@@ -94,9 +98,10 @@
             android:id="@+id/ownerFromDateInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:layout_width="0dp"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/whitetext"
             android:ems="10"
-            android:hint="Data od"
+            android:hint="Brak"
 
             app:layout_constraintEnd_toStartOf="@+id/ownerToDateInfoTextView"
             app:layout_constraintStart_toStartOf="parent"
@@ -150,7 +155,8 @@
         <TextView
             android:id="@+id/ownerAddressInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
-            android:hint="Adres"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerSurnameInfoTextView" />
@@ -159,14 +165,16 @@
             android:id="@+id/ownerPhoneInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:ems="10"
-            android:hint="Telefon"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerAddressInfoTextView" />
 
         <TextView
             android:id="@+id/ownerEmailInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
-            android:hint="e-mail"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerPhoneInfoTextView" />
 

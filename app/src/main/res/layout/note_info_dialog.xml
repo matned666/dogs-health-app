@@ -28,7 +28,8 @@
         <TextView
             android:id="@+id/noteDescriptionInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
-            android:hint="Notatka"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
@@ -78,7 +79,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:hint="Data publikacji"
+            android:background="@drawable/whitetext"
+            android:hint="Brak"
             app:layout_constraintEnd_toStartOf="@+id/editNoteDialogInfo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/editNoteDialogInfo" />

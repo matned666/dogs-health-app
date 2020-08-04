@@ -28,7 +28,8 @@
         <TextView
             android:id="@+id/chipDescriptionInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
-            android:hint="Opis"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chipExpiryDateInfoTextView" />
@@ -66,6 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Opis:"
+            android:background="@drawable/whitetext"
             app:layout_constraintBottom_toTopOf="@+id/chipDescriptionInfoTextView"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -73,7 +75,8 @@
             android:id="@+id/chipNumberInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:ems="10"
-            android:hint="Numer chipu"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
@@ -105,7 +108,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Data zachipowania"
+            android:background="@drawable/whitetext"
+            android:hint="Brak"
             app:layout_constraintEnd_toStartOf="@id/chipExpiryDateInfoTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chipNumberInfoTextView" />
@@ -116,7 +120,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Data utraty ważności"
+            android:background="@drawable/whitetext"
+            android:hint="Brak"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/chipPutDateInfoTextView"
             app:layout_constraintTop_toBottomOf="@+id/chipNumberInfoTextView" />

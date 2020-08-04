@@ -29,7 +29,8 @@
             android:id="@+id/breedingNameInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:autofillHints=""
-            android:hint="Nazwa hodowli"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +39,8 @@
         <TextView
             android:id="@+id/breedingDescriptionInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
-            android:hint="Opis hodowli"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breedingEmailInfoTextView" />
@@ -87,7 +89,8 @@
         <TextView
             android:id="@+id/breedingAddressInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
-            android:hint="Adres"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breedingNameInfoTextView" />
@@ -96,14 +99,16 @@
             android:id="@+id/breedingPhoneInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:ems="10"
-            android:hint="Telefon"
+            android:background="@drawable/whitetext"
+            android:hint="Brak"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breedingAddressInfoTextView" />
 
         <TextView
             android:id="@+id/breedingEmailInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
-            android:hint="e-mail"
+            android:background="@drawable/whitetext"
+            android:hint="Brak"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breedingPhoneInfoTextView" />
 
