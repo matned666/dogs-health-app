@@ -45,6 +45,7 @@ public class NoteActivityAdd extends AppCompatActivity {
             if(Validate.checkET(noteTV)){
                 note = new Note();
                 note.setNote(noteTV.getText().toString());
+                note.setDogId(PositionListener.getInstance().getSelectedDogId());
                 dao.add(note);
                 noteTV.setBackgroundResource(R.drawable.roundcornerstext);
                 finish();

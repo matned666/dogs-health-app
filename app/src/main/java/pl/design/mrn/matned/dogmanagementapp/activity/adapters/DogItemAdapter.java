@@ -2,6 +2,7 @@ package pl.design.mrn.matned.dogmanagementapp.activity.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -16,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.activity.DogDataActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.NoteActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
@@ -72,6 +75,8 @@ public class DogItemAdapter extends RecyclerView.Adapter<DogItemAdapter.ViewHold
             positionListener.setPosition(position);
             positionListener.setSelectedDogId(dog.getId());
             notifyDataSetChanged();
+            Intent intent = new Intent(context, DogDataActivity.class);
+            context.startActivity(intent);
         });
     }
 

@@ -47,8 +47,8 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
         if (owner.getAddress() != null) cv.put(OWNER_ADDRESS, owner.getAddress());
         if (owner.getPhoneNumber() != null) cv.put(OWNER_PHONE, owner.getPhoneNumber());
         if (owner.getEmail() != null) cv.put(OWNER_EMAIL, owner.getEmail());
-        if (owner.getDateFrom() != null) cv.put(OWNER_DATE_FROM, owner.getDateFrom().toString());
-        if (owner.getDateTo() != null) cv.put(OWNER_DATE_TO, owner.getDateTo().toString());
+        if (owner.getDateFrom() != null) cv.put(OWNER_DATE_FROM, dateFormat.format(owner.getDateFrom()));
+        if (owner.getDateTo() != null) cv.put(OWNER_DATE_TO, dateFormat.format(owner.getDateTo()));
         if (owner.getDescription() != null) cv.put(OWNER_DESCRIPTION, owner.getDescription());
         cv.put(DOG_ID, owner.getDog_id());
         long insert = db.insert(DOGS_OWNER_TABLE, null, cv);
@@ -110,26 +110,28 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
         String updateTattooQuery = "" +
                 "UPDATE " + DOGS_OWNER_TABLE + " " +
                 "SET " +
-                OWNER_NAME + " = " + updated_T_Data.getName() +
-                ", " + OWNER_SURNAME + " = " + updated_T_Data.getSurname() +
-                ", " + OWNER_ADDRESS + " = " + updated_T_Data.getAddress();
+                OWNER_NAME + " = '" + updated_T_Data.getName() + "'" +
+                ", " + OWNER_SURNAME + " = '" + updated_T_Data.getSurname() + "'";
+        if (updated_T_Data.getAddress() != null)
+            updateTattooQuery +=   ", " + OWNER_ADDRESS + " = '" + updated_T_Data.getAddress() + "'";
         if (updated_T_Data.getPhoneNumber() != null)
-            updateTattooQuery += ", " + OWNER_PHONE + " = " + updated_T_Data.getPhoneNumber();
+            updateTattooQuery += ", " + OWNER_PHONE + " = '" + updated_T_Data.getPhoneNumber() + "'";
         if (updated_T_Data.getEmail() != null)
-            updateTattooQuery += ", " + OWNER_EMAIL + " = " + updated_T_Data.getEmail();
+            updateTattooQuery += ", " + OWNER_EMAIL + " = '" + updated_T_Data.getEmail() + "'";
         if (updated_T_Data.getDateFrom() != null)
-            updateTattooQuery += ", " + OWNER_DATE_FROM + " = " + dateFormat.format(updated_T_Data.getDateFrom());
+            updateTattooQuery += ", " + OWNER_DATE_FROM + " = '" + dateFormat.format(updated_T_Data.getDateFrom()) + "'";
         if (updated_T_Data.getDateTo() != null)
-            updateTattooQuery += ", " + OWNER_DATE_TO + " = " + dateFormat.format(updated_T_Data.getDateTo());
+            updateTattooQuery += ", " + OWNER_DATE_TO + " = '" + dateFormat.format(updated_T_Data.getDateTo()) + "'";
         if (updated_T_Data.getDescription() != null)
-            updateTattooQuery += ", " + OWNER_DESCRIPTION + " = " + updated_T_Data.getDescription();
-        updateTattooQuery += ", " + DOG_ID + " = " + updated_T_Data.getDog_id() + ", " +
+            updateTattooQuery += ", " + OWNER_DESCRIPTION + " = '" + updated_T_Data.getDescription() + "'";
+        updateTattooQuery += ", " + DOG_ID + " = " + updated_T_Data.getDog_id() + " " +
                 "WHERE " +
                 OWNER_ID + " = " + updated_T_Data.getId();
-
-        Cursor cursor = this.getReadableDatabase().rawQuery(updateTattooQuery, null);
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(updateTattooQuery, null);
         boolean end = cursor.moveToFirst();
         cursor.close();
+        db.close();
         return end;
     }
 
