@@ -28,18 +28,20 @@
         <TextView
             android:id="@+id/textView13"
             style="@style/label_noFrame_black12Text"
+            android:layout_marginStart="16dp"
             android:text="Imię:"
             app:layout_constraintBottom_toTopOf="@+id/ownerNameInfoTextView"
-            app:layout_constraintStart_toStartOf="@+id/ownerNameInfoTextView" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textView20"
             style="@style/label_noFrame_black12Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="Nazwisko:"
             app:layout_constraintBottom_toTopOf="@+id/ownerSurnameInfoTextView"
-            app:layout_constraintStart_toStartOf="@+id/ownerSurnameInfoTextView" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textView14"
@@ -54,26 +56,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data do:"
-            app:layout_constraintBottom_toTopOf="@+id/ownerPutDateInfoTextView"
-            app:layout_constraintStart_toStartOf="@+id/ownerPutDateInfoTextView" />
+            app:layout_constraintBottom_toTopOf="@+id/ownerToDateInfoTextView"
+            app:layout_constraintStart_toStartOf="@+id/textView17" />
 
         <TextView
             android:id="@+id/textView22"
             style="@style/label_noFrame_black12Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="Data od:"
-            app:layout_constraintBottom_toTopOf="@+id/ownerExpiryDateInfoTextView"
-            app:layout_constraintStart_toStartOf="@+id/ownerExpiryDateInfoTextView" />
+            app:layout_constraintBottom_toTopOf="@+id/ownerFromDateInfoTextView"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textView16"
             style="@style/label_noFrame_black12Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="Numer telefonu:"
             app:layout_constraintBottom_toTopOf="@+id/ownerPhoneInfoTextView"
-            app:layout_constraintStart_toStartOf="@+id/ownerPhoneInfoTextView" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textView17"
@@ -89,6 +93,7 @@
             style="@style/label_noFrame_black12Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="Opis:"
             app:layout_constraintBottom_toTopOf="@+id/ownerDescriptionInfoTextView"
             app:layout_constraintStart_toStartOf="parent" />
@@ -98,6 +103,7 @@
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:autofillHints=""
             android:hint="Imię"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toStartOf="@+id/ownerAddressInfoTextView"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -110,6 +116,7 @@
             android:layout_height="wrap_content"
             android:autofillHints=""
             android:hint="Nazwisko"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toStartOf="@+id/ownerAddressInfoTextView"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -121,6 +128,7 @@
             android:layout_width="0dp"
             android:layout_height="108dp"
             android:hint="Opis "
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toStartOf="@+id/editOwnerDialogInfo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerFromDateInfoTextView" />
@@ -133,6 +141,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="Data do"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="@+id/ownerEmailInfoTextView"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/ownerEmailInfoTextView"
@@ -145,6 +154,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Data od"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="@+id/ownerPhoneInfoTextView"
             app:layout_constraintStart_toStartOf="@+id/ownerPhoneInfoTextView"
             app:layout_constraintTop_toBottomOf="@+id/ownerEmailInfoTextView" />
@@ -158,6 +168,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:hint="Adres"
+            android:background="@drawable/whitetext"
             app:layout_constraintBottom_toBottomOf="@+id/ownerToDateInfoTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ownerNameInfoTextView"
@@ -168,6 +179,7 @@
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:ems="10"
             android:hint="Telefon"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toStartOf="@id/ownerEmailInfoTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerSurnameInfoTextView" />
@@ -176,6 +188,7 @@
             android:id="@+id/ownerEmailInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
             android:hint="e-mail"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toStartOf="@+id/ownerAddressInfoTextView"
             app:layout_constraintStart_toEndOf="@+id/ownerPhoneInfoTextView"
             app:layout_constraintTop_toBottomOf="@+id/ownerSurnameInfoTextView" />

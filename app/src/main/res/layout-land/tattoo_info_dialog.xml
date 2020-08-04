@@ -29,6 +29,7 @@
             android:id="@+id/tattooDescriptionInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
             android:hint="Opis"
+            android:background="@drawable/whitetext"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

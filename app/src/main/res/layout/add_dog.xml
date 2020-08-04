@@ -125,7 +125,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/dogDateOfBirthAdd" />
 
             <Button
-                android:id="@+id/addDogDialogPictureFromGallery"
+                android:id="@+id/addDogDialogPictureFromGalleryAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="42dp"
                 android:layout_marginTop="16dp"
@@ -152,7 +152,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addDogDialogPictureFromGallery" />
+                app:layout_constraintTop_toBottomOf="@+id/addDogDialogPictureFromGalleryAdd" />
 
             <EditText
                 android:id="@+id/dogDateOfBirthAdd"

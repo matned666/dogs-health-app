@@ -39,8 +39,7 @@
             android:id="@+id/signDescription"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
             android:hint="Opis"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="textMultiLine"            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 

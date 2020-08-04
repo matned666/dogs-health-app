@@ -29,6 +29,8 @@
             android:id="@+id/chipDescriptionInfoTextView"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
             android:hint="Brak"
+            android:maxLines="6"
+            android:singleLine="false"
             android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

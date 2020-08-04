@@ -105,7 +105,7 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
         dogSexET = findViewById(R.id.dogSexAdd);
         saveDog = findViewById(R.id.saveDogAdd);
         cancel = findViewById(R.id.cancelAdd);
-        galleryPicture = findViewById(R.id.addDogDialogPictureFromGallery);
+        galleryPicture = findViewById(R.id.addDogDialogPictureFromGalleryAdd);
         initSpinner();
         initDatePicker();
         initClickListeners_add();

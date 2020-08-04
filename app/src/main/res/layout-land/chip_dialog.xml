@@ -51,6 +51,7 @@
             android:layout_width="323dp"
             android:layout_height="159dp"
             android:hint="Opis"
+            android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/chipExpiryDate"
             app:layout_constraintTop_toTopOf="@+id/chipNumber" />

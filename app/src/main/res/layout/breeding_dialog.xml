@@ -39,6 +39,7 @@
             android:id="@+id/breedingDescription"
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
             android:hint="Opis hodowli"
+            android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breedingEmail" />
@@ -98,6 +99,7 @@
             style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
             android:layout_marginTop="32dp"
             android:hint="Adres"
+            android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"

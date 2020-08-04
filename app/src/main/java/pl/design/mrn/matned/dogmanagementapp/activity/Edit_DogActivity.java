@@ -126,7 +126,7 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
         saveDog = findViewById(R.id.saveDogEdit);
         deleteDogBtn = findViewById(R.id.deleteDogEdit);
         cancel = findViewById(R.id.cancelButtonEdit);
-        galleryPicture = findViewById(R.id.editDogDialogPictureFromGallery);
+        galleryPicture = findViewById(R.id.editDogDialogPictureFromGalleryEdit);
         dogPhoto = findViewById(R.id.photoEdit);
         initSpinner();
         initDatePicker();

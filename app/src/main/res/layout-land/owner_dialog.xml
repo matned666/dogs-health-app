@@ -144,6 +144,7 @@
             android:layout_width="0dp"
             android:layout_height="108dp"
             android:hint="Opis "
+            android:inputType="textMultiLine"
             app:layout_constraintEnd_toStartOf="@+id/cancelOwnerDialog"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerFromDate" />
@@ -184,6 +185,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:hint="Adres"
+            android:inputType="textMultiLine"
             app:layout_constraintBottom_toBottomOf="@+id/ownerToDate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ownerName"
