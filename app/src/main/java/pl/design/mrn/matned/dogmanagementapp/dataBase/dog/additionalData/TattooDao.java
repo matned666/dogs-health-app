@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoFragmentInterface;
+
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
 public class TattooDao extends SQLiteOpenHelper implements DaoFragmentInterface<Tattoo> {

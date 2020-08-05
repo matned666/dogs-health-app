@@ -1,4 +1,4 @@
-package pl.design.mrn.matned.dogmanagementapp.dataBase.dog;
+package pl.design.mrn.matned.dogmanagementapp.dataBase;
 
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoInterface;
 

@@ -26,6 +26,12 @@ public class Statics {
     public static final String OWNER = "OWNER_ACTIVITY";
 
 
+    public static final String ALLERGIES = "ALLERGIES";
+    public static final String TREATMENT = "TREATMENT";
+    public static final String TEETH = "TEETH";
+    public static final String BIRTH = "BIRTH";
+    public static final String DEWORMING = "DEWORMING";
+    public static final String INJECTION = "INJECTION";
 
 //    DATABASE STATIC STRINGS:
 

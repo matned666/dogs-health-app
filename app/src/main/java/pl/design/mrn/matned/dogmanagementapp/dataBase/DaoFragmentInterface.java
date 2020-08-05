@@ -1,4 +1,4 @@
-package pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData;
+package pl.design.mrn.matned.dogmanagementapp.dataBase;
 
 import java.util.List;
 

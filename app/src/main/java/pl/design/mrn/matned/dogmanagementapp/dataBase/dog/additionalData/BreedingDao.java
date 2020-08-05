@@ -13,6 +13,8 @@ import androidx.annotation.RequiresApi;
 import java.util.LinkedList;
 import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoFragmentInterface_FunctionalBreeding;
+
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
 public class BreedingDao  extends SQLiteOpenHelper implements DaoFragmentInterface_FunctionalBreeding<Breeding> {

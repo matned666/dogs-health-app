@@ -15,6 +15,8 @@ import pl.design.mrn.matned.dogmanagementapp.activity.health.InjectionsRabidActi
 import pl.design.mrn.matned.dogmanagementapp.activity.health.TeethControlActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.TreatmentActivity;
 
+import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
+
 public class HealthActivity extends AppCompatActivity {
 
     private Button rabidInjection;
@@ -40,17 +42,18 @@ public class HealthActivity extends AppCompatActivity {
     }
 
     private void onClickListeners() {
-        rabidInjection.setOnClickListener(v -> startNewActivity(InjectionsRabidActivity.class));
-        otherInjections.setOnClickListener(v -> startNewActivity(InjectionsOtherActivity.class));
-        deworming.setOnClickListener(v -> startNewActivity(DeWormingActivity.class));
-        birthControl.setOnClickListener(v -> startNewActivity(BirthControlActivity.class));
-        teethControl.setOnClickListener(v -> startNewActivity(TeethControlActivity.class));
-        treatmentButton.setOnClickListener(v -> startNewActivity(TreatmentActivity.class));
-        allergies.setOnClickListener(v -> startNewActivity(AllergiesActivity.class));
+        rabidInjection.setOnClickListener(v -> startNewActivity(InjectionsRabidActivity.class, INJECTION));
+        otherInjections.setOnClickListener(v -> startNewActivity(InjectionsOtherActivity.class, INJECTION));
+        deworming.setOnClickListener(v -> startNewActivity(DeWormingActivity.class, DEWORMING));
+        birthControl.setOnClickListener(v -> startNewActivity(BirthControlActivity.class, BIRTH));
+        teethControl.setOnClickListener(v -> startNewActivity(TeethControlActivity.class, TEETH));
+        treatmentButton.setOnClickListener(v -> startNewActivity(TreatmentActivity.class, TREATMENT));
+        allergies.setOnClickListener(v -> startNewActivity(AllergiesActivity.class, ALLERGIES));
     }
 
-    private void startNewActivity(Class clazz) {
+    private void startNewActivity(Class clazz, String usage) {
         Intent intent = new Intent(this, clazz);
+        intent.putExtra(USAGE, usage);
         startActivity(intent);
     }
 
