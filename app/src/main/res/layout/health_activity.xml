@@ -33,18 +33,18 @@
                     tools:ignore="MissingConstraints" />
 
                 <Button
-                    android:id="@+id/chipBtnEdit"
+                    android:id="@+id/rabidInjectionBtn"
                     android:layout_width="0dp"
                     android:layout_height="41dp"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="68dp"
+                    android:layout_marginTop="64dp"
                     android:layout_marginEnd="32dp"
                     android:background="@drawable/roundcornersrecyclerview"
                     android:text="Szczepienia - wścieklizna"
                     android:textColor="#000000"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,7 +62,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.495"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chipBtnEdit" />
+                    app:layout_constraintTop_toBottomOf="@+id/rabidInjectionBtn" />
 
                 <Button
                     android:id="@+id/dewormingButton"

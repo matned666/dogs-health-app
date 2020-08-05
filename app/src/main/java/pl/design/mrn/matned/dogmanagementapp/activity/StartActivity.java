@@ -130,7 +130,6 @@ public class StartActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void addNewDogList() {
         DogDao dao = new DogDao(StartActivity.this);
-        PositionListener.getInstance().setSelectedDogId(dao.findFirstRecordId());
         List<DogModel> dogs = dao.findAll();
         RecyclerView.Adapter<DogItemAdapter.ViewHolder> dogAdapter = new DogItemAdapter(this, dogs, getResources());
         dogRecyclerView.setAdapter(dogAdapter);

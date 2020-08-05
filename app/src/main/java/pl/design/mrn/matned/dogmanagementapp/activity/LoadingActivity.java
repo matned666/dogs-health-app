@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
+import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 public class LoadingActivity  extends AppCompatActivity {
 
@@ -20,6 +22,8 @@ public class LoadingActivity  extends AppCompatActivity {
         setContentView(R.layout.loading_app);
         ImageView imageView = findViewById(R.id.running_dog);
         imageView.setBackgroundResource(R.drawable.dog_anim);
+        DogDao dao = new DogDao(this);
+        PositionListener.getInstance().setSelectedDogId(dao.findFirstRecordId());
         runningDog = (AnimationDrawable) imageView.getBackground();
         Thread welcomeThread = new Thread() {
             @Override

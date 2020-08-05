@@ -55,6 +55,14 @@
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.UniqueSignActivityInfo"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.DataChoiceListActivityInfo"/>
 
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.AllergiesActivity"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.TreatmentActivity"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.TeethControlActivity"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.BirthControlActivity"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.InjectionsOtherActivity"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.InjectionsRabidActivity"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.DeWormingActivity"/>
+
 
 
 
