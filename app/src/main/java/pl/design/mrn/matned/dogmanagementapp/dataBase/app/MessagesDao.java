@@ -6,8 +6,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -91,9 +93,9 @@ public class MessagesDao extends SQLiteOpenHelper implements DaoMessageInterface
     public boolean update(Message updated_T_Data) {
         String query = "" +
                 "UPDATE " + MESSAGE_TABLE + " SET " +
-                MESSAGE_SUBJECT + " = '" + updated_T_Data.getSubject().name() + "'" +
-                MESSAGE + " = '" + updated_T_Data.getMessage() + "'" +
-                MESSAGE_STATUS + " = '" + updated_T_Data.getStatus().name() + "'" +
+                MESSAGE_SUBJECT + " = '" + updated_T_Data.getSubject().name() + "', " +
+                MESSAGE + " = '" + updated_T_Data.getMessage() + "', " +
+                MESSAGE_STATUS + " = '" + updated_T_Data.getStatus().name() + "' " +
                 "WHERE " +
                 MESSAGE_ID + " = " + updated_T_Data.getId();
         return getCursor(query);
@@ -101,10 +103,17 @@ public class MessagesDao extends SQLiteOpenHelper implements DaoMessageInterface
 
     @Override
     public boolean isWelcomeMessageSent() {
-            String query = "SELECT * FROM " + MESSAGE_TABLE +
-                    " WHERE " + MESSAGE_SUBJECT + " = " + MessageSubject.WELCOME.name();
+            String query = "SELECT * FROM " + MESSAGE_TABLE;
             List temp = getChipListByQuery(query);
         return temp.size() > 0;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    public boolean isAnyUnreadMessage() {
+        String query = "SELECT * FROM " + MESSAGE_TABLE;
+        return getChipListByQuery(query).stream()
+                .anyMatch(v -> v.getStatus() == MessageStatus.NOT_READ);
     }
 
     private List<Message> getChipListByQuery(String query) {

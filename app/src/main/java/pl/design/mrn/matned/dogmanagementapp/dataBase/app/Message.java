@@ -11,14 +11,10 @@ public class Message {
     private MessageStatus status;
 
     public Message() {
-    }
-
-    public Message(MessageSubject subject, String message) {
-        this.subject = subject;
-        this.message = message;
         status = MessageStatus.NOT_READ;
         messageDateTime = new Date();
     }
+
 
     public int getId() {
         return id;

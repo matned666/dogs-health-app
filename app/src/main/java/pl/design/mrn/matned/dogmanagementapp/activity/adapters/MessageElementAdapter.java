@@ -2,6 +2,7 @@ package pl.design.mrn.matned.dogmanagementapp.activity.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,30 +19,26 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.activity.MessageActivity;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.app.Message;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.app.MessageStatus;
-import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.app.MessagesDao;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT_MESSAGE;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.MESSAGE;
 
 
 public class MessageElementAdapter extends RecyclerView.Adapter<MessageElementAdapter.ViewHolder>  {
 
     private List<Message> messages;
-    private DataPositionListener dataPositionListener;
-    private int selectedPosition;
-    private String usage;
     private Context context;
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_MESSAGE);
 
-    public MessageElementAdapter(List<Message> messages, String usage, Context context) {
+    public MessageElementAdapter(Context context, List<Message> messages) {
         this.context = context;
-        this.usage = usage;
         this.messages = messages;
-        this.dataPositionListener = DataPositionListener.getInstance();
-        this.selectedPosition = dataPositionListener.getPosition();
     }
 
     @NonNull
@@ -58,18 +55,22 @@ public class MessageElementAdapter extends RecyclerView.Adapter<MessageElementAd
         Message message = messages.get(position);
         holder.messageTitle.setText(message.getSubject().name());
         holder.message.setText(message.getMessage());
-        holder.message.setText(dateFormat.format(message.getMessageDateTime()));
+        holder.messageDateTime.setText(dateFormat.format(message.getMessageDateTime()));
         if (message.getStatus() == MessageStatus.READ) {
-            holder.messageIcon.setCompoundDrawablesRelative(Drawable.createFromPath("@drawable/ic_message"),null,null,null);
+            Drawable img = context.getResources().getDrawable(R.drawable.ic_message);
+            holder.messageIcon.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
         }else{
-            holder.messageIcon.setCompoundDrawablesRelative(Drawable.createFromPath("@drawable/ic_message_incoming"),null,null,null);
+            Drawable img = context.getResources().getDrawable(R.drawable.ic_message_incoming);
+            holder.messageIcon.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
         }
-
         holder.holderButton.setOnClickListener(v -> {
             message.setStatus(MessageStatus.READ);
-            Toast.makeText(context,"Jeszcze nie działa", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(context, ChipActivityEdit.class);
-//                context.startActivity(intent);
+                MessagesDao dao = new MessagesDao(context);
+                message.setStatus(MessageStatus.READ);
+                dao.update(message);
+                Intent intent = new Intent(context, MessageActivity.class);
+                intent.putExtra(MESSAGE, message.getId());
+                context.startActivity(intent);
 
         });
     }

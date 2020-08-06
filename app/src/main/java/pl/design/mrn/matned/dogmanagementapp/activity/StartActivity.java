@@ -2,6 +2,7 @@ package pl.design.mrn.matned.dogmanagementapp.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.dataBase.app.MessagesDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.adapters.DogItemAdapter;
@@ -31,7 +33,7 @@ public class StartActivity extends AppCompatActivity {
     private Button goToDogDataCard;
     private Button goToSettingsCard;
     private Button goToInfoCard;
-    private Button gotToEmergencyCard;
+    private Button gotToMessagesCard;
 
     private Button addDogButton;
 
@@ -55,7 +57,20 @@ public class StartActivity extends AppCompatActivity {
             positionListener = (PositionListener) savedInstanceState.get("POSITION_HOLDER");
         }
         initView();
+    }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MessagesDao mDao = new MessagesDao(this);
+        if (mDao.isAnyUnreadMessage()){
+            Drawable img = getResources().getDrawable(R.drawable.ic_message_incoming);
+            gotToMessagesCard.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+        }else{
+            Drawable img = getResources().getDrawable(R.drawable.ic_message);
+            gotToMessagesCard.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+        }
     }
 
     @Override
@@ -80,7 +95,7 @@ public class StartActivity extends AppCompatActivity {
         goToDogDataCard = findViewById(R.id.dogButton);
         goToSettingsCard = findViewById(R.id.settingsButton);
         goToInfoCard = findViewById(R.id.infoButton);
-        gotToEmergencyCard = findViewById(R.id.emergencyButton);
+        gotToMessagesCard = findViewById(R.id.emergencyButton);
         dogRecyclerView = findViewById(R.id.recyclerViewMain);
         addDogButton = findViewById(R.id.addDogButton);
     }
@@ -95,10 +110,8 @@ public class StartActivity extends AppCompatActivity {
         goToSettingsCard.setOnClickListener(clickListener(SettingsActivity.class, null));
         goToInfoCard.setOnClickListener(clickListener(InfoActivity.class, null));
         addDogButton.setOnClickListener(clickListenerAdd());
-        gotToEmergencyCard.setOnClickListener(clickListener(MessagesListActivity.class, null));
+        gotToMessagesCard.setOnClickListener(clickListener(MessagesListActivity.class, null));
     }
-
-
 
     private View.OnClickListener clickListener(Class aClass, String usage) {
         return v -> {

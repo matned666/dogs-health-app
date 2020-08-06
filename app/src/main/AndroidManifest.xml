@@ -63,6 +63,8 @@
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.InjectionsRabidActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.DeWormingActivity"/>
 
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.MessageActivity"/>
+
 
 
 
