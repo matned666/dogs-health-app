@@ -1,17 +1,23 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.app;
 
-public class Messages {
+import java.util.Date;
+
+public class Message {
 
     private int id;
     private MessageSubject subject;
     private String message;
+    private Date messageDateTime;
     private MessageStatus status;
 
+    public Message() {
+    }
 
-    public Messages(MessageSubject subject, String message) {
+    public Message(MessageSubject subject, String message) {
         this.subject = subject;
         this.message = message;
         status = MessageStatus.NOT_READ;
+        messageDateTime = new Date();
     }
 
     public int getId() {
@@ -38,6 +44,14 @@ public class Messages {
         this.message = message;
     }
 
+    public Date getMessageDateTime() {
+        return messageDateTime;
+    }
+
+    public void setMessageDateTime(Date messageDateTime) {
+        this.messageDateTime = messageDateTime;
+    }
+
     public MessageStatus getStatus() {
         return status;
     }
@@ -46,12 +60,6 @@ public class Messages {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Messages{" +
-                "id=" + id +
-                ", subject=" + subject +
-                ", message='" + message + '\'' +
-                '}';
-    }
+
+
 }

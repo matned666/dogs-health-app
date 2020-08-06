@@ -95,7 +95,7 @@ public class StartActivity extends AppCompatActivity {
         goToSettingsCard.setOnClickListener(clickListener(SettingsActivity.class, null));
         goToInfoCard.setOnClickListener(clickListener(InfoActivity.class, null));
         addDogButton.setOnClickListener(clickListenerAdd());
-        gotToEmergencyCard.setOnClickListener(v -> Toast.makeText(StartActivity.this, "Position: "+ positionListener.getPosition(), Toast.LENGTH_SHORT).show());
+        gotToEmergencyCard.setOnClickListener(clickListener(MessagesListActivity.class, null));
     }
 
 

@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:id="@+id/injection_item_chipItemButton"
+        android:id="@+id/messageButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Button
-                android:id="@+id/emergencyButton2"
+                android:id="@+id/messageIcon"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/messageroundonesidecornerotherblack"
@@ -67,7 +67,7 @@
                 app:layout_constraintGuide_percent="0.84" />
 
             <TextView
-                android:id="@+id/injection_item_injectionMedicine"
+                android:id="@+id/messageTextView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:hint="@string/dog_name"
@@ -83,7 +83,7 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline12" />
 
             <TextView
-                android:id="@+id/injection_item_injectionTitleTextView"
+                android:id="@+id/messageDateTime"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/squarecornersrecyclerviewelementroundbottomrightcorner"
@@ -95,12 +95,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/injection_item_injectionMedicine"
+                app:layout_constraintStart_toStartOf="@+id/messageTextView"
                 app:layout_constraintTop_toTopOf="@+id/guideline14"
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
-                android:id="@+id/injection_item_injectionTitleTextView2"
+                android:id="@+id/messageTitleTextView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/squarecornersrecyclerviewelementroundtoprightcorner"
@@ -109,10 +109,10 @@
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/injection_item_injectionMedicine"
+                app:layout_constraintBottom_toTopOf="@+id/messageTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/injection_item_injectionMedicine"
+                app:layout_constraintStart_toStartOf="@+id/messageTextView"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
 

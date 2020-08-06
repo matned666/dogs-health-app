@@ -3,6 +3,7 @@ package pl.design.mrn.matned.dogmanagementapp;
 public class Statics {
 
     public static final String DATE_FORMAT = "dd MMM yyyy";
+    public static final String DATE_FORMAT_MESSAGE = "E, dd MMM yyyy HH:mm:ss z";
 
     public static final String USAGE = "USAGE";
 
@@ -64,7 +65,6 @@ public class Statics {
     public static final String NOTE_DATE = "NOTE_DATE" ;
     public static final String NOTE = "NOTE" ;
 
-
     public static final String DOGS_OWNER_TABLE = "DOGS_OWNER_TABLE";
     public static final String OWNER_ID = "OWNER_ID";
     public static final String OWNER_NAME = "OWNER_NAME";
@@ -89,6 +89,14 @@ public class Statics {
     public static final String BREEDING_EMAIL = "BREEDING_EMAIL";
     public static final String BREEDING_DESCRIPTION = "BREEDING_DESCRIPTION";
 
-    public static final String DATA_SPLITMENT_REGEX = ">>";
+    public static final String MESSAGE_TABLE = "MESSAGE_TABLE";
+    public static final String MESSAGE_ID = "MESSAGE_ID";
+    public static final String MESSAGE_SUBJECT = "MESSAGE_SUBJECT";
+    public static final String MESSAGE = "MESSAGE";
+    public static final String MESSAGE_DATE_TIME = "MESSAGE_DATE_TIME";
+    public static final String MESSAGE_STATUS = "MESSAGE_STATUS";
 
+
+
+    public static final String DATA_SPLITMENT_REGEX = ">>";
 }

@@ -1,10 +1,6 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.dog;
 
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-
-import androidx.annotation.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +15,7 @@ public class DataBaseCreation {
     public static void create(SQLiteDatabase db) {
         List<String> tables = Arrays.asList(
                 CREATE_DOGS_TABLE,
+                CREATE_MESSAGE_TABLE,
                 CREATE_BREEDING_TABLE,
                 CREATE_CHIP_TABLE,
                 CREATE_NOTES_TABLE,
@@ -41,6 +38,14 @@ public class DataBaseCreation {
             DOG_COLOR + " TEXT, " +
             DOG_PHOTO + " TEXT, " +
             DOG_SEX + " TEXT );";
+
+    private static final String CREATE_MESSAGE_TABLE = "CREATE TABLE " + MESSAGE_TABLE + "(" +
+            MESSAGE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            MESSAGE_SUBJECT + " TEXT, " +
+            MESSAGE + " TEXT, " +
+            MESSAGE_DATE_TIME + " TEXT, " +
+            MESSAGE_STATUS + " TEXT );";
+
     private static final String CREATE_BREEDING_TABLE = "CREATE TABLE " + BREEDING_TABLE + "(" +
             BREEDING_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             BREEDING_NAME + " TEXT, " +

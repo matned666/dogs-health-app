@@ -1,6 +1,7 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.app;
 
 public enum MessageSubject {
+    WELCOME,
     ERROR,
     WARNING,
     UPDATE,
