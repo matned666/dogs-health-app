@@ -27,7 +27,7 @@
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.HealthActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.SettingsActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.InfoActivity"/>
-        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.EmergencyActivity"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.MessagesListActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.Add_DogActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.Edit_DogActivity"/>
 
