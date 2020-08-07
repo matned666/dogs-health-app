@@ -1,4 +1,4 @@
-package pl.design.mrn.matned.dogmanagementapp.activity.health;
+package pl.design.mrn.matned.dogmanagementapp.activity.health.add;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
 
-public class TeethControlActivity extends AppCompatActivity {
+public class TeethControlActivityAdd extends AppCompatActivity {
 
     private TextView label;
     private RecyclerView recyclerView;

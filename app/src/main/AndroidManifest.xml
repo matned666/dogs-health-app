@@ -63,6 +63,24 @@
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.InjectionsRabidActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.DeWormingActivity"/>
 
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.add.AllergiesActivityAdd"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.add.TreatmentActivityAdd"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.add.TeethControlActivityAdd"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.add.BirthControlActivityAdd"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.add.InjectionsOtherActivityAdd"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.add.InjectionsRabidActivityAdd"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.add.DeWormingActivityAdd"/>
+
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.edit.AllergiesActivityEdit"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.edit.TreatmentActivityEdit"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.edit.TeethControlActivityEdit"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.edit.BirthControlActivityEdit"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.edit.InjectionsOtherActivityEdit"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.edit.InjectionsRabidActivityEdit"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.edit.DeWormingActivityEdit"/>
+
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.health.HealthListActivity"/>
+
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.MessageActivity"/>
 
 

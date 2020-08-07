@@ -10,6 +10,7 @@ import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.AllergiesActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.BirthControlActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.DeWormingActivity;
+import pl.design.mrn.matned.dogmanagementapp.activity.health.HealthListActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.InjectionsOtherActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.InjectionsRabidActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.TeethControlActivity;
@@ -42,17 +43,17 @@ public class HealthActivity extends AppCompatActivity {
     }
 
     private void onClickListeners() {
-        rabidInjection.setOnClickListener(v -> startNewActivity(InjectionsRabidActivity.class, INJECTION));
-        otherInjections.setOnClickListener(v -> startNewActivity(InjectionsOtherActivity.class, INJECTION));
-        deworming.setOnClickListener(v -> startNewActivity(DeWormingActivity.class, DEWORMING));
-        birthControl.setOnClickListener(v -> startNewActivity(BirthControlActivity.class, BIRTH));
-        teethControl.setOnClickListener(v -> startNewActivity(TeethControlActivity.class, TEETH));
-        treatmentButton.setOnClickListener(v -> startNewActivity(TreatmentActivity.class, TREATMENT));
-        allergies.setOnClickListener(v -> startNewActivity(AllergiesActivity.class, ALLERGIES));
+        rabidInjection.setOnClickListener(v -> startNewActivity(R_INJECTION));
+        otherInjections.setOnClickListener(v -> startNewActivity(O_INJECTION));
+        deworming.setOnClickListener(v -> startNewActivity(DEWORMING));
+        birthControl.setOnClickListener(v -> startNewActivity(BIRTH));
+        teethControl.setOnClickListener(v -> startNewActivity(TEETH));
+        treatmentButton.setOnClickListener(v -> startNewActivity(TREATMENT));
+        allergies.setOnClickListener(v -> startNewActivity(ALLERGIES));
     }
 
-    private void startNewActivity(Class clazz, String usage) {
-        Intent intent = new Intent(this, clazz);
+    private void startNewActivity(String usage) {
+        Intent intent = new Intent(this, HealthListActivity.class);
         intent.putExtra(USAGE, usage);
         startActivity(intent);
     }

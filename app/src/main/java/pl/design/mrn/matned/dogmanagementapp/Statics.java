@@ -99,4 +99,6 @@ public class Statics {
 
 
     public static final String DATA_SPLITMENT_REGEX = ">>";
+    public static final String R_INJECTION = "R_INJECTION";
+    public static final String O_INJECTION = "O_INJECTION";
 }
