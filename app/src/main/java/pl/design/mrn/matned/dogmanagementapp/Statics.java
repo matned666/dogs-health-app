@@ -101,4 +101,15 @@ public class Statics {
     public static final String DATA_SPLITMENT_REGEX = ">>";
     public static final String R_INJECTION = "R_INJECTION";
     public static final String O_INJECTION = "O_INJECTION";
+
+    public static final String ALLERGIES_TABLE = "ALLERGIES_TABLE";
+    public static final String ALLERGY_ID = "ALLERGY_ID";
+    public static final String ALLERGEN = "ALLERGEN";
+    public static final String ALLERGY_DESCRIPTION = "ALLERGY_DESCRIPTION";
+    public static final String ALLERGY_DETECTION_DATE = "ALLERGY_DETECTION_DATE";
+    public static final String WAS_ALLERGY_TREATED = "WAS_ALLERGY_TREATED";
+    public static final String ALLERGY_DATE_OF_TREATMENT = "ALLERGY_DATE_OF_TREATMENT";
+    public static final String ALLERGY_DATE_OF_NEXT_TREATMENT = "ALLERGY_DATE_OF_NEXT_TREATMENT";
+    public static final String ALLERGY_NOTE = "ALLERGY_NOTE";
+    public static final String ALLERGY_STAMP_PHOTO = "ALLERGY_STAMP_PHOTO";
 }

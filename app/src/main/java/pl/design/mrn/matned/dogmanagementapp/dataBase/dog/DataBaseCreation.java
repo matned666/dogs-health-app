@@ -90,4 +90,17 @@ public class DataBaseCreation {
             TATTOO_DATE + " TEXT, " +
             TATTOO_DESCRIPTION + " TEXT, " +
             DOG_ID + " INTEGER );";
+
+    private static final String CREATE_ALLERGIES_TABLE = "CREATE TABLE " + ALLERGIES_TABLE + "(" +
+            ALLERGY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            ALLERGEN + " TEXT, " +
+            ALLERGY_DESCRIPTION + " TEXT, " +
+            ALLERGY_DETECTION_DATE + " TEXT, " +
+            WAS_ALLERGY_TREATED + " INTEGER DEFAULT 0, " +
+            ALLERGY_DATE_OF_TREATMENT + " TEXT, " +
+            ALLERGY_DATE_OF_NEXT_TREATMENT + " TEXT, " +
+            ALLERGY_NOTE + " TEXT, " +
+            ALLERGY_STAMP_PHOTO + " TEXT, " +
+            DOG_ID + " INTEGER );";
+
 }
