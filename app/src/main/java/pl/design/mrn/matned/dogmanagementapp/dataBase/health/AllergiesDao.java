@@ -1,5 +1,6 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.health;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -14,8 +15,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoFragmentInterface;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoInterface;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Chip;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGEN;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGIES_TABLE;
@@ -26,12 +25,6 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGY_DETECTION_DA
 import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGY_ID;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGY_NOTE;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGY_STAMP_PHOTO;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.CHIP_DESCRIPTION;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.CHIP_EXP_DATE;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.CHIP_ID;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.CHIP_NUMBER;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.CHIP_PUT_DATE;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.CHIP_TABLE;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATABASE_NAME;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DOG_ID;
@@ -39,22 +32,39 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.WAS_ALLERGY_TREATED;
 
 public class AllergiesDao extends SQLiteOpenHelper implements DaoFragmentInterface<Allergies> {
 
+    @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
     public AllergiesDao(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
-
-    @Override
-    public boolean update(Allergies updated_T_Data) {
-        return false;
-    }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
 
     }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    }
+
+
+    @Override
+    public boolean update(Allergies updated_T_Data) {
+        String query = "" +
+                "UPDATE " + ALLERGIES_TABLE + " SET " +
+                ALLERGEN + " = '" + updated_T_Data.getAllergen() + "', " +
+                WAS_ALLERGY_TREATED + " = " + (updated_T_Data.isWasTreated()? 1 : 0) + "";
+        if (updated_T_Data.getDescription() != null) query += ", " + ALLERGY_DESCRIPTION + " = '" + updated_T_Data.getDescription() + "'";
+        if (updated_T_Data.getDateOfDetection() != null) query += ", " + ALLERGY_DETECTION_DATE + " = '" + dateFormat.format(updated_T_Data.getDateOfDetection()) + "'";
+        if (updated_T_Data.getDateOfTreatment() != null) query += ", " + ALLERGY_DATE_OF_TREATMENT + " = '" + dateFormat.format(updated_T_Data.getDateOfTreatment()) + "'";
+        if (updated_T_Data.getDateOfNextTreatment() != null) query += ", " + ALLERGY_DATE_OF_NEXT_TREATMENT + " = '" + dateFormat.format(updated_T_Data.getDateOfNextTreatment()) + "'";
+        if (updated_T_Data.getNote() != null) query += ", " + ALLERGY_NOTE + " = '" + updated_T_Data.getNote() + "'";
+        if (updated_T_Data.getPhoto() != null) query += ", " + ALLERGY_STAMP_PHOTO + " = '" + updated_T_Data.getPhoto() + "'";
+        query += ", " + DOG_ID + " = " + updated_T_Data.getDogId() + " " +
+                "WHERE " +
+                ALLERGY_ID + " = " + updated_T_Data.getId();
+        return getCursor(query);    }
 
     @Override
     public boolean add(Allergies allergies) {
@@ -88,7 +98,7 @@ public class AllergiesDao extends SQLiteOpenHelper implements DaoFragmentInterfa
         Cursor cursor = db.rawQuery(query, null);
         Allergies allergies = null;
         if (cursor.moveToFirst()) {
-//            allergies = getAllergy(cursor);
+            allergies = getAllergy(cursor);
         }
         cursor.close();
         db.close();
@@ -107,18 +117,14 @@ public class AllergiesDao extends SQLiteOpenHelper implements DaoFragmentInterfa
         return getCursor(query);      }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-//        TODO
-    }
-
-    @Override
     public List<Allergies> getListByMasterId(int id) {
-        return null;
-    }
+        String query = "SELECT * FROM " + ALLERGIES_TABLE + " WHERE " + DOG_ID + " = " + id;
+        return getListByQuery(query);    }
 
     @Override
     public boolean remove(int id) {
-        return false;
+        String query = "DELETE FROM " + ALLERGIES_TABLE + " WHERE " + ALLERGY_ID + " = " + id;
+        return getCursor(query);
     }
 
     private boolean getCursor(String query) {
@@ -129,23 +135,32 @@ public class AllergiesDao extends SQLiteOpenHelper implements DaoFragmentInterfa
         return end;
     }
 
-//    private Allergies getAllergy(Cursor cursor) {
-//        Allergies all = new Chip(cursor.getInt(0));
-//        all.setChipNumber(cursor.getString(1));
-//        try {
-//            all.setPutDate(dateFormat.parse(cursor.getString(2)));
-//        } catch (Exception e) {
-//            all.setPutDate(null);
-//        }
-//        try {
-//            all.setExpDate(dateFormat.parse(cursor.getString(3)));
-//        } catch (Exception e) {
-//            all.setExpDate(null);
-//        }
-//        all.setChipDescription(cursor.getString(4));
-//        all.setDogId(cursor.getInt(5));
-//        return all;
-//    }
+    private Allergies getAllergy(Cursor cursor) {
+        Allergies a = new Allergies();
+        a.setId(cursor.getInt(0));
+        a.setAllergen(cursor.getString(1));
+        a.setDescription(cursor.getString(2));
+        try {
+            a.setDateOfDetection(dateFormat.parse(cursor.getString(3)));
+        } catch (Exception e) {
+            a.setDateOfDetection(null);
+        }
+        a.setWasTreated(cursor.getInt(4) == 1);
+        try {
+            a.setDateOfTreatment(dateFormat.parse(cursor.getString(5)));
+        } catch (Exception e) {
+            a.setDateOfTreatment(null);
+        }
+        try {
+            a.setDateOfNextTreatment(dateFormat.parse(cursor.getString(6)));
+        } catch (Exception e) {
+            a.setDateOfNextTreatment(null);
+        }
+        a.setNote(cursor.getString(7));
+        a.setPhoto(cursor.getString(8));
+        a.setDogId(cursor.getInt(9));
+        return a;
+    }
 
     private List<Allergies> getListByQuery(String query) {
         SQLiteDatabase db = this.getReadableDatabase();
