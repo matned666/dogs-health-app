@@ -27,7 +27,7 @@
 
         <EditText
             android:id="@+id/chipDescription"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:hint="Opis"
             android:inputType="textCapSentences|textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +72,7 @@
 
         <EditText
             android:id="@+id/chipNumber"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:ems="10"
             android:hint="Numer chipu"
             android:inputType="phone"
@@ -114,7 +114,7 @@
 
         <EditText
             android:id="@+id/chipPutDate"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -126,7 +126,7 @@
 
         <EditText
             android:id="@+id/chipExpiryDate"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"

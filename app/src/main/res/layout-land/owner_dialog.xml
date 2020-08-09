@@ -118,7 +118,7 @@
 
         <EditText
             android:id="@+id/ownerName"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:autofillHints=""
             android:hint="Imię"
             app:layout_constraintEnd_toStartOf="@+id/ownerAddress"
@@ -128,7 +128,7 @@
 
         <EditText
             android:id="@+id/ownerSurname"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:autofillHints=""
@@ -140,7 +140,7 @@
 
         <EditText
             android:id="@+id/ownerDescription"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:layout_width="0dp"
             android:layout_height="108dp"
             android:hint="Opis "
@@ -151,7 +151,7 @@
 
         <EditText
             android:id="@+id/ownerToDate"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -164,7 +164,7 @@
 
         <EditText
             android:id="@+id/ownerFromDate"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="25dp"
             android:ems="10"
@@ -179,7 +179,7 @@
 
         <EditText
             android:id="@+id/ownerAddress"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x4"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="0dp"
@@ -193,7 +193,7 @@
 
         <EditText
             android:id="@+id/ownerPhone"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:ems="10"
             android:hint="Telefon"
             android:inputType="phone"
@@ -203,7 +203,7 @@
 
         <EditText
             android:id="@+id/ownerEmail"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:hint="e-mail"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toStartOf="@+id/ownerAddress"
@@ -237,7 +237,7 @@
 
         <Spinner
             android:id="@+id/ownerDataSpinner"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />

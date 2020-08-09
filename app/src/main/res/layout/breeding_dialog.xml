@@ -26,7 +26,7 @@
 
         <EditText
             android:id="@+id/breedingName"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_marginTop="32dp"
             android:autofillHints=""
             android:hint="Nazwa hodowli"
@@ -37,7 +37,7 @@
 
         <EditText
             android:id="@+id/breedingDescription"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:hint="Opis hodowli"
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +96,7 @@
 
         <EditText
             android:id="@+id/breedingAddress"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x4"
             android:layout_marginTop="32dp"
             android:hint="Adres"
             android:inputType="textMultiLine"
@@ -107,7 +107,7 @@
 
         <EditText
             android:id="@+id/breedingPhone"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:ems="10"
             android:hint="Telefon"
             android:inputType="phone"
@@ -116,7 +116,7 @@
 
         <EditText
             android:id="@+id/breedingEmail"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:hint="e-mail"
             android:inputType="textEmailAddress"
             app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +157,7 @@
 
         <Spinner
             android:id="@+id/breedingDataSpinner"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />

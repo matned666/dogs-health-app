@@ -27,7 +27,7 @@
 
         <EditText
             android:id="@+id/chipDescriptionInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:layout_width="323dp"
             android:layout_height="159dp"
             android:hint="Opis"
@@ -73,7 +73,7 @@
 
         <EditText
             android:id="@+id/chipNumberInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="Numer chipu"
@@ -104,7 +104,7 @@
 
         <EditText
             android:id="@+id/chipPutDateInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -116,7 +116,7 @@
 
         <EditText
             android:id="@+id/chipExpiryDateInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"

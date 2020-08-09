@@ -100,7 +100,7 @@
 
         <TextView
             android:id="@+id/ownerNameInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:autofillHints=""
             android:hint="Imię"
             android:background="@drawable/whitetext"
@@ -111,7 +111,7 @@
 
         <TextView
             android:id="@+id/ownerSurnameInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:autofillHints=""
@@ -124,7 +124,7 @@
 
         <TextView
             android:id="@+id/ownerDescriptionInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:layout_width="0dp"
             android:layout_height="108dp"
             android:hint="Opis "
@@ -135,7 +135,7 @@
 
         <TextView
             android:id="@+id/ownerToDateInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -149,7 +149,7 @@
 
         <TextView
             android:id="@+id/ownerFromDateInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -162,7 +162,7 @@
 
         <TextView
             android:id="@+id/ownerAddressInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x4"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="0dp"
@@ -176,7 +176,7 @@
 
         <TextView
             android:id="@+id/ownerPhoneInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:ems="10"
             android:hint="Telefon"
             android:background="@drawable/whitetext"
@@ -186,7 +186,7 @@
 
         <TextView
             android:id="@+id/ownerEmailInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:hint="e-mail"
             android:background="@drawable/whitetext"
             app:layout_constraintEnd_toStartOf="@+id/ownerAddressInfoTextView"

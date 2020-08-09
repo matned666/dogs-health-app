@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/breedingNameInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:autofillHints=""
             android:hint="Brak"
             android:background="@drawable/whitetext"
@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/breedingDescriptionInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:hint="Brak"
             android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
 
         <TextView
             android:id="@+id/breedingAddressInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x4"
             android:hint="Brak"
             android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +97,7 @@
 
         <TextView
             android:id="@+id/breedingPhoneInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:ems="10"
             android:background="@drawable/whitetext"
             android:hint="Brak"
@@ -106,7 +106,7 @@
 
         <TextView
             android:id="@+id/breedingEmailInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:background="@drawable/whitetext"
             android:hint="Brak"
             app:layout_constraintStart_toStartOf="parent"

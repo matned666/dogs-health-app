@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/noteDescriptionInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:hint="Brak"
             android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +74,7 @@
 
         <TextView
             android:id="@+id/noteDate_noteInfo"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

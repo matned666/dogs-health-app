@@ -8,6 +8,7 @@ public class BirthControl {
     private int numberOfChildren;
     private String description;
     private Date dateOfBirth;
+    private String note;
     private String photo;
     private int dogId;
 
@@ -20,6 +21,14 @@ public class BirthControl {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public int getNumberOfChildren() {

@@ -21,7 +21,8 @@ public class DataBaseCreation {
                 CREATE_NOTES_TABLE,
                 CREATE_OWNERS_TABLE,
                 CREATE_SIGNS_TABLE,
-                CREATE_TATTOO_TABLE
+                CREATE_TATTOO_TABLE,
+                CREATE_ALLERGIES_TABLE
         );
         for (String el : tables) {
             db.execSQL(el);

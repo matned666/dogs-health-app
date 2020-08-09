@@ -37,7 +37,7 @@
 
         <EditText
             android:id="@+id/signDescription"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:hint="Opis"
             android:inputType="textMultiLine"            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
 
         <TextView
             android:id="@+id/tattooDescriptionTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:hint="Opis"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"

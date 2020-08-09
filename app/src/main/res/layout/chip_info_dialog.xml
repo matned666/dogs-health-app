@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/chipDescriptionInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:hint="Brak"
             android:maxLines="6"
             android:singleLine="false"
@@ -75,7 +75,7 @@
 
         <TextView
             android:id="@+id/chipNumberInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:ems="10"
             android:hint="Brak"
             android:background="@drawable/whitetext"
@@ -106,7 +106,7 @@
 
         <TextView
             android:id="@+id/chipPutDateInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -118,7 +118,7 @@
 
         <TextView
             android:id="@+id/chipExpiryDateInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"

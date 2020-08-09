@@ -27,7 +27,7 @@
 
         <EditText
             android:id="@+id/breedingName"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_marginEnd="16dp"
             android:autofillHints=""
             android:hint="Nazwa hodowli"
@@ -37,7 +37,7 @@
 
         <EditText
             android:id="@+id/breedingDescription"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="8dp"
@@ -101,7 +101,7 @@
 
         <EditText
             android:id="@+id/breedingAddress"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x4"
             android:layout_width="0dp"
             android:layout_height="110dp"
             android:hint="Adres"
@@ -113,7 +113,7 @@
 
         <EditText
             android:id="@+id/breedingPhone"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="Telefon"
@@ -124,7 +124,7 @@
 
         <EditText
             android:id="@+id/breedingEmail"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:hint="e-mail"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toStartOf="@+id/breedingAddress"
@@ -164,7 +164,7 @@
 
         <Spinner
             android:id="@+id/breedingDataSpinner"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="28dp"
             app:layout_constraintEnd_toEndOf="parent"

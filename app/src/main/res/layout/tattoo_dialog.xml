@@ -27,7 +27,7 @@
 
         <EditText
             android:id="@+id/tattooDescription"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:hint="Opis"
             android:inputType="textCapSentences|textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +84,7 @@
 
         <EditText
             android:id="@+id/tattooPutDate"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"

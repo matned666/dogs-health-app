@@ -27,7 +27,7 @@
 
         <EditText
             android:id="@+id/noteDescription"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:hint="Notatka"
             android:inputType="textCapSentences|textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"

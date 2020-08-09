@@ -21,6 +21,7 @@ import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.ChipActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.ChipActivityInfo;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Chip;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Allergies;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
@@ -30,19 +31,17 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
 
 public class AllergiesAdapter extends RecyclerView.Adapter<AllergiesAdapter.ViewHolder>  {
 
-    private List<Chip> ownersList;
+    private List<Allergies> allergiesList;
     private DataPositionListener dataPositionListener;
     private int selectedPosition;
-    private String usage;
     private Context context;
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-    public AllergiesAdapter(List<Chip> owners, String usage, Context context) {
+    public AllergiesAdapter(List<Allergies> allergiesList, Context context) {
         this.context = context;
-        this.usage = usage;
-        ownersList = owners;
+        this.allergiesList = allergiesList;
         this.dataPositionListener = DataPositionListener.getInstance();
         this.selectedPosition = dataPositionListener.getPosition();
     }
@@ -58,37 +57,37 @@ public class AllergiesAdapter extends RecyclerView.Adapter<AllergiesAdapter.View
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Chip chip = ownersList.get(position);
-        holder.chipNumber.setText(chip.getChipNumber());
-        if (chip.isActive()) {
-            holder.isActive.setTextColor(Color.GREEN);
-            holder.isActive.setText("Aktywny");
-        }else{
-            holder.isActive.setTextColor(Color.RED);
-            holder.isActive.setText("Nieaktywny");
-        }
-        if(selectedPosition == position) holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
-        else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);
-
-        holder.holderButton.setOnClickListener(v -> {
-            selectedPosition = position;
-            dataPositionListener.setPosition(position);
-            dataPositionListener.setSelectedItemId(chip.getChipId());
-            notifyDataSetChanged();
-            if (usage.equals(USAGE_EDIT) || usage.equals(USAGE_ADD)){
-                Intent intent = new Intent(context, ChipActivityEdit.class);
-                context.startActivity(intent);
-            } else {
-                Intent intent = new Intent(context, ChipActivityInfo.class);
-                context.startActivity(intent);
-            }
-        });
+//        Allergies allergies = allergiesList.get(position);
+//        holder.chipNumber.setText(allergies.getChipNumber());
+//        if (allergies.isActive()) {
+//            holder.isActive.setTextColor(Color.GREEN);
+//            holder.isActive.setText("Aktywny");
+//        }else{
+//            holder.isActive.setTextColor(Color.RED);
+//            holder.isActive.setText("Nieaktywny");
+//        }
+//        if(selectedPosition == position) holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
+//        else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);
+//
+//        holder.holderButton.setOnClickListener(v -> {
+//            selectedPosition = position;
+//            dataPositionListener.setPosition(position);
+//            dataPositionListener.setSelectedItemId(allergies.getChipId());
+//            notifyDataSetChanged();
+//            if (usage.equals(USAGE_EDIT) || usage.equals(USAGE_ADD)){
+//                Intent intent = new Intent(context, ChipActivityEdit.class);
+//                context.startActivity(intent);
+//            } else {
+//                Intent intent = new Intent(context, ChipActivityInfo.class);
+//                context.startActivity(intent);
+//            }
+//        });
     }
 
     @Override
     public int getItemCount() {
-        if(ownersList == null) return 0;
-        else return ownersList.size();
+        if(allergiesList == null) return 0;
+        else return allergiesList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
