@@ -7,12 +7,11 @@
     android:background="#FFFFFF">
 
     <TextView
-        android:id="@+id/textView27"
+        android:id="@+id/treatment_title"
         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Kontrola uzębienia:"
-        android:background="roun"
+        android:text="Porady ambulatoryjne/Kontrola/Zabieg/Choroba:"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline24"
@@ -42,6 +41,54 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/treatment_name_dataText"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="385dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Nazwa"
+                        android:background="@drawable/roundcornersrecyclerview"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/treatment_name_guideline"
+                        android:autofillHints="" />
+
+                    <TextView
+                        android:id="@+id/treatment_name_subtitle"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Rodzaj zabiegu/choroby:"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/treatment_name_guideline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/treatment_name_guideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="16dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
+                android:layout_width="match_parent"
                 android:layout_height="111dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,34 +100,34 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/teeth_description_dataText"
+                        android:id="@+id/treatment_description_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="384dp"
                         android:layout_height="95dp"
-                        android:hint="Opis uzębienia"
+                        android:hint="Opis zabiegu, przebieg choroby, leczenie"
                         android:background="@drawable/roundcornersrecyclerview"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/teeth_description_guideline"
+                        app:layout_constraintTop_toBottomOf="@+id/treatment_description_guideline"
                         android:autofillHints="" />
 
                     <TextView
-                        android:id="@+id/teeth_description_subtitle"
+                        android:id="@+id/treatment_description_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Opis kontroli:"
+                        android:text="Opis leczenia:"
                         android:textSize="12sp"
-                        app:layout_constraintBottom_toTopOf="@+id/teeth_description_guideline"
+                        app:layout_constraintBottom_toTopOf="@+id/treatment_description_guideline"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/teeth_description_guideline"
+                        android:id="@+id/treatment_description_guideline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -102,34 +149,34 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/teeth_date_dataText"
+                        android:id="@+id/treatment_date_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="385dp"
                         android:layout_height="wrap_content"
+                        android:inputType="date"
                         android:hint="Wybierz datę"
                         android:background="@drawable/roundcornersrecyclerview"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/teeth_date_guideLine"
-                        android:inputType="date"
+                        app:layout_constraintTop_toTopOf="@+id/treatment_date_guideline"
                         android:autofillHints="" />
 
                     <TextView
-                        android:id="@+id/teeth_date_subtitle"
+                        android:id="@+id/treatment_date_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Data kontroli:"
+                        android:text="Data zabiegu:"
                         android:textSize="12sp"
-                        app:layout_constraintBottom_toTopOf="@+id/teeth_date_guideLine"
+                        app:layout_constraintBottom_toTopOf="@+id/treatment_date_guideline"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/teeth_date_guideLine"
+                        android:id="@+id/treatment_date_guideline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -151,7 +198,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/teeth_next_date_dataText"
+                        android:id="@+id/allergen_name_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="385dp"
                         android:layout_height="wrap_content"
@@ -161,24 +208,24 @@
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/teeth_next_date_guideLine"
+                        app:layout_constraintTop_toTopOf="@+id/allergen_name_guideLine"
                         android:autofillHints="" />
 
                     <TextView
-                        android:id="@+id/teeth_next_date_subtitle"
+                        android:id="@+id/treatment_nextDate_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Data następnej kontroli:"
+                        android:text="Data następnego zabiegu:"
                         android:textSize="12sp"
-                        app:layout_constraintBottom_toTopOf="@+id/teeth_next_date_guideLine"
+                        app:layout_constraintBottom_toTopOf="@+id/allergen_name_guideLine"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/teeth_next_date_guideLine"
+                        android:id="@+id/allergen_name_guideLine"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -200,34 +247,34 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/teeth_note_dataText"
+                        android:id="@+id/treatment_note_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:hint="Notatka na temat kontroli, uwagi, postępowanie, reakcje"
-                        android:background="@drawable/roundcornersrecyclerview"
+                        android:hint="Notatka na temat zabiegu/ choroby"
                         android:textSize="14sp"
+                        android:background="@drawable/roundcornersrecyclerview"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/teeth_note_guideLine"
+                        app:layout_constraintTop_toTopOf="@+id/treatment_note_guideline"
                         android:autofillHints="" />
 
                     <TextView
-                        android:id="@+id/teeth_note_subtitle"
+                        android:id="@+id/treatment_note_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Notatka:"
                         android:textSize="12sp"
-                        app:layout_constraintBottom_toTopOf="@+id/teeth_note_guideLine"
+                        app:layout_constraintBottom_toTopOf="@+id/treatment_note_guideline"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/teeth_note_guideLine"
+                        android:id="@+id/treatment_note_guideline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -238,10 +285,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
                 android:layout_width="match_parent"
-                android:layout_height="352dp">
+                android:layout_height="match_parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout11"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -251,12 +297,26 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0">
 
+                    <ImageView
+                        android:id="@+id/logo3"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="2dp"
+                        android:contentDescription="@string/logo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@+id/guideline27"
+                        app:layout_constraintTop_toTopOf="@+id/guideline41"
+                        app:srcCompat="@drawable/anigif"
+                        tools:ignore="MissingConstraints" />
+
                     <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/allergen_name_guideLine"
+                        android:id="@+id/photo_length_guideline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        app:layout_constraintGuide_begin="234dp" />
+                        app:layout_constraintGuide_begin="295dp" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline27"
@@ -266,15 +326,14 @@
                         app:layout_constraintGuide_begin="171dp" />
 
                     <ImageView
-                        android:id="@+id/teeth_photo"
+                        android:id="@+id/treatment_photo"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
                         android:background="@drawable/roundcornerimageframe"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/guideline41"
                         app:layout_constraintEnd_toStartOf="@+id/guideline27"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -282,57 +341,52 @@
                         tools:ignore="VectorDrawableCompat" />
 
                     <Button
-                        android:id="@+id/teeth_save_btn"
+                        android:id="@+id/treatment_save_btn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:background="@drawable/round_black"
-                        android:text="zapisz"
+                        android:text="Zapisz"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/guideline27"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <Button
-                        android:id="@+id/teeth_back_btn"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="@drawable/round_black"
-                        android:text="powrót"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/guideline27"
-                        app:layout_constraintTop_toBottomOf="@+id/teeth_save_btn" />
-
-                    <Button
-                        android:id="@+id/teeth_delete_btn"
+                        android:id="@+id/treatment_delete_btn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:background="@drawable/roundcornersrecyclerviewred"
-                        android:text="usuń wpis"
+                        android:text="Usuń wpis"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/guideline27"
-                        app:layout_constraintTop_toBottomOf="@+id/teeth_back_btn" />
+                        app:layout_constraintTop_toBottomOf="@+id/treatment_back_btn" />
+
+                    <Button
+                        android:id="@+id/treatment_back_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/round_black"
+                        android:text="Powrót"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline27"
+                        app:layout_constraintTop_toBottomOf="@+id/treatment_save_btn" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline41"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="233dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <ImageView
-                    android:id="@+id/logo3"
-                    android:layout_width="0dp"
-                    android:layout_height="109dp"
-                    android:contentDescription="@string/logo"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout11"
-                    app:srcCompat="@drawable/anigif"
-                    tools:ignore="MissingConstraints" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
@@ -343,5 +397,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="37dp" />
+        app:layout_constraintGuide_begin="70dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
