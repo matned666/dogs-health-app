@@ -2,7 +2,7 @@ package pl.design.mrn.matned.dogmanagementapp.dataBase.health;
 
 import java.util.Date;
 
-public class Allergies {
+public class Allergies implements HealthInterface {
 
     private int id;
     private String allergen;

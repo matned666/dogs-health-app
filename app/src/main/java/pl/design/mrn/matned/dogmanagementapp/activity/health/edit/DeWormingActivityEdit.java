@@ -12,7 +12,7 @@ public class DeWormingActivityEdit extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.info_activity);
+        setContentView(R.layout.healthdata_deworming_add_edit);
     }
 
 

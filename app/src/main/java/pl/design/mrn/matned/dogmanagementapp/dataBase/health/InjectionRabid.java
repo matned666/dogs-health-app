@@ -2,7 +2,7 @@ package pl.design.mrn.matned.dogmanagementapp.dataBase.health;
 
 import java.util.Date;
 
-public class InjectionRabid {
+public class InjectionRabid  implements HealthInterface{
 
     private int id;
     private String medicine;

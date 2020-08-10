@@ -21,6 +21,7 @@ import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.ChipActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.ChipActivityInfo;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Chip;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.health.BirthControl;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
@@ -39,7 +40,7 @@ public class BirthControlAdapter extends RecyclerView.Adapter<BirthControlAdapte
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-    public BirthControlAdapter(List<Chip> owners, String usage, Context context) {
+    public BirthControlAdapter(List<BirthControl> owners, Context context) {
         this.context = context;
         this.usage = usage;
         ownersList = owners;

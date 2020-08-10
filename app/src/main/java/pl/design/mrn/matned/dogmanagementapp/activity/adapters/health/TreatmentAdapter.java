@@ -21,6 +21,7 @@ import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.ChipActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.ChipActivityInfo;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Chip;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Treatment;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
@@ -30,19 +31,17 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
 
 public class TreatmentAdapter extends RecyclerView.Adapter<TreatmentAdapter.ViewHolder>  {
 
-    private List<Chip> ownersList;
+    private List<Treatment> treatments;
     private DataPositionListener dataPositionListener;
     private int selectedPosition;
-    private String usage;
     private Context context;
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-    public TreatmentAdapter(List<Chip> owners, String usage, Context context) {
+    public TreatmentAdapter(List<Treatment> treatments, Context context) {
         this.context = context;
-        this.usage = usage;
-        ownersList = owners;
+        this.treatments = treatments;
         this.dataPositionListener = DataPositionListener.getInstance();
         this.selectedPosition = dataPositionListener.getPosition();
     }
@@ -50,7 +49,7 @@ public class TreatmentAdapter extends RecyclerView.Adapter<TreatmentAdapter.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_chip_info, null);
+            @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_, null);
         return new ViewHolder(view);
     }
 

@@ -19,7 +19,7 @@ public class TreatmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.data_list_activity);
+        setContentView(R.layout.healthdata_treatment);
     }
 
 

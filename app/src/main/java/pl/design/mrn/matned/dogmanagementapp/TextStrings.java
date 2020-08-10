@@ -19,4 +19,12 @@ public class TextStrings {
 
     public static final String ADD_DOG_SEX = "Podaj płeć psa: ";
 
+    public static final String ALLERGIES_TITLE = "Alergie:";
+    public static final String RABIES_VAXINE_TITLE = "Szczepienia przeciw wściekliźnie:";
+    public static final String OTHER_VAXINE_TITLE = "Szczepienia przeciw chorobom zakaźnym:";
+    public static final String TEETH_TITLE = "Kontrole uzębienia:";
+    public static final String BIRTH_TITLE = "Dzieci:";
+    public static final String TREATMENT_TITLE = "Historia zdrowia:";
+    public static final String DEWORMING_TITLE = "Historia odrobaczania:";
+
 }

@@ -2,7 +2,7 @@ package pl.design.mrn.matned.dogmanagementapp.dataBase.health;
 
 import java.util.Date;
 
-public class TeethControl {
+public class TeethControl  implements HealthInterface{
 
     private int id;
     private String description;
@@ -15,6 +15,7 @@ public class TeethControl {
     public TeethControl() {
     }
 
+    @Override
     public int getId() {
         return id;
     }
@@ -38,6 +39,7 @@ public class TeethControl {
     public void setDateOfControl(Date dateOfControl) {
         this.dateOfControl = dateOfControl;
     }
+
 
     public int getDogId() {
         return dogId;
