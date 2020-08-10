@@ -20,6 +20,7 @@ import java.util.List;
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.ChipActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.ChipActivityInfo;
+import pl.design.mrn.matned.dogmanagementapp.activity.health.BirthControlActivity;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Chip;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.BirthControl;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
@@ -31,7 +32,7 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
 
 public class BirthControlAdapter extends RecyclerView.Adapter<BirthControlAdapter.ViewHolder>  {
 
-    private List<Chip> ownersList;
+    private List<BirthControl> birthControlList;
     private DataPositionListener dataPositionListener;
     private int selectedPosition;
     private String usage;
@@ -40,10 +41,10 @@ public class BirthControlAdapter extends RecyclerView.Adapter<BirthControlAdapte
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-    public BirthControlAdapter(List<BirthControl> owners, Context context) {
+    public BirthControlAdapter(List<BirthControl> birthControlList, Context context) {
         this.context = context;
         this.usage = usage;
-        ownersList = owners;
+        this.birthControlList = birthControlList;
         this.dataPositionListener = DataPositionListener.getInstance();
         this.selectedPosition = dataPositionListener.getPosition();
     }
@@ -59,51 +60,36 @@ public class BirthControlAdapter extends RecyclerView.Adapter<BirthControlAdapte
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Chip chip = ownersList.get(position);
-        holder.chipNumber.setText(chip.getChipNumber());
-        if (chip.isActive()) {
-            holder.isActive.setTextColor(Color.GREEN);
-            holder.isActive.setText("Aktywny");
-        }else{
-            holder.isActive.setTextColor(Color.RED);
-            holder.isActive.setText("Nieaktywny");
-        }
+        BirthControl birthControl = birthControlList.get(position);
+        holder.birthDate.setText(dateFormat.format(birthControl.getDateOfBirth()));
         if(selectedPosition == position) holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
         else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);
-
         holder.holderButton.setOnClickListener(v -> {
             selectedPosition = position;
             dataPositionListener.setPosition(position);
-            dataPositionListener.setSelectedItemId(chip.getChipId());
+            dataPositionListener.setSelectedItemId(birthControl.getId());
             notifyDataSetChanged();
-            if (usage.equals(USAGE_EDIT) || usage.equals(USAGE_ADD)){
-                Intent intent = new Intent(context, ChipActivityEdit.class);
+                Intent intent = new Intent(context, BirthControlActivity.class);
                 context.startActivity(intent);
-            } else {
-                Intent intent = new Intent(context, ChipActivityInfo.class);
-                context.startActivity(intent);
-            }
         });
     }
 
     @Override
     public int getItemCount() {
-        if(ownersList == null) return 0;
-        else return ownersList.size();
+        if(birthControlList == null) return 0;
+        else return birthControlList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private ConstraintLayout holderButton;
-        private TextView chipNumber;
-        private TextView isActive;
+        private TextView birthDate;
 
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.holderButton = itemView.findViewById(R.id.data_item_chipItemButton);
-            this.chipNumber = itemView.findViewById(R.id.data_item_chip_name);
-            this.isActive = itemView.findViewById(R.id.data_item_isActiveInfoItem);
+            this.holderButton = itemView.findViewById(R.id.birth_element_button);
+            this.birthDate = itemView.findViewById(R.id.birth_element_dateOfBirth);
         }
 
 
