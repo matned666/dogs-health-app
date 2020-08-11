@@ -104,12 +104,11 @@
         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="roun"
         android:text="Kontrola uzębienia:"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline24"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

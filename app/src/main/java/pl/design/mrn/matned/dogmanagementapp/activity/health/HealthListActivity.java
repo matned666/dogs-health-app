@@ -21,6 +21,13 @@ import pl.design.mrn.matned.dogmanagementapp.activity.adapters.health.InjectionO
 import pl.design.mrn.matned.dogmanagementapp.activity.adapters.health.InjectionRabiesAdapter;
 import pl.design.mrn.matned.dogmanagementapp.activity.adapters.health.TeethControlAdapter;
 import pl.design.mrn.matned.dogmanagementapp.activity.adapters.health.TreatmentAdapter;
+import pl.design.mrn.matned.dogmanagementapp.activity.health.add.AllergiesActivityAdd;
+import pl.design.mrn.matned.dogmanagementapp.activity.health.add.BirthControlActivityAdd;
+import pl.design.mrn.matned.dogmanagementapp.activity.health.add.DeWormingActivityAdd;
+import pl.design.mrn.matned.dogmanagementapp.activity.health.add.InjectionsOtherActivityAdd;
+import pl.design.mrn.matned.dogmanagementapp.activity.health.add.InjectionsRabidActivityAdd;
+import pl.design.mrn.matned.dogmanagementapp.activity.health.add.TeethControlActivityAdd;
+import pl.design.mrn.matned.dogmanagementapp.activity.health.add.TreatmentActivityAdd;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Allergies;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.AllergiesDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.BirthControl;
@@ -119,7 +126,7 @@ public class HealthListActivity extends AppCompatActivity {
             DataPositionListener.getInstance().setSelectedItemId(list.get(0).getId());
         RecyclerView.Adapter<InjectionRabiesAdapter.ViewHolder> signDataElementAdapter = new InjectionRabiesAdapter(list,  this);
         recyclerView.setAdapter(signDataElementAdapter);
-        initAddNewButtonClickListener(InjectionsRabidActivity.class);
+        initAddNewButtonClickListener(InjectionsRabidActivityAdd.class);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -132,7 +139,7 @@ public class HealthListActivity extends AppCompatActivity {
             DataPositionListener.getInstance().setSelectedItemId(list.get(0).getId());
         RecyclerView.Adapter<InjectionOtherAdapter.ViewHolder> signDataElementAdapter = new InjectionOtherAdapter(list,  this);
         recyclerView.setAdapter(signDataElementAdapter);
-        initAddNewButtonClickListener(InjectionsOtherActivity.class);
+        initAddNewButtonClickListener(InjectionsOtherActivityAdd.class);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -145,7 +152,7 @@ public class HealthListActivity extends AppCompatActivity {
             DataPositionListener.getInstance().setSelectedItemId(list.get(0).getId());
         RecyclerView.Adapter<DewormingAdapter.ViewHolder> signDataElementAdapter = new DewormingAdapter(list,  this);
         recyclerView.setAdapter(signDataElementAdapter);
-        initAddNewButtonClickListener(DeWormingActivity.class);
+        initAddNewButtonClickListener(DeWormingActivityAdd.class);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -158,7 +165,7 @@ public class HealthListActivity extends AppCompatActivity {
             DataPositionListener.getInstance().setSelectedItemId(list.get(0).getId());
         RecyclerView.Adapter<BirthControlAdapter.ViewHolder> signDataElementAdapter = new BirthControlAdapter(list,  this);
         recyclerView.setAdapter(signDataElementAdapter);
-        initAddNewButtonClickListener(BirthControlActivity.class);
+        initAddNewButtonClickListener(BirthControlActivityAdd.class);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -171,7 +178,7 @@ public class HealthListActivity extends AppCompatActivity {
             DataPositionListener.getInstance().setSelectedItemId(list.get(0).getId());
         RecyclerView.Adapter<TeethControlAdapter.ViewHolder> signDataElementAdapter = new TeethControlAdapter(list,  this);
         recyclerView.setAdapter(signDataElementAdapter);
-        initAddNewButtonClickListener(TeethControlActivity.class);
+        initAddNewButtonClickListener(TeethControlActivityAdd.class);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -184,7 +191,7 @@ public class HealthListActivity extends AppCompatActivity {
             DataPositionListener.getInstance().setSelectedItemId(list.get(0).getId());
         RecyclerView.Adapter<TreatmentAdapter.ViewHolder> signDataElementAdapter = new TreatmentAdapter(list,  this);
         recyclerView.setAdapter(signDataElementAdapter);
-        initAddNewButtonClickListener(TreatmentActivity.class);
+        initAddNewButtonClickListener(TreatmentActivityAdd.class);
 
     }
 
@@ -198,7 +205,7 @@ public class HealthListActivity extends AppCompatActivity {
             DataPositionListener.getInstance().setSelectedItemId(list.get(0).getId());
         RecyclerView.Adapter<AllergiesAdapter.ViewHolder> signDataElementAdapter = new AllergiesAdapter(list,  this);
         recyclerView.setAdapter(signDataElementAdapter);
-        initAddNewButtonClickListener(AllergiesActivity.class);
+        initAddNewButtonClickListener(AllergiesActivityAdd.class);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
