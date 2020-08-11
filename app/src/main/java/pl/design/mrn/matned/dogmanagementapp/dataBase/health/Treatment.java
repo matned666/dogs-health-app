@@ -9,6 +9,7 @@ public class Treatment  implements HealthInterface{
     private String description;
     private Date dateOfTreatment;
     private Date dateOfNextTreatment;
+    private String note;
     private String photo;
     private int dogId;
 
@@ -69,6 +70,14 @@ public class Treatment  implements HealthInterface{
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     @Override

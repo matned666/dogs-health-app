@@ -34,6 +34,10 @@ public class Statics {
     public static final String DEWORMING = "DEWORMING";
     public static final String INJECTION = "INJECTION";
 
+    public static final String DATA_SPLITMENT_REGEX = ">>";
+    public static final String R_INJECTION = "R_INJECTION";
+    public static final String O_INJECTION = "O_INJECTION";
+
 //    DATABASE STATIC STRINGS:
 
     public static final String DATABASE_NAME = "dogs_db";
@@ -98,9 +102,9 @@ public class Statics {
 
 
 
-    public static final String DATA_SPLITMENT_REGEX = ">>";
-    public static final String R_INJECTION = "R_INJECTION";
-    public static final String O_INJECTION = "O_INJECTION";
+
+
+//    Health tables
 
     public static final String ALLERGIES_TABLE = "ALLERGIES_TABLE";
     public static final String ALLERGY_ID = "ALLERGY_ID";
@@ -112,4 +116,56 @@ public class Statics {
     public static final String ALLERGY_DATE_OF_NEXT_TREATMENT = "ALLERGY_DATE_OF_NEXT_TREATMENT";
     public static final String ALLERGY_NOTE = "ALLERGY_NOTE";
     public static final String ALLERGY_STAMP_PHOTO = "ALLERGY_STAMP_PHOTO";
+
+    public static final String TEETH_CONTROL_TABLE = "TEETH_CONTROL_TABLE";
+    public static final String TEETH_C_ID = "TEETH_C_ID";
+    public static final String TEETH_C_DESCRIPTION = "TEETH_C_DESCRIPTION";
+    public static final String TEETH_C_DATE = "TEETH_C_DATE";
+    public static final String TEETH_C_NEXT_DATE = "TEETH_C_NEXT_DATE";
+    public static final String TEETH_C_STAMP_PHOTO = "TEETH_C_STAMP_PHOTO";
+    public static final String TEETH_C_NOTE = "TEETH_C_NOTE";
+
+    public static final String RABIES_VACCINE_TABLE = "RABIES_VACCINE_TABLE";
+    public static final String RABIES_VACCINE_ID = "RABIES_VACCINE_ID";
+    public static final String RABIES_VACCINE_MEDICINE = "RABIES_VACCINE_MEDICINE";
+    public static final String RABIES_VACCINE_DESCRIPTION = "RABIES_VACCINE_DESCRIPTION";
+    public static final String RABIES_VACCINE_DATE = "RABIES_VACCINE_DATE";
+    public static final String RABIES_VACCINE_NEXT_DATE = "RABIES_VACCINE_NEXT_DATE";
+    public static final String RABIES_VACCINE_NOTE = "RABIES_VACCINE_NOTE";
+    public static final String RABIES_VACCINE_STAMP_PHOTO = "RABIES_VACCINE_STAMP_PHOTO";
+
+    public static final String BIRTH_CONTROL_TABLE = "BIRTH_CONTROL_TABLE";
+    public static final String BIRTH_CONTROL_ID = "BIRTH_CONTROL_ID";
+    public static final String BIRTH_CONTROL_NUMBER_OF_CHILDREN = "BIRTH_CONTROL_NUMBER_OF_CHILDREN";
+    public static final String BIRTH_CONTROL_DESCRIPTION = "BIRTH_CONTROL_DESCRIPTION";
+    public static final String BIRTH_CONTROL_DATE = "BIRTH_CONTROL_DATE";
+    public static final String BIRTH_CONTROL_NOTE = "BIRTH_CONTROL_NOTE";
+    public static final String BIRTH_CONTROL_STAMP_PHOTO = "BIRTH_CONTROL_STAMP_PHOTO";
+
+    public static final String OTHER_VACCINE_TABLE = "OTHER_VACCINE_TABLE";
+    public static final String OTHER_VACCINE_ID = "OTHER_VACCINE_ID";
+    public static final String OTHER_VACCINE_MEDICINE = "OTHER_VACCINE_MEDICINE";
+    public static final String OTHER_VACCINE_DESCRIPTION = "OTHER_VACCINE_DESCRIPTION";
+    public static final String OTHER_VACCINE_DATE = "OTHER_VACCINE_DATE";
+    public static final String OTHER_VACCINE_NEXT_DATE = "OTHER_VACCINE_NEXT_DATE";
+    public static final String OTHER_VACCINE_NOTE = "OTHER_VACCINE_NOTE";
+    public static final String OTHER_VACCINE_STAMP_PHOTO = "OTHER_VACCINE_STAMP_PHOTO";
+
+    public static final String DEWORMING_TABLE = "DEWORMING_TABLE";
+    public static final String DEWORMING_ID = "DEWORMING_ID";
+    public static final String DEWORMING_MEDICINE = "DEWORMING_MEDICINE";
+    public static final String DEWORMING_DESCRIPTION = "DEWORMING_DESCRIPTION";
+    public static final String DEWORMING_DATE = "DEWORMING_DATE";
+    public static final String DEWORMING_NEXT_DATE = "DEWORMING_NEXT_DATE";
+    public static final String DEWORMING_NOTE = "DEWORMING_NOTE";
+    public static final String DEWORMING_STAMP_PHOTO = "DEWORMING_STAMP_PHOTO";
+
+    public static final String TREATMENT_TABLE = "TREATMENT_TABLE";
+    public static final String TREATMENT_ID = "TREATMENT_ID";
+    public static final String ILLNESS = "ILLNESS";
+    public static final String TREATMENT_DESCRIPTION = "TREATMENT_DESCRIPTION";
+    public static final String TREATMENT_DATE = "TREATMENT_DATE";
+    public static final String DATE_OF_NEXT_TREATMENT = "DATE_OF_NEXT_TREATMENT";
+    public static final String TREATMENT_NOTE = "TREATMENT_NOTE";
+    public static final String TREATMENT_STAMP_PHOTO = "TREATMENT_STAMP_PHOTO";
 }

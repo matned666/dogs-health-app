@@ -7,9 +7,9 @@ public class Deworming  implements HealthInterface{
     private int id;
     private String medicine;
     private String description;
-    private String note;
     private Date treatmentDate;
     private Date nextTreatment;
+    private String note;
     private String photo;
     private int dogId;
 
