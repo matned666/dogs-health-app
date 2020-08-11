@@ -46,7 +46,6 @@ import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.*;
 
 public class HealthListActivity extends AppCompatActivity {
@@ -220,7 +219,6 @@ public class HealthListActivity extends AppCompatActivity {
     private void initAddNewButtonClickListener(Class clazz) {
         addNew.setOnClickListener(v -> {
             Intent intent = new Intent(this, clazz);
-            intent.putExtra(USAGE, USAGE_ADD);
             startActivityForResult(intent, 100);
         });
     }
