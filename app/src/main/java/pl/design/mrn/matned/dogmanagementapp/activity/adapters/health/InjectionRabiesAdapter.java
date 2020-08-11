@@ -18,20 +18,15 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.ChipActivityEdit;
-import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.ChipActivityInfo;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Chip;
+import pl.design.mrn.matned.dogmanagementapp.activity.health.InjectionsRabidActivity;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabid;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
-
 
 public class InjectionRabiesAdapter extends RecyclerView.Adapter<InjectionRabiesAdapter.ViewHolder>  {
 
-    private List<Chip> ownersList;
+    private List<InjectionRabid> injectionRabidList;
     private DataPositionListener dataPositionListener;
     private int selectedPosition;
     private String usage;
@@ -40,10 +35,10 @@ public class InjectionRabiesAdapter extends RecyclerView.Adapter<InjectionRabies
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-    public InjectionRabiesAdapter(List<InjectionRabid> owners, Context context) {
+    public InjectionRabiesAdapter(List<InjectionRabid> injectionRabidList, Context context) {
         this.context = context;
         this.usage = usage;
-        ownersList = owners;
+        this.injectionRabidList = injectionRabidList;
         this.dataPositionListener = DataPositionListener.getInstance();
         this.selectedPosition = dataPositionListener.getPosition();
     }
@@ -51,7 +46,7 @@ public class InjectionRabiesAdapter extends RecyclerView.Adapter<InjectionRabies
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_chip_info, null);
+            @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_injection, null);
         return new ViewHolder(view);
     }
 
@@ -59,9 +54,11 @@ public class InjectionRabiesAdapter extends RecyclerView.Adapter<InjectionRabies
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Chip chip = ownersList.get(position);
-        holder.chipNumber.setText(chip.getChipNumber());
-        if (chip.isActive()) {
+        InjectionRabid injectionRabid = injectionRabidList.get(position);
+        holder.medicine.setText(injectionRabid.getMedicine());
+        holder.date.setText(dateFormat.format(injectionRabid.getTreatmentDate()));
+        holder.nextDate.setText(dateFormat.format(injectionRabid.getNextTreatment()));
+        if (injectionRabid.isActive()) {
             holder.isActive.setTextColor(Color.GREEN);
             holder.isActive.setText("Aktywny");
         }else{
@@ -74,35 +71,34 @@ public class InjectionRabiesAdapter extends RecyclerView.Adapter<InjectionRabies
         holder.holderButton.setOnClickListener(v -> {
             selectedPosition = position;
             dataPositionListener.setPosition(position);
-            dataPositionListener.setSelectedItemId(chip.getChipId());
+            dataPositionListener.setSelectedItemId(injectionRabid.getId());
             notifyDataSetChanged();
-            if (usage.equals(USAGE_EDIT) || usage.equals(USAGE_ADD)){
-                Intent intent = new Intent(context, ChipActivityEdit.class);
+                Intent intent = new Intent(context, InjectionsRabidActivity.class);
                 context.startActivity(intent);
-            } else {
-                Intent intent = new Intent(context, ChipActivityInfo.class);
-                context.startActivity(intent);
-            }
         });
     }
 
     @Override
     public int getItemCount() {
-        if(ownersList == null) return 0;
-        else return ownersList.size();
+        if(injectionRabidList == null) return 0;
+        else return injectionRabidList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private ConstraintLayout holderButton;
-        private TextView chipNumber;
+        private TextView medicine;
+        private TextView date;
+        private TextView nextDate;
         private TextView isActive;
 
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.holderButton = itemView.findViewById(R.id.data_item_chipItemButton);
-            this.chipNumber = itemView.findViewById(R.id.data_item_chip_name);
+            this.medicine = itemView.findViewById(R.id.injection_item_injectionMedicine);
+            this.date = itemView.findViewById(R.id.injection_item_injectionDate);
+            this.nextDate = itemView.findViewById(R.id.injection_item_injectionExpDate);
             this.isActive = itemView.findViewById(R.id.data_item_isActiveInfoItem);
         }
 

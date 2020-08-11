@@ -16,6 +16,13 @@ public class Deworming  implements HealthInterface{
     public Deworming() {
     }
 
+    public boolean isActive() {
+        Date today = new Date();
+        if(treatmentDate != null && nextTreatment != null) return nextTreatment.after(today) && treatmentDate.before(today);
+        else if(nextTreatment != null ) return nextTreatment.after(today);
+        else return false;
+    }
+
     public int getId() {
         return id;
     }

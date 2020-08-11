@@ -20,6 +20,7 @@ import java.util.List;
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.ChipActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.ChipActivityInfo;
+import pl.design.mrn.matned.dogmanagementapp.activity.health.InjectionsOtherActivity;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Chip;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionOther;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
@@ -31,7 +32,7 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
 
 public class InjectionOtherAdapter extends RecyclerView.Adapter<InjectionOtherAdapter.ViewHolder>  {
 
-    private List<Chip> ownersList;
+    private List<InjectionOther> injectionOtherList;
     private DataPositionListener dataPositionListener;
     private int selectedPosition;
     private String usage;
@@ -40,10 +41,10 @@ public class InjectionOtherAdapter extends RecyclerView.Adapter<InjectionOtherAd
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-    public InjectionOtherAdapter(List<InjectionOther> owners, Context context) {
+    public InjectionOtherAdapter(List<InjectionOther> injectionOtherList, Context context) {
         this.context = context;
         this.usage = usage;
-        ownersList = owners;
+        this.injectionOtherList = injectionOtherList;
         this.dataPositionListener = DataPositionListener.getInstance();
         this.selectedPosition = dataPositionListener.getPosition();
     }
@@ -51,7 +52,7 @@ public class InjectionOtherAdapter extends RecyclerView.Adapter<InjectionOtherAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_chip_info, null);
+            @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_injection, null);
         return new ViewHolder(view);
     }
 
@@ -59,9 +60,11 @@ public class InjectionOtherAdapter extends RecyclerView.Adapter<InjectionOtherAd
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Chip chip = ownersList.get(position);
-        holder.chipNumber.setText(chip.getChipNumber());
-        if (chip.isActive()) {
+        InjectionOther injectionOther = injectionOtherList.get(position);
+        holder.medicine.setText(injectionOther.getMedicine());
+        holder.date.setText(dateFormat.format(injectionOther.getTreatmentDate()));
+        holder.nextDate.setText(dateFormat.format(injectionOther.getNextTreatment()));
+        if (injectionOther.isActive()) {
             holder.isActive.setTextColor(Color.GREEN);
             holder.isActive.setText("Aktywny");
         }else{
@@ -74,38 +77,36 @@ public class InjectionOtherAdapter extends RecyclerView.Adapter<InjectionOtherAd
         holder.holderButton.setOnClickListener(v -> {
             selectedPosition = position;
             dataPositionListener.setPosition(position);
-            dataPositionListener.setSelectedItemId(chip.getChipId());
+            dataPositionListener.setSelectedItemId(injectionOther.getId());
             notifyDataSetChanged();
-            if (usage.equals(USAGE_EDIT) || usage.equals(USAGE_ADD)){
-                Intent intent = new Intent(context, ChipActivityEdit.class);
+                Intent intent = new Intent(context, InjectionsOtherActivity.class);
                 context.startActivity(intent);
-            } else {
-                Intent intent = new Intent(context, ChipActivityInfo.class);
-                context.startActivity(intent);
-            }
         });
     }
 
     @Override
     public int getItemCount() {
-        if(ownersList == null) return 0;
-        else return ownersList.size();
+        if(injectionOtherList == null) return 0;
+        else return injectionOtherList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private ConstraintLayout holderButton;
-        private TextView chipNumber;
+        private TextView medicine;
+        private TextView date;
+        private TextView nextDate;
         private TextView isActive;
 
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.holderButton = itemView.findViewById(R.id.data_item_chipItemButton);
-            this.chipNumber = itemView.findViewById(R.id.data_item_chip_name);
+            this.medicine = itemView.findViewById(R.id.injection_item_injectionMedicine);
+            this.date = itemView.findViewById(R.id.injection_item_injectionDate);
+            this.nextDate = itemView.findViewById(R.id.injection_item_injectionExpDate);
             this.isActive = itemView.findViewById(R.id.data_item_isActiveInfoItem);
         }
-
 
     }
 

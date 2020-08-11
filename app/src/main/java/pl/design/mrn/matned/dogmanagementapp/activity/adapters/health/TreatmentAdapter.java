@@ -20,6 +20,7 @@ import java.util.List;
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.ChipActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.ChipActivityInfo;
+import pl.design.mrn.matned.dogmanagementapp.activity.health.TreatmentActivity;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Chip;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Treatment;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
@@ -49,7 +50,7 @@ public class TreatmentAdapter extends RecyclerView.Adapter<TreatmentAdapter.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_, null);
+            @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_treatment, null);
         return new ViewHolder(view);
     }
 
@@ -57,51 +58,41 @@ public class TreatmentAdapter extends RecyclerView.Adapter<TreatmentAdapter.View
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Chip chip = ownersList.get(position);
-        holder.chipNumber.setText(chip.getChipNumber());
-        if (chip.isActive()) {
-            holder.isActive.setTextColor(Color.GREEN);
-            holder.isActive.setText("Aktywny");
-        }else{
-            holder.isActive.setTextColor(Color.RED);
-            holder.isActive.setText("Nieaktywny");
-        }
+         Treatment treatment = treatments.get(position);
+        holder.name.setText(treatment.getIllness());
+        holder.name.setText(dateFormat.format(treatment.getDateOfTreatment()));
+
         if(selectedPosition == position) holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
         else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);
 
         holder.holderButton.setOnClickListener(v -> {
             selectedPosition = position;
             dataPositionListener.setPosition(position);
-            dataPositionListener.setSelectedItemId(chip.getChipId());
+            dataPositionListener.setSelectedItemId(treatment.getId());
             notifyDataSetChanged();
-            if (usage.equals(USAGE_EDIT) || usage.equals(USAGE_ADD)){
-                Intent intent = new Intent(context, ChipActivityEdit.class);
+                Intent intent = new Intent(context, TreatmentActivity.class);
                 context.startActivity(intent);
-            } else {
-                Intent intent = new Intent(context, ChipActivityInfo.class);
-                context.startActivity(intent);
-            }
         });
     }
 
     @Override
     public int getItemCount() {
-        if(ownersList == null) return 0;
-        else return ownersList.size();
+        if(treatments == null) return 0;
+        else return treatments.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private ConstraintLayout holderButton;
-        private TextView chipNumber;
-        private TextView isActive;
+        private TextView name;
+        private TextView date;
 
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.holderButton = itemView.findViewById(R.id.data_item_chipItemButton);
-            this.chipNumber = itemView.findViewById(R.id.data_item_chip_name);
-            this.isActive = itemView.findViewById(R.id.data_item_isActiveInfoItem);
+            this.holderButton = itemView.findViewById(R.id.treatment_item_button);
+            this.name = itemView.findViewById(R.id.treatment_item_name);
+            this.date = itemView.findViewById(R.id.treatment_item_date);
         }
 
 

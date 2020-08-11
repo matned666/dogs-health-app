@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:id="@+id/injection_item_chipItemButton"
+        android:id="@+id/teeth_control_item_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/injection_item_injectionMedicine"
+                android:id="@+id/teeth_control_item_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
