@@ -65,6 +65,13 @@ public class HealthListActivity extends AppCompatActivity {
         DataPositionListener.getInstance().setPosition(0);
         Intent intent = getIntent();
         listActivity = intent.getStringExtra(USAGE);
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onResume() {
+        super.onResume();
         setContentView(R.layout.data_list_activity);
         title = findViewById(R.id.titleDataList);
         recyclerView = findViewById(R.id.recyclerViewDataList);

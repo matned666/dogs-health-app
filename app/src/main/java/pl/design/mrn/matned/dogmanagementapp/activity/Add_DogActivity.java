@@ -115,7 +115,7 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
     private void initClickListeners_add() {
         galleryPicture.setOnClickListener(v ->
                 Toast.makeText(this, NOT_WORKING_YET, Toast.LENGTH_SHORT).show());
-        cancel.setOnClickListener(c -> showDial(StartActivity.class, null));
+        cancel.setOnClickListener(c -> finish());
         if (this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
             requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
             dogPhoto.setOnClickListener(addPhoto());
@@ -253,8 +253,8 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
         }
     }
 
-    private boolean checkSpinner(Spinner et) {
-        if (!Validate.selectedSexIn(et)) {
+    private boolean checkET(EditText et) {
+        if (!Validate.checkText(et.getText().toString())) {
             et.setBackgroundResource(R.drawable.roundcornerstextred);
             return false;
         } else {
@@ -263,8 +263,8 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
         }
     }
 
-    private boolean checkET(EditText et) {
-        if (!Validate.checkText(et.getText().toString())) {
+    private boolean checkSpinner(Spinner et) {
+        if (!Validate.selectedSexIn(et)) {
             et.setBackgroundResource(R.drawable.roundcornerstextred);
             return false;
         } else {
@@ -298,16 +298,6 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
         datePicker.show();
     }
 
-    private void initSpinner() {
-        String[] sexes = new String[3];
-        sexes[0] = "";
-        sexes[1] = Sex.PIES.name();
-        sexes[2] = Sex.SUKA.name();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drpdn, sexes);
-        dogSexET.setAdapter(adapter);
-    }
-
-
     private File createImageFile() {
         @SuppressLint("SimpleDateFormat")
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -317,5 +307,15 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
         image = new File(storageDir.getParent() + imageFileName + ".jpg");
         return image;
     }
+
+    private void initSpinner() {
+        String[] sexes = new String[3];
+        sexes[0] = "";
+        sexes[1] = Sex.PIES.name();
+        sexes[2] = Sex.SUKA.name();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drpdn, sexes);
+        dogSexET.setAdapter(adapter);
+    }
+
 
 }

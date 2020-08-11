@@ -1,7 +1,6 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.BreedingActivityAdd;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Breeding;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.BreedingDao;

@@ -168,4 +168,5 @@ public class Statics {
     public static final String DATE_OF_NEXT_TREATMENT = "DATE_OF_NEXT_TREATMENT";
     public static final String TREATMENT_NOTE = "TREATMENT_NOTE";
     public static final String TREATMENT_STAMP_PHOTO = "TREATMENT_STAMP_PHOTO";
+    public static final int REQUEST_IMAGE_CAPTURE = 123;
 }

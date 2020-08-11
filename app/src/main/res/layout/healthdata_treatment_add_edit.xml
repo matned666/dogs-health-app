@@ -198,7 +198,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/allergen_name_subtitle"
+                        android:id="@+id/treatment_next_date_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="385dp"
                         android:layout_height="wrap_content"
