@@ -15,6 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoFragmentInterface;
+import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
@@ -101,7 +102,7 @@ public class TreatmentDao extends SQLiteOpenHelper implements DaoFragmentInterfa
 
     @Override
     public List<Treatment> getListByMasterId(int id) {
-        String query = "SELECT * FROM " + TREATMENT_TABLE + " WHERE " + DOG_ID + " = " + id;
+        String query = "SELECT * FROM " + TREATMENT_TABLE + " WHERE " + DOG_ID + " = " + 1;
         return getListByQuery(query);    }
 
     @Override

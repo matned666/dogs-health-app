@@ -41,6 +41,7 @@ import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Treatment;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TreatmentDao;
+import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static android.os.Environment.DIRECTORY_PICTURES;
 import static android.os.Environment.getExternalStoragePublicDirectory;
@@ -144,7 +145,23 @@ public class TreatmentActivityAdd extends AppCompatActivity  implements DatePick
         return v -> {
             if(validation()) {
                 TreatmentDao dao = new TreatmentDao(this);
-                dao.add(getTreamentModelFromFields());
+                Treatment tr = new Treatment();
+                tr.setIllness(nameET.getText().toString());
+                tr.setDescription(descET.getText().toString());
+                try {
+                    tr.setDateOfTreatment(dateFormat.parse(dateET.getText().toString()));
+                } catch (ParseException e) {
+                    Toast.makeText(this, WRONG_DATE, Toast.LENGTH_SHORT).show();
+                }
+                try {
+                    tr.setDateOfNextTreatment(dateFormat.parse(nextDateET.getText().toString()));
+                } catch (ParseException e) {
+                    Toast.makeText(this, WRONG_DATE, Toast.LENGTH_SHORT).show();
+                }
+                tr.setNote(noteET.getText().toString());
+                tr.setPhoto(photoPath);
+                tr.setDogId(PositionListener.getInstance().getSelectedDogId());
+                dao.add(tr);
                 finish();
             }else{
                 Toast.makeText(this, "Proszę wypełnić poprawnie wymagane pola", Toast.LENGTH_SHORT).show();
@@ -152,24 +169,6 @@ public class TreatmentActivityAdd extends AppCompatActivity  implements DatePick
         };
     }
 
-    private Treatment getTreamentModelFromFields() {
-        Treatment tr = new Treatment();
-        tr.setIllness(nameET.getText().toString());
-        tr.setDescription(descET.getText().toString());
-        try {
-            tr.setDateOfTreatment(dateFormat.parse(dateET.getText().toString()));
-        } catch (ParseException e) {
-            Toast.makeText(this, WRONG_DATE, Toast.LENGTH_SHORT).show();
-        }
-        try {
-            tr.setDateOfNextTreatment(dateFormat.parse(nextDateET.getText().toString()));
-        } catch (ParseException e) {
-            Toast.makeText(this, WRONG_DATE, Toast.LENGTH_SHORT).show();
-        }
-        tr.setNote(noteET.getText().toString());
-        tr.setPhoto(photoPath);
-        return tr;
-    }
 
     private boolean validation() {
         return checkET(nameET);

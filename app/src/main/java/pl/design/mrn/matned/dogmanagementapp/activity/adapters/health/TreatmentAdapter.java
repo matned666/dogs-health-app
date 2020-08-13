@@ -60,7 +60,7 @@ public class TreatmentAdapter extends RecyclerView.Adapter<TreatmentAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
          Treatment treatment = treatments.get(position);
         holder.name.setText(treatment.getIllness());
-        holder.name.setText(dateFormat.format(treatment.getDateOfTreatment()));
+        holder.date.setText(dateFormat.format(treatment.getDateOfTreatment()));
 
         if(selectedPosition == position) holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
         else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);
@@ -74,7 +74,7 @@ public class TreatmentAdapter extends RecyclerView.Adapter<TreatmentAdapter.View
                 context.startActivity(intent);
         });
     }
-
+//   38198567     Hanza666
     @Override
     public int getItemCount() {
         if(treatments == null) return 0;
