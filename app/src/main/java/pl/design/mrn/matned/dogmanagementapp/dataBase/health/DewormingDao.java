@@ -127,13 +127,13 @@ public class DewormingDao extends SQLiteOpenHelper implements DaoFragmentInterfa
             a.setTreatmentDate(null);
         }
         try {
-            a.setTreatmentDate(dateFormat.parse(cursor.getString(4)));
+            a.setNextTreatment(dateFormat.parse(cursor.getString(4)));
         } catch (Exception e) {
-            a.setTreatmentDate(null);
+            a.setNextTreatment(null);
         }
-        a.setNote(cursor.getString(7));
-        a.setPhoto(cursor.getString(8));
-        a.setDogId(cursor.getInt(9));
+        a.setNote(cursor.getString(5));
+        a.setPhoto(cursor.getString(6));
+        a.setDogId(cursor.getInt(7));
         return a;
     }
 

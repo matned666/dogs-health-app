@@ -3,6 +3,7 @@
     <solid android:color="#00FFFFFF"/>
     <stroke
         android:width="2px"
+        android:color="#00000000"
         tools:ignore="StateListReachable" />
 
     <corners android:bottomRightRadius="0dp"

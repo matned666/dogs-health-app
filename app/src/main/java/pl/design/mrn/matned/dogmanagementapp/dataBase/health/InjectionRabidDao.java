@@ -130,9 +130,9 @@ public class InjectionRabidDao extends SQLiteOpenHelper implements DaoFragmentIn
             a.setTreatmentDate(null);
         }
         try {
-            a.setTreatmentDate(dateFormat.parse(cursor.getString(4)));
+            a.setNextTreatment(dateFormat.parse(cursor.getString(4)));
         } catch (Exception e) {
-            a.setTreatmentDate(null);
+            a.setNextTreatment(null);
         }
         a.setNote(cursor.getString(5));
         a.setPhoto(cursor.getString(6));

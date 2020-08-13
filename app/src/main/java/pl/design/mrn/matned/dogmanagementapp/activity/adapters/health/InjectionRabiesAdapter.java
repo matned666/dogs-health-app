@@ -29,7 +29,6 @@ public class InjectionRabiesAdapter extends RecyclerView.Adapter<InjectionRabies
     private List<InjectionRabid> injectionRabidList;
     private DataPositionListener dataPositionListener;
     private int selectedPosition;
-    private String usage;
     private Context context;
 
     @SuppressLint("SimpleDateFormat")
@@ -37,7 +36,6 @@ public class InjectionRabiesAdapter extends RecyclerView.Adapter<InjectionRabies
 
     public InjectionRabiesAdapter(List<InjectionRabid> injectionRabidList, Context context) {
         this.context = context;
-        this.usage = usage;
         this.injectionRabidList = injectionRabidList;
         this.dataPositionListener = DataPositionListener.getInstance();
         this.selectedPosition = dataPositionListener.getPosition();
@@ -95,7 +93,7 @@ public class InjectionRabiesAdapter extends RecyclerView.Adapter<InjectionRabies
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.holderButton = itemView.findViewById(R.id.data_item_chipItemButton);
+            this.holderButton = itemView.findViewById(R.id.injection_item_chipItemButton);
             this.medicine = itemView.findViewById(R.id.injection_item_injectionMedicine);
             this.date = itemView.findViewById(R.id.injection_item_injectionDate);
             this.nextDate = itemView.findViewById(R.id.injection_item_injectionExpDate);

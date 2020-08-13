@@ -60,7 +60,10 @@ public class TreatmentAdapter extends RecyclerView.Adapter<TreatmentAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
          Treatment treatment = treatments.get(position);
         holder.name.setText(treatment.getIllness());
-        holder.date.setText(dateFormat.format(treatment.getDateOfTreatment()));
+        try {
+            holder.date.setText(dateFormat.format(treatment.getDateOfTreatment()));
+        } catch (NullPointerException ignored) {
+        }
 
         if(selectedPosition == position) holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
         else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);

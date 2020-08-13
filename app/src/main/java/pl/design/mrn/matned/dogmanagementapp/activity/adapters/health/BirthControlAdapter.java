@@ -43,7 +43,6 @@ public class BirthControlAdapter extends RecyclerView.Adapter<BirthControlAdapte
 
     public BirthControlAdapter(List<BirthControl> birthControlList, Context context) {
         this.context = context;
-        this.usage = usage;
         this.birthControlList = birthControlList;
         this.dataPositionListener = DataPositionListener.getInstance();
         this.selectedPosition = dataPositionListener.getPosition();
@@ -52,7 +51,7 @@ public class BirthControlAdapter extends RecyclerView.Adapter<BirthControlAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_chip_info, null);
+            @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_birth, null);
         return new ViewHolder(view);
     }
 

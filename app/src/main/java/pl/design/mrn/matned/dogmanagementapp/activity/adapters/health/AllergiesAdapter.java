@@ -3,7 +3,6 @@ package pl.design.mrn.matned.dogmanagementapp.activity.adapters.health;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,19 +17,14 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit.ChipActivityEdit;
-import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.ChipActivityInfo;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.AllergiesActivity;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Chip;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Allergies;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
 
 
-public class AllergiesAdapter extends RecyclerView.Adapter<AllergiesAdapter.ViewHolder>  {
+public class AllergiesAdapter extends RecyclerView.Adapter<AllergiesAdapter.ViewHolder> {
 
     private List<Allergies> allergiesList;
     private DataPositionListener dataPositionListener;
@@ -50,7 +44,7 @@ public class AllergiesAdapter extends RecyclerView.Adapter<AllergiesAdapter.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_chip_info, null);
+        @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.element_allergy, null);
         return new ViewHolder(view);
     }
 
@@ -59,36 +53,36 @@ public class AllergiesAdapter extends RecyclerView.Adapter<AllergiesAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Allergies allergies = allergiesList.get(position);
-        holder.chipNumber.setText(allergies.getAllergen());
-        if(selectedPosition == position) holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
+        holder.allergyName.setText(allergies.getAllergen());
+        if (selectedPosition == position)
+            holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
         else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);
-
         holder.holderButton.setOnClickListener(v -> {
             selectedPosition = position;
             dataPositionListener.setPosition(position);
             dataPositionListener.setSelectedItemId(allergies.getId());
             notifyDataSetChanged();
-                Intent intent = new Intent(context, AllergiesActivity.class);
-                context.startActivity(intent);
+            Intent intent = new Intent(context, AllergiesActivity.class);
+            context.startActivity(intent);
         });
     }
 
     @Override
     public int getItemCount() {
-        if(allergiesList == null) return 0;
+        if (allergiesList == null) return 0;
         else return allergiesList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private ConstraintLayout holderButton;
-        private TextView chipNumber;
+        private TextView allergyName;
 
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.holderButton = itemView.findViewById(R.id.allergy_item_button);
-            this.chipNumber = itemView.findViewById(R.id.allergy_name);
+            this.allergyName = itemView.findViewById(R.id.allergy_name);
         }
 
 

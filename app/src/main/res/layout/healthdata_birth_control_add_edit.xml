@@ -54,16 +54,16 @@
                     <EditText
                         android:id="@+id/birth_number_of_pups_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:hint="Liczba szczeniąt"
+                        android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
+                        android:hint="Liczba szczeniąt"
                         android:inputType="number"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/birth_number_guideLine"
-                        android:autofillHints="" />
+                        app:layout_constraintTop_toTopOf="@+id/birth_number_guideLine" />
 
                     <TextView
                         android:id="@+id/birth_number_of_pups_subtitle"
@@ -103,16 +103,16 @@
                     <EditText
                         android:id="@+id/birth_description_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="384dp"
+                        android:layout_width="0dp"
                         android:layout_height="95dp"
-                        android:hint="Opis szczeniąt, porodu, ewentualnych problemów, które wyniknęły"
+                        android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
+                        android:hint="Opis szczeniąt, porodu, ewentualnych problemów, które wyniknęły"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/birth_description_guideline"
-                        android:autofillHints="" />
+                        app:layout_constraintTop_toBottomOf="@+id/birth_description_guideline" />
 
                     <TextView
                         android:id="@+id/birth_description_subtitle"
@@ -152,17 +152,17 @@
                     <EditText
                         android:id="@+id/birth_date_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:hint="Wybierz datę"
+                        android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
+                        android:hint="Wybierz datę"
                         android:inputType="date"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/birth_date_guideline"
-                        android:autofillHints="" />
+                        app:layout_constraintTop_toTopOf="@+id/birth_date_guideline" />
 
                     <TextView
                         android:id="@+id/birth_name_subtitle"

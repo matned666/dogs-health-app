@@ -46,6 +46,7 @@ import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 import static android.os.Environment.DIRECTORY_PICTURES;
 import static android.os.Environment.getExternalStoragePublicDirectory;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
 
 public class TreatmentActivityAdd extends AppCompatActivity  implements DatePickerDialog.OnDateSetListener{
@@ -164,7 +165,7 @@ public class TreatmentActivityAdd extends AppCompatActivity  implements DatePick
                 dao.add(tr);
                 finish();
             }else{
-                Toast.makeText(this, "Proszę wypełnić poprawnie wymagane pola", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, WARNING_FIELD, Toast.LENGTH_SHORT).show();
             }
         };
     }

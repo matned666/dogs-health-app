@@ -101,7 +101,7 @@ public class InjectionOtherAdapter extends RecyclerView.Adapter<InjectionOtherAd
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.holderButton = itemView.findViewById(R.id.data_item_chipItemButton);
+            this.holderButton = itemView.findViewById(R.id.injection_item_chipItemButton);
             this.medicine = itemView.findViewById(R.id.injection_item_injectionMedicine);
             this.date = itemView.findViewById(R.id.injection_item_injectionDate);
             this.nextDate = itemView.findViewById(R.id.injection_item_injectionExpDate);

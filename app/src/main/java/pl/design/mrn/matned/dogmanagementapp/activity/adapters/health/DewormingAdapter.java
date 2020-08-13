@@ -63,7 +63,7 @@ public class DewormingAdapter extends RecyclerView.Adapter<DewormingAdapter.View
         Deworming deworming = dewormingList.get(position);
         holder.medicine.setText(deworming.getMedicine());
         holder.date.setText(dateFormat.format(deworming.getTreatmentDate()));
-        holder.nextDate.setText(dateFormat.format(deworming.getNextTreatment()));
+        if (deworming.getNextTreatment() != null) holder.nextDate.setText(dateFormat.format(deworming.getNextTreatment()));
         if (deworming.isActive()) {
             holder.isActive.setTextColor(Color.GREEN);
             holder.isActive.setText(ACTIVE);
@@ -101,7 +101,7 @@ public class DewormingAdapter extends RecyclerView.Adapter<DewormingAdapter.View
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.holderButton = itemView.findViewById(R.id.data_item_chipItemButton);
+            this.holderButton = itemView.findViewById(R.id.injection_item_chipItemButton);
             this.medicine = itemView.findViewById(R.id.injection_item_injectionMedicine);
             this.date = itemView.findViewById(R.id.injection_item_injectionDate);
             this.nextDate = itemView.findViewById(R.id.injection_item_injectionExpDate);

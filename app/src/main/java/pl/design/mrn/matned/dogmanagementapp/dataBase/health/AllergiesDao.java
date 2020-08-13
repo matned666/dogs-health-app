@@ -53,8 +53,7 @@ public class AllergiesDao extends SQLiteOpenHelper implements DaoFragmentInterfa
     public boolean update(Allergies updated_T_Data) {
         String query = "" +
                 "UPDATE " + ALLERGIES_TABLE + " SET " +
-                ALLERGEN + " = '" + updated_T_Data.getAllergen() + "', " +
-                WAS_ALLERGY_TREATED + " = " + (updated_T_Data.isWasTreated()? 1 : 0) + "";
+                ALLERGEN + " = '" + updated_T_Data.getAllergen() + "'";
         if (updated_T_Data.getDescription() != null) query += ", " + ALLERGY_DESCRIPTION + " = '" + updated_T_Data.getDescription() + "'";
         if (updated_T_Data.getDateOfDetection() != null) query += ", " + ALLERGY_DETECTION_DATE + " = '" + dateFormat.format(updated_T_Data.getDateOfDetection()) + "'";
         if (updated_T_Data.getDateOfTreatment() != null) query += ", " + ALLERGY_DATE_OF_TREATMENT + " = '" + dateFormat.format(updated_T_Data.getDateOfTreatment()) + "'";
@@ -74,7 +73,6 @@ public class AllergiesDao extends SQLiteOpenHelper implements DaoFragmentInterfa
         cv.put(ALLERGY_DESCRIPTION, allergies.getDescription());
         if (allergies.getDateOfDetection() != null)
             cv.put(ALLERGY_DETECTION_DATE, dateFormat.format(allergies.getDateOfDetection()));
-        cv.put(WAS_ALLERGY_TREATED, allergies.isWasTreated()? 1 : 0);
         if (allergies.getDateOfTreatment() != null)
             cv.put(ALLERGY_DATE_OF_TREATMENT, dateFormat.format(allergies.getDateOfTreatment()));
         if (allergies.getDateOfNextTreatment() != null)
@@ -145,7 +143,6 @@ public class AllergiesDao extends SQLiteOpenHelper implements DaoFragmentInterfa
         } catch (Exception e) {
             a.setDateOfDetection(null);
         }
-        a.setWasTreated(cursor.getInt(4) == 1);
         try {
             a.setDateOfTreatment(dateFormat.parse(cursor.getString(5)));
         } catch (Exception e) {

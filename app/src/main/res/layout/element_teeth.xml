@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:id="@+id/teeth_control_item_button"
@@ -20,7 +20,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/squarecornersrecyclerviewelement"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,8 +30,7 @@
             <TextView
                 android:id="@+id/teeth_control_item_date"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_height="0dp"
                 android:hint="@string/dog_name"
                 android:padding="5dp"
                 android:text="21 sie 2020"
@@ -41,7 +40,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/injection_item_injectionTitleTextView" />
 
             <TextView
                 android:id="@+id/injection_item_injectionTitleTextView"
@@ -55,7 +54,8 @@
                 android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/injection_item_injectionMedicine"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/injection_item_injectionMedicine" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -52,7 +52,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/allergen_name_subtitle"
+                        android:id="@+id/allergen_name_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="385dp"
                         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                         tools:ignore="LabelFor" />
 
                     <TextView
-                        android:id="@+id/allergen_name_textData"
+                        android:id="@+id/allergen_name_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/allergen_discoveryDate_subtitle"
+                        android:id="@+id/allergen_discoveryDate_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="385dp"
                         android:layout_height="wrap_content"
@@ -167,7 +167,7 @@
                         tools:ignore="LabelFor" />
 
                     <TextView
-                        android:id="@+id/allergen_discoveryDate_textData"
+                        android:id="@+id/allergen_discoveryDate_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -191,53 +191,6 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <Spinner
-                        android:id="@+id/allergen_was_treated_dataText"
-                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
-                        android:layout_height="20dp"
-                        android:text="Tak/Nie"
-                        android:background="@drawable/roundcornersrecyclerview"
-                        android:textSize="14sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/allergen_was_treated_guideline26" />
-
-                    <TextView
-                        android:id="@+id/allergen_was_treated_subtitle"
-                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Czy zostało podjęte leczenie?"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toTopOf="@+id/allergen_was_treated_guideline26"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/allergen_was_treated_guideline26"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintGuide_begin="16dp" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
-                android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -249,7 +202,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/allergen_treatmentStartDate_subtitle"
+                        android:id="@+id/allergen_treatmentStartDate_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="385dp"
                         android:layout_height="wrap_content"
@@ -264,7 +217,7 @@
                         tools:ignore="LabelFor" />
 
                     <TextView
-                        android:id="@+id/allergen_treatmentStartDate_textData"
+                        android:id="@+id/allergen_treatmentStartDate_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -299,7 +252,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/allergen_treatmentNextDate_subtitle"
+                        android:id="@+id/allergen_treatmentNextDate_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="385dp"
                         android:layout_height="wrap_content"
@@ -314,7 +267,7 @@
                         tools:ignore="LabelFor" />
 
                     <TextView
-                        android:id="@+id/allergen_treatmentNextDate_textData"
+                        android:id="@+id/allergen_treatmentNextDate_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -349,7 +302,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/allergen_note_subtitle"
+                        android:id="@+id/allergen_note_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -366,7 +319,7 @@
                         tools:ignore="LabelFor" />
 
                     <TextView
-                        android:id="@+id/allergen_note_textData"
+                        android:id="@+id/allergen_note_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

@@ -27,4 +27,7 @@ public class TextStrings {
     public static final String TREATMENT_TITLE = "Historia zdrowia:";
     public static final String DEWORMING_TITLE = "Historia odrobaczania:";
 
+    public static final String YES = "TAK";
+    public static final String NO = "NIE";
+    public static final String WARNING_FIELD = "Proszę wypełnić poprawnie wymagane pola";
 }

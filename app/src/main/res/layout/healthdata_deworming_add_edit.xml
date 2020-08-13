@@ -52,20 +52,20 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/deworming_name_subtitle"
+                        android:id="@+id/deworming_name_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
-                        android:background="@drawable/roundcornersrecyclerview"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@drawable/roundcornersrecyclerview"
                         android:hint="Nazwa zastosowanego leku"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/deworming_name_guideLine"
-                        android:autofillHints="" />
+                        app:layout_constraintTop_toTopOf="@+id/deworming_name_guideLine" />
 
                     <TextView
-                        android:id="@+id/deworming_name_textData"
+                        android:id="@+id/deworming_name_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -102,16 +102,16 @@
                     <EditText
                         android:id="@+id/deworming_description_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="384dp"
-                        android:layout_height="95dp"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
                         android:hint="Opis, zastosowana dawka, ew. opis leku"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/deworming_description_guideline"
-                        android:autofillHints="" />
+                        app:layout_constraintTop_toBottomOf="@+id/deworming_description_guideline" />
 
                     <TextView
                         android:id="@+id/deworming_description_subtitle"
@@ -149,21 +149,21 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/deworming_date_subtitle"
+                        android:id="@+id/deworming_date_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:inputType="date"
-                        android:hint="Wybierz datę"
+                        android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
+                        android:hint="Wybierz datę"
+                        android:inputType="date"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/deworming_date_guideLine"
-                        android:autofillHints="" />
+                        app:layout_constraintTop_toTopOf="@+id/deworming_date_guideLine" />
 
                     <TextView
-                        android:id="@+id/deworming_date_textData"
+                        android:id="@+id/deworming_date_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -198,21 +198,21 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/deworming_next_date_subtitle"
+                        android:id="@+id/deworming_next_date_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@drawable/roundcornersrecyclerview"
                         android:hint="Wybierz datę"
                         android:inputType="date"
-                        android:background="@drawable/roundcornersrecyclerview"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/deworming_next_date_guideLine"
-                        android:autofillHints="" />
+                        app:layout_constraintTop_toTopOf="@+id/deworming_next_date_guideLine" />
 
                     <TextView
-                        android:id="@+id/deworming_next_date_textData"
+                        android:id="@+id/deworming_next_date_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -247,7 +247,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/deworming_note_subtitle"
+                        android:id="@+id/deworming_note_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -261,7 +261,7 @@
                         android:autofillHints="" />
 
                     <TextView
-                        android:id="@+id/deworming_note_textData"
+                        android:id="@+id/deworming_note_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

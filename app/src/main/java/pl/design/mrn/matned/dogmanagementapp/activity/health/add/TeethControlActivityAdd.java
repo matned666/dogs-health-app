@@ -41,14 +41,13 @@ import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TeethControl;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TeethControlDao;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Treatment;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TreatmentDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static android.os.Environment.DIRECTORY_PICTURES;
 import static android.os.Environment.getExternalStoragePublicDirectory;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.REQUEST_IMAGE_CAPTURE;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
 
 public class TeethControlActivityAdd extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
@@ -162,7 +161,7 @@ public class TeethControlActivityAdd extends AppCompatActivity implements DatePi
                 dao.add(tc);
                 finish();
             }else{
-                Toast.makeText(this, "Proszę wypełnić poprawnie wymagane pola", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, WARNING_FIELD, Toast.LENGTH_SHORT).show();
             }
         };
     }

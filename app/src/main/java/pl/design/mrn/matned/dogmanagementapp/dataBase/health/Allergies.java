@@ -8,7 +8,6 @@ public class Allergies implements HealthInterface {
     private String allergen;
     private String description;
     private Date dateOfDetection;
-    private boolean wasTreated;
     private Date dateOfTreatment;
     private Date dateOfNextTreatment;
     private String note;
@@ -58,14 +57,6 @@ public class Allergies implements HealthInterface {
         this.dateOfDetection = dateOfDetection;
     }
 
-    public boolean isWasTreated() {
-        return wasTreated;
-    }
-
-    public void setWasTreated(boolean wasTreated) {
-        this.wasTreated = wasTreated;
-    }
-
     public Date getDateOfTreatment() {
         return dateOfTreatment;
     }
@@ -105,7 +96,6 @@ public class Allergies implements HealthInterface {
                 ", allergen='" + allergen + '\'' +
                 ", description='" + description + '\'' +
                 ", dateOfDetection=" + dateOfDetection +
-                ", wasTreated=" + wasTreated +
                 ", dateOfTreatment=" + dateOfTreatment +
                 ", dateOfNextTreatment=" + dateOfNextTreatment +
                 ", note='" + note + '\'' +
