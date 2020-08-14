@@ -54,7 +54,7 @@
                     <TextView
                         android:id="@+id/birth_number_of_pups_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="5"
                         android:textSize="14sp"
@@ -100,7 +100,7 @@
                     <TextView
                         android:id="@+id/birth_description_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="384dp"
+                        android:layout_width="0dp"
                         android:layout_height="95dp"
                         android:text="Opis szczeniąt, porodu, ewentualnych problemów, które wyniknęły"
                         android:textSize="14sp"
@@ -147,7 +147,7 @@
                     <TextView
                         android:id="@+id/birth_date_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="21 sie 2020"
                         android:textSize="14sp"

@@ -1,56 +1,27 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.health.edit;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
-import pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction;
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabid;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabidDao;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TreatmentDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
-import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
-import static android.os.Environment.DIRECTORY_PICTURES;
-import static android.os.Environment.getExternalStoragePublicDirectory;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.REQUEST_IMAGE_CAPTURE;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
 
-public class InjectionsRabidActivityEdit extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class InjectionsRabidActivityEdit extends SuperEditClass{
 
     private Button save;
     private Button back;
@@ -60,31 +31,25 @@ public class InjectionsRabidActivityEdit extends AppCompatActivity implements Da
     private EditText dateET;
     private EditText nextDateET;
     private EditText noteET;
-    private ImageView photoStampIV;
 
-    private Bitmap bitmap;
-
-    private String photoPath;
-
+    private InjectionRabidDao dao;
+    private InjectionRabid injectionRabid;
     private boolean isDatePutOrExp;
-
-
-    @SuppressLint("SimpleDateFormat")
-    private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-    private Uri photoUri;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dao = new InjectionRabidDao(this);
+        injectionRabid = dao.findById(DataPositionListener.getInstance().getSelectedItemId());
         setContentView(R.layout.healthdata_rabies_vaxine_add_edit);
-        initViews();
-//        onSavedReload(savedInstanceState);
-        bitmap = null;
+        initialize();
+        //  TODO      onSavedReload(savedInstanceState);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void initViews() {
+    @Override
+    protected void initLocalViews() {
         save = findViewById(R.id.rabiesVaxine_save_btn);
         back = findViewById(R.id.rabiesVaxine_back_btn);
         delete = findViewById(R.id.rabiesVaxine_delete_btn);
@@ -94,83 +59,54 @@ public class InjectionsRabidActivityEdit extends AppCompatActivity implements Da
         nextDateET = findViewById(R.id.rabiesVaxine_next_date_textData);
         noteET = findViewById(R.id.rabiesVaxine_note_textData);
         photoStampIV = findViewById(R.id.rabiesVaxine_photo);
-        isDatePutOrExp = true;
-        initDatePicker();
-        setOnClickListeners();
-        initDatePicker();
     }
 
-//    private void onSavedReload(Bundle savedInstanceState) {
-//        if (savedInstanceState != null) {
-//            String description = savedInstanceState.getString("RACE");
-//            if (description != null) descET.setText(description);
-//            String date = savedInstanceState.getString("BIRTH_DATE");
-//            if (date != null) dateET.setText(date);
-//            String nextDate = savedInstanceState.getString("COLOR");
-//            if (nextDate != null) nextDateET.setText(nextDate);
-//            String note = savedInstanceState.getString("COLOR");
-//            if (note != null) noteET.setText(note);
-//            if (photoPath != null) {
-//                photoUri = FileProvider.getUriForFile(this, "pl.design.mrn.matned.dogmanagementapp.fileprovider", new File(photoPath));
-//                showImage();
-//            }
-//        }
-//    }
+    @Override
+    protected void fillAllViews() {
+        medicineET.setText(injectionRabid.getMedicine());
+        descET.setText(injectionRabid.getDescription());
+        if (injectionRabid.getTreatmentDate() != null)
+            dateET.setText(dateFormat.format(injectionRabid.getTreatmentDate()));
+        else nextDateET.setText("");
+        if (injectionRabid.getNextTreatment() != null)
+            nextDateET.setText(dateFormat.format(injectionRabid.getNextTreatment()));
+        else nextDateET.setText("");
+        noteET.setText(injectionRabid.getNote());
+        photoPath = injectionRabid.getPhoto();
+        if (Validate.notEmpty(photoPath)) showImage();
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void setOnClickListeners() {
-        delete.setOnClickListener(v->{
-            deleteRecord();
-        });
-        save.setOnClickListener(addClickListener());
+    @Override
+    protected void setOtherOnClickListeners() {
+        save.setOnClickListener(updateClickListener());
         back.setOnClickListener(v -> finish());
-        if (this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
-            requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
-            photoStampIV.setOnClickListener(addPhoto());
-        }
     }
 
-    private void deleteRecord() {
-        TreatmentDao dao = new TreatmentDao(this);
-        dao.remove(DataPositionListener.getInstance().getSelectedItemId());
-        finish();
+    @Override
+    protected void initDeleteOnClickListener() {
+        delete.setOnClickListener(v-> deleteRecord(dao));
     }
 
-    private View.OnClickListener addPhoto() {
-        return v -> {
-            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                File photoFile = null;
-                photoFile = createImageFile();
-                photoPath = photoFile.getAbsolutePath();
-                photoUri = FileProvider.getUriForFile(this, "pl.design.mrn.matned.dogmanagementapp.fileprovider", photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-            }
-        };    }
-
-
-    private View.OnClickListener addClickListener() {
+    @Override
+    protected View.OnClickListener updateClickListener() {
         return v -> {
             if(validation()) {
-                InjectionRabidDao dao = new InjectionRabidDao(this);
-                InjectionRabid tc = new InjectionRabid();
-                tc.setMedicine(medicineET.getText().toString());
-                tc.setDescription(descET.getText().toString());
+                injectionRabid.setMedicine(medicineET.getText().toString());
+                injectionRabid.setDescription(descET.getText().toString());
                 try {
-                    tc.setTreatmentDate(dateFormat.parse(dateET.getText().toString()));
+                    injectionRabid.setTreatmentDate(dateFormat.parse(dateET.getText().toString()));
                 } catch (ParseException e) {
-                    Toast.makeText(this, WRONG_DATE, Toast.LENGTH_SHORT).show();
+                    injectionRabid.setTreatmentDate(null);
                 }
                 try {
-                    tc.setNextTreatment(dateFormat.parse(nextDateET.getText().toString()));
+                    injectionRabid.setNextTreatment(dateFormat.parse(nextDateET.getText().toString()));
                 } catch (ParseException e) {
-                    Toast.makeText(this, WRONG_DATE, Toast.LENGTH_SHORT).show();
+                    injectionRabid.setNextTreatment(null);
                 }
-                tc.setNote(noteET.getText().toString());
-                tc.setPhoto(photoPath);
-                tc.setDogId(PositionListener.getInstance().getSelectedDogId());
-                dao.add(tc);
+                injectionRabid.setNote(noteET.getText().toString());
+                injectionRabid.setPhoto(photoPath);
+                dao.update(injectionRabid);
                 finish();
             }else{
                 Toast.makeText(this, WARNING_FIELD, Toast.LENGTH_SHORT).show();
@@ -179,55 +115,22 @@ public class InjectionsRabidActivityEdit extends AppCompatActivity implements Da
     }
 
 
-    private boolean validation() {
-        boolean b1 = checkET(dateET);
-        boolean b2 = checkET(nextDateET);
-        boolean b3 = checkET2(medicineET);
+    @Override
+    protected boolean validation() {
+        boolean b1 = checkDateFormat(dateET);
+        boolean b2 = checkDateFormat(nextDateET);
+        boolean b3 = checkIsNotEmpty(medicineET);
         return b1 && b2 && b3;
     }
 
-    private boolean checkET(EditText et) {
-        if (!Validate.dateFormat(et.getText().toString())) {
-            et.setBackgroundResource(R.drawable.roundcornerstextred);
-            return false;
-        } else {
-            et.setBackgroundResource(R.drawable.roundcornerstext);
-            return true;
-        }
-    }
-
-    private boolean checkET2(EditText et) {
-        if (!Validate.notEmpty(et.getText().toString())) {
-            et.setBackgroundResource(R.drawable.roundcornerstextred);
-            return false;
-        } else {
-            et.setBackgroundResource(R.drawable.roundcornerstext);
-            return true;
-        }
-    }
-
-    private void showImage() {
-        try {
-            bitmap = ImageAdvancedFunction.handleSamplingAndRotationBitmap(this, photoUri);
-            Drawable d = new BitmapDrawable(getResources(), bitmap);
-            photoStampIV.setImageDrawable(d);
-            photoStampIV.setBackgroundResource(R.drawable.roundcornerimageframeblack);
-
-        } catch (IOException e) {
-            Log.d("myLog", "Except : " + e.toString());
-        }
-    }
-
-
     @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        Calendar cal = new GregorianCalendar(year, month, dayOfMonth);
-        dateFormat.setTimeZone(cal.getTimeZone());
+    protected void changeDateViews(Calendar cal) {
         if (isDatePutOrExp) dateET.setText(dateFormat.format(cal.getTime()));
         else nextDateET.setText(dateFormat.format(cal.getTime()));
     }
 
-    private void initDatePicker() {
+    @Override
+    protected void initDatePicker() {
         dateET.setOnClickListener(v -> {
             isDatePutOrExp = true;
             datePickDialog();
@@ -251,25 +154,5 @@ public class InjectionsRabidActivityEdit extends AppCompatActivity implements Da
             }
         });
     }
-
-    private void datePickDialog() {
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        DatePickerDialog datePicker = new DatePickerDialog(this, this, year, month, day);
-        datePicker.show();
-    }
-
-    private File createImageFile() {
-        @SuppressLint("SimpleDateFormat")
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "dogPhoto_" + timeStamp + "_";
-        File storageDir = getExternalStoragePublicDirectory(DIRECTORY_PICTURES);
-        File image = null;
-        image = new File(storageDir.getParent() + imageFileName + ".jpg");
-        return image;
-    }
-
 
 }
