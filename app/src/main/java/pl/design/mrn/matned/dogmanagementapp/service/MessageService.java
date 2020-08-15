@@ -7,6 +7,11 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.app.MessagesDao;
 
 public class MessageService {
 
+    public static boolean sendMessage(Context context, Message message){
+        MessagesDao dao = new MessagesDao(context);
+        return dao.add(message);
+    }
+
     public static Message getMessage(int id, Context context){
         MessagesDao dao = new MessagesDao(context);
         return dao.findById(id);
