@@ -2,6 +2,7 @@ package pl.design.mrn.matned.dogmanagementapp.activity.health;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -49,6 +50,7 @@ public class AllergiesActivity extends AppCompatActivity {
         nextDateOfTreatmentET = findViewById(R.id.allergen_treatmentNextDate_subtitle);
         noteET = findViewById(R.id.allergen_note_subtitle);
         photoStampIV = findViewById(R.id.allergy_photo);
+        photoStampIV.setVisibility(View.GONE);
         fillAllFields();
         clickListeners();
     }

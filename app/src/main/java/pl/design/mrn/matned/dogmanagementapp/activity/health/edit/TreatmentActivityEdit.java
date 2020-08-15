@@ -63,6 +63,7 @@ public class TreatmentActivityEdit extends SuperEditClass{
         nextDateET = findViewById(R.id.treatment_next_date_dataText);
         noteET = findViewById(R.id.treatment_note_dataText);
         photoStampIV = findViewById(R.id.treatment_photo);
+        photoStampIV.setVisibility(View.GONE);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

@@ -1,5 +1,6 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.health.edit;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
@@ -59,6 +60,7 @@ public class BirthControlActivityEdit extends SuperEditClass{
         descET = findViewById(R.id.birth_description_dataText);
         dateET = findViewById(R.id.birth_date_dataText);
         noteET = findViewById(R.id.birth_note_dataText);
+        photoStampIV.setVisibility(View.GONE);
     }
 
     @Override
@@ -93,9 +95,10 @@ public class BirthControlActivityEdit extends SuperEditClass{
         super.onSaveInstanceState(outState);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void fillAllViews() {
-        numberOfPupsET.setText(birthControl.getNumberOfChildren());
+        numberOfPupsET.setText(Integer.toString(birthControl.getNumberOfChildren()));
         descET.setText(birthControl.getDescription());
         dateET.setText(dateFormat.format(birthControl.getDateOfBirth()));
         noteET.setText(birthControl.getNote());

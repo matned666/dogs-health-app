@@ -61,6 +61,7 @@ public class TeethControlActivityEdit extends SuperEditClass{
         nextDateET = findViewById(R.id.teeth_next_date_dataText);
         noteET = findViewById(R.id.teeth_note_dataText);
         photoStampIV = findViewById(R.id.teeth_photo);
+        photoStampIV.setVisibility(View.GONE);
     }
 
 

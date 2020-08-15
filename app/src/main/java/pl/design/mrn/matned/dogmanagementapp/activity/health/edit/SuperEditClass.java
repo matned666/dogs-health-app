@@ -32,7 +32,7 @@ public abstract class SuperEditClass extends SuperHealthClass {
         initDatePicker();
         setOtherOnClickListeners();
         initDeleteOnClickListener();
-        initPhotoClick();
+//        initPhotoClick();
     }
 
     protected void showAlertButton(){

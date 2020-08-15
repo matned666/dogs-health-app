@@ -2,6 +2,7 @@ package pl.design.mrn.matned.dogmanagementapp.activity.health;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -51,6 +52,7 @@ public class DeWormingActivity extends AppCompatActivity {
         dateOfNextTreatmentTV = findViewById(R.id.deworming_next_date_subtitle);
         noteET = findViewById(R.id.deworming_note_subtitle);
         photoStampIV = findViewById(R.id.deworming_note_photo);
+        photoStampIV.setVisibility(View.GONE);
         fillAllFields();
         clickListeners();
     }

@@ -3,6 +3,7 @@ package pl.design.mrn.matned.dogmanagementapp.activity.health;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -49,6 +50,7 @@ public class TeethControlActivity extends AppCompatActivity {
         dateOfNextTreatmentTV = findViewById(R.id.teeth_next_date_dataText);
         noteET = findViewById(R.id.teeth_note_dataText);
         photoStampIV = findViewById(R.id.teeth_photo);
+        photoStampIV.setVisibility(View.GONE);
         fillAllFields();
         clickListeners();
     }

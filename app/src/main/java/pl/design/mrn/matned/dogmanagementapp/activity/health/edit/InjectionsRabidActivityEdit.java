@@ -62,6 +62,7 @@ public class InjectionsRabidActivityEdit extends SuperEditClass{
         nextDateET = findViewById(R.id.rabiesVaxine_next_date_textData);
         noteET = findViewById(R.id.rabiesVaxine_note_textData);
         photoStampIV = findViewById(R.id.rabiesVaxine_photo);
+        photoStampIV.setVisibility(View.GONE);
     }
 
     @Override

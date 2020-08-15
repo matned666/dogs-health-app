@@ -68,6 +68,7 @@ public class AllergiesActivityEdit extends SuperEditClass{
         nextDateOfTreatmentET = findViewById(R.id.allergen_treatmentNextDate_textData);
         noteET = findViewById(R.id.allergen_note_textData);
         photoStampIV = findViewById(R.id.allergy_photo);
+        photoStampIV.setVisibility(View.GONE);
     }
 
     @Override

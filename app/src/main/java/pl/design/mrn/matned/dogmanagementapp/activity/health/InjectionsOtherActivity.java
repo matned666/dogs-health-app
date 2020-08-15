@@ -3,6 +3,7 @@ package pl.design.mrn.matned.dogmanagementapp.activity.health;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -53,6 +54,7 @@ public class InjectionsOtherActivity extends AppCompatActivity {
         dateOfNextTreatmentTV = findViewById(R.id.rabiesVaxine_next_date_subtitle);
         noteET = findViewById(R.id.rabiesVaxine_note_subtitle);
         photoStampIV = findViewById(R.id.rabiesVaxine_photo);
+        photoStampIV.setVisibility(View.GONE);
         fillAllFields();
         clickListeners();
     }

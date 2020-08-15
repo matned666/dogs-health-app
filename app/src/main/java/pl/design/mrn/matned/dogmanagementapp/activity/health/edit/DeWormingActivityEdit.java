@@ -64,6 +64,7 @@ public class DeWormingActivityEdit extends SuperEditClass {
         nextDateET = findViewById(R.id.deworming_next_date_textData);
         noteET = findViewById(R.id.deworming_note_textData);
         photoStampIV = findViewById(R.id.deworming_photo);
+        photoStampIV.setVisibility(View.GONE);
     }
 
     @Override
