@@ -8,12 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.FileProvider;
 
+import java.io.File;
 import java.text.ParseException;
 import java.util.Calendar;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Allergies;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.AllergiesDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
@@ -48,7 +52,7 @@ public class AllergiesActivityAdd extends SuperAddClass{
         datePut = 0;
         setContentView(R.layout.healthdata_allergy_add_edit);
         initialize(dao);
-//      TODO  onSavedReload(savedInstanceState);
+        onSavedReload(savedInstanceState);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -66,6 +70,43 @@ public class AllergiesActivityAdd extends SuperAddClass{
         photoStampIV = findViewById(R.id.allergy_photo);
     }
 
+    @Override
+    protected void onSavedReload(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            String name = savedInstanceState.getString("NAME");
+            if (name != null) nameET.setText(name);
+            String description = savedInstanceState.getString("DESC");
+            if (description != null) descET.setText(description);
+            String dateDiscovery = savedInstanceState.getString("DATE");
+            if (dateDiscovery != null) dateOfDiscoveryET.setText(dateDiscovery);
+            String treatmentDate = savedInstanceState.getString("NEXT_DATE");
+            if (treatmentDate != null) dateOfTreatmentET.setText(treatmentDate);
+            String nextTreatmentDate = savedInstanceState.getString("NEXT_NEXT_DATE");
+            if (nextTreatmentDate != null) nextDateOfTreatmentET.setText(nextTreatmentDate);
+            String note = savedInstanceState.getString("NOTE");
+            if (note != null) noteET.setText(note);
+            photoPath = savedInstanceState.getString("PHOTO_PATH");
+            if (Validate.notEmpty(photoPath)) {
+                photoUri = FileProvider.getUriForFile(
+                        this,
+                        "pl.design.mrn.matned.dogmanagementapp.fileprovider",
+                        new File(photoPath));
+                showImage();
+            }
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("NAME", nameET.getText().toString());
+        outState.putString("DESC", descET.getText().toString());
+        outState.putString("DATE", dateOfDiscoveryET.getText().toString());
+        outState.putString("NEXT_DATE", dateOfTreatmentET.getText().toString());
+        outState.putString("NEXT_NEXT_DATE", nextDateOfTreatmentET.getText().toString());
+        outState.putString("NOTE", noteET.getText().toString());
+        outState.putString("PHOTO_PATH", photoPath);
+        super.onSaveInstanceState(outState);
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override

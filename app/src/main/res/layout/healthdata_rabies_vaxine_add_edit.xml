@@ -54,15 +54,15 @@
                     <EditText
                         android:id="@+id/rabiesVaxine_name_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
                         android:hint="Nazwa zastosowanego leku"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/rabiesVaxine_name_guideLine"
-                        android:autofillHints="" />
+                        app:layout_constraintTop_toTopOf="@+id/rabiesVaxine_name_guideLine" />
 
                     <TextView
                         android:id="@+id/rabiesVaxine_name_subtitle"
@@ -102,16 +102,16 @@
                     <EditText
                         android:id="@+id/rabiesVaxine_description_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="384dp"
+                        android:layout_width="0dp"
                         android:layout_height="95dp"
-                        android:hint="Opis, zastosowana dawka, ew. opis leku"
+                        android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
+                        android:hint="Opis, zastosowana dawka, ew. opis leku"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rabiesVaxine_description_guideline"
-                        android:autofillHints="" />
+                        app:layout_constraintTop_toBottomOf="@+id/rabiesVaxine_description_guideline" />
 
                     <TextView
                         android:id="@+id/rabiesVaxine_description_subtitle"
@@ -151,16 +151,16 @@
                     <EditText
                         android:id="@+id/rabiesVaxine_date_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:hint="Wybierz datę"
+                        android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
-                        android:textSize="14sp"
+                        android:hint="Wybierz datę"
                         android:inputType="date"
+                        android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/rabiesVaxine_date_guideLine"
-                        android:autofillHints="" />
+                        app:layout_constraintTop_toTopOf="@+id/rabiesVaxine_date_guideLine" />
 
                     <TextView
                         android:id="@+id/rabiesVaxine_date_subtitle"
@@ -200,16 +200,16 @@
                     <EditText
                         android:id="@+id/rabiesVaxine_next_date_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@drawable/roundcornersrecyclerview"
                         android:hint="Wybierz datę"
                         android:inputType="date"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:background="@drawable/roundcornersrecyclerview"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/rabiesVaxine_next_date_guideLine"
-                        android:autofillHints="" />
+                        app:layout_constraintTop_toTopOf="@+id/rabiesVaxine_next_date_guideLine" />
 
                     <TextView
                         android:id="@+id/rabiesVaxine_next_date_subtitle"

@@ -147,9 +147,9 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/otherVaxine_name_subtitle"
+                        android:id="@+id/otherVaxine_name_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
@@ -160,7 +160,7 @@
                         app:layout_constraintTop_toTopOf="@+id/otherVaxine_name_guideLine" />
 
                     <TextView
-                        android:id="@+id/otherVaxine_name_textData"
+                        android:id="@+id/otherVaxine_name_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -197,7 +197,7 @@
                     <EditText
                         android:id="@+id/otherVaxine_description_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="384dp"
+                        android:layout_width="0dp"
                         android:layout_height="95dp"
                         android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
@@ -244,9 +244,9 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/otherVaxine_date_subtitle"
+                        android:id="@+id/otherVaxine_date_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
@@ -258,7 +258,7 @@
                         app:layout_constraintTop_toTopOf="@+id/otherVaxine_date_guideLine" />
 
                     <TextView
-                        android:id="@+id/otherVaxine_date_textData"
+                        android:id="@+id/otherVaxine_date_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -293,9 +293,9 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/otherVaxine_next_date_subtitle"
+                        android:id="@+id/otherVaxine_next_date_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
@@ -307,7 +307,7 @@
                         app:layout_constraintTop_toTopOf="@+id/otherVaxine_next_date_guideLine" />
 
                     <TextView
-                        android:id="@+id/otherVaxine_next_date_textData"
+                        android:id="@+id/otherVaxine_next_date_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -342,7 +342,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/otherVaxine_note_subtitle"
+                        android:id="@+id/otherVaxine_note_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -356,7 +356,7 @@
                         app:layout_constraintTop_toTopOf="@+id/otherVaxine_note_guideLine" />
 
                     <TextView
-                        android:id="@+id/otherVaxine_note_textData"
+                        android:id="@+id/otherVaxine_note_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

@@ -27,7 +27,7 @@ import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
-public class ChipActivityEdit extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class ChipActivityEdit extends SuperEditDataClass implements DatePickerDialog.OnDateSetListener{
 
     private Button ok;
     private Button cancel;
@@ -96,22 +96,11 @@ public class ChipActivityEdit extends AppCompatActivity implements DatePickerDia
                 } catch (ParseException ignored) {
                 }
                 dao.update(chip);
-                Intent returnIntent = new Intent();
-                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
         });
-        delete.setOnClickListener(v -> {
-            dao.remove(chip);
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_OK,returnIntent);
-            finish();
-        });
-        cancel.setOnClickListener(v -> {
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_CANCELED,returnIntent);
-            finish();
-        });
+        delete.setOnClickListener(v -> showAlertButton());
+        cancel.setOnClickListener(v -> finish());
     }
 
     private void fillAllFields() {
@@ -183,4 +172,9 @@ public class ChipActivityEdit extends AppCompatActivity implements DatePickerDia
     }
 
 
+    @Override
+    protected void deleteRecord() {
+        dao.remove(chip);
+        finish();
+    }
 }

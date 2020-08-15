@@ -8,8 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.FileProvider;
 
+import java.io.File;
 import java.text.ParseException;
 import java.util.Calendar;
 
@@ -44,7 +47,7 @@ public class InjectionsRabidActivityEdit extends SuperEditClass{
         injectionRabid = dao.findById(DataPositionListener.getInstance().getSelectedItemId());
         setContentView(R.layout.healthdata_rabies_vaxine_add_edit);
         initialize();
-        //  TODO      onSavedReload(savedInstanceState);
+        onSavedReload(savedInstanceState);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -76,6 +79,41 @@ public class InjectionsRabidActivityEdit extends SuperEditClass{
         if (Validate.notEmpty(photoPath)) showImage();
     }
 
+    @Override
+    protected void onSavedReload(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            String name = savedInstanceState.getString("NAME");
+            if (name != null) medicineET.setText(name);
+            String description = savedInstanceState.getString("DESC");
+            if (description != null) descET.setText(description);
+            String date = savedInstanceState.getString("DATE");
+            if (date != null) dateET.setText(date);
+            String nextDate = savedInstanceState.getString("NEXT_DATE");
+            if (nextDate != null) nextDateET.setText(nextDate);
+            String note = savedInstanceState.getString("NOTE");
+            if (note != null) noteET.setText(note);
+            photoPath = savedInstanceState.getString("PHOTO_PATH");
+            if (Validate.notEmpty(photoPath)) {
+                photoUri = FileProvider.getUriForFile(
+                        this,
+                        "pl.design.mrn.matned.dogmanagementapp.fileprovider",
+                        new File(photoPath));
+                showImage();
+            }
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("NAME", medicineET.getText().toString());
+        outState.putString("DESC", descET.getText().toString());
+        outState.putString("DATE", dateET.getText().toString());
+        outState.putString("NEXT_DATE", nextDateET.getText().toString());
+        outState.putString("NOTE", noteET.getText().toString());
+        outState.putString("PHOTO_PATH", photoPath);
+        super.onSaveInstanceState(outState);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void setOtherOnClickListeners() {
@@ -85,6 +123,11 @@ public class InjectionsRabidActivityEdit extends SuperEditClass{
 
     @Override
     protected void initDeleteOnClickListener() {
+        showAlertButton();
+    }
+
+    @Override
+    protected void deleteRecord() {
         delete.setOnClickListener(v-> deleteRecord(dao));
     }
 

@@ -2,6 +2,7 @@ package pl.design.mrn.matned.dogmanagementapp.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -177,11 +178,30 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
 
     private View.OnClickListener changeActivityOnClick_deleteEdit() {
         return v -> {
-            dogDao.remove(dog);
-            Intent intent = new Intent(Edit_DogActivity.this, StartActivity.class);
-            startActivity(intent);
+            showAlertButton();
         };
+    }    protected void showAlertButton(){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Czy na pewno skasować?");
+        builder1.setCancelable(true);
+        builder1.setPositiveButton(
+                "Tak",
+                (dialog, id) -> {
+                    deleteRecord();
+                    finish();
+                });
+        builder1.setNegativeButton(
+                "Nie",
+                (dialog, id) -> dialog.cancel());
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
+
+    private void deleteRecord() {
+        dogDao.remove(dog);
+        finish();
+    }
+
 
     private View.OnClickListener changeActivityOnClick_saveEdit() {
         return v -> {

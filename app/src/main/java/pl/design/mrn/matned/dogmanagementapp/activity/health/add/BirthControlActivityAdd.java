@@ -8,12 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.FileProvider;
 
+import java.io.File;
 import java.text.ParseException;
 import java.util.Calendar;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.BirthControl;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.BirthControlDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
@@ -42,6 +46,7 @@ public class BirthControlActivityAdd extends SuperAddClass{
         dao = new BirthControlDao(this);
         setContentView(R.layout.healthdata_birth_control_add_edit);
         initialize(dao);
+        onSavedReload(savedInstanceState);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -55,6 +60,38 @@ public class BirthControlActivityAdd extends SuperAddClass{
         dateET = findViewById(R.id.birth_date_dataText);
         noteET = findViewById(R.id.birth_note_dataText);
         photoStampIV = findViewById(R.id.birth_photo);
+    }
+
+    @Override
+    protected void onSavedReload(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            String name = savedInstanceState.getString("NAME");
+            if (name != null) numberOfPupsET.setText(name);
+            String description = savedInstanceState.getString("DESC");
+            if (description != null) descET.setText(description);
+            String date = savedInstanceState.getString("DATE");
+            if (date != null) dateET.setText(date);
+            String note = savedInstanceState.getString("NOTE");
+            if (note != null) noteET.setText(note);
+            photoPath = savedInstanceState.getString("PHOTO_PATH");
+            if (Validate.notEmpty(photoPath)) {
+                photoUri = FileProvider.getUriForFile(
+                        this,
+                        "pl.design.mrn.matned.dogmanagementapp.fileprovider",
+                        new File(photoPath));
+                showImage();
+            }
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("NAME", numberOfPupsET.getText().toString());
+        outState.putString("DESC", descET.getText().toString());
+        outState.putString("DATE", dateET.getText().toString());
+        outState.putString("NOTE", noteET.getText().toString());
+        outState.putString("PHOTO_PATH", photoPath);
+        super.onSaveInstanceState(outState);
     }
 
     @Override

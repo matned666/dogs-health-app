@@ -15,7 +15,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Special
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.SpecialSignDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
-public class UniqueSignActivityEdit extends AppCompatActivity {
+public class UniqueSignActivityEdit extends SuperEditDataClass {
 
     private Button ok;
     private Button cancel;
@@ -54,23 +54,17 @@ public class UniqueSignActivityEdit extends AppCompatActivity {
             if(Validate.checkET(descriptionTV)){
                 sign.setDescription(descriptionTV.getText().toString());
                 dao.update(sign);
-                Intent returnIntent = new Intent();
-                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
         });
-        cancel.setOnClickListener(v -> {
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_CANCELED,returnIntent);
-            finish();
-        });
-        delete.setOnClickListener(v -> {
-            dao.remove(sign);
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_OK,returnIntent);
-            finish();
-        });
+        cancel.setOnClickListener(v -> finish());
+        delete.setOnClickListener(v -> showAlertButton());
     }
 
 
+    @Override
+    protected void deleteRecord() {
+        dao.remove(sign);
+        finish();
+    }
 }

@@ -10,6 +10,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -44,14 +45,16 @@ public abstract class SuperHealthClass extends AppCompatActivity implements Date
     protected abstract boolean validation();
     protected abstract void initLocalViews();
     protected abstract void initDatePicker();
-    protected abstract void setOtherOnClickListeners();
+    protected abstract void onSavedReload(Bundle savedInstanceState);
 
+    protected abstract void setOtherOnClickListeners();
     protected ImageView photoStampIV;
     protected Bitmap bitmap;
-    protected String photoPath;
 
+    protected String photoPath;
     @SuppressLint("SimpleDateFormat")
     protected DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+
     protected Uri photoUri;
 
 

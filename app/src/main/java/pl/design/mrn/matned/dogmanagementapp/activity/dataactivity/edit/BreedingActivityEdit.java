@@ -28,7 +28,7 @@ import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATA_SPLITMENT_REGEX;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.CANCEL;
 
-public class BreedingActivityEdit extends AppCompatActivity {
+public class BreedingActivityEdit extends SuperEditDataClass {
 
 
 
@@ -141,26 +141,15 @@ public class BreedingActivityEdit extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void setOnUsageView() {
-        cancelOrEdit.setOnClickListener(b -> {
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_CANCELED,returnIntent);
-            finish();
-        });
+        cancelOrEdit.setOnClickListener(b -> finish());
         ok.setOnClickListener(v -> {
             if (validation()) {
                 generateBreeding();
                 dao.update(breeding);
-                Intent returnIntent = new Intent();
-                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
         });
-        deleteBreedingBtn.setOnClickListener(c -> {
-            dao.remove(breeding);
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_OK,returnIntent);
-            finish();
-        });
+        deleteBreedingBtn.setOnClickListener(c -> showAlertButton());
     }
 
 
@@ -185,5 +174,11 @@ public class BreedingActivityEdit extends AppCompatActivity {
             et.setBackgroundResource(R.drawable.roundcornerstext);
             return true;
         }
+    }
+
+    @Override
+    protected void deleteRecord() {
+        dao.remove(breeding);
+        finish();
     }
 }

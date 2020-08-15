@@ -28,7 +28,7 @@ import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
-public class TattooActivityEdit extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class TattooActivityEdit extends SuperEditDataClass implements DatePickerDialog.OnDateSetListener {
 
     private Button ok;
     private Button cancel;
@@ -88,22 +88,11 @@ public class TattooActivityEdit extends AppCompatActivity implements DatePickerD
                 }
                 tattoo.setDescription(descriptionTV.getText().toString());
                 dao.update(tattoo);
-                Intent returnIntent = new Intent();
-                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
         });
-        cancel.setOnClickListener(v -> {
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_CANCELED,returnIntent);
-            finish();
-        });
-        delete.setOnClickListener(v -> {
-            dao.remove(tattoo);
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_OK,returnIntent);
-            finish();
-        });
+        cancel.setOnClickListener(v -> finish());
+        delete.setOnClickListener(v -> showAlertButton());
     }
 
     private boolean validation() {
@@ -159,4 +148,9 @@ public class TattooActivityEdit extends AppCompatActivity implements DatePickerD
     }
 
 
+    @Override
+    protected void deleteRecord() {
+        dao.remove(tattoo);
+        finish();
+    }
 }

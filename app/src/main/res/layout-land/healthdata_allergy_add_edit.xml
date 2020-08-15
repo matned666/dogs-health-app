@@ -150,9 +150,9 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/allergen_name_subtitle"
+                        android:id="@+id/allergen_name_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
@@ -165,7 +165,7 @@
                         tools:ignore="LabelFor" />
 
                     <TextView
-                        android:id="@+id/allergen_name_textData"
+                        android:id="@+id/allergen_name_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -202,7 +202,7 @@
                     <EditText
                         android:id="@+id/allergen_description_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="384dp"
+                        android:layout_width="0dp"
                         android:layout_height="95dp"
                         android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
@@ -250,9 +250,9 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/allergen_discoveryDate_subtitle"
+                        android:id="@+id/allergen_discoveryDate_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
@@ -265,7 +265,7 @@
                         tools:ignore="LabelFor" />
 
                     <TextView
-                        android:id="@+id/allergen_discoveryDate_textData"
+                        android:id="@+id/allergen_discoveryDate_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -302,7 +302,7 @@
                     <Spinner
                         android:id="@+id/allergen_was_treated_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="20dp"
                         android:background="@drawable/roundcornersrecyclerview"
                         android:text="Tak/Nie"
@@ -347,9 +347,9 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/allergen_treatmentStartDate_subtitle"
+                        android:id="@+id/allergen_treatmentStartDate_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
@@ -362,7 +362,7 @@
                         tools:ignore="LabelFor" />
 
                     <TextView
-                        android:id="@+id/allergen_treatmentStartDate_textData"
+                        android:id="@+id/allergen_treatmentStartDate_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -397,9 +397,9 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/allergen_treatmentNextDate_subtitle"
+                        android:id="@+id/allergen_treatmentNextDate_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
@@ -412,7 +412,7 @@
                         tools:ignore="LabelFor" />
 
                     <TextView
-                        android:id="@+id/allergen_treatmentNextDate_textData"
+                        android:id="@+id/allergen_treatmentNextDate_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -447,7 +447,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/allergen_note_subtitle"
+                        android:id="@+id/allergen_note_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -464,7 +464,7 @@
                         tools:ignore="LabelFor" />
 
                     <TextView
-                        android:id="@+id/allergen_note_textData"
+                        android:id="@+id/allergen_note_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

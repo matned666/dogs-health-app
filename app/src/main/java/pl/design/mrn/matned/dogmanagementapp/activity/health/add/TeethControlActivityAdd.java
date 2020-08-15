@@ -8,12 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.FileProvider;
 
+import java.io.File;
 import java.text.ParseException;
 import java.util.Calendar;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TeethControl;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TeethControlDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
@@ -42,7 +46,7 @@ public class TeethControlActivityAdd extends SuperAddClass{
         dao = new TeethControlDao(this);
         setContentView(R.layout.healthdata_teeth_control_add_edit);
         initialize(dao);
-//     TODO   onSavedReload(savedInstanceState);
+        onSavedReload(savedInstanceState);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -58,22 +62,37 @@ public class TeethControlActivityAdd extends SuperAddClass{
         photoStampIV = findViewById(R.id.teeth_photo);
     }
 
-//  TODO   private void onSavedReload(Bundle savedInstanceState) {
-//        if (savedInstanceState != null) {
-//            String description = savedInstanceState.getString("RACE");
-//            if (description != null) descET.setText(description);
-//            String date = savedInstanceState.getString("BIRTH_DATE");
-//            if (date != null) dateET.setText(date);
-//            String nextDate = savedInstanceState.getString("COLOR");
-//            if (nextDate != null) nextDateET.setText(nextDate);
-//            String note = savedInstanceState.getString("COLOR");
-//            if (note != null) noteET.setText(note);
-//            if (photoPath != null) {
-//                photoUri = FileProvider.getUriForFile(this, "pl.design.mrn.matned.dogmanagementapp.fileprovider", new File(photoPath));
-//                showImage();
-//            }
-//        }
-//    }
+    @Override
+    protected void onSavedReload(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            String description = savedInstanceState.getString("DESC");
+            if (description != null) descET.setText(description);
+            String date = savedInstanceState.getString("DATE");
+            if (date != null) dateET.setText(date);
+            String nextDate = savedInstanceState.getString("NEXT_DATE");
+            if (nextDate != null) nextDateET.setText(nextDate);
+            String note = savedInstanceState.getString("NOTE");
+            if (note != null) noteET.setText(note);
+            String photoPath = savedInstanceState.getString("PATH");
+            if (Validate.notEmpty(photoPath)) {
+                photoUri = FileProvider.getUriForFile(
+                        this,
+                        "pl.design.mrn.matned.dogmanagementapp.fileprovider",
+                        new File(photoPath));
+                showImage();
+            }
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("DESC", descET.getText().toString());
+        outState.putString("DATE", dateET.getText().toString());
+        outState.putString("NEXT_DATE", nextDateET.getText().toString());
+        outState.putString("NOTE", noteET.getText().toString());
+        outState.putString("PHOTO_PATH", photoPath);
+        super.onSaveInstanceState(outState);
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override

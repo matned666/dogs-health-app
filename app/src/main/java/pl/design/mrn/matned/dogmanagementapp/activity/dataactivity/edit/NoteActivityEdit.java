@@ -15,7 +15,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Note;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.NoteDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
-public class NoteActivityEdit extends AppCompatActivity {
+public class NoteActivityEdit extends SuperEditDataClass {
 
     private Button ok;
     private Button cancel;
@@ -53,24 +53,18 @@ public class NoteActivityEdit extends AppCompatActivity {
                 note.setNote(noteTV.getText().toString());
                 dao.update(note);
                 noteTV.setBackgroundResource(R.drawable.roundcornerstext);
-                Intent returnIntent = new Intent();
-                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }else{
                 noteTV.setBackgroundResource(R.drawable.roundcornerstextred);
             }
         });
-        cancel.setOnClickListener(v -> {
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_CANCELED,returnIntent);
-            finish();
-        });
-        delete.setOnClickListener(v -> {
-            dao.remove(note);
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_OK,returnIntent);
-            finish();
-        });
+        cancel.setOnClickListener(v -> finish());
+        delete.setOnClickListener(v -> showAlertButton());
     }
 
+    @Override
+    protected void deleteRecord() {
+        dao.remove(note);
+        finish();
+    }
 }

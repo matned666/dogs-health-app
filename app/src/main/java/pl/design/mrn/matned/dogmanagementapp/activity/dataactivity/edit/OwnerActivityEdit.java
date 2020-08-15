@@ -36,7 +36,7 @@ import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATA_SPLITMENT_REGEX;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
-public class OwnerActivityEdit extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class OwnerActivityEdit extends SuperEditDataClass implements DatePickerDialog.OnDateSetListener {
 
     private Button ok;
     private Button cancel;
@@ -118,22 +118,11 @@ public class OwnerActivityEdit extends AppCompatActivity implements DatePickerDi
                 }
                 owner.setDescription(ownerDescriptionTV.getText().toString());
                 dao.update(owner);
-                Intent returnIntent = new Intent();
-                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
         });
-        cancel.setOnClickListener(v -> {
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_CANCELED,returnIntent);
-            finish();
-        });
-        delete.setOnClickListener(v -> {
-            dao.remove(owner);
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_OK,returnIntent);
-            finish();
-        });
+        cancel.setOnClickListener(v -> finish());
+        delete.setOnClickListener(v -> showAlertButton());
         initializeDatePicker();
     }
 
@@ -239,4 +228,9 @@ public class OwnerActivityEdit extends AppCompatActivity implements DatePickerDi
         datePicker.show();
     }
 
+    @Override
+    protected void deleteRecord() {
+        dao.remove(owner);
+        finish();
+    }
 }

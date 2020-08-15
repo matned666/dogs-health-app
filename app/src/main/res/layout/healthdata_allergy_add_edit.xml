@@ -54,8 +54,9 @@
                     <EditText
                         android:id="@+id/allergen_name_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
                         android:hint="Nazwa alergenu"
                         android:inputType="text"
@@ -63,7 +64,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/allergen_name_guideLine"
-                        android:autofillHints=""
                         tools:ignore="LabelFor" />
 
                     <TextView
@@ -104,16 +104,16 @@
                     <EditText
                         android:id="@+id/allergen_description_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="384dp"
+                        android:layout_width="0dp"
                         android:layout_height="95dp"
-                        android:hint="Krótki opis reakcji alergicznej u psa na podany alergen"
+                        android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
+                        android:hint="Krótki opis reakcji alergicznej u psa na podany alergen"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/allergen_description_guideline"
-                        android:autofillHints=""
                         tools:ignore="LabelFor" />
 
                     <TextView
@@ -154,16 +154,16 @@
                     <EditText
                         android:id="@+id/allergen_discoveryDate_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@drawable/roundcornersrecyclerview"
                         android:hint="Wybierz datę"
                         android:inputType="date"
-                        android:background="@drawable/roundcornersrecyclerview"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/allergen_discoveryDate_guideLine"
-                        android:autofillHints=""
                         tools:ignore="LabelFor" />
 
                     <TextView
@@ -204,16 +204,16 @@
                     <EditText
                         android:id="@+id/allergen_treatmentStartDate_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@drawable/roundcornersrecyclerview"
                         android:hint="Wybierz datę"
                         android:inputType="date"
-                        android:background="@drawable/roundcornersrecyclerview"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/allergen_treatmentStartDate_guideLine"
-                        android:autofillHints=""
                         tools:ignore="LabelFor" />
 
                     <TextView
@@ -254,16 +254,16 @@
                     <EditText
                         android:id="@+id/allergen_treatmentNextDate_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@drawable/roundcornersrecyclerview"
                         android:hint="Wybierz datę"
                         android:inputType="date"
-                        android:background="@drawable/roundcornersrecyclerview"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/allergen_treatmentNextDate_guideLine"
-                        android:autofillHints=""
                         tools:ignore="LabelFor" />
 
                     <TextView

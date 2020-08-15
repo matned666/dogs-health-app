@@ -152,7 +152,7 @@
                     <EditText
                         android:id="@+id/treatment_name_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
@@ -200,7 +200,7 @@
                     <EditText
                         android:id="@+id/treatment_description_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="384dp"
+                        android:layout_width="0dp"
                         android:layout_height="95dp"
                         android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
@@ -249,7 +249,7 @@
                     <EditText
                         android:id="@+id/treatment_date_dataText"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
@@ -298,7 +298,7 @@
                     <EditText
                         android:id="@+id/allergen_name_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
-                        android:layout_width="385dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
                         android:background="@drawable/roundcornersrecyclerview"
