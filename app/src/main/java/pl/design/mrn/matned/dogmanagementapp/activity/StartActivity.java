@@ -105,8 +105,9 @@ public class StartActivity extends AppCompatActivity {
     private void initializeActionHoldersForButtons() {
         DogDao dao = new DogDao(this);
         if(dao.findAll().size() > 0) goToDogDataCard.setOnClickListener(clickListener(DogDataActivity.class, USAGE_INFO));
-        else goToDogDataCard.setOnClickListener(v -> Toast.makeText(StartActivity.this, "The list is empty, add any.", Toast.LENGTH_SHORT).show());
-        goToDogHealthCard.setOnClickListener(clickListener(HealthActivity.class, null));
+        else goToDogDataCard.setOnClickListener(v -> Toast.makeText(StartActivity.this, "Lista psów jest pusta, dodaj jakiegoś.", Toast.LENGTH_SHORT).show());
+        if(dao.findAll().size() > 0) goToDogHealthCard.setOnClickListener(clickListener(HealthActivity.class, null));
+        else goToDogHealthCard.setOnClickListener(v -> Toast.makeText(StartActivity.this, "Lista psów jest pusta, dodaj jakiegoś.", Toast.LENGTH_SHORT).show());
         goToSettingsCard.setOnClickListener(clickListener(SettingsActivity.class, null));
         goToInfoCard.setOnClickListener(clickListener(InfoActivity.class, null));
         addDogButton.setOnClickListener(clickListenerAdd());

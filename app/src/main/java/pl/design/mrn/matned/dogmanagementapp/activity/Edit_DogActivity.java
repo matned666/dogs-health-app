@@ -199,6 +199,7 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
 
     private void deleteRecord() {
         dogDao.remove(dog);
+        setResult(102);
         finish();
     }
 
@@ -208,8 +209,8 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
             if (validation()) {
                 getDogModelFromFields();
                 dogDao.update(dog);
-                Intent intent = new Intent(Edit_DogActivity.this, DogDataActivity.class);
-                startActivity(intent);
+                setResult(100);
+                finish();
             }
         };
     }
@@ -340,7 +341,7 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
     }
 
     private boolean checkET(EditText et) {
-        if (!Validate.checkText(et.getText().toString())) {
+        if (!Validate.notEmpty(et.getText().toString())) {
             et.setBackgroundResource(R.drawable.roundcornerstextred);
             return false;
         } else {

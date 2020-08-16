@@ -61,8 +61,6 @@ public class BirthControlAdapter extends RecyclerView.Adapter<BirthControlAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BirthControl birthControl = birthControlList.get(position);
         holder.birthDate.setText(dateFormat.format(birthControl.getDateOfBirth()));
-        if(selectedPosition == position) holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
-        else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);
         holder.holderButton.setOnClickListener(v -> {
             selectedPosition = position;
             dataPositionListener.setPosition(position);

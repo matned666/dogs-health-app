@@ -75,12 +75,12 @@ public class TreatmentActivityEdit extends SuperEditClass{
 
     @Override
     protected void initDeleteOnClickListener() {
-        showAlertButton();
+        delete.setOnClickListener(v-> showAlertButton());
     }
 
     @Override
     protected void deleteRecord() {
-        delete.setOnClickListener(v-> deleteRecord(dao));
+        deleteRecord(dao);
     }
 
     @Override

@@ -75,8 +75,7 @@ public class DogItemAdapter extends RecyclerView.Adapter<DogItemAdapter.ViewHold
             positionListener.setPosition(position);
             positionListener.setSelectedDogId(dog.getId());
             notifyDataSetChanged();
-            Intent intent = new Intent(context, DogDataActivity.class);
-            context.startActivity(intent);
+//            24
         });
     }
 

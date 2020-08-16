@@ -71,8 +71,6 @@ public class InjectionOtherAdapter extends RecyclerView.Adapter<InjectionOtherAd
             holder.isActive.setTextColor(Color.RED);
             holder.isActive.setText("Nieaktywny");
         }
-        if(selectedPosition == position) holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
-        else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);
 
         holder.holderButton.setOnClickListener(v -> {
             selectedPosition = position;

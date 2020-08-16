@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -79,6 +81,15 @@ public class DogDataActivity extends AppCompatActivity {
         putData();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 102) finish();
+        if (requestCode == 100) {
+            Toast.makeText(this, " Wpis został amieniony", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void initView() {
         dogNameET = findViewById(R.id.dogNameInfo);
         dogRaceET = findViewById(R.id.dogRaceInfo);
@@ -122,7 +133,7 @@ public class DogDataActivity extends AppCompatActivity {
         ownerBtn.setOnClickListener(v -> showDial(DataChoiceListActivityInfo.class, OWNER));
         notesBtn.setOnClickListener(v -> showDial(DataChoiceListActivityInfo.class, NOTE));
         breedingBtn.setOnClickListener(v -> showDial(BreedingActivityInfo.class, BREEDING));
-        editDog.setOnClickListener(clickListener(Edit_DogActivity.class, USAGE_EDIT));
+        editDog.setOnClickListener(clickListenerEdit(Edit_DogActivity.class, USAGE_EDIT));
     }
 
     public void showDial(Class clazz, String el) {
@@ -138,6 +149,15 @@ public class DogDataActivity extends AppCompatActivity {
             intent.putExtra(LIST_ELEMENT_ACTIVITY, use);
             intent.putExtra(USAGE, USAGE_INFO);
             startActivity(intent);
+        };
+    }
+
+    private View.OnClickListener clickListenerEdit(Class clazz, String use) {
+        return v -> {
+            Intent intent = new Intent(this, clazz);
+            intent.putExtra(LIST_ELEMENT_ACTIVITY, use);
+            intent.putExtra(USAGE, USAGE_INFO);
+            startActivityForResult(intent, 101);
         };
     }
 }

@@ -17,7 +17,6 @@ import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.edit.InjectionsOtherActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionOther;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionOtherDao;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabid;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabidDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
@@ -35,7 +34,7 @@ public class InjectionsOtherActivity extends AppCompatActivity {
     private TextView noteET;
     private ImageView photoStampIV;
 
-    private InjectionRabid injectionRabid;
+    private InjectionOther injectionOther;
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
@@ -43,17 +42,17 @@ public class InjectionsOtherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.healthdata_rabies_vaxine);
-        InjectionRabidDao dao = new InjectionRabidDao(this);
-        injectionRabid = dao.findById(DataPositionListener.getInstance().getSelectedItemId());
-        edit = findViewById(R.id.rabiesVaxine_edit);
-        back = findViewById(R.id.rabiesVaxine_back);
-        medicineTV = findViewById(R.id.rabiesVaxine_name_subtitle);
-        descET = findViewById(R.id.rabiesVaxine_description_textData);
-        dateOfTreatmentTV = findViewById(R.id.rabiesVaxine_date_subtitle);
-        dateOfNextTreatmentTV = findViewById(R.id.rabiesVaxine_next_date_subtitle);
-        noteET = findViewById(R.id.rabiesVaxine_note_subtitle);
-        photoStampIV = findViewById(R.id.rabiesVaxine_photo);
+        setContentView(R.layout.healthdata_other_deseases_vaxine);
+        InjectionOtherDao dao = new InjectionOtherDao(this);
+        injectionOther = dao.findById(DataPositionListener.getInstance().getSelectedItemId());
+        edit = findViewById(R.id.otherVaxine_edit_btn);
+        back = findViewById(R.id.otherVaxine_back_btn);
+        medicineTV = findViewById(R.id.otherVaxine_name_subtitle);
+        descET = findViewById(R.id.otherVaxine_description_textData);
+        dateOfTreatmentTV = findViewById(R.id.otherVaxine_date_subtitle);
+        dateOfNextTreatmentTV = findViewById(R.id.otherVaxine_next_date_subtitle);
+        noteET = findViewById(R.id.otherVaxine_note_subtitle);
+        photoStampIV = findViewById(R.id.otherVaxine_notephoto);
         photoStampIV.setVisibility(View.GONE);
         fillAllFields();
         clickListeners();
@@ -76,15 +75,15 @@ public class InjectionsOtherActivity extends AppCompatActivity {
     }
 
     private void fillAllFields() {
-        medicineTV.setText(injectionRabid.getMedicine());
-        descET.setText(injectionRabid.getDescription());
-        if(injectionRabid.getTreatmentDate() != null)
-            dateOfTreatmentTV.setText(dateFormat.format(injectionRabid.getTreatmentDate()));
+        medicineTV.setText(injectionOther.getMedicine());
+        descET.setText(injectionOther.getDescription());
+        if(injectionOther.getTreatmentDate() != null)
+            dateOfTreatmentTV.setText(dateFormat.format(injectionOther.getTreatmentDate()));
         else dateOfTreatmentTV.setText("");
-        if(injectionRabid.getNextTreatment() != null)
-            dateOfNextTreatmentTV.setText(dateFormat.format(injectionRabid.getNextTreatment()));
+        if(injectionOther.getNextTreatment() != null)
+            dateOfNextTreatmentTV.setText(dateFormat.format(injectionOther.getNextTreatment()));
         else dateOfNextTreatmentTV.setText("");
-        noteET.setText(injectionRabid.getNote());
+        noteET.setText(injectionOther.getNote());
 //        TODO , Photo
     }
 }

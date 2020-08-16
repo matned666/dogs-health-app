@@ -254,7 +254,7 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
     }
 
     private boolean checkET(EditText et) {
-        if (!Validate.checkText(et.getText().toString())) {
+        if (!Validate.notEmpty(et.getText().toString())) {
             et.setBackgroundResource(R.drawable.roundcornerstextred);
             return false;
         } else {

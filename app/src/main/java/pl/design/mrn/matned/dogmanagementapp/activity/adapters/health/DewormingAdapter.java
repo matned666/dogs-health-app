@@ -71,8 +71,6 @@ public class DewormingAdapter extends RecyclerView.Adapter<DewormingAdapter.View
             holder.isActive.setTextColor(Color.RED);
             holder.isActive.setText(INACTIVE);
         }
-        if(selectedPosition == position) holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
-        else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);
 
         holder.holderButton.setOnClickListener(v -> {
             selectedPosition = position;

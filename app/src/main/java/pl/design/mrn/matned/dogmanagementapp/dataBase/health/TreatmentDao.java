@@ -102,7 +102,7 @@ public class TreatmentDao extends SQLiteOpenHelper implements DaoFragmentInterfa
 
     @Override
     public List<Treatment> getListByMasterId(int id) {
-        String query = "SELECT * FROM " + TREATMENT_TABLE + " WHERE " + DOG_ID + " = " + 1;
+        String query = "SELECT * FROM " + TREATMENT_TABLE + " WHERE " + DOG_ID + " = " + id;
         return getListByQuery(query);    }
 
     @Override

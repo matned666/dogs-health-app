@@ -85,7 +85,7 @@ public class BreedingActivityAdd extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int breedingId = breeding.getBreedingId();
+                int breedingId = dao.
                 breeding = dao.findById(getTheSelectedBreedingId((String) parent.getSelectedItem()));
                 breeding.setBreedingId(breedingId);
                 breeding.setDogId(PositionListener.getInstance().getSelectedDogId());

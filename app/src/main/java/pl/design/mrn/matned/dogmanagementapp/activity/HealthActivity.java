@@ -27,6 +27,7 @@ public class HealthActivity extends AppCompatActivity {
     private Button teethControl;
     private Button treatmentButton;
     private Button allergies;
+    private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class HealthActivity extends AppCompatActivity {
         teethControl = findViewById(R.id.teethControllButton);
         treatmentButton = findViewById(R.id.illnessButton);
         allergies = findViewById(R.id.allergiesButton);
+        back = findViewById(R.id.backButton);
         onClickListeners();
     }
 
@@ -50,6 +52,7 @@ public class HealthActivity extends AppCompatActivity {
         teethControl.setOnClickListener(v -> startNewActivity(TEETH));
         treatmentButton.setOnClickListener(v -> startNewActivity(TREATMENT));
         allergies.setOnClickListener(v -> startNewActivity(ALLERGIES));
+        back.setOnClickListener(v->finish());
     }
 
     private void startNewActivity(String usage) {

@@ -54,9 +54,6 @@ public class AllergiesAdapter extends RecyclerView.Adapter<AllergiesAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Allergies allergies = allergiesList.get(position);
         holder.allergyName.setText(allergies.getAllergen());
-        if (selectedPosition == position)
-            holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelementselected);
-        else holder.holderButton.setBackgroundResource(R.drawable.roundcornersrecyclerviewelement);
         holder.holderButton.setOnClickListener(v -> {
             selectedPosition = position;
             dataPositionListener.setPosition(position);

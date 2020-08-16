@@ -248,7 +248,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/deworming_date_subtitle"
+                        android:id="@+id/deworming_date_textData"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -262,7 +262,7 @@
                         app:layout_constraintTop_toTopOf="@+id/deworming_date_guideLine" />
 
                     <TextView
-                        android:id="@+id/deworming_date_textData"
+                        android:id="@+id/deworming_date_subtitle"
                         style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
