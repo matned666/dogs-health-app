@@ -2,6 +2,7 @@ package pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData;
 
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Breeding  implements Serializable  {
 
@@ -76,7 +77,22 @@ public class Breeding  implements Serializable  {
         this.description = description;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Breeding breeding = (Breeding) o;
+        return  Objects.equals(name, breeding.name) &&
+                Objects.equals(address, breeding.address) &&
+                Objects.equals(phone, breeding.phone) &&
+                Objects.equals(email, breeding.email) &&
+                Objects.equals(description, breeding.description);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, address, phone, email, description);
+    }
 
     @Override
     public String toString() {

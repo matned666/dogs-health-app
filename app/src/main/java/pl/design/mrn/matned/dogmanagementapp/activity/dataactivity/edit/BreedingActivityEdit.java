@@ -16,6 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
@@ -27,9 +29,10 @@ import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATA_SPLITMENT_REGEX;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.CANCEL;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_BREEDING_TEXT;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_OWNER_TEXT;
 
 public class BreedingActivityEdit extends SuperEditDataClass {
-
 
 
     private Button ok;
@@ -85,8 +88,7 @@ public class BreedingActivityEdit extends SuperEditDataClass {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void initSpinner() {
-        List<Breeding> breedings = dao.findAll();
-        String[] array = getBredingsNamesList(breedings);
+        String[] array = getBredingsNamesList();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drpdn, array);
         breedingSpinner.setAdapter(adapter);
         breedingSpinner.setOnItemSelectedListener(clickItem());
@@ -97,11 +99,13 @@ public class BreedingActivityEdit extends SuperEditDataClass {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            int breedingId = breeding.getBreedingId();
-            breeding = dao.findById(getTheSelectedBreedingId((String) parent.getSelectedItem()));
-            breeding.setBreedingId(breedingId);
-            breeding.setDogId(PositionListener.getInstance().getSelectedDogId());
-            fillAllFields();
+                if(!parent.getSelectedItem().equals(NEW_BREEDING_TEXT)) {
+                    int breedingId = breeding.getBreedingId();
+                    breeding = dao.findById(getTheSelectedBreedingId((String) parent.getSelectedItem()));
+                    breeding.setBreedingId(breedingId);
+                    breeding.setDogId(PositionListener.getInstance().getSelectedDogId());
+                    fillAllFields();
+                }else emptyAllFields();
             }
 
             @Override
@@ -111,15 +115,28 @@ public class BreedingActivityEdit extends SuperEditDataClass {
         };
     }
 
+    private void emptyAllFields() {
+        breedingName.setText("");
+        address.setText("");
+        phone.setText("");
+        email.setText("");
+        description.setText("");
+    }
+
     private int getTheSelectedBreedingId(String str) {
         String[] temp = str.split(DATA_SPLITMENT_REGEX);
         return Integer.parseInt(temp[0].trim());
     }
 
-    private String[] getBredingsNamesList(List<Breeding> breedings) {
-        String[] array = new String[breedings.size()];
-        for (int i = 0; i < array.length; i++) {
-            String data = breedings.get(i).getBreedingId() + " " + DATA_SPLITMENT_REGEX + " " + breedings.get(i).getName() + " " + breedings.get(i).getEmail();
+    private String[] getBredingsNamesList() {
+        ArrayList<Breeding> listOfBreedings = new ArrayList<>(new HashSet<>(dao.findAll()));
+        String[] array = new String[listOfBreedings.size() + 1];
+        array[0] = NEW_BREEDING_TEXT;
+        for (int i = 1; i < array.length; i++) {
+            String data;
+            int pos = i - 1;
+            data = listOfBreedings.get(pos).getBreedingId() + " " + DATA_SPLITMENT_REGEX + " " +
+                    listOfBreedings.get(pos).getName() + " " + listOfBreedings.get(pos).getEmail();
             array[i] = data;
         }
         return array;

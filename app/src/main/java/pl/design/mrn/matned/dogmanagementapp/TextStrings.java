@@ -30,4 +30,9 @@ public class TextStrings {
     public static final String YES = "TAK";
     public static final String NO = "NIE";
     public static final String WARNING_FIELD = "Proszę wypełnić poprawnie wymagane pola";
+
+    public static final String NEW_BREEDING_TEXT = "Nowa hodowla";
+    public static final String NEW_OWNER = "Nowy właściciel";
+
+
 }

@@ -22,12 +22,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Breeding;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Owner;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.OwnerDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
@@ -35,6 +38,9 @@ import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATA_SPLITMENT_REGEX;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_BREEDING_TEXT;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_OWNER;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_OWNER_TEXT;
 
 public class OwnerActivityEdit extends SuperEditDataClass implements DatePickerDialog.OnDateSetListener {
 
@@ -94,7 +100,8 @@ public class OwnerActivityEdit extends SuperEditDataClass implements DatePickerD
         if (owner.getAddress() != null) ownerAddressTV.setText(owner.getAddress());
         if (owner.getPhoneNumber() != null) ownerPhoneTV.setText(owner.getPhoneNumber());
         if (owner.getEmail() != null) ownerEmailTV.setText(owner.getEmail());
-        if (owner.getDateFrom() != null) ownerFromDateTV.setText(dateFormat.format(owner.getDateFrom()));
+        if (owner.getDateFrom() != null)
+            ownerFromDateTV.setText(dateFormat.format(owner.getDateFrom()));
         if (owner.getDateTo() != null) ownerToDateTV.setText(dateFormat.format(owner.getDateTo()));
         if (owner.getDescription() != null) ownerDescriptionTV.setText(owner.getDescription());
     }
@@ -102,7 +109,7 @@ public class OwnerActivityEdit extends SuperEditDataClass implements DatePickerD
 
     private void initEndingListeners() {
         ok.setOnClickListener(v -> {
-            if (validation()){
+            if (validation()) {
                 owner.setName(ownerNameTV.getText().toString());
                 owner.setSurname(ownerSurnameTV.getText().toString());
                 owner.setAddress(ownerAddressTV.getText().toString());
@@ -145,22 +152,24 @@ public class OwnerActivityEdit extends SuperEditDataClass implements DatePickerD
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void initSpinner() {
-        owners = dao.findAll();
-        String[] array = getOwnersDesc(owners);
+        String[] array = getOwnersDesc();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drpdn, array);
         ownersSpinner.setAdapter(adapter);
-        ownersSpinner.setOnItemSelectedListener (clickItem());
+        ownersSpinner.setOnItemSelectedListener(clickItem());
     }
 
     private AdapterView.OnItemSelectedListener clickItem() {
         return new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int ownerId = owner.getId();
-                owner = owners.get(position);
-                owner.setId(ownerId);
-                owner.setDog_id(PositionListener.getInstance().getSelectedDogId());
-                fillAllFields();
+                if (!parent.getSelectedItem().equals(NEW_OWNER)) {
+                    int ownerId = owner.getId();
+                    owner = owners.get(position);
+                    owner.setId(ownerId);
+                    owner.setDog_id(PositionListener.getInstance().getSelectedDogId());
+                    fillAllFields();
+                }
+                emptyAllFields();
             }
 
             @Override
@@ -170,12 +179,29 @@ public class OwnerActivityEdit extends SuperEditDataClass implements DatePickerD
         };
     }
 
-    private String[] getOwnersDesc(List<Owner> owners) {
-        String[] array = new String[owners.size()];
-        for (int i = 0; i < array.length; i++) {
-            String data = owners.get(i).getId() + " " + DATA_SPLITMENT_REGEX + " " + owners.get(i).getName() + " " + owners.get(i).getSurname();
+    private void emptyAllFields() {
+        ownerNameTV.setText("");
+        ownerSurnameTV.setText("");
+        ownerAddressTV.setText("");
+        ownerPhoneTV.setText("");
+        ownerEmailTV.setText("");
+        ownerFromDateTV.setText("");
+        ownerToDateTV.setText("");
+        ownerDescriptionTV.setText("");
+    }
+
+    private String[] getOwnersDesc() {
+        ArrayList<Owner> listOfOwners = new ArrayList<>(new HashSet<>(dao.findAll()));
+        String[] array = new String[listOfOwners.size() + 1];
+        array[0] = NEW_OWNER;
+        for (int i = 1; i < array.length; i++) {
+            String data;
+            int pos = i - 1;
+            data = listOfOwners.get(pos).getId() + " " + DATA_SPLITMENT_REGEX + " " +
+                    listOfOwners.get(pos).getName() + " " + listOfOwners.get(pos).getSurname();
             array[i] = data;
         }
+
         return array;
     }
 
@@ -183,7 +209,6 @@ public class OwnerActivityEdit extends SuperEditDataClass implements DatePickerD
         String[] temp = str.split(DATA_SPLITMENT_REGEX);
         return Integer.parseInt(temp[0].trim());
     }
-
 
 
     @Override
