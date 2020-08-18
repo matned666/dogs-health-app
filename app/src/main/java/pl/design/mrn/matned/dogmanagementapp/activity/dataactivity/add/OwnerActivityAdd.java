@@ -18,26 +18,22 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Owner;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.OwnerDao;
-import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATA_SPLITMENT_REGEX;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_OWNER;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_OWNER_TEXT;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.NEW_OWNER;
 
 public class OwnerActivityAdd extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 

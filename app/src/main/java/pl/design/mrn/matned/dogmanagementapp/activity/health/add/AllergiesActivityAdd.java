@@ -22,8 +22,8 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Allergies;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.AllergiesDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.*;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.*;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.WRONG_DATE;
 
 public class AllergiesActivityAdd extends SuperAddClass{
 

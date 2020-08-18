@@ -1,6 +1,7 @@
 package pl.design.mrn.matned.dogmanagementapp;
 
-public class TextStrings {
+
+public class TextStrings_PL {
 
     public static final String TATTOO_LIST_TITLE = "Tatuaże: ";
     public static final String CHIP_LIST_TITLE = "Chip: ";
@@ -37,5 +38,45 @@ public class TextStrings {
     public static final String ARE_YOU_SURE_TO_DELETE = "Czy na pewno skasować?";
 
 
+    public static final String WELCOME_MESSAGE =
+            "Witamy w naszej aplikacji \n" +
+                    "Mam nadzieje, ze pieski maja sie dobrze \n" +
+                    "i ze aplikacja posluzy na wiele pokolen \n" +
+                    "Pozdrawiam, \n" +
+                    "Mateusz Niedbal - tworca \n" +
+                    "MRN-Design.eu";
 
+
+//    Vaccine outdate message:
+
+    public static final String VACCINE_OUTDATE_1 =
+            "Cześć \n" +
+                    "Jedna ze szczepionek na ";
+
+
+    public static final String DEWORMING_OUTDATE_1 =
+            "Cześć \n" +
+                    "Czas na odrobaczenie\n " +
+                    "u psa o imieniu ";
+
+
+    public static final String OUTDATE_2 =
+            "\ntraci ważność\n" +
+                    "u psa o imieniu ";
+
+    public static final String OUTDATE_3 =
+            "\nSprawdź czy dane się zgadzają.\n" +
+                    "Pozdrawiam, \n" +
+                    Statics.APP_NAME;
+    public static final String RABIES_VACCINE = "WŚCIEKLIZNĘ";
+    public static final String OTHER_VACCINE = "INNE CHOROBY ZAKAŹNE";
+
+//    birthday message
+
+    public static final String BIRTHDAY_MESSAGE1 =
+            "Wszystkiego najlepszego ";
+    public static final String BIRTHDAY_MESSAGE2 =
+            "\n z okazji urodzin \n" +
+                    "życzymy zdrówka i radości\n" +
+                    Statics.APP_NAME;
 }

@@ -40,7 +40,7 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.TATTOO;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_INFO;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.CHANGED_RECORD_INFO;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.CHANGED_RECORD_INFO;
 
 public class DogDataActivity extends AppCompatActivity {
 

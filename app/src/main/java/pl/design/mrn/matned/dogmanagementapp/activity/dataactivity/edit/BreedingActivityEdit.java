@@ -1,7 +1,6 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,11 +13,9 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.BreedingActivityAdd;
@@ -28,9 +25,8 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Breedin
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATA_SPLITMENT_REGEX;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.CANCEL;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_BREEDING_TEXT;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_OWNER_TEXT;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.CANCEL;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.NEW_BREEDING_TEXT;
 
 public class BreedingActivityEdit extends SuperEditDataClass {
 

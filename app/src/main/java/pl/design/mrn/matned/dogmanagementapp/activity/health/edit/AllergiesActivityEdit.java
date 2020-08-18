@@ -24,8 +24,8 @@ import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.WARNING_FIELD;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.WRONG_DATE;
 
 public class AllergiesActivityEdit extends SuperEditClass{
 

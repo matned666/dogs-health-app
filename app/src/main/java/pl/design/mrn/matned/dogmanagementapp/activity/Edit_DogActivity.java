@@ -59,9 +59,9 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.OWNER;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.SIGN;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.TATTOO;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.ADD_DOG_SEX;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NOT_WORKING_YET;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.ADD_DOG_SEX;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.NOT_WORKING_YET;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.WRONG_DATE;
 
 public class Edit_DogActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 

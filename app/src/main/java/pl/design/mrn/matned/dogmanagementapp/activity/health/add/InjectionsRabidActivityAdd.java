@@ -1,57 +1,29 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.health.add;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import java.io.File;
-import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
-import pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction;
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Deworming;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.health.DewormingDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabid;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabidDao;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TeethControl;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TeethControlDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
-import static android.os.Environment.DIRECTORY_PICTURES;
-import static android.os.Environment.getExternalStoragePublicDirectory;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.REQUEST_IMAGE_CAPTURE;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.WARNING_FIELD;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.WRONG_DATE;
 
 public class InjectionsRabidActivityAdd extends SuperAddClass{
 

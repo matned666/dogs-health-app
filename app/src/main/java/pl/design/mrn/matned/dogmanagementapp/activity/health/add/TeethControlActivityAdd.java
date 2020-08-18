@@ -22,8 +22,8 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TeethControl;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TeethControlDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.WARNING_FIELD;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.WRONG_DATE;
 
 public class TeethControlActivityAdd extends SuperAddClass{
 

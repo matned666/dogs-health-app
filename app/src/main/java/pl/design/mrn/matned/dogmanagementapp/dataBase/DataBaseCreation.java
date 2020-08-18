@@ -15,6 +15,7 @@ public class DataBaseCreation {
     public static void create(SQLiteDatabase db) {
         List<String> tables = Arrays.asList(
                 CREATE_DOGS_TABLE,
+                CREATE_CONFIGURATION_TABLE,
                 CREATE_MESSAGE_TABLE,
                 CREATE_BREEDING_TABLE,
                 CREATE_CHIP_TABLE,
@@ -45,6 +46,14 @@ public class DataBaseCreation {
             DOG_COLOR + " TEXT, " +
             DOG_PHOTO + " TEXT, " +
             DOG_SEX + " TEXT );";
+
+    private static final String CREATE_CONFIGURATION_TABLE = "CREATE TABLE " + CONFIGURATION_TABLE + "(" +
+            CONFIGURATION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            CONFIGURATION_ALERT_VACCINE + " INTEGER, " +
+            CONFIGURATION_ALERT_BIRTHDAY + " INTEGER, " +
+            CONFIGURATION_ALERT_DEWORMING + " INTEGER, " +
+            CONFIGURATION_ALERT_OTHER + " INTEGER, " +
+            CONFIGURATION_IS_WELCOME_SENT + " INTEGER );";
 
     private static final String CREATE_MESSAGE_TABLE = "CREATE TABLE " + MESSAGE_TABLE + "(" +
             MESSAGE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +

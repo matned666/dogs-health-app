@@ -1,6 +1,10 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.app;
 
+import android.database.sqlite.SQLiteOpenHelper;
+
 import java.util.Date;
+
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoInterface;
 
 public class Message {
 
@@ -15,6 +19,11 @@ public class Message {
         messageDateTime = new Date();
     }
 
+    public Message(MessageSubject subject, String message) {
+        this.subject = subject;
+        this.message = message;
+        status = MessageStatus.NOT_READ;
+        messageDateTime = new Date();}
 
     public int getId() {
         return id;

@@ -19,8 +19,8 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Breedin
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.BreedingDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.ADD;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.EDIT;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.ADD;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.EDIT;
 
 public class BreedingActivityInfo extends AppCompatActivity {
 

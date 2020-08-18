@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
@@ -25,8 +24,8 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Breedin
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATA_SPLITMENT_REGEX;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.CANCEL;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_BREEDING_TEXT;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.CANCEL;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.NEW_BREEDING_TEXT;
 
 public class BreedingActivityAdd extends AppCompatActivity {
 

@@ -46,7 +46,7 @@ import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.*;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.*;
 
 public class HealthListActivity extends AppCompatActivity {
 

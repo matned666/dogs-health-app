@@ -23,7 +23,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabidDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.WARNING_FIELD;
 
 public class InjectionsRabidActivityEdit extends SuperEditClass{
 

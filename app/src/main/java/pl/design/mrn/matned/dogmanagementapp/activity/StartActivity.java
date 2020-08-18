@@ -51,7 +51,7 @@ public class StartActivity extends AppCompatActivity {
         dao = new DogDao(this);
         dogs = dao.findAll();
         positionListener = PositionListener.getInstance();
-        positionListener.setSelectedDogId(dogs.get(0).getId());
+        if (dogs.size() > 0) positionListener.setSelectedDogId(dogs.get(0).getId());
         positionListener.setPosition(0);
         if (savedInstanceState != null) {
             Integer selectedPos = ((Integer) savedInstanceState.get(SELECTED_POSITION));

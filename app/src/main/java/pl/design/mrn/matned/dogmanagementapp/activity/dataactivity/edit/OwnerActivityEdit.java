@@ -1,9 +1,7 @@
 package pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.edit;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -30,7 +27,6 @@ import java.util.List;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Breeding;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.Owner;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData.OwnerDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
@@ -38,9 +34,7 @@ import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATA_SPLITMENT_REGEX;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_BREEDING_TEXT;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_OWNER;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NEW_OWNER_TEXT;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.NEW_OWNER;
 
 public class OwnerActivityEdit extends SuperEditDataClass implements DatePickerDialog.OnDateSetListener {
 

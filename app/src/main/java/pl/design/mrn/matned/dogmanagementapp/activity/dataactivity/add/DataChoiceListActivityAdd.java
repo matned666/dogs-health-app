@@ -37,16 +37,15 @@ import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.CHIP;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.LIST_ELEMENT_ACTIVITY;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE_ACTIVITY;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.OWNER;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.SIGN;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.TATTOO;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_ADD;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.CHIP_LIST_TITLE;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NOTE_LIST_TITLE;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.OWNER_LIST_TITLE;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.SPECIAL_SIGN_LIST_TITLE;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.TATTOO_LIST_TITLE;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.CHIP_LIST_TITLE;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.NOTE_LIST_TITLE;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.OWNER_LIST_TITLE;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.SPECIAL_SIGN_LIST_TITLE;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.TATTOO_LIST_TITLE;
 
 public class DataChoiceListActivityAdd extends AppCompatActivity {
 

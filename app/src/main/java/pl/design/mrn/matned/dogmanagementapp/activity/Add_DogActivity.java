@@ -39,8 +39,6 @@ import java.util.GregorianCalendar;
 
 import pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction;
 import pl.design.mrn.matned.dogmanagementapp.R;
-import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.BreedingActivityAdd;
-import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.DataChoiceListActivityAdd;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.Sex;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
@@ -48,16 +46,10 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.Validate;
 
 import static android.os.Environment.DIRECTORY_PICTURES;
 import static android.os.Environment.getExternalStoragePublicDirectory;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.BREEDING;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.CHIP;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.LIST_ELEMENT_ACTIVITY;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.OWNER;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.SIGN;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.TATTOO;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.NOT_WORKING_YET;
-import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.NOT_WORKING_YET;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.WRONG_DATE;
 
 public class Add_DogActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 

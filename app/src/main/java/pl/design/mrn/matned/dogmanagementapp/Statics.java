@@ -1,6 +1,18 @@
 package pl.design.mrn.matned.dogmanagementapp;
 
+import pl.design.mrn.matned.dogmanagementapp.dataBase.app.Configuration;
+
 public class Statics {
+
+    public static Configuration defaultConfiguration(){
+        Configuration defaultConfiguration = new Configuration();
+        defaultConfiguration.setIsVaccineNotificationOn((byte) 0);
+        defaultConfiguration.setIsBirthdayNotificationOn((byte) 0);
+        defaultConfiguration.setIsDewormingNotificationOn((byte) 0);
+        defaultConfiguration.setIsOtherNotificationOn((byte) 0);
+        defaultConfiguration.setIsWelcomeMessageSent((byte) 0);
+        return defaultConfiguration;
+    }
 
     public static final String DATE_FORMAT = "dd MMM yyyy";
     public static final String DATE_FORMAT_MESSAGE = "E, dd MMM yyyy HH:mm:ss z";
@@ -37,6 +49,9 @@ public class Statics {
     public static final String DATA_SPLITMENT_REGEX = ">>";
     public static final String R_INJECTION = "R_INJECTION";
     public static final String O_INJECTION = "O_INJECTION";
+
+    public static final int REQUEST_IMAGE_CAPTURE = 123;
+    public static final String PHOTO_PATH = "PHOTO_PATH";
 
 //    DATABASE STATIC STRINGS:
 
@@ -99,8 +114,6 @@ public class Statics {
     public static final String MESSAGE = "MESSAGE";
     public static final String MESSAGE_DATE_TIME = "MESSAGE_DATE_TIME";
     public static final String MESSAGE_STATUS = "MESSAGE_STATUS";
-
-
 
 
 
@@ -168,6 +181,13 @@ public class Statics {
     public static final String DATE_OF_NEXT_TREATMENT = "DATE_OF_NEXT_TREATMENT";
     public static final String TREATMENT_NOTE = "TREATMENT_NOTE";
     public static final String TREATMENT_STAMP_PHOTO = "TREATMENT_STAMP_PHOTO";
-    public static final int REQUEST_IMAGE_CAPTURE = 123;
-    public static final String PHOTO_PATH = "PHOTO_PATH";
+
+    public static final String CONFIGURATION_TABLE = "CONFIGURATION_TABLE";
+    public static final String CONFIGURATION_ID = "CONFIGURATION_ID";
+    public static final String CONFIGURATION_ALERT_VACCINE = "CONFIGURATION_ALERT_VACCINE";
+    public static final String CONFIGURATION_ALERT_BIRTHDAY = "CONFIGURATION_ALERT_BIRTHDAY";
+    public static final String CONFIGURATION_ALERT_DEWORMING = "CONFIGURATION_ALERT_DEWORMING";
+    public static final String CONFIGURATION_ALERT_OTHER = "CONFIGURATION_ALERT_OTHER";
+    public static final String CONFIGURATION_IS_WELCOME_SENT = "CONFIGURATION_IS_WELCOME_SENT";
+
 }
