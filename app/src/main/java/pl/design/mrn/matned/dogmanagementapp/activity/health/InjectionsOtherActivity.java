@@ -14,12 +14,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.Statics;
+import pl.design.mrn.matned.dogmanagementapp.activity.ImageActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.edit.InjectionsOtherActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionOther;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionOtherDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabidDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
 public class InjectionsOtherActivity extends AppCompatActivity {
@@ -53,7 +56,6 @@ public class InjectionsOtherActivity extends AppCompatActivity {
         dateOfNextTreatmentTV = findViewById(R.id.otherVaxine_next_date_subtitle);
         noteET = findViewById(R.id.otherVaxine_note_subtitle);
         photoStampIV = findViewById(R.id.otherVaxine_notephoto);
-        photoStampIV.setVisibility(View.GONE);
         fillAllFields();
         clickListeners();
     }
@@ -72,6 +74,11 @@ public class InjectionsOtherActivity extends AppCompatActivity {
             Intent intent = new Intent(this, InjectionsOtherActivityEdit.class);
             startActivityForResult(intent, 101);
         });
+        photoStampIV.setOnClickListener(goToImage -> {
+            Intent intent = new Intent(this, ImageActivity.class);
+            intent.putExtra(Statics.PHOTO_PATH, injectionOther.getPhoto());
+            startActivity(intent);
+        });
     }
 
     private void fillAllFields() {
@@ -84,6 +91,7 @@ public class InjectionsOtherActivity extends AppCompatActivity {
             dateOfNextTreatmentTV.setText(dateFormat.format(injectionOther.getNextTreatment()));
         else dateOfNextTreatmentTV.setText("");
         noteET.setText(injectionOther.getNote());
-//        TODO , Photo
+        if(injectionOther.getPhoto() != null)
+            setImage(photoStampIV, injectionOther.getPhoto(), this, getResources());
     }
 }

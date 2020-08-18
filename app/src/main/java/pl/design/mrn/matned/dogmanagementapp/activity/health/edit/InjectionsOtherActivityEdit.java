@@ -22,6 +22,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionOther;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionOtherDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
 
@@ -71,7 +72,6 @@ public class InjectionsOtherActivityEdit extends SuperEditClass{
         nextDateET = findViewById(R.id.otherVaxine_next_date_textData);
         noteET = findViewById(R.id.otherVaxine_note_textData);
         photoStampIV = findViewById(R.id.otherVaxine_notephoto);
-        photoStampIV.setVisibility(View.GONE);
     }
 
     @Override
@@ -103,13 +103,8 @@ public class InjectionsOtherActivityEdit extends SuperEditClass{
             String note = savedInstanceState.getString("NOTE");
             if (note != null) noteET.setText(note);
             photoPath = savedInstanceState.getString("PHOTO_PATH");
-            if (Validate.notEmpty(photoPath)) {
-                photoUri = FileProvider.getUriForFile(
-                        this,
-                        "pl.design.mrn.matned.dogmanagementapp.fileprovider",
-                        new File(photoPath));
-                showImage();
-            }
+            if (Validate.notEmpty(photoPath))
+                setImage(photoStampIV, photoPath, this, getResources());
         }
     }
 

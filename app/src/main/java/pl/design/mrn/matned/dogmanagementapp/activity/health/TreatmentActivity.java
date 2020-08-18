@@ -14,12 +14,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.Statics;
+import pl.design.mrn.matned.dogmanagementapp.activity.ImageActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.edit.TreatmentActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionOther;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Treatment;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TreatmentDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
 public class TreatmentActivity extends AppCompatActivity {
@@ -52,7 +55,6 @@ public class TreatmentActivity extends AppCompatActivity {
         dateOfNextTreatmentTV = findViewById(R.id.allergen_name_subtitle);
         noteET = findViewById(R.id.treatment_note_dataText);
         photoStampIV = findViewById(R.id.treatment_photo);
-        photoStampIV.setVisibility(View.GONE);
         fillAllFields();
         clickListeners();
     }
@@ -71,6 +73,11 @@ public class TreatmentActivity extends AppCompatActivity {
             Intent intent = new Intent(this, TreatmentActivityEdit.class);
             startActivityForResult(intent, 101);
         });
+        photoStampIV.setOnClickListener(goToImage -> {
+            Intent intent = new Intent(this, ImageActivity.class);
+            intent.putExtra(Statics.PHOTO_PATH, treatment.getPhoto());
+            startActivity(intent);
+        });
     }
 
     private void fillAllFields() {
@@ -83,6 +90,7 @@ public class TreatmentActivity extends AppCompatActivity {
             dateOfNextTreatmentTV.setText(dateFormat.format(treatment.getDateOfNextTreatment()));
         else dateOfNextTreatmentTV.setText("");
         noteET.setText(treatment.getNote());
-//        TODO , Photo
+        if(treatment.getPhoto() != null)
+            setImage(photoStampIV, treatment.getPhoto(), this, getResources());
     }
 }

@@ -62,6 +62,7 @@ public class TreatmentActivityAdd extends SuperAddClass{
         nextDateET = findViewById(R.id.treatment_next_date_dataText);
         noteET = findViewById(R.id.treatment_note_dataText);
         photoStampIV = findViewById(R.id.treatment_photo);
+        photoStampIV.setVisibility(View.GONE);
     }
 
     @Override

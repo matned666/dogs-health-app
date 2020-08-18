@@ -169,4 +169,5 @@ public class Statics {
     public static final String TREATMENT_NOTE = "TREATMENT_NOTE";
     public static final String TREATMENT_STAMP_PHOTO = "TREATMENT_STAMP_PHOTO";
     public static final int REQUEST_IMAGE_CAPTURE = 123;
+    public static final String PHOTO_PATH = "PHOTO_PATH";
 }

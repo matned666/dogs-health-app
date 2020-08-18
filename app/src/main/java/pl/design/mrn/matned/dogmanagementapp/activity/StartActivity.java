@@ -24,11 +24,10 @@ import pl.design.mrn.matned.dogmanagementapp.activity.adapters.DogItemAdapter;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_INFO;
-
 public class StartActivity extends AppCompatActivity {
 
+    public static final String SELECTED_POSITION = "SELECTED_POSITION";
+    public static final String POSITION_ID = "POSITION_ID";
     private Button goToDogHealthCard;
     private Button goToDogDataCard;
     private Button goToSettingsCard;
@@ -37,11 +36,11 @@ public class StartActivity extends AppCompatActivity {
 
     private Button addDogButton;
 
-    private int selectedPosition;
-
     private RecyclerView dogRecyclerView;
     private PositionListener positionListener;
 
+    private DogDao dao;
+    private List<DogModel> dogs;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -49,20 +48,25 @@ public class StartActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        dao = new DogDao(this);
+        dogs = dao.findAll();
         positionListener = PositionListener.getInstance();
-        selectedPosition = positionListener.getPosition();
+        positionListener.setSelectedDogId(dogs.get(0).getId());
+        positionListener.setPosition(0);
         if (savedInstanceState != null) {
-            selectedPosition = (int) savedInstanceState.get("SELECTED_POSITION");
-            positionListener = (PositionListener) savedInstanceState.get("POSITION_HOLDER");
+            Integer selectedPos = ((Integer) savedInstanceState.get(SELECTED_POSITION));
+            Integer selectedId = ((Integer) savedInstanceState.get(POSITION_ID));
+            if(selectedPos != null) positionListener.setPosition(selectedPos);
+            if(selectedId != null) positionListener.setSelectedDogId(selectedId);
         }
-        initView();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onResume() {
         super.onResume();
+        dogs = dao.findAll();
+        initView();
         MessagesDao mDao = new MessagesDao(this);
         if (mDao.isAnyUnreadMessage()){
             Drawable img = getResources().getDrawable(R.drawable.ic_message_incoming);
@@ -75,8 +79,8 @@ public class StartActivity extends AppCompatActivity {
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putInt("SELECTED_POSITION",  selectedPosition);
-        outState.putSerializable("POSITION_HOLDER", positionListener);
+        outState.putInt("SELECTED_POSITION",  positionListener.getPosition());
+        outState.putSerializable("POSITION_ID", positionListener.getSelectedDogId());
         super.onSaveInstanceState(outState);
     }
 
@@ -103,23 +107,19 @@ public class StartActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("ShowToast")
     private void initializeActionHoldersForButtons() {
-        DogDao dao = new DogDao(this);
-        if(dao.findAll().size() > 0) goToDogDataCard.setOnClickListener(clickListener(DogDataActivity.class, USAGE_INFO));
+        if(dogs.size() > 0) goToDogDataCard.setOnClickListener(clickListener(DogDataActivity.class));
         else goToDogDataCard.setOnClickListener(v -> Toast.makeText(StartActivity.this, "Lista psów jest pusta, dodaj jakiegoś.", Toast.LENGTH_SHORT).show());
-        if(dao.findAll().size() > 0) goToDogHealthCard.setOnClickListener(clickListener(HealthActivity.class, null));
+        if(dogs.size() > 0) goToDogHealthCard.setOnClickListener(clickListener(HealthActivity.class));
         else goToDogHealthCard.setOnClickListener(v -> Toast.makeText(StartActivity.this, "Lista psów jest pusta, dodaj jakiegoś.", Toast.LENGTH_SHORT).show());
-        goToSettingsCard.setOnClickListener(clickListener(SettingsActivity.class, null));
-        goToInfoCard.setOnClickListener(clickListener(InfoActivity.class, null));
+        goToSettingsCard.setOnClickListener(clickListener(SettingsActivity.class));
+        goToInfoCard.setOnClickListener(clickListener(InfoActivity.class));
         addDogButton.setOnClickListener(clickListenerAdd());
-        gotToMessagesCard.setOnClickListener(clickListener(MessagesListActivity.class, null));
+        gotToMessagesCard.setOnClickListener(clickListener(MessagesListActivity.class));
     }
 
-    private View.OnClickListener clickListener(Class aClass, String usage) {
+    private View.OnClickListener clickListener(Class aClass) {
         return v -> {
             Intent intent = new Intent(StartActivity.this, aClass);
-            selectedPosition = positionListener.getPosition();
-            intent.putExtra("SELECTED_POSITION", selectedPosition);
-            intent.putExtra(USAGE, usage);
             startActivity(intent);
         };
     }
@@ -127,8 +127,6 @@ public class StartActivity extends AppCompatActivity {
     private View.OnClickListener clickListenerAdd() {
         return v -> {
             Intent intent = new Intent(StartActivity.this, Add_DogActivity.class);
-            selectedPosition = positionListener.getPosition();
-            intent.putExtra("SELECTED_POSITION", selectedPosition);
             startActivity(intent);
         };
     }
@@ -143,8 +141,6 @@ public class StartActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void addNewDogList() {
-        DogDao dao = new DogDao(StartActivity.this);
-        List<DogModel> dogs = dao.findAll();
         RecyclerView.Adapter<DogItemAdapter.ViewHolder> dogAdapter = new DogItemAdapter(this, dogs, getResources());
         dogRecyclerView.setAdapter(dogAdapter);
     }

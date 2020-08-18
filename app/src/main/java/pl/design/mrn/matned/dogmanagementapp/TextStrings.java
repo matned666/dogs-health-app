@@ -33,6 +33,9 @@ public class TextStrings {
 
     public static final String NEW_BREEDING_TEXT = "Nowa hodowla";
     public static final String NEW_OWNER = "Nowy właściciel";
+    public static final String CHANGED_RECORD_INFO = "Wpis został zmieniony";
+    public static final String ARE_YOU_SURE_TO_DELETE = "Czy na pewno skasować?";
+
 
 
 }

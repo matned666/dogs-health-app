@@ -13,11 +13,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.Statics;
+import pl.design.mrn.matned.dogmanagementapp.activity.ImageActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.edit.InjectionsRabidActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabid;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabidDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
 public class InjectionsRabidActivity extends AppCompatActivity {
@@ -50,7 +53,6 @@ public class InjectionsRabidActivity extends AppCompatActivity {
         dateOfNextTreatmentTV = findViewById(R.id.rabiesVaxine_next_date_subtitle);
         noteET = findViewById(R.id.rabiesVaxine_note_subtitle);
         photoStampIV = findViewById(R.id.rabiesVaxine_photo);
-        photoStampIV.setVisibility(View.GONE);
         fillAllFields();
         clickListeners();
     }
@@ -69,6 +71,11 @@ public class InjectionsRabidActivity extends AppCompatActivity {
             Intent intent = new Intent(this, InjectionsRabidActivityEdit.class);
             startActivityForResult(intent, 101);
         });
+        photoStampIV.setOnClickListener(goToImage -> {
+            Intent intent = new Intent(this, ImageActivity.class);
+            intent.putExtra(Statics.PHOTO_PATH, injectionRabid.getPhoto());
+            startActivity(intent);
+        });
     }
 
     private void fillAllFields() {
@@ -81,7 +88,8 @@ public class InjectionsRabidActivity extends AppCompatActivity {
             dateOfNextTreatmentTV.setText(dateFormat.format(injectionRabid.getNextTreatment()));
         else dateOfNextTreatmentTV.setText("");
         noteET.setText(injectionRabid.getNote());
-//        TODO , Photo
+        if(injectionRabid.getPhoto() != null)
+            setImage(photoStampIV, injectionRabid.getPhoto(), this, getResources());
     }
 }
 

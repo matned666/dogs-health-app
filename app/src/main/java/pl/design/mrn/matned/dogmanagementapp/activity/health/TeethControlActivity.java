@@ -14,12 +14,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.Statics;
+import pl.design.mrn.matned.dogmanagementapp.activity.ImageActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.edit.TeethControlActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionOther;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TeethControl;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TeethControlDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
 public class TeethControlActivity extends AppCompatActivity {
@@ -50,7 +53,6 @@ public class TeethControlActivity extends AppCompatActivity {
         dateOfNextTreatmentTV = findViewById(R.id.teeth_next_date_dataText);
         noteET = findViewById(R.id.teeth_note_dataText);
         photoStampIV = findViewById(R.id.teeth_photo);
-        photoStampIV.setVisibility(View.GONE);
         fillAllFields();
         clickListeners();
     }
@@ -69,6 +71,11 @@ public class TeethControlActivity extends AppCompatActivity {
             Intent intent = new Intent(this, TeethControlActivityEdit.class);
             startActivityForResult(intent, 101);
         });
+        photoStampIV.setOnClickListener(goToImage -> {
+            Intent intent = new Intent(this, ImageActivity.class);
+            intent.putExtra(Statics.PHOTO_PATH, teethControl.getPhoto());
+            startActivity(intent);
+        });
     }
 
     private void fillAllFields() {
@@ -80,6 +87,7 @@ public class TeethControlActivity extends AppCompatActivity {
             dateOfNextTreatmentTV.setText(dateFormat.format(teethControl.getDateOfNextControl()));
         else dateOfNextTreatmentTV.setText("");
         noteET.setText(teethControl.getNote());
-//        TODO , Photo
+        if(teethControl.getPhoto() != null)
+            setImage(photoStampIV, teethControl.getPhoto(), this, getResources());
     }
 }

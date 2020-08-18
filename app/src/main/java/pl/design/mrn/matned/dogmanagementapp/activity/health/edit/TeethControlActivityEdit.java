@@ -22,6 +22,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TeethControl;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TeethControlDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
 
@@ -61,7 +62,6 @@ public class TeethControlActivityEdit extends SuperEditClass{
         nextDateET = findViewById(R.id.teeth_next_date_dataText);
         noteET = findViewById(R.id.teeth_note_dataText);
         photoStampIV = findViewById(R.id.teeth_photo);
-        photoStampIV.setVisibility(View.GONE);
     }
 
 
@@ -98,14 +98,10 @@ public class TeethControlActivityEdit extends SuperEditClass{
             String note = savedInstanceState.getString("NOTE");
             if (note != null) noteET.setText(note);
             String photoPath = savedInstanceState.getString("PATH");
-            if (Validate.notEmpty(photoPath)) {
-                photoUri = FileProvider.getUriForFile(
-                        this,
-                        "pl.design.mrn.matned.dogmanagementapp.fileprovider",
-                        new File(photoPath));
-                showImage();
+            if (Validate.notEmpty(photoPath))
+                setImage(photoStampIV, photoPath, this, getResources());
+
             }
-        }
     }
 
     @Override

@@ -14,12 +14,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.Statics;
+import pl.design.mrn.matned.dogmanagementapp.activity.ImageActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.edit.AllergiesActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.edit.BirthControlActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.BirthControl;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.BirthControlDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
 public class BirthControlActivity extends AppCompatActivity {
@@ -49,7 +52,6 @@ public class BirthControlActivity extends AppCompatActivity {
         dateOfBirthET = findViewById(R.id.birth_date_dataText);
         noteET = findViewById(R.id.birth_note_dataText);
         photoStampIV = findViewById(R.id.birth_photo);
-        photoStampIV.setVisibility(View.GONE);
         fillAllFields();
         clickListeners();
     }
@@ -68,6 +70,11 @@ public class BirthControlActivity extends AppCompatActivity {
             Intent intent = new Intent(this, BirthControlActivityEdit.class);
             startActivityForResult(intent, 101);
         });
+        photoStampIV.setOnClickListener(goToImage -> {
+            Intent intent = new Intent(this, ImageActivity.class);
+            intent.putExtra(Statics.PHOTO_PATH, birthControl.getPhoto());
+            startActivity(intent);
+        });
     }
 
     @SuppressLint("SetTextI18n")
@@ -78,8 +85,8 @@ public class BirthControlActivity extends AppCompatActivity {
             dateOfBirthET.setText(dateFormat.format(birthControl.getDateOfBirth()));
         else dateOfBirthET.setText("");
         noteET.setText(birthControl.getNote());
-//        TODO , Photo
-    }
+        if(birthControl.getPhoto() != null)
+            setImage(photoStampIV, birthControl.getPhoto(), this, getResources());    }
 
 
 }

@@ -23,6 +23,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.health.BirthControl;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.BirthControlDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
 
@@ -60,7 +61,6 @@ public class BirthControlActivityEdit extends SuperEditClass{
         descET = findViewById(R.id.birth_description_dataText);
         dateET = findViewById(R.id.birth_date_dataText);
         noteET = findViewById(R.id.birth_note_dataText);
-        photoStampIV.setVisibility(View.GONE);
     }
 
     @Override
@@ -103,7 +103,9 @@ public class BirthControlActivityEdit extends SuperEditClass{
         dateET.setText(dateFormat.format(birthControl.getDateOfBirth()));
         noteET.setText(birthControl.getNote());
         photoPath = birthControl.getPhoto();
-        if (Validate.notEmpty(photoPath))showImage();
+        if (Validate.notEmpty(photoPath))
+            setImage(photoStampIV, photoPath, this, getResources());
+
     }
 
     @Override

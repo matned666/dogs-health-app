@@ -13,6 +13,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.Statics;
+import pl.design.mrn.matned.dogmanagementapp.activity.ImageActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.edit.BirthControlActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.edit.DeWormingActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.BirthControlDao;
@@ -20,6 +22,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Deworming;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.DewormingDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
 public class DeWormingActivity extends AppCompatActivity {
@@ -52,7 +55,6 @@ public class DeWormingActivity extends AppCompatActivity {
         dateOfNextTreatmentTV = findViewById(R.id.deworming_next_date_subtitle);
         noteET = findViewById(R.id.deworming_note_subtitle);
         photoStampIV = findViewById(R.id.deworming_note_photo);
-        photoStampIV.setVisibility(View.GONE);
         fillAllFields();
         clickListeners();
     }
@@ -71,6 +73,11 @@ public class DeWormingActivity extends AppCompatActivity {
             Intent intent = new Intent(this, DeWormingActivityEdit.class);
             startActivityForResult(intent, 101);
         });
+        photoStampIV.setOnClickListener(goToImage -> {
+            Intent intent = new Intent(this, ImageActivity.class);
+            intent.putExtra(Statics.PHOTO_PATH, deworming.getPhoto());
+            startActivity(intent);
+        });
     }
 
     private void fillAllFields() {
@@ -83,7 +90,8 @@ public class DeWormingActivity extends AppCompatActivity {
             dateOfNextTreatmentTV.setText(dateFormat.format(deworming.getNextTreatment()));
         else dateOfNextTreatmentTV.setText("");
         noteET.setText(deworming.getNote());
-//        TODO , Photo
+        if(deworming.getPhoto() != null)
+            setImage(photoStampIV, deworming.getPhoto(), this, getResources());
     }
 
 

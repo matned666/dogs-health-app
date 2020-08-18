@@ -22,6 +22,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Deworming;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.DewormingDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
 
@@ -64,7 +65,6 @@ public class DeWormingActivityEdit extends SuperEditClass {
         nextDateET = findViewById(R.id.deworming_next_date_textData);
         noteET = findViewById(R.id.deworming_note_textData);
         photoStampIV = findViewById(R.id.deworming_photo);
-        photoStampIV.setVisibility(View.GONE);
     }
 
     @Override
@@ -81,13 +81,9 @@ public class DeWormingActivityEdit extends SuperEditClass {
             String note = savedInstanceState.getString("NOTE");
             if (note != null) noteET.setText(note);
             photoPath = savedInstanceState.getString("PHOTO_PATH");
-            if (Validate.notEmpty(photoPath)) {
-                photoUri = FileProvider.getUriForFile(
-                        this,
-                        "pl.design.mrn.matned.dogmanagementapp.fileprovider",
-                        new File(photoPath));
-                showImage();
-            }
+            if (Validate.notEmpty(photoPath))
+                setImage(photoStampIV, photoPath, this, getResources());
+
         }
     }
 

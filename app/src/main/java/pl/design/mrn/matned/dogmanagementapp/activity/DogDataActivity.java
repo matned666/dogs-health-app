@@ -18,7 +18,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.Statics;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.BreedingActivityInfo;
 import pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.info.DataChoiceListActivityInfo;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
@@ -34,11 +36,11 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.LIST_ELEMENT_ACTIVIT
 import static pl.design.mrn.matned.dogmanagementapp.Statics.NOTE;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.OWNER;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.SIGN;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.START;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.TATTOO;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_EDIT;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.USAGE_INFO;
+import static pl.design.mrn.matned.dogmanagementapp.TextStrings.CHANGED_RECORD_INFO;
 
 public class DogDataActivity extends AppCompatActivity {
 
@@ -61,19 +63,25 @@ public class DogDataActivity extends AppCompatActivity {
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+    private DogDao dao;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onResume() {
+        super.onResume();
         init();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void init() {
 
-        DogDao dao = new DogDao(DogDataActivity.this);
+        dao = new DogDao(DogDataActivity.this);
         int dogId = PositionListener.getInstance().getSelectedDogId();
         dog = dao.findById(dogId);
         setContentView(R.layout.dog_informations);
@@ -81,12 +89,19 @@ public class DogDataActivity extends AppCompatActivity {
         putData();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 102) finish();
-        if (requestCode == 100) {
-            Toast.makeText(this, " Wpis został amieniony", Toast.LENGTH_SHORT).show();
+        if(requestCode == 101 && resultCode == 202) {
+
+            List<DogModel> allDogs = dao.findAll();
+            PositionListener.getInstance().setPosition(0);
+            PositionListener.getInstance().setSelectedDogId(allDogs.size() > 0 ? allDogs.get(0).getId() : 0);
+            finish();
+        }
+        if (requestCode == 101 && resultCode == 200) {
+            Toast.makeText(this, CHANGED_RECORD_INFO, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -126,7 +141,7 @@ public class DogDataActivity extends AppCompatActivity {
     }
 
     private void initButtonOnClickListeners() {
-        backBtn.setOnClickListener(clickListener(StartActivity.class, START));
+        backBtn.setOnClickListener(v -> finish());
         chipBtn.setOnClickListener(v -> showDial(DataChoiceListActivityInfo.class,CHIP));
         tattooBtn.setOnClickListener(v -> showDial(DataChoiceListActivityInfo.class, TATTOO));
         signsBtn.setOnClickListener(v -> showDial(DataChoiceListActivityInfo.class, SIGN));
@@ -134,22 +149,17 @@ public class DogDataActivity extends AppCompatActivity {
         notesBtn.setOnClickListener(v -> showDial(DataChoiceListActivityInfo.class, NOTE));
         breedingBtn.setOnClickListener(v -> showDial(BreedingActivityInfo.class, BREEDING));
         editDog.setOnClickListener(clickListenerEdit(Edit_DogActivity.class, USAGE_EDIT));
+        dogPhoto.setOnClickListener(goToImage -> {
+            Intent intent = new Intent(this, ImageActivity.class);
+            intent.putExtra(Statics.PHOTO_PATH, dog.getDogImage());
+            startActivity(intent);
+        });
     }
 
     public void showDial(Class clazz, String el) {
         Intent intent = new Intent(this, clazz);
         intent.putExtra(LIST_ELEMENT_ACTIVITY, el);
         startActivity(intent);
-    }
-
-
-    private View.OnClickListener clickListener(Class clazz, String use) {
-        return v -> {
-            Intent intent = new Intent(this, clazz);
-            intent.putExtra(LIST_ELEMENT_ACTIVITY, use);
-            intent.putExtra(USAGE, USAGE_INFO);
-            startActivity(intent);
-        };
     }
 
     private View.OnClickListener clickListenerEdit(Class clazz, String use) {

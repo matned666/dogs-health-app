@@ -22,6 +22,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabid;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabidDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
 
 public class InjectionsRabidActivityEdit extends SuperEditClass{
@@ -62,7 +63,6 @@ public class InjectionsRabidActivityEdit extends SuperEditClass{
         nextDateET = findViewById(R.id.rabiesVaxine_next_date_textData);
         noteET = findViewById(R.id.rabiesVaxine_note_textData);
         photoStampIV = findViewById(R.id.rabiesVaxine_photo);
-        photoStampIV.setVisibility(View.GONE);
     }
 
     @Override
@@ -77,7 +77,10 @@ public class InjectionsRabidActivityEdit extends SuperEditClass{
         else nextDateET.setText("");
         noteET.setText(injectionRabid.getNote());
         photoPath = injectionRabid.getPhoto();
-        if (Validate.notEmpty(photoPath)) showImage();
+        if (Validate.notEmpty(photoPath)) {
+            setImage(photoStampIV, photoPath, this, getResources());
+
+        }
     }
 
     @Override

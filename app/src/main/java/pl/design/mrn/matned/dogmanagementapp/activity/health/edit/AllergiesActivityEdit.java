@@ -23,6 +23,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.health.AllergiesDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
 
@@ -68,7 +69,6 @@ public class AllergiesActivityEdit extends SuperEditClass{
         nextDateOfTreatmentET = findViewById(R.id.allergen_treatmentNextDate_textData);
         noteET = findViewById(R.id.allergen_note_textData);
         photoStampIV = findViewById(R.id.allergy_photo);
-        photoStampIV.setVisibility(View.GONE);
     }
 
     @Override
@@ -80,7 +80,9 @@ public class AllergiesActivityEdit extends SuperEditClass{
         if(allergy.getDateOfNextTreatment() != null) nextDateOfTreatmentET.setText(dateFormat.format(allergy.getDateOfNextTreatment()));
         noteET.setText(allergy.getNote());
         photoPath = allergy.getPhoto();
-        if (Validate.notEmpty(photoPath))showImage();
+        if (Validate.notEmpty(photoPath))
+            setImage(photoStampIV, photoPath, this, getResources());
+
     }
 
     @Override

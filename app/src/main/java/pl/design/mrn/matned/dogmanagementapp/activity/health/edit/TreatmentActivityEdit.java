@@ -22,6 +22,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Treatment;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.TreatmentDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WARNING_FIELD;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings.WRONG_DATE;
 
@@ -63,7 +64,6 @@ public class TreatmentActivityEdit extends SuperEditClass{
         nextDateET = findViewById(R.id.treatment_next_date_dataText);
         noteET = findViewById(R.id.treatment_note_dataText);
         photoStampIV = findViewById(R.id.treatment_photo);
-        photoStampIV.setVisibility(View.GONE);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -121,7 +121,8 @@ public class TreatmentActivityEdit extends SuperEditClass{
         else nextDateET.setText("");
         noteET.setText(treatment.getNote());
         photoPath = treatment.getPhoto();
-        if (Validate.notEmpty(photoPath)) showImage();
+        if (Validate.notEmpty(photoPath))
+            setImage(photoStampIV, photoPath, this, getResources());
     }
 
     @Override

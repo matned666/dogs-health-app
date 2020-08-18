@@ -13,11 +13,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import pl.design.mrn.matned.dogmanagementapp.R;
+import pl.design.mrn.matned.dogmanagementapp.Statics;
+import pl.design.mrn.matned.dogmanagementapp.activity.ImageActivity;
 import pl.design.mrn.matned.dogmanagementapp.activity.health.edit.AllergiesActivityEdit;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.Allergies;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.AllergiesDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.DataPositionListener;
 
+import static pl.design.mrn.matned.dogmanagementapp.ImageAdvancedFunction.setImage;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
 public class AllergiesActivity extends AppCompatActivity {
@@ -50,7 +53,6 @@ public class AllergiesActivity extends AppCompatActivity {
         nextDateOfTreatmentET = findViewById(R.id.allergen_treatmentNextDate_subtitle);
         noteET = findViewById(R.id.allergen_note_subtitle);
         photoStampIV = findViewById(R.id.allergy_photo);
-        photoStampIV.setVisibility(View.GONE);
         fillAllFields();
         clickListeners();
     }
@@ -69,6 +71,11 @@ public class AllergiesActivity extends AppCompatActivity {
             Intent intent = new Intent(this, AllergiesActivityEdit.class);
             startActivityForResult(intent, 101);
         });
+        photoStampIV.setOnClickListener(goToImage -> {
+            Intent intent = new Intent(this, ImageActivity.class);
+            intent.putExtra(Statics.PHOTO_PATH, allergy.getPhoto());
+            startActivity(intent);
+        });
     }
 
     private void fillAllFields() {
@@ -84,6 +91,8 @@ public class AllergiesActivity extends AppCompatActivity {
             nextDateOfTreatmentET.setText(dateFormat.format(allergy.getDateOfNextTreatment()));
         else nextDateOfTreatmentET.setText("");
         noteET.setText(allergy.getNote());
+        if(allergy.getPhoto() != null)
+            setImage(photoStampIV, allergy.getPhoto(), this, getResources());
     }
 
 }

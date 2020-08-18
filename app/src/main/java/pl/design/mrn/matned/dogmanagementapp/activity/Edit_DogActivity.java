@@ -199,7 +199,7 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
 
     private void deleteRecord() {
         dogDao.remove(dog);
-        setResult(102);
+        setResult(202);
         finish();
     }
 
@@ -209,7 +209,7 @@ public class Edit_DogActivity extends AppCompatActivity implements DatePickerDia
             if (validation()) {
                 getDogModelFromFields();
                 dogDao.update(dog);
-                setResult(100);
+                setResult(200);
                 finish();
             }
         };

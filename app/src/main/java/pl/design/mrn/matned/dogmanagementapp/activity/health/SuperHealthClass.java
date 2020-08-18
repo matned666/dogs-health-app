@@ -65,6 +65,16 @@ public abstract class SuperHealthClass extends AppCompatActivity implements Date
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_IMAGE_CAPTURE) {
+                showImage();
+            }
+        }
+    }
+
+    @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar cal = new GregorianCalendar(year, month, dayOfMonth);
         dateFormat.setTimeZone(cal.getTimeZone());

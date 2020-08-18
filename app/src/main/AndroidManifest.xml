@@ -30,6 +30,7 @@
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.MessagesListActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.Add_DogActivity"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.Edit_DogActivity"/>
+        <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.ImageActivity"/>
 
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.BreedingActivityAdd"/>
         <activity android:name="pl.design.mrn.matned.dogmanagementapp.activity.dataactivity.add.ChipActivityAdd"/>
