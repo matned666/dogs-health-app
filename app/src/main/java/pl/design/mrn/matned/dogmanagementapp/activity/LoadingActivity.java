@@ -21,7 +21,7 @@ import pl.design.mrn.matned.dogmanagementapp.TextStrings_PL;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.app.Configuration;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.app.ConfigurationDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.app.MessageSubject;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.app.MessagesService;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.app.service.MessagesService;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogDao;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionOther;

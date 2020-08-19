@@ -22,7 +22,7 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 public class ConfigurationMessageDao extends DaoBase implements ConfigureMessage<ConfigurationMessageModel> {
 
     @SuppressLint("SimpleDateFormat")
-    private DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public ConfigurationMessageDao(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);

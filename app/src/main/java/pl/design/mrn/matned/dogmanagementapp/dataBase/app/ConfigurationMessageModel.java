@@ -10,6 +10,7 @@ public class ConfigurationMessageModel {
     private int masterId;
 
     public ConfigurationMessageModel() {
+        this.autidDate = new Date();
     }
 
     public ConfigurationMessageModel(MessageSubject subject, int masterId) {

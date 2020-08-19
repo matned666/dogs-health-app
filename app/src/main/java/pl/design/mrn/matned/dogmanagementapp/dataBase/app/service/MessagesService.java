@@ -1,10 +1,15 @@
-package pl.design.mrn.matned.dogmanagementapp.dataBase.app;
+package pl.design.mrn.matned.dogmanagementapp.dataBase.app.service;
 
 import android.content.Context;
+
+import pl.design.mrn.matned.dogmanagementapp.dataBase.app.Message;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.app.MessageSubject;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.app.MessagesDao;
 
 public class MessagesService {
 
     private MessagesDao dao;
+
 
     public MessagesService(Context context) {
         dao = new MessagesDao(context);
