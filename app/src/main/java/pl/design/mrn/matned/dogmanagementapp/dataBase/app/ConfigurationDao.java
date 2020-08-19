@@ -4,16 +4,15 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
 import pl.design.mrn.matned.dogmanagementapp.Statics;
-import pl.design.mrn.matned.dogmanagementapp.dataBase.DataBaseCreation;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoBase;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
-public class ConfigurationDao extends SQLiteOpenHelper implements Configure {
+public class ConfigurationDao extends DaoBase implements ConfigurationImp<Configuration> {
 
     public ConfigurationDao(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -24,14 +23,6 @@ public class ConfigurationDao extends SQLiteOpenHelper implements Configure {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-    }
-
     public boolean create(Configuration configuration) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -44,6 +35,7 @@ public class ConfigurationDao extends SQLiteOpenHelper implements Configure {
         return insert != -1;
     }
 
+    @Override
     public Configuration get() {
         String query = "SELECT * FROM " + CONFIGURATION_TABLE + " WHERE " + CONFIGURATION_ID + " = 1";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -56,6 +48,7 @@ public class ConfigurationDao extends SQLiteOpenHelper implements Configure {
         db.close();
         return configuration;    }
 
+    @Override
     public boolean update(Configuration configuration) {
         String query = "" +
                 "UPDATE " + CONFIGURATION_TABLE + " SET " +
@@ -67,17 +60,6 @@ public class ConfigurationDao extends SQLiteOpenHelper implements Configure {
                 "WHERE " +
                 CONFIGURATION_ID + " = 1";
         return getCursor(query);
-    }
-
-
-
-
-    private boolean getCursor(String query) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;
     }
 
     private Configuration getConfiguration(Cursor cursor) {

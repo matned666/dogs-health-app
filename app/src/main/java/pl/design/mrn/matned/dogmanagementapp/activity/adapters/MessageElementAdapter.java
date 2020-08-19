@@ -22,6 +22,7 @@ import pl.design.mrn.matned.dogmanagementapp.R;
 import pl.design.mrn.matned.dogmanagementapp.activity.MessageActivity;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.app.Message;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.app.MessageStatus;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.app.MessageSubject;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.app.MessagesDao;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT_MESSAGE;
@@ -53,7 +54,7 @@ public class MessageElementAdapter extends RecyclerView.Adapter<MessageElementAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Message message = messages.get(position);
-        holder.messageTitle.setText(message.getSubject().name());
+        holder.messageTitle.setText(MessageSubject.title(message.getSubject()));
         holder.message.setText(message.getMessage());
         holder.messageDateTime.setText(dateFormat.format(message.getMessageDateTime()));
         if (message.getStatus() == MessageStatus.READ) {

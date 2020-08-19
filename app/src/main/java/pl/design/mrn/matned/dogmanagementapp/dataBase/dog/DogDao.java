@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 
 import androidx.annotation.Nullable;
@@ -18,29 +17,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
-import pl.design.mrn.matned.dogmanagementapp.dataBase.DataBaseCreation;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoBase;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DogDaoInterface;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.Sex;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
-public class DogDao extends SQLiteOpenHelper implements DogDaoInterface<DogModel> {
+public class DogDao extends DaoBase implements DogDaoInterface<DogModel> {
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
     public DogDao(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        DataBaseCreation.create(db);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
 
@@ -113,18 +102,15 @@ public class DogDao extends SQLiteOpenHelper implements DogDaoInterface<DogModel
 
     @Override
     public boolean remove(DogModel dog) {
-        SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + DOGS_TABLE + " WHERE " + DOG_ID + " = " + dog.getId();
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query, null);
-        return cursor.moveToFirst();
+        return getCursor(query);
     }
 
     @Override
     public boolean removeAll() {
-        SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + DOGS_TABLE;
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query, null);
-        return cursor.moveToFirst();
+        return getCursor(query);
+
     }
 
     @Override

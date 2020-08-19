@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
@@ -14,23 +13,12 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoBase;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoFragmentInterface;
 
-import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGEN;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGIES_TABLE;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGY_DATE_OF_NEXT_TREATMENT;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGY_DATE_OF_TREATMENT;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGY_DESCRIPTION;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGY_DETECTION_DATE;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGY_ID;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGY_NOTE;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.ALLERGY_STAMP_PHOTO;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.DATABASE_NAME;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.DOG_ID;
-import static pl.design.mrn.matned.dogmanagementapp.Statics.WAS_ALLERGY_TREATED;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
-public class AllergiesDao extends SQLiteOpenHelper implements DaoFragmentInterface<Allergies> {
+public class AllergiesDao extends DaoBase implements DaoFragmentInterface<Allergies> {
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
@@ -125,13 +113,6 @@ public class AllergiesDao extends SQLiteOpenHelper implements DaoFragmentInterfa
         return getCursor(query);
     }
 
-    private boolean getCursor(String query) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;
-    }
 
     private Allergies getAllergy(Cursor cursor) {
         Allergies a = new Allergies();

@@ -16,6 +16,7 @@ public class DataBaseCreation {
         List<String> tables = Arrays.asList(
                 CREATE_DOGS_TABLE,
                 CREATE_CONFIGURATION_TABLE,
+                CREATE_CONFIGURATION_MESSAGE_TABLE,
                 CREATE_MESSAGE_TABLE,
                 CREATE_BREEDING_TABLE,
                 CREATE_CHIP_TABLE,
@@ -54,6 +55,12 @@ public class DataBaseCreation {
             CONFIGURATION_ALERT_DEWORMING + " INTEGER, " +
             CONFIGURATION_ALERT_OTHER + " INTEGER, " +
             CONFIGURATION_IS_WELCOME_SENT + " INTEGER );";
+
+    private static final String CREATE_CONFIGURATION_MESSAGE_TABLE = "CREATE TABLE " + CONFIGURATION_MESSAGE_TABLE + "(" +
+            CONFIGURATION_MESSAGE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            CONFIGURATION_MESSAGE_SUBJECT + " TEXT, " +
+            CONFIGURATION_MESSAGE_DATE + " TEXT, " +
+            CONFIGURATION_MASTER_ID + " INTEGER );";
 
     private static final String CREATE_MESSAGE_TABLE = "CREATE TABLE " + MESSAGE_TABLE + "(" +
             MESSAGE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +

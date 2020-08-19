@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
@@ -14,12 +13,12 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoBase;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoFragmentInterface;
-import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
-public class TreatmentDao extends SQLiteOpenHelper implements DaoFragmentInterface<Treatment> {
+public class TreatmentDao extends DaoBase implements DaoFragmentInterface<Treatment> {
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
@@ -109,14 +108,6 @@ public class TreatmentDao extends SQLiteOpenHelper implements DaoFragmentInterfa
     public boolean remove(int id) {
         String query = "DELETE FROM " + TREATMENT_TABLE + " WHERE " + TREATMENT_ID + " = " + id;
         return getCursor(query);
-    }
-
-    private boolean getCursor(String query) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;
     }
 
     private Treatment getTreatment(Cursor cursor) {

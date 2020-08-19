@@ -30,7 +30,6 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabid;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.health.InjectionRabidDao;
 import pl.design.mrn.matned.dogmanagementapp.listeners.PositionListener;
 
-import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 import static pl.design.mrn.matned.dogmanagementapp.TextStrings_PL.*;
 
 public class LoadingActivity extends AppCompatActivity {
@@ -40,6 +39,7 @@ public class LoadingActivity extends AppCompatActivity {
     private ConfigurationDao cDao;
     private Configuration configuration;
     private MessagesService messagesService;
+
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat("ddMM");
@@ -74,7 +74,6 @@ public class LoadingActivity extends AppCompatActivity {
             }
         };
         welcomeThread.start();
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -91,8 +90,7 @@ public class LoadingActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void checkVaccines() {
         if (configuration.getIsVaccineNotificationOn() == 1) {
-            DogDao dDao = new DogDao(this);
-            for (DogModel dog : dDao.findAll()) {
+            for (DogModel dog : dao.findAll()) {
                 if (configuration.getIsVaccineNotificationOn() == 1) {
                     rabiesVaccineCheck(dog);
                     otherVaccineCheck(dog);
@@ -114,7 +112,7 @@ public class LoadingActivity extends AppCompatActivity {
             }
             if (!setter) {
                 String msg = getVaccineMessage(dog, RABIES_VACCINE);
-                messagesService.sendMessage(MessageSubject.RABIES_VACCINE_ALERT, msg);
+                messagesService.sendMessage(MessageSubject.HEALTH_RABIES_VACCINE_NEXT_TREATMENT_ALERT, msg);
             }
         }
     }
@@ -129,7 +127,7 @@ public class LoadingActivity extends AppCompatActivity {
         }
         if (!setter) {
             String msg = getVaccineMessage(dog, OTHER_VACCINE);
-            messagesService.sendMessage(MessageSubject.RABIES_VACCINE_ALERT, msg);
+            messagesService.sendMessage(MessageSubject.HEALTH_RABIES_VACCINE_NEXT_TREATMENT_ALERT, msg);
         }
     }
 
@@ -144,8 +142,7 @@ public class LoadingActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void checkBirthday() {
         if (configuration.getIsBirthdayNotificationOn() == 1) {
-            DogDao dDao = new DogDao(this);
-            for (DogModel dog : dDao.findAll()) {
+            for (DogModel dog : dao.findAll()) {
                 if (dateFormat.format(dog.getBirthDate()).equals(dateFormat.format(new Date()))) {
                     String msg = BIRTHDAY_MESSAGE1 + dog.getName() + BIRTHDAY_MESSAGE2;
                     messagesService.sendMessage(MessageSubject.DOG_BIRTHDAY, msg);
@@ -156,14 +153,12 @@ public class LoadingActivity extends AppCompatActivity {
 
     private void checkDeworming() {
         if (configuration.getIsDewormingNotificationOn() == 1) {
-            DogDao dDao = new DogDao(this);
 
         }
     }
 
     private void checkOtherNotifications() {
         if (configuration.getIsOtherNotificationOn() == 1) {
-            DogDao dDao = new DogDao(this);
 
         }
     }

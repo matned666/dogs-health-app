@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
@@ -16,11 +15,12 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoBase;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoFragmentInterface;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
-public class SpecialSignDao extends SQLiteOpenHelper implements DaoFragmentInterface<SpecialSign> {
+public class SpecialSignDao extends DaoBase implements DaoFragmentInterface<SpecialSign> {
 
 
 
@@ -29,16 +29,6 @@ public class SpecialSignDao extends SQLiteOpenHelper implements DaoFragmentInter
 
     public SpecialSignDao(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
     @Override
@@ -61,25 +51,19 @@ public class SpecialSignDao extends SQLiteOpenHelper implements DaoFragmentInter
     @Override
     public boolean remove(SpecialSign specialSign) {
         String query = "DELETE FROM " + SIGNS_TABLE + " WHERE " + SIGN_ID + " = " + specialSign.getSignId();
-        Cursor cursor = getCursor(query);
-        return cursor.moveToFirst();
-    }
+        return getCursor(query);   }
+
 
     @Override
     public boolean remove(int id) {
         String query = "DELETE FROM " + SIGNS_TABLE + " WHERE " + SIGN_ID + " = " + id;
-        Cursor cursor = getCursor(query);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;    }
+        return getCursor(query);   }
+
 
     @Override
     public boolean removeAll() {
         String query = "DELETE FROM " + SIGNS_TABLE;
-        Cursor cursor = getCursor(query);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;    }
+        return getCursor(query);   }
 
     @Override
     public SpecialSign findById(int id) {
@@ -103,10 +87,9 @@ public class SpecialSignDao extends SQLiteOpenHelper implements DaoFragmentInter
                 DOG_ID + " = " + updated_T_Data.getDogId() + " " +
                 "WHERE " +
                 SIGN_ID + " = " + updated_T_Data.getSignId();
-        Cursor cursor = getCursor(query);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;    }
+        return getCursor(query);
+    }
+
 
     @Override
     public List<SpecialSign> getListByMasterId(int id) {
@@ -141,8 +124,4 @@ public class SpecialSignDao extends SQLiteOpenHelper implements DaoFragmentInter
         return list;
     }
 
-    private Cursor getCursor(String query) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.rawQuery(query, null);
-    }
 }

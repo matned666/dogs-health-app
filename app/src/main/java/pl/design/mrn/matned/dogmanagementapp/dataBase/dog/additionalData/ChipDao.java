@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
@@ -14,11 +13,12 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoBase;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoFragmentInterface;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
-public class ChipDao extends SQLiteOpenHelper implements DaoFragmentInterface<Chip> {
+public class ChipDao extends DaoBase implements DaoFragmentInterface<Chip> {
 
 
     @SuppressLint("SimpleDateFormat")
@@ -27,16 +27,6 @@ public class ChipDao extends SQLiteOpenHelper implements DaoFragmentInterface<Ch
 
     public ChipDao(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
     @Override
@@ -110,13 +100,6 @@ public class ChipDao extends SQLiteOpenHelper implements DaoFragmentInterface<Ch
         return getChipListByQuery(query);
     }
 
-    private boolean getCursor(String query) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;
-    }
 
     private Chip getChip(Cursor cursor) {
         Chip chip = new Chip(cursor.getInt(0));

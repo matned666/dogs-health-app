@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
@@ -14,11 +13,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoBase;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoFragmentInterface;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
-public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<Owner> {
+public class OwnerDao extends DaoBase implements DaoFragmentInterface<Owner> {
 
 
     @SuppressLint("SimpleDateFormat")
@@ -26,16 +26,6 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
 
     public OwnerDao(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
     @Override
@@ -81,28 +71,20 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
     @Override
     public boolean remove(Owner owner) {
         String query = "DELETE FROM " + DOGS_OWNER_TABLE + " WHERE " + OWNER_ID + " = " + owner.getId();
-        Cursor cursor = this.getWritableDatabase().rawQuery(query, null);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;
+        return getCursor(query);
     }
 
     @Override
     public boolean remove(int id) {
         String query = "DELETE FROM " + DOGS_OWNER_TABLE + " WHERE " + OWNER_ID + " = " + id;
-        Cursor cursor = this.getWritableDatabase().rawQuery(query, null);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;
+        return getCursor(query);
     }
+
 
     @Override
     public boolean removeAll() {
         String query = "DELETE FROM " + DOGS_OWNER_TABLE;
-        Cursor cursor = this.getWritableDatabase().rawQuery(query, null);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;
+        return getCursor(query);
     }
 
     @Override
@@ -127,13 +109,10 @@ public class OwnerDao extends SQLiteOpenHelper implements DaoFragmentInterface<O
         updateTattooQuery += ", " + DOG_ID + " = " + updated_T_Data.getDog_id() + " " +
                 "WHERE " +
                 OWNER_ID + " = " + updated_T_Data.getId();
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery(updateTattooQuery, null);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        db.close();
-        return end;
+        return getCursor(updateTattooQuery);
     }
+
+
 
     @Override
     public List<Owner> getListByMasterId(int id) {

@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 
 import androidx.annotation.Nullable;
@@ -16,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
-import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoInterface;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoBase;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoMessageInterface;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.DATABASE_NAME;
@@ -28,23 +27,13 @@ import static pl.design.mrn.matned.dogmanagementapp.Statics.MESSAGE_STATUS;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.MESSAGE_SUBJECT;
 import static pl.design.mrn.matned.dogmanagementapp.Statics.MESSAGE_TABLE;
 
-public class MessagesDao extends SQLiteOpenHelper implements DaoMessageInterface<Message> {
+public class MessagesDao extends DaoBase implements DaoMessageInterface<Message> {
 
     @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_MESSAGE);
 
     public MessagesDao(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
 
@@ -129,14 +118,6 @@ public class MessagesDao extends SQLiteOpenHelper implements DaoMessageInterface
         cursor.close();
         db.close();
         return list;
-    }
-
-    private boolean getCursor(String query) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;
     }
 
     private Message getMessage(Cursor cursor) {

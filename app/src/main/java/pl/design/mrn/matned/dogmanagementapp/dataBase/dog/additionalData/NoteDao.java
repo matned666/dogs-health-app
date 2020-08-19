@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
@@ -16,11 +15,12 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoBase;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoFragmentInterface;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
-public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<Note> {
+public class NoteDao extends DaoBase implements DaoFragmentInterface<Note> {
 
 
 
@@ -29,16 +29,6 @@ public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<No
 
     public NoteDao(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
     @Override
@@ -61,18 +51,18 @@ public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<No
     @Override
     public boolean remove(Note note) {
         String query = "DELETE FROM " + NOTES_TABLE + " WHERE " + NOTE_ID + " = " + note.getNoteId();
-        return getCursorByQuery(query, this.getWritableDatabase());
+        return getCursor(query);
     }
 
     @Override
     public boolean remove(int id) {
         String query = "DELETE FROM " + NOTES_TABLE + " WHERE " + NOTE_ID + " = " + id;
-        return getCursorByQuery(query, this.getWritableDatabase());    }
+        return getCursor(query);    }
 
     @Override
     public boolean removeAll() {
         String query = "DELETE FROM " + NOTES_TABLE;
-        return getCursorByQuery(query, this.getWritableDatabase());
+        return getCursor(query);
     }
 
     @Override
@@ -98,7 +88,7 @@ public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<No
                 DOG_ID + " = " + updated_T_Data.getDogId() + " " +
                 "WHERE " +
                 NOTE_ID + " = " + updated_T_Data.getNoteId();
-        return getCursorByQuery(query, this.getWritableDatabase());
+        return getCursor(query);
     }
 
     @Override
@@ -106,12 +96,7 @@ public class NoteDao extends SQLiteOpenHelper implements DaoFragmentInterface<No
         String query = "SELECT * FROM " + NOTES_TABLE + " WHERE " + DOG_ID + " = " + id;
         return getNotesListByQuery(query);    }
 
-    private boolean getCursorByQuery(String query , SQLiteDatabase db) {
-        Cursor cursor = db.rawQuery(query, null);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;
-    }
+
 
     private Note getNote(Cursor cursor) {
         Note note = new Note(cursor.getInt(0));

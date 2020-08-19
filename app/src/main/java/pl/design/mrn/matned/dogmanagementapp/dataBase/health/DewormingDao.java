@@ -1,10 +1,10 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.health;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
@@ -13,12 +13,14 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoBase;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoFragmentInterface;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
-public class DewormingDao extends SQLiteOpenHelper implements DaoFragmentInterface<Deworming> {
+public class DewormingDao extends DaoBase implements DaoFragmentInterface<Deworming> {
 
+    @SuppressLint("SimpleDateFormat")
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
     public DewormingDao(@Nullable Context context) {
@@ -106,14 +108,6 @@ public class DewormingDao extends SQLiteOpenHelper implements DaoFragmentInterfa
     public boolean remove(int id) {
         String query = "DELETE FROM " + DEWORMING_TABLE + " WHERE " + DEWORMING_ID + " = " + id;
         return getCursor(query);
-    }
-
-    private boolean getCursor(String query) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;
     }
 
     private Deworming getDeworming(Cursor cursor) {

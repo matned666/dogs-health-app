@@ -1,8 +1,7 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.app;
 
-public interface Configure {
+public interface Configure<E> {
 
-    boolean create(Configuration configuration);
-    Configuration get();
-    boolean update(Configuration configuration);
+    boolean create(E e);
+    boolean update(E e);
 }

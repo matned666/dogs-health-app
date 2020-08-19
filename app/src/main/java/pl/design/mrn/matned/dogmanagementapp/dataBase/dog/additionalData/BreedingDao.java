@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 
 import androidx.annotation.Nullable;
@@ -13,25 +12,16 @@ import androidx.annotation.RequiresApi;
 import java.util.LinkedList;
 import java.util.List;
 
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoBase;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoFragmentInterface_FunctionalBreeding;
 
 import static pl.design.mrn.matned.dogmanagementapp.Statics.*;
 
-public class BreedingDao  extends SQLiteOpenHelper implements DaoFragmentInterface_FunctionalBreeding<Breeding> {
+public class BreedingDao  extends DaoBase implements DaoFragmentInterface_FunctionalBreeding<Breeding> {
 
 
     public BreedingDao(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-    }
-
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
     @Override
@@ -87,7 +77,6 @@ public class BreedingDao  extends SQLiteOpenHelper implements DaoFragmentInterfa
 
     @Override
     public boolean update(Breeding updated_T_Data) {
-        SQLiteDatabase db = this.getWritableDatabase();
         String query = "UPDATE " + BREEDING_TABLE + " SET " +
                 BREEDING_NAME + " = '" + updated_T_Data.getName() + "', " +
                 BREEDING_ADDRESS + " = '" + updated_T_Data.getAddress() + "', " +
@@ -96,10 +85,8 @@ public class BreedingDao  extends SQLiteOpenHelper implements DaoFragmentInterfa
                 BREEDING_DESCRIPTION + " = '" + updated_T_Data.getDescription() + "', " +
                 DOG_ID + " = " + updated_T_Data.getDogId() + " " +
                 "WHERE " + BREEDING_ID + " = " + updated_T_Data.getBreedingId();
-        Cursor cursor = db.rawQuery(query, null);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;
+        return getCursor(query);
+
     }
 
     @Override
@@ -126,13 +113,6 @@ public class BreedingDao  extends SQLiteOpenHelper implements DaoFragmentInterfa
         breeding.setDogId(cursor.getInt(6));
         return breeding;
     }
-
-    private boolean getCursor(String query) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        boolean end = cursor.moveToFirst();
-        cursor.close();
-        return end;    }
 
     private List<Breeding> getBreedingsListByQuery(String query) {
         SQLiteDatabase db = this.getReadableDatabase();

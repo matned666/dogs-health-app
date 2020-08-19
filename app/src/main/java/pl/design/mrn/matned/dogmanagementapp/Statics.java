@@ -108,15 +108,6 @@ public class Statics {
     public static final String BREEDING_EMAIL = "BREEDING_EMAIL";
     public static final String BREEDING_DESCRIPTION = "BREEDING_DESCRIPTION";
 
-    public static final String MESSAGE_TABLE = "MESSAGE_TABLE";
-    public static final String MESSAGE_ID = "MESSAGE_ID";
-    public static final String MESSAGE_SUBJECT = "MESSAGE_SUBJECT";
-    public static final String MESSAGE = "MESSAGE";
-    public static final String MESSAGE_DATE_TIME = "MESSAGE_DATE_TIME";
-    public static final String MESSAGE_STATUS = "MESSAGE_STATUS";
-
-
-
 //    Health tables
 
     public static final String ALLERGIES_TABLE = "ALLERGIES_TABLE";
@@ -182,6 +173,9 @@ public class Statics {
     public static final String TREATMENT_NOTE = "TREATMENT_NOTE";
     public static final String TREATMENT_STAMP_PHOTO = "TREATMENT_STAMP_PHOTO";
 
+
+//  App settings data
+
     public static final String CONFIGURATION_TABLE = "CONFIGURATION_TABLE";
     public static final String CONFIGURATION_ID = "CONFIGURATION_ID";
     public static final String CONFIGURATION_ALERT_VACCINE = "CONFIGURATION_ALERT_VACCINE";
@@ -190,4 +184,16 @@ public class Statics {
     public static final String CONFIGURATION_ALERT_OTHER = "CONFIGURATION_ALERT_OTHER";
     public static final String CONFIGURATION_IS_WELCOME_SENT = "CONFIGURATION_IS_WELCOME_SENT";
 
+    public static final String CONFIGURATION_MESSAGE_TABLE = "CONFIGURATION_MESSAGE_TABLE";
+    public static final String CONFIGURATION_MESSAGE_ID = "CONFIGURATION_MESSAGE_ID";
+    public static final String CONFIGURATION_MESSAGE_SUBJECT = "CONFIGURATION_MESSAGE_SUBJECT";
+    public static final String CONFIGURATION_MESSAGE_DATE = "CONFIGURATION_MESSAGE_DATE";
+    public static final String CONFIGURATION_MASTER_ID = "CONFIGURATION_MASTER_ID";
+
+    public static final String MESSAGE_TABLE = "MESSAGE_TABLE";
+    public static final String MESSAGE_ID = "MESSAGE_ID";
+    public static final String MESSAGE_SUBJECT = "MESSAGE_SUBJECT";
+    public static final String MESSAGE = "MESSAGE";
+    public static final String MESSAGE_DATE_TIME = "MESSAGE_DATE_TIME";
+    public static final String MESSAGE_STATUS = "MESSAGE_STATUS";
 }

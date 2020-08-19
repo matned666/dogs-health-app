@@ -46,6 +46,18 @@ public class TextStrings_PL {
                     "Mateusz Niedbal - tworca \n" +
                     "MRN-Design.eu";
 
+    public static final String WELCOME_MESSAGE_TITLE = "Wiadomość powitalne";
+    public static final String ERROR_MESSAGE_TITLE = "Błąd";
+    public static final String WARNING_MESSAGE_TITLE = "Ostrzeżenie";
+    public static final String UPDATE_MESSAGE_TITLE = "Aktualizacja";
+    public static final String DOG_BIRTHDAY_MESSAGE_TITLE = "Urodziny pieska";
+    public static final String HEALTH_ALLERGIES_NEXT_TREATMENT_ALERT_TITLE = "Termin następnego leczenia";
+    public static final String HEALTH_DEWORMING_NEXT_TREATMENT_ALERT_TITLE = "Termin odrobaczenia";
+    public static final String HEALTH_TREATMENT_NEXT_TREATMENT_ALERT_TITLE = "Termin następnej kuracji";
+    public static final String HEALTH_TEETH_CONTROL_NEXT_CONTROL_ALERT_TITLE = "Termin kontroli zębów";
+    public static final String HEALTH_OTHER_VACCINE_NEXT_TREATMENT_ALERT_TITLE = "Termin szczepienia przeciw chorobom";
+    public static final String HEALTH_RABIES_VACCINE_NEXT_TREATMENT_ALERT_TITLE = "Termin szczepienia przeciw wściekliźnie";
+    public static final String DEFAULT_MESSAGE_TITLE = "Wiadomość";
 
 //    Vaccine outdate message:
 
