@@ -6,6 +6,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.app.Message;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.app.MessageSubject;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.app.MessagesDao;
 
+@DogService
 public class MessagesService {
 
     private MessagesDao dao;

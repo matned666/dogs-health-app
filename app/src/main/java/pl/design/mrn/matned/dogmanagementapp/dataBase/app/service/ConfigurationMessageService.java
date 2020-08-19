@@ -9,6 +9,7 @@ import pl.design.mrn.matned.dogmanagementapp.dataBase.app.ConfigurationMessageDa
 import pl.design.mrn.matned.dogmanagementapp.dataBase.app.ConfigurationMessageModel;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.app.Message;
 
+@DogService
 public class ConfigurationMessageService {
 
     private static final Integer AUDIT_DAYS = 14;
