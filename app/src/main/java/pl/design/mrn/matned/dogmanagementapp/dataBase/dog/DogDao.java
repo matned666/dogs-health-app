@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Date;
 
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DaoBase;
+import pl.design.mrn.matned.dogmanagementapp.dataBase.DataBaseCreation;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.DogDaoInterface;
 import pl.design.mrn.matned.dogmanagementapp.dataBase.Sex;
 
@@ -34,12 +35,18 @@ public class DogDao extends DaoBase implements DogDaoInterface<DogModel> {
     }
 
     @Override
+    public void onCreate(SQLiteDatabase db) {
+        super.onCreate(db);
+        DataBaseCreation.create(db);
+    }
+
+    @Override
     public boolean add(DogModel dog) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(DOG_NAME, dog.getName());
         cv.put(DOG_RACE, dog.getRace());
-        cv.put(DOG_BIRTH_DATE, dog.getBirthDate().toString());
+        cv.put(DOG_BIRTH_DATE, dateFormat.format(dog.getBirthDate()));
         cv.put(DOG_COLOR, dog.getColor());
         cv.put(DOG_PHOTO, dog.getDogImage());
         cv.put(DOG_SEX, dog.getSex().name());
@@ -119,7 +126,7 @@ public class DogDao extends DaoBase implements DogDaoInterface<DogModel> {
         ContentValues cv = new ContentValues();
         cv.put(DOG_NAME, updatedDogData.getName());
         cv.put(DOG_RACE, updatedDogData.getRace());
-        cv.put(DOG_BIRTH_DATE, updatedDogData.getBirthDate().toString());
+        cv.put(DOG_BIRTH_DATE, dateFormat.format(updatedDogData.getBirthDate()));
         cv.put(DOG_COLOR, updatedDogData.getColor());
         cv.put(DOG_PHOTO, updatedDogData.getDogImage());
         cv.put(DOG_SEX, updatedDogData.getSex().name());

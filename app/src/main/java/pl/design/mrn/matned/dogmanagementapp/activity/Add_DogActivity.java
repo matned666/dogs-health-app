@@ -215,7 +215,6 @@ public class Add_DogActivity extends AppCompatActivity implements DatePickerDial
         try {
             dogBirthDate = dateFormat.parse(dogBirthDatePickerET.getText().toString());
         } catch (ParseException e) {
-            dogBirthDate = new Date();
             Toast.makeText(Add_DogActivity.this, WRONG_DATE, Toast.LENGTH_SHORT).show();
         }
         String dogColor = dogColorET.getText().toString();
