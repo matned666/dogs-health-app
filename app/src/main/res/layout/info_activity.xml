@@ -19,18 +19,142 @@
                 android:layout_height="match_parent"
                 android:background="#FFFFFF">
 
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:gravity="end"
+                    android:text="http://mrndesign.eu"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorLink="#03554D"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView24"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/textView31"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:autoLink="web"
+                    android:gravity="end"
+                    android:text="NIEKTÓRE FUNKCJONALNOŚCI JESZCZE NIE DZIAŁAJĄ, CZEKAJ NA UPDATE"
+                    android:textAlignment="center"
+                    android:textColor="#FF0000"
+                    android:textColorLink="#03554D"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/guideline59"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:gravity="end"
+                    android:text="Copyrights 2020 MRNDesign.eu"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorLink="#03554D"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:ignore="RtlCompat" />
+
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="220dp"
                     android:layout_height="109dp"
-                    android:layout_marginTop="100dp"
                     android:contentDescription="@string/logo"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView31"
                     app:srcCompat="@drawable/anigif"
                     tools:ignore="MissingConstraints" />
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:autoLink="web"
+
+                    android:text="\n
+Ta aplikacja jest pierwszą polską mobilną książeczką zdrowia dla psa na telefon\n
+Fajnie jest mieć zdrowie swoich pupili pod kontrolą?\n
+Do tego właśnie służy DOGZAPP
+                    \n
+                    \n
+W PEŁNI DARMOWA!!!\n\n
+Jeśli masz jakiś pomysł, jak ulepszyć DOGZAPP, daj znać:\nmat.niedbal@mrndesign.eu\n\n
+Odwiedź też moją stronkę:
+                    "
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline62"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/guideline61" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline59"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="486dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline63"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="650dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline62"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="447dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline61"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="40dp" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DOGZAPP"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/textView24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

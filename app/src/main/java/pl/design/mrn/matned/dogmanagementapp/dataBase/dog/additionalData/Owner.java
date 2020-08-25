@@ -2,6 +2,7 @@ package pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 public class Owner implements Serializable {
 
@@ -17,9 +18,6 @@ public class Owner implements Serializable {
     private int dog_id;
 
     public Owner() {
-    }
-
-    public Owner(int id) {
     }
 
     public int getId() {
@@ -100,6 +98,26 @@ public class Owner implements Serializable {
 
     public void setDog_id(int dog_id) {
         this.dog_id = dog_id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Owner owner = (Owner) o;
+        return  name.equals(owner.name) &&
+                surname.equals(owner.surname) &&
+                address.equals(owner.address) &&
+                phoneNumber.equals(owner.phoneNumber) &&
+                email.equals(owner.email) &&
+                dateFrom.equals(owner.dateFrom) &&
+                dateTo.equals(owner.dateTo) &&
+                description.equals(owner.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname, address, phoneNumber, email, dateFrom, dateTo, description);
     }
 
     @Override

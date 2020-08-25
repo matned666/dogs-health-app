@@ -20,6 +20,43 @@
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF">
 
+                <TextView
+                    android:id="@+id/textView49"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:gravity="end"
+                    android:text="Copyrights 2020 MRNDesign.eu"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorLink="#03554D"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/recyclerContainer"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/recyclerContainer"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerContainer"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/textView44"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:autoLink="web"
+                    android:gravity="end"
+                    android:text="wersja 0.5"
+                    android:textAlignment="viewEnd"
+                    android:textColor="#000000"
+                    android:textColorLink="#03554D"
+                    android:textSize="8sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toStartOf="@+id/recyclerContainer"
+                    app:layout_constraintHorizontal_bias="0.49"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/buttonsLayout"
                     android:layout_width="wrap_content"
@@ -188,7 +225,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="16dp"
-                    android:text="#\nD\nO\nG\nS\nA\nP\nP"
+                    android:text="D\nO\nG\nZ\nA\nP\nP"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="30sp"

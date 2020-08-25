@@ -9,13 +9,29 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/roundcornerstext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView46"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:gravity="end"
+            android:text="Copyrights 2020 MRNDesign.eu"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textColorLink="#03554D"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="RtlCompat" />
 
         <TextView
             android:id="@+id/textView12"
@@ -27,7 +43,7 @@
 
         <EditText
             android:id="@+id/breedingName"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_marginEnd="16dp"
             android:autofillHints=""
             android:hint="Nazwa hodowli"
@@ -37,12 +53,13 @@
 
         <EditText
             android:id="@+id/breedingDescription"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:hint="Opis hodowli"
+            android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -100,10 +117,11 @@
 
         <EditText
             android:id="@+id/breedingAddress"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x4"
             android:layout_width="0dp"
             android:layout_height="110dp"
             android:hint="Adres"
+            android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/breedingEmail"
@@ -111,7 +129,7 @@
 
         <EditText
             android:id="@+id/breedingPhone"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="Telefon"
@@ -122,7 +140,7 @@
 
         <EditText
             android:id="@+id/breedingEmail"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:hint="e-mail"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toStartOf="@+id/breedingAddress"
@@ -135,10 +153,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
             android:background="@drawable/roundcornersrecyclerviewblack"
             android:text="OK"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breedingDescription" />
 
@@ -146,15 +162,25 @@
             android:id="@+id/cancelBreedingDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
             android:text="Anuluj"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/okBreedingDialog" />
+
+        <Button
+            android:id="@+id/deleteBreedingDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/roundcornersrecyclerviewred"
+            android:text="Usuń wpis"
             app:layout_constraintEnd_toStartOf="@+id/okBreedingDialog"
             app:layout_constraintTop_toTopOf="@+id/okBreedingDialog" />
 
         <Spinner
             android:id="@+id/breedingDataSpinner"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="28dp"
             app:layout_constraintEnd_toEndOf="parent"

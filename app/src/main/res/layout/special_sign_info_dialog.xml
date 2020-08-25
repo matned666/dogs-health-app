@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/roundcornerstext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,8 +27,9 @@
 
         <TextView
             android:id="@+id/signDescriptionInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
-            android:hint="Opis"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
@@ -43,26 +44,25 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/okSignDialog"
+            android:id="@+id/okSignDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
             android:background="@drawable/roundcornersrecyclerviewblack"
             android:text="OK"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/signDescriptionInfoTextView" />
 
         <Button
-            android:id="@+id/cancelSignDialog"
+            android:id="@+id/editSignDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
-            android:text="Anuluj"
-            app:layout_constraintEnd_toStartOf="@+id/okSignDialog"
-            app:layout_constraintTop_toTopOf="@+id/okSignDialog" />
+            android:text="Edytuj"
+            app:layout_constraintEnd_toStartOf="@+id/okSignDialogInfo"
+            app:layout_constraintTop_toTopOf="@+id/okSignDialogInfo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

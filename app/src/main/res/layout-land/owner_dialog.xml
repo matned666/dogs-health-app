@@ -17,6 +17,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <Button
+            android:id="@+id/deleteOwnerDialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/roundcornersrecyclerviewred"
+            android:text="Usuń wpis"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ownerDescription"
+            app:layout_constraintTop_toTopOf="@+id/ownerDescription" />
+
         <TextView
             android:id="@+id/textView12"
             style="@style/dogDataDialog_title"
@@ -65,8 +77,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data do:"
-            app:layout_constraintBottom_toTopOf="@+id/ownerPutDate"
-            app:layout_constraintStart_toStartOf="@+id/ownerPutDate" />
+            app:layout_constraintBottom_toTopOf="@+id/ownerToDate"
+            app:layout_constraintStart_toStartOf="@+id/ownerToDate" />
 
         <TextView
             android:id="@+id/textView22"
@@ -74,8 +86,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data od:"
-            app:layout_constraintBottom_toTopOf="@+id/ownerExpiryDate"
-            app:layout_constraintStart_toStartOf="@+id/ownerExpiryDate" />
+            app:layout_constraintBottom_toTopOf="@+id/ownerFromDate"
+            app:layout_constraintStart_toStartOf="@+id/ownerFromDate" />
 
         <TextView
             android:id="@+id/textView16"
@@ -106,7 +118,7 @@
 
         <EditText
             android:id="@+id/ownerName"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:autofillHints=""
             android:hint="Imię"
             app:layout_constraintEnd_toStartOf="@+id/ownerAddress"
@@ -116,7 +128,7 @@
 
         <EditText
             android:id="@+id/ownerSurname"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:autofillHints=""
@@ -128,19 +140,18 @@
 
         <EditText
             android:id="@+id/ownerDescription"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
             android:layout_width="0dp"
             android:layout_height="108dp"
-            android:layout_marginBottom="8dp"
             android:hint="Opis "
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:inputType="textMultiLine"
             app:layout_constraintEnd_toStartOf="@+id/cancelOwnerDialog"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ownerExpiryDate" />
+            app:layout_constraintTop_toBottomOf="@+id/ownerFromDate" />
 
         <EditText
-            android:id="@+id/ownerPutDate"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            android:id="@+id/ownerToDate"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -148,19 +159,19 @@
             android:hint="Data do"
             android:inputType="date"
             app:layout_constraintEnd_toStartOf="@+id/ownerAddress"
-            app:layout_constraintStart_toEndOf="@+id/ownerExpiryDate"
+            app:layout_constraintStart_toEndOf="@+id/ownerFromDate"
             app:layout_constraintTop_toBottomOf="@+id/ownerEmail" />
 
         <EditText
-            android:id="@+id/ownerExpiryDate"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            android:id="@+id/ownerFromDate"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="25dp"
             android:ems="10"
             android:hint="Data od"
             android:inputType="date"
 
-            app:layout_constraintEnd_toStartOf="@+id/ownerPutDate"
+            app:layout_constraintEnd_toStartOf="@+id/ownerToDate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerEmail" />
 
@@ -168,20 +179,21 @@
 
         <EditText
             android:id="@+id/ownerAddress"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x4"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:hint="Adres"
-            app:layout_constraintBottom_toBottomOf="@+id/ownerPutDate"
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toBottomOf="@+id/ownerToDate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ownerName"
             app:layout_constraintTop_toTopOf="@+id/ownerName" />
 
         <EditText
             android:id="@+id/ownerPhone"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:ems="10"
             android:hint="Telefon"
             android:inputType="phone"
@@ -191,7 +203,7 @@
 
         <EditText
             android:id="@+id/ownerEmail"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:hint="e-mail"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toStartOf="@+id/ownerAddress"
@@ -225,7 +237,7 @@
 
         <Spinner
             android:id="@+id/ownerDataSpinner"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />

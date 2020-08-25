@@ -21,49 +21,47 @@ public class DogModel {
     private String color;
     private Sex sex;
     private String dogImage;
-    private List<Chip> chipList;
-    private List<Tattoo> tattoos;
-    private List<SpecialSign> specialSigns;
-    private List<Note> notes;
-    private List<Owner> owners;
-    private Breeding breeding;
 
     public DogModel() {
-        chipList = new ArrayList<>();
-        tattoos = new ArrayList<>();
-        specialSigns = new ArrayList<>();
-        notes = new ArrayList<>();
-        owners = new ArrayList<>();
-        breeding = new Breeding();
     }
 
-    public DogModel(String name, String race, Date birthDate, String color, Sex sex) {
+    public DogModel(String name,
+                    String race,
+                    Date birthDate,
+                    String color,
+                    Sex sex) {
         this.name = name;
         this.race = race;
         this.birthDate = birthDate;
         this.color = color;
         this.sex = sex;
-        chipList = new ArrayList<>();
-        tattoos = new ArrayList<>();
-        specialSigns = new ArrayList<>();
-        notes = new ArrayList<>();
-        owners = new ArrayList<>();
-        breeding = new Breeding();
+
     }
 
-    public DogModel(int id, String name, String race, Date birthDate, String color, Sex sex) {
+    public DogModel(int id,
+                    String name,
+                    String race,
+                    Date birthDate,
+                    String color,
+                    Sex sex) {
         this.id = id;
         this.name = name;
         this.race = race;
         this.birthDate = birthDate;
         this.color = color;
         this.sex = sex;
-        chipList = new ArrayList<>();
-        tattoos = new ArrayList<>();
-        specialSigns = new ArrayList<>();
-        notes = new ArrayList<>();
-        owners = new ArrayList<>();
-        breeding = new Breeding();
+
+    }
+
+    public void setTo(DogModel dog){
+        this.id = dog.getId();
+        this.name = dog.getName();
+        this.race = dog.getRace();
+        this.birthDate = dog.getBirthDate();
+        this.color = dog.getColor();
+        this.sex = dog.getSex();
+        this.dogImage = dog.getDogImage();
+
     }
 
     public int getId() {
@@ -117,52 +115,6 @@ public class DogModel {
         this.dogImage = dogImage;
     }
 
-    public List<Chip> getChipList() {
-        return chipList;
-    }
-    public void setChipList(List<Chip> chipList){
-        this.chipList.clear();
-        this.chipList.addAll(chipList);
-    }
-
-    public List<Tattoo> getTattoos() {
-        return tattoos;
-    }
-    public void setTattoos(List<Tattoo> tattoos){
-        this.tattoos.clear();
-        this.tattoos.addAll(tattoos);
-    }
-
-    public List<SpecialSign> getSpecialSigns() {
-        return specialSigns;
-    }
-    public void setSpecialSigns(List<SpecialSign> signs) {
-        this.specialSigns.clear();
-        this.specialSigns.addAll(signs);
-    }
-
-    public List<Note> getNotes() {
-        return notes;
-    }
-    public void setNotes(List<Note> notes) {
-        this.notes.clear();
-        this.notes.addAll(notes);
-    }
-
-    public List<Owner> getOwners() {
-        return owners;
-    }
-    public void setOwners(List<Owner> owners) {
-        this.owners.clear();
-        this.owners.addAll(owners);
-    }
-
-    public Breeding getBreeding() {
-        return breeding;
-    }
-    public void setBreeding(Breeding breeding) {
-        this.breeding = breeding;
-    }
 
     @Override
     public String toString() {

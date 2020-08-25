@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("pl.design.mrn.matned.dogmanagementapp", appContext.getPackageName());
+        assertEquals("eu.mrndesign.matned.doggzapp", appContext.getPackageName());
     }
 }

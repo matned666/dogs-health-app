@@ -1,151 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-        <ScrollView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="90dp">
+            android:background="#FFFFFF">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
+                android:id="@+id/textView37"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#FFFFFF">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:autoLink="web"
+                android:gravity="end"
+                android:text="Copyrights 2020 MRNDesign.eu"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textColorLink="#03554D"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="RtlCompat" />
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="220dp"
-                    android:layout_height="109dp"
-                    android:layout_marginTop="50dp"
-                    android:contentDescription="@string/logo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.497"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/allergiesButton"
-                    app:srcCompat="@drawable/anigif"
-                    tools:ignore="MissingConstraints" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline58"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.66" />
 
-                <Button
-                    android:id="@+id/teethControllButton"
-                    android:layout_width="0dp"
-                    android:layout_height="41dp"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginEnd="50dp"
-                    android:background="@drawable/roundcornersrecyclerview"
-                    android:text="Eksportuj dane do pliku"
-                    android:textColor="#000000"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="220dp"
+                android:layout_height="109dp"
+                android:layout_marginBottom="32dp"
+                android:contentDescription="@string/logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/anigif"
+                tools:ignore="MissingConstraints" />
 
-                <Button
-                    android:id="@+id/allergiesButton"
-                    android:layout_width="0dp"
-                    android:layout_height="41dp"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="50dp"
-                    android:background="@drawable/roundcornersrecyclerview"
-                    android:text="Importuj dane z pliku"
-                    android:textColor="#000000"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.495"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teethControllButton" />
+            <Button
+                android:id="@+id/back_btn"
+                android:layout_width="0dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/roundcornersrecyclerviewblack"
+                android:text="Powrót"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="213dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="60dp"
-                    android:layout_marginTop="124dp"
-                    android:text="Alert - szczepienia"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="213dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="100dp"
+                android:text="Alert - szczepienia:"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline58"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="213dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="60dp"
-                    android:text="Alert - urodziny"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="213dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:text="Alert - urodziny:"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline58"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="213dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="60dp"
-                    android:text="Alert - odrobaczanie"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="213dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:text="Alert - odrobaczanie:"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline58"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="213dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="60dp"
-                    android:text="Przypominajki"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="213dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:checked="true"
+                android:showText="true"
+                android:text="Przypominajki:"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textOff="OFF"
+                android:textOn="ON"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline58"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-                <CheckBox
-                    android:id="@+id/checkBox"
-                    android:layout_width="97dp"
-                    android:layout_height="30dp"
-                    android:checked="true"
-                    android:text="CheckBox"
-                    app:layout_constraintStart_toEndOf="@+id/textView7"
-                    app:layout_constraintTop_toTopOf="@+id/textView7" />
+            <Switch
+                android:id="@+id/vaccine_alert_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="#000000"
+                android:textOff="Off"
+                android:textOn="On"
+                android:thumb="@drawable/custom_thumb"
+                android:track="@drawable/custom_track"
+                app:layout_constraintBottom_toBottomOf="@+id/textView7"
+                app:layout_constraintStart_toStartOf="@+id/guideline58"
+                app:layout_constraintTop_toTopOf="@+id/textView7" />
 
-                <CheckBox
-                    android:id="@+id/checkBox2"
-                    android:layout_width="97dp"
-                    android:layout_height="30dp"
-                    android:checked="true"
-                    android:text="CheckBox"
-                    app:layout_constraintStart_toEndOf="@+id/textView7"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+            <Switch
+                android:id="@+id/birthday_alert_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:thumb="@drawable/custom_thumb"
+                android:track="@drawable/custom_track"
+                app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                app:layout_constraintStart_toStartOf="@+id/guideline58"
+                app:layout_constraintTop_toTopOf="@+id/textView8" />
 
-                <CheckBox
-                    android:id="@+id/checkBox3"
-                    android:layout_width="97dp"
-                    android:layout_height="30dp"
-                    android:checked="true"
-                    android:text="CheckBox"
-                    app:layout_constraintStart_toEndOf="@+id/textView7"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
+            <Switch
+                android:id="@+id/deworming_alert_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:thumb="@drawable/custom_thumb"
+                android:track="@drawable/custom_track"
+                app:layout_constraintBottom_toBottomOf="@+id/textView9"
+                app:layout_constraintStart_toStartOf="@+id/guideline58"
+                app:layout_constraintTop_toTopOf="@+id/textView9" />
 
-                <CheckBox
-                    android:id="@+id/checkBox4"
-                    android:layout_width="97dp"
-                    android:layout_height="30dp"
-                    android:checked="true"
-                    android:text="CheckBox"
-                    app:layout_constraintStart_toEndOf="@+id/textView7"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
+            <Switch
+                android:id="@+id/notifications_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:thumb="@drawable/custom_thumb"
+                android:track="@drawable/custom_track"
+                app:layout_constraintBottom_toBottomOf="@+id/textView10"
+                app:layout_constraintStart_toStartOf="@+id/guideline58"
+                app:layout_constraintTop_toTopOf="@+id/textView10" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline60"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="600dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

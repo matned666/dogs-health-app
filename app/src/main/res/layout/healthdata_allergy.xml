@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/textView27"
+        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alergia:"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/squarecornersrecyclerviewelement"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline24"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/allergen_name_subtitle"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="385dp"
+                        android:layout_height="wrap_content"
+                        android:text="Nazwa alergenu"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/allergen_name_guideLine" />
+
+                    <TextView
+                        android:id="@+id/allergen_name_textData"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Alergen:"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/allergen_name_guideLine"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/allergen_name_guideLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="16dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
+                android:layout_width="match_parent"
+                android:layout_height="111dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/allergen_description_textData"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="384dp"
+                        android:layout_height="95dp"
+                        android:text="Krótki opis reakcji alergicznej u psa na podany alergen"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/allergen_description_guideline" />
+
+                    <TextView
+                        android:id="@+id/allergen_description_subtitle"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Opis reakcji alergicznej:"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/allergen_description_guideline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/allergen_description_guideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="16dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/allergen_discoveryDate_subtitle"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="385dp"
+                        android:layout_height="wrap_content"
+                        android:text="21 sie 2020"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/allergen_discoveryDate_guideLine" />
+
+                    <TextView
+                        android:id="@+id/allergen_discoveryDate_textData"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Data wykrycia alergii:"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/allergen_discoveryDate_guideLine"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/allergen_discoveryDate_guideLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="16dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/allergen_treatmentStartDate_subtitle"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="385dp"
+                        android:layout_height="wrap_content"
+                        android:text="21 sie 2020"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/allergen_treatmentStartDate_guideLine" />
+
+                    <TextView
+                        android:id="@+id/allergen_treatmentStartDate_textData"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Data rozpoczęcia leczenia:"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/allergen_treatmentStartDate_guideLine"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/allergen_treatmentStartDate_guideLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="16dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/allergen_treatmentNextDate_subtitle"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="385dp"
+                        android:layout_height="wrap_content"
+                        android:text="21 sie 2020"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/allergen_treatmentNextDate_guideLine" />
+
+                    <TextView
+                        android:id="@+id/allergen_treatmentNextDate_textData"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Data następnej kuracji:"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/allergen_treatmentNextDate_guideLine"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/allergen_treatmentNextDate_guideLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="16dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
+                android:layout_width="match_parent"
+                android:layout_height="132dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/allergen_note_subtitle"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="Notatka na temat alergii, uwagi, postępowanie"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/allergen_note_guideLine"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                        android:id="@+id/allergen_note_textData"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Notatka:"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/allergen_note_guideLine"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/allergen_note_guideLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="19dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <ImageView
+                        android:id="@+id/logo3"
+                        android:layout_width="0dp"
+                        android:layout_height="109dp"
+                        android:layout_marginBottom="8dp"
+                        android:contentDescription="@string/logo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@+id/guideline27"
+                        app:srcCompat="@drawable/anigif"
+                        tools:ignore="MissingConstraints" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/allergen_photo_guideLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="265dp" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline27"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="171dp" />
+
+                    <ImageView
+                        android:id="@+id/allergy_photo"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/roundcornerimageframe"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline27"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_stat_name"
+                        tools:ignore="VectorDrawableCompat" />
+
+                    <Button
+                        android:id="@+id/allergy_back_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/round_black"
+                        android:text="Powrót"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline27"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/allergy_edit_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/round_black"
+                        android:text="Edytuj wpis"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline27"
+                        app:layout_constraintTop_toBottomOf="@+id/allergy_back_btn" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="33dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

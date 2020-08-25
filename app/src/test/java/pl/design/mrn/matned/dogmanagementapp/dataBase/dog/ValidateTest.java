@@ -1,17 +1,12 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.dog;
 
-import android.content.Context;
-import android.content.res.AssetManager;
 import android.widget.Spinner;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import pl.design.mrn.matned.dogmanagementapp.activity.AddDogActivity;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class ValidateTest {
@@ -52,7 +47,7 @@ class ValidateTest {
         assertTrue(Validate.isNumeric(t22), "Numeric trimmed and whites replaced");
         assertFalse(Validate.isNumeric(t3), "Not numeric");
         assertFalse(Validate.isNumeric(t4), "empty");
-        assertFalse(Validate.isNumeric(t4), "Null");
+        assertFalse(Validate.isNumeric(t5), "Null");
     }
 
     @Test

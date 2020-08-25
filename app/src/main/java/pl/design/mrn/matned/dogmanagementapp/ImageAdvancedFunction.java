@@ -1,6 +1,9 @@
 package pl.design.mrn.matned.dogmanagementapp;
 
+import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,11 +14,9 @@ import android.media.ExifInterface;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.FileProvider;
@@ -58,39 +59,26 @@ public class ImageAdvancedFunction {
 
     }
 
-    public static void setThumbImage(ImageView view, String photoPath, Resources resources) {
-        final int THUMBSIZE = 64;
-
-        Bitmap bitmap = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(photoPath),
-                THUMBSIZE, THUMBSIZE);
-        Drawable d = new BitmapDrawable(resources, bitmap);
-        view.setBackgroundResource(R.drawable.roundcornerimageframeblack);
-        view.setImageDrawable(d);
-
-    }
 
     public static Bitmap handleSamplingAndRotationBitmap(Context context, Uri selectedImage)
             throws IOException {
-        int MAX_HEIGHT = 1024;
-        int MAX_WIDTH = 1024;
+        int MAX_HEIGHT = 500;
+        int MAX_WIDTH = 500;
 
-        // First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         InputStream imageStream = context.getContentResolver().openInputStream(selectedImage);
         BitmapFactory.decodeStream(imageStream, null, options);
+        assert imageStream != null;
         imageStream.close();
 
-        // Calculate inSampleSize
         options.inSampleSize = calculateInSampleSize(options, MAX_WIDTH, MAX_HEIGHT);
 
-        // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;
         imageStream = context.getContentResolver().openInputStream(selectedImage);
         Bitmap img = BitmapFactory.decodeStream(imageStream, null, options);
 
         img = rotateImageIfRequired(context, img, selectedImage);
-
         return img;
     }
 

@@ -1,20 +1,36 @@
 package pl.design.mrn.matned.dogmanagementapp.dataBase.dog.additionalData;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import pl.design.mrn.matned.dogmanagementapp.dataBase.dog.DogModel;
+import static pl.design.mrn.matned.dogmanagementapp.Statics.DATE_FORMAT;
 
-public class Chip  implements Serializable {
+
+public class Chip implements Serializable {
 
     private int chipId;
     private String chipNumber;
     private Date putDate;
-    private Date extDate;
+    private Date expDate;
     private String chipDescription;
     private int dogId;
+    private boolean isActive;
 
     public Chip() {
+
+    }
+
+    public boolean isActive() {
+        Date today = new Date();
+        if(putDate != null && expDate != null) return expDate.after(today) && putDate.before(today);
+        else if(expDate != null ) return expDate.after(today);
+        else return false;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public Chip(int chipId) {
@@ -37,12 +53,12 @@ public class Chip  implements Serializable {
         this.putDate = putDate;
     }
 
-    public Date getExtDate() {
-        return extDate;
+    public Date getExpDate() {
+        return expDate;
     }
 
-    public void setExtDate(Date extDate) {
-        this.extDate = extDate;
+    public void setExpDate(Date expDate) {
+        this.expDate = expDate;
     }
 
     public int getChipId() {
@@ -75,7 +91,7 @@ public class Chip  implements Serializable {
                 "chipId=" + chipId +
                 ", chipNumber=" + chipNumber +
                 ", putDate=" + putDate +
-                ", extDate=" + extDate +
+                ", extDate=" + expDate +
                 ", chipDescription='" + chipDescription + '\'' +
                 ", dogId=" + dogId +
                 '}';

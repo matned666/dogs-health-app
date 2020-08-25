@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/roundcornerstext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,16 +20,17 @@
         <TextView
             android:id="@+id/textView12"
             style="@style/dogDataDialog_title"
-            android:text="Dane właściciela:"
+            android:text="Brak"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/ownerNameInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:autofillHints=""
-            android:hint="Imię"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,11 +38,12 @@
 
         <TextView
             android:id="@+id/ownerSurnameInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:autofillHints=""
-            android:hint="Nazwisko"
+            android:background="@drawable/whitetext"
+            android:hint="Brak"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,11 +51,12 @@
 
         <TextView
             android:id="@+id/ownerDescriptionInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
-            android:hint="Opis "
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
+            android:hint="Brak "
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ownerExpiryDateInfoTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/ownerFromDateInfoTextView" />
 
         <TextView
             android:id="@+id/textView13"
@@ -79,28 +82,28 @@
             app:layout_constraintStart_toStartOf="@+id/ownerAddressInfoTextView" />
 
         <TextView
-            android:id="@+id/ownerPutDateInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            android:id="@+id/ownerToDateInfoTextView"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/whitetext"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="Data do"
-            android:inputType="date"
+            android:hint="Brak"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ownerExpiryDateInfoTextView"
+            app:layout_constraintStart_toEndOf="@+id/ownerFromDateInfoTextView"
             app:layout_constraintTop_toBottomOf="@+id/ownerEmailInfoTextView" />
 
         <TextView
-            android:id="@+id/ownerExpiryDateInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            android:id="@+id/ownerFromDateInfoTextView"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/whitetext"
             android:ems="10"
-            android:hint="Data od"
-            android:inputType="date"
+            android:hint="Brak"
 
-            app:layout_constraintEnd_toStartOf="@+id/ownerPutDateInfoTextView"
+            app:layout_constraintEnd_toStartOf="@+id/ownerToDateInfoTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerEmailInfoTextView" />
 
@@ -110,8 +113,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data do:"
-            app:layout_constraintBottom_toTopOf="@+id/ownerPutDateInfoTextView"
-            app:layout_constraintStart_toStartOf="@+id/ownerPutDateInfoTextView" />
+            app:layout_constraintBottom_toTopOf="@+id/ownerToDateInfoTextView"
+            app:layout_constraintStart_toStartOf="@+id/ownerToDateInfoTextView" />
 
         <TextView
             android:id="@+id/textView22"
@@ -119,8 +122,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data od:"
-            app:layout_constraintBottom_toTopOf="@+id/ownerExpiryDateInfoTextView"
-            app:layout_constraintStart_toStartOf="@+id/ownerExpiryDateInfoTextView" />
+            app:layout_constraintBottom_toTopOf="@+id/ownerFromDateInfoTextView"
+            app:layout_constraintStart_toStartOf="@+id/ownerFromDateInfoTextView" />
 
         <TextView
             android:id="@+id/textView16"
@@ -151,51 +154,50 @@
 
         <TextView
             android:id="@+id/ownerAddressInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
-            android:hint="Adres"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x4"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerSurnameInfoTextView" />
 
         <TextView
             android:id="@+id/ownerPhoneInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:ems="10"
-            android:hint="Telefon"
-            android:inputType="phone"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerAddressInfoTextView" />
 
         <TextView
             android:id="@+id/ownerEmailInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
-            android:hint="e-mail"
-            android:inputType="textEmailAddress"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerPhoneInfoTextView" />
 
         <Button
-            android:id="@+id/okOwnerDialog"
+            android:id="@+id/okOwnerDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
             android:background="@drawable/roundcornersrecyclerviewblack"
             android:text="OK"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerDescriptionInfoTextView" />
 
         <Button
-            android:id="@+id/cancelOwnerDialog"
+            android:id="@+id/editOwnerDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
-            android:text="Anuluj"
-            app:layout_constraintEnd_toStartOf="@+id/okOwnerDialog"
-            app:layout_constraintTop_toTopOf="@+id/okOwnerDialog" />
+            android:text="Edytuj"
+            app:layout_constraintEnd_toStartOf="@+id/okOwnerDialogInfo"
+            app:layout_constraintTop_toTopOf="@+id/okOwnerDialogInfo" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

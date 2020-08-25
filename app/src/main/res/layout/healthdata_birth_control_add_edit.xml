@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/textView27"
+        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Potomstwo:"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/squarecornersrecyclerviewelement"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline24"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/birth_number_of_pups_dataText"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@drawable/roundcornersrecyclerview"
+                        android:hint="Liczba szczeniąt"
+                        android:inputType="number"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/birth_number_guideLine" />
+
+                    <TextView
+                        android:id="@+id/birth_number_of_pups_subtitle"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Ilość szczeniąt w miocie:"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/birth_number_guideLine"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/birth_number_guideLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="16dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
+                android:layout_width="match_parent"
+                android:layout_height="111dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/birth_description_dataText"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="95dp"
+                        android:autofillHints=""
+                        android:background="@drawable/roundcornersrecyclerview"
+                        android:hint="Opis szczeniąt, porodu, ewentualnych problemów, które wyniknęły"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/birth_description_guideline" />
+
+                    <TextView
+                        android:id="@+id/birth_description_subtitle"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Opis miotu:"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/birth_description_guideline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/birth_description_guideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="16dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/birth_date_dataText"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@drawable/roundcornersrecyclerview"
+                        android:hint="Wybierz datę"
+                        android:inputType="date"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/birth_date_guideline" />
+
+                    <TextView
+                        android:id="@+id/birth_name_subtitle"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Data narodzin:"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/birth_date_guideline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/birth_date_guideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="16dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
+                android:layout_width="match_parent"
+                android:layout_height="141dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/birth_note_dataText"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:hint="Notatka na temat zabiegu/ choroby"
+                        android:textSize="14sp"
+                        android:background="@drawable/roundcornersrecyclerview"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/birth_note_guideLine"
+                        android:autofillHints="" />
+
+                    <TextView
+                        android:id="@+id/birth_note_subtitle"
+                        style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.noFrame"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Notatka:"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/birth_note_guideLine"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/birth_note_guideLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="19dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.thinSquareFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <ImageView
+                        android:id="@+id/logo3"
+                        android:layout_width="0dp"
+                        android:layout_height="109dp"
+                        android:contentDescription="@string/logo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@+id/guideline27"
+                        app:layout_constraintTop_toTopOf="@+id/guideline22"
+                        app:srcCompat="@drawable/anigif"
+                        tools:ignore="MissingConstraints" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/allergen_name_guideLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="357dp" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline27"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="171dp" />
+
+                    <ImageView
+                        android:id="@+id/birth_photo"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/roundcornerimageframe"
+                        app:layout_constraintBottom_toTopOf="@+id/guideline22"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline27"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_stat_name"
+                        tools:ignore="VectorDrawableCompat" />
+
+                    <Button
+                        android:id="@+id/birth_save_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/round_black"
+                        android:text="Zapisz"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline27"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/birth_delete_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/roundcornersrecyclerviewred"
+                        android:text="usuń wpis"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline27"
+                        app:layout_constraintTop_toBottomOf="@+id/birth_back_button" />
+
+                    <Button
+                        android:id="@+id/birth_back_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/round_black"
+                        android:text="powrót"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="@+id/guideline27"
+                        app:layout_constraintTop_toBottomOf="@+id/birth_save_btn" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="234dp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="38dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

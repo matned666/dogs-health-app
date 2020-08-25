@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/roundcornerstext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,9 +27,10 @@
 
         <TextView
             android:id="@+id/breedingNameInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:autofillHints=""
-            android:hint="Nazwa hodowli"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,8 +38,9 @@
 
         <TextView
             android:id="@+id/breedingDescriptionInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
-            android:hint="Opis hodowli"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breedingEmailInfoTextView" />
@@ -86,49 +88,65 @@
 
         <TextView
             android:id="@+id/breedingAddressInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x4"
-            android:hint="Adres"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x4"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breedingNameInfoTextView" />
 
         <TextView
             android:id="@+id/breedingPhoneInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:ems="10"
-            android:hint="Telefon"
+            android:background="@drawable/whitetext"
+            android:hint="Brak"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breedingAddressInfoTextView" />
 
         <TextView
             android:id="@+id/breedingEmailInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
-            android:hint="e-mail"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
+            android:background="@drawable/whitetext"
+            android:hint="Brak"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breedingPhoneInfoTextView" />
 
         <Button
-            android:id="@+id/okBreedingDialog"
+            android:id="@+id/okBreedingDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
             android:background="@drawable/roundcornersrecyclerviewblack"
             android:text="OK"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breedingDescriptionInfoTextView" />
 
         <Button
-            android:id="@+id/cancelBreedingDialog"
+            android:id="@+id/editBreedingInfoDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:background="@drawable/roundcornersrecyclerviewred"
-            android:text="Anuluj"
-            app:layout_constraintEnd_toStartOf="@+id/okBreedingDialog"
-            app:layout_constraintTop_toTopOf="@+id/okBreedingDialog" />
+            android:text="Edytuj"
+            app:layout_constraintEnd_toStartOf="@+id/okBreedingDialogInfo"
+            app:layout_constraintTop_toTopOf="@+id/okBreedingDialogInfo" />
+
+        <TextView
+            android:id="@+id/breedingInfoDialog_informationTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center_vertical"
+            android:text="Brak zapisanej hodowli, dodać?"
+            android:textColor="#FF0000"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editBreedingInfoDialog"
+            app:layout_constraintEnd_toStartOf="@+id/editBreedingInfoDialog"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editBreedingInfoDialog" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

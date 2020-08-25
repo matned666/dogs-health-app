@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/roundcornerstext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,8 +27,9 @@
 
         <TextView
             android:id="@+id/tattooDescriptionInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x6"
-            android:hint="Opis"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x6"
+            android:hint="Brak"
+            android:background="@drawable/whitetext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tattooPutDateInfoTextView" />
@@ -52,34 +53,33 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/okTattooDialog"
+            android:id="@+id/okTattooDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
             android:background="@drawable/roundcornersrecyclerviewblack"
             android:text="OK"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tattooDescriptionInfoTextView" />
 
         <Button
-            android:id="@+id/cancelTattooDialog"
+            android:id="@+id/editTattooDialogInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/roundcornersrecyclerviewred"
-            android:text="Anuluj"
-            app:layout_constraintEnd_toStartOf="@+id/okTattooDialog"
-            app:layout_constraintTop_toTopOf="@+id/okTattooDialog" />
+            android:text="Edytuj"
+            app:layout_constraintEnd_toStartOf="@+id/okTattooDialogInfo"
+            app:layout_constraintTop_toTopOf="@+id/okTattooDialogInfo" />
 
         <TextView
             android:id="@+id/tattooPutDateInfoTextView"
-            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.x1"
+            style="@style/editTextStyle_frameRoundBlackCorners_whiteBackground_blackText.margin.x1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Data zrobienia tatuażu"
+            android:background="@drawable/whitetext"
+            android:hint="Brak"
             app:layout_constraintEnd_toEndOf="@+id/textView12"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
